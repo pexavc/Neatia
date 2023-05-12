@@ -1,0 +1,271 @@
+//
+//  EnvironmentService.Direction.swift
+//  Sina
+//
+//  Created by Ritesh Pakala on 5/6/23.
+//
+
+import Foundation
+import Granite
+
+extension EnvironmentService {
+    struct Interact: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        struct Meta: GranitePayload {
+            let interaction: Interaction
+        }
+        
+        @Payload var meta: Meta?
+        
+        func reduce(state: inout Center.State) {
+            switch meta?.interaction {
+            case .enable:
+                //state.windowManager.enable()
+                break
+            case .disable:
+                //state.windowManager.disable()
+                break
+            default:
+                break
+            }
+            
+            state.lastInteraction = meta?.interaction ?? state.lastInteraction
+        }
+    }
+    
+    struct Reset: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        func reduce(state: inout Center.State) {
+            state.pane?.display {
+                WindowComponent(WindowComponent.Kind.query,
+                                size: WindowComponent.Kind.query.defaultSize)
+            }
+            
+            state.isCommandToolbarActive = false
+            state.isResponseActive = false
+            state.isCommandActive = false
+        }
+    }
+    
+    struct CommandToolbarActivated: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        struct Meta: GranitePayload {
+            let isActive: Bool
+        }
+        
+        @Payload var meta: Meta?
+        
+        func reduce(state: inout Center.State) {
+            guard let meta = self.meta else { return }
+            
+            if meta.isActive && state.isCommandToolbarActive == false {
+                
+                state.isCommandActive = false
+                state.isCommandToolbarActive = true
+                
+                let addResponse: Bool = state.isResponseActive
+                
+                state.pane?.display {
+                    WindowComponent(WindowComponent.Kind.toolbar,
+                                    size: WindowComponent.Kind.toolbar.defaultSize)
+                    
+                    WindowComponent(WindowComponent.Kind.spacer)
+                    
+                    WindowComponent(WindowComponent.Kind.query,
+                                    size: .size(0, 160))
+                    
+                    if addResponse {
+                        WindowComponent(WindowComponent.Kind.divider)
+                        
+                        WindowComponent(WindowComponent.Kind.response)
+                        
+                        WindowComponent(WindowComponent.Kind.spacer)
+                    }
+                    
+                    WindowComponent(WindowComponent.Kind.shortcutbar)
+                }
+            } else if meta.isActive == false {
+                
+                state.isCommandToolbarActive = false
+                
+                let addResponse: Bool = state.isResponseActive
+                
+                state.pane?.display {
+                    WindowComponent(WindowComponent.Kind.query)
+                    
+                    if addResponse {
+                        WindowComponent(WindowComponent.Kind.divider)
+                        
+                        WindowComponent(WindowComponent.Kind.response)
+                        
+                        WindowComponent(WindowComponent.Kind.spacer)
+                        
+                        WindowComponent(WindowComponent.Kind.shortcutbar)
+                    }
+                }
+            }
+        }
+    }
+    
+    struct CommandMenuActivated: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        struct Meta: GranitePayload {
+            let isActive: Bool
+        }
+        
+        @Payload var meta: Meta?
+        
+        func reduce(state: inout Center.State) {
+            guard let meta = self.meta else { return }
+            
+            if state.isCommandToolbarActive /*&&
+                meta.isActive == false &&
+                state.isCommandActive == false*/ {
+                return
+            }
+            
+            if meta.isActive {
+                state.pane?.display {
+                    WindowComponent(WindowComponent.Kind.query)
+                    WindowComponent(WindowComponent.Kind.command, size: WindowComponent.Kind.command.defaultSize)
+                }
+            } else {
+                let addResponse = state.isResponseActive
+                state.pane?.display {
+                    WindowComponent(WindowComponent.Kind.query)
+                    
+                    if addResponse {
+                        WindowComponent(WindowComponent.Kind.divider)
+                        
+                        WindowComponent(WindowComponent.Kind.response)
+                        
+                        WindowComponent(WindowComponent.Kind.spacer)
+                        
+                        WindowComponent(WindowComponent.Kind.shortcutbar)
+                    }
+                }
+            }
+            
+            state.isCommandActive = meta.isActive
+        }
+    }
+    
+    
+    struct QueryWindowSizeUpdated: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        struct Meta: GranitePayload {
+            let lineCount: Int
+        }
+        
+        @Payload var meta: Meta?
+        
+        func reduce(state: inout Center.State) {
+            guard let meta = self.meta else { return }
+            
+            let defaultSize = WindowComponent.Kind.query.defaultSize
+            //TODO: need to make fonts easily accessible for this percise growth logic
+            
+            let baseHeight: CGFloat = defaultSize.height
+            
+            let fontDetails: Fonts.Details = .from(.defaultSize)
+            
+            var newHeight: CGFloat = baseHeight + (fontDetails.lineHeight * (meta.lineCount - 1)) + ((meta.lineCount - 1) * (fontDetails.boundingRectDiff / 2))
+            
+//            if meta.lineCount > 1 {
+//                newHeight += fontDetails.actualHeight
+//            }
+            
+            let queryWindowSize: CGSize = .init(defaultSize.width,
+                                                min(
+                                                 WindowComponent.Kind.query.size(.maxWindow).height, newHeight))
+            
+            let isToolbarActive: Bool = state.isCommandToolbarActive
+            let addResponse: Bool = state.isResponseActive
+            
+            state.pane?.display {
+                if isToolbarActive {
+                    WindowComponent(WindowComponent.Kind.toolbar,
+                                    size: WindowComponent.Kind.toolbar.size(.defaultWindow))
+                    
+                    WindowComponent(WindowComponent.Kind.spacer)
+                }
+                
+                WindowComponent(WindowComponent.Kind.query, size: isToolbarActive && newHeight <= 160 ? nil : queryWindowSize)
+                
+                if addResponse {
+                    WindowComponent(WindowComponent.Kind.divider)
+                    
+                    WindowComponent(WindowComponent.Kind.response)
+                    
+                    WindowComponent(WindowComponent.Kind.spacer)
+                }
+                
+                if addResponse || isToolbarActive {
+                    WindowComponent(WindowComponent.Kind.shortcutbar)
+                }
+            }
+        }
+        
+        var thread: DispatchQueue? {
+            .global(qos: .utility)
+        }
+    }
+    
+    struct ResponseWindowSizeUpdated: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        struct Meta: GranitePayload {
+            let lineCount: Int
+        }
+        
+        @Payload var meta: Meta?
+        
+        func reduce(state: inout Center.State) {
+            guard let meta = self.meta else { return }
+            
+            let defaultSize = WindowComponent.Kind.response.defaultSize
+            
+            let baseHeight: CGFloat = defaultSize.height
+            
+            let fontDetails: Fonts.Details = .from(.defaultResponseSize)
+            
+            var newHeight: CGFloat = baseHeight + (fontDetails.lineHeight * (meta.lineCount - 1)) + ((meta.lineCount - 1) * (fontDetails.boundingRectDiff / 2))
+            
+            if meta.lineCount > 1 {
+                newHeight += fontDetails.actualHeight
+            }
+            
+            
+            let responseWindowSize: CGSize = .init(defaultSize.width,
+                                                   min(
+                                                    WindowComponent.Kind.response.size(.maxWindow).height, newHeight))
+            let isToolbarActive: Bool = state.isCommandToolbarActive
+            
+            state.pane?.display {
+                if isToolbarActive {
+                    WindowComponent(WindowComponent.Kind.toolbar,
+                                    size: WindowComponent.Kind.toolbar.size(.defaultWindow))
+                    
+                    WindowComponent(WindowComponent.Kind.spacer)
+                }
+                
+                WindowComponent(WindowComponent.Kind.query)
+                
+                WindowComponent(WindowComponent.Kind.divider)
+                
+                WindowComponent(WindowComponent.Kind.response, size: isToolbarActive && newHeight <= 208 ? .init(0, 208) : responseWindowSize)
+                
+                WindowComponent(WindowComponent.Kind.spacer)
+//
+                WindowComponent(WindowComponent.Kind.shortcutbar)
+            }
+            
+            state.isResponseActive = true
+        }
+    }
+}

@@ -1,0 +1,113 @@
+//
+//  PEXApp.Delegate.swift
+//  Sina
+//
+//  Created by Ritesh Pakala on 5/6/23.
+//
+
+import Foundation
+import SwiftUI
+import Firebase
+import SwiftyStoreKit
+
+class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
+    var menuBarManager: MenuBarManager?
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        FirebaseApp.configure()
+        
+        //Window close
+        if let window = NSApplication.shared.windows.first {
+            window.close()
+        }
+        
+        menuBarManager = MenuBarManager.shared
+        menuBarManager?.setup()
+        MenuBarManager.shared.menu.delegate = self
+        menuBarManager?.statusItem?.button?.action = #selector(self.statusBarButtonClicked(sender:))
+        
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        // Deliver content from server, then:
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                    // Unlock content
+                    
+                    print("[AccountService] AppDelegate: restored")
+                case .failed, .purchasing, .deferred:
+                    print("[AccountService] AppDelegate: no purchases")
+                    break // do nothing
+                }
+            }
+        }
+        
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("DidFinishLaunching"), object: nil)
+    }
+    
+    func addMenuItems() {
+        let menu = MenuBarManager.shared.menu
+        menu.removeAllItems()
+        
+//        if MenuBarManager.shared.mountIsClosed {
+//            let item = NSMenuItem(title: "Show", action: #selector(ShowHideMount), keyEquivalent: "s")
+//            item.keyEquivalentModifierMask = NSEvent.ModifierFlags.option
+//            menu.addItem(item)
+//            
+//        } else {
+//            let item = NSMenuItem(title: "Hide", action: #selector(ShowHideMount), keyEquivalent: "s")
+//            item.keyEquivalentModifierMask = NSEvent.ModifierFlags.option
+//            menu.addItem(item)
+//        }
+//        
+//        menu.addItem(.separator())
+        
+        menu.addItem(withTitle: "Settings",
+                     action: #selector(ShowSettings),
+                     keyEquivalent: "")
+        
+        menu.addItem(.separator())
+        
+        menu.addItem(withTitle: "Quit", action: #selector(quit), keyEquivalent: "")
+    }
+    
+    func menuWillOpen(_ menu: NSMenu) {
+        addMenuItems()
+        MenuBarManager.shared.popover.performClose(self)
+    }
+    
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
+        guard let event = NSApp.currentEvent else { return }
+        
+        MenuBarManager.shared.statusBarClicked(event)
+    }
+    
+    @objc func ShowHideMount() {
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("ShowHideMount"), object: nil)
+        MenuBarManager.shared.mountIsClosed.toggle()
+    }
+    
+    @objc func ShowSettings() {
+        MenuBarManager.shared.showPopOver()
+    }
+    
+    @objc func LogoutAccount() {
+        print("{TEST} sent logout event")
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("Logout"), object: nil)
+    }
+    
+    @objc func copyToClipboard(_ sender: NSMenuItem) {
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(sender.title,
+                                       forType: .string)
+    }
+    
+    @objc func quit() {
+        NSApp.terminate(self)
+    }
+}
