@@ -5,7 +5,7 @@ import SandKit
 extension Query: View {
     public var view: some View {
         VStack(spacing: 0) {
-//            Spacer().frame(height: Fonts.nsFont(.headline, .bold).actualHeight)
+            //            Spacer().frame(height: Fonts.nsFont(.headline, .bold).actualHeight)
             
             ZStack(alignment: .top) {
                 MacEditorTextView(
@@ -65,6 +65,25 @@ extension Query: View {
                     .allowsHitTesting(false)
                 }
                 
+                if SandGPTTokenizerManager.tokenCount > 0 {
+                    
+                    VStack {
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            
+                            Text("\(SandGPTTokenizerManager.tokenCount)/\(SandService.maxTokenCount)")
+                                .font(Fonts.live(.caption, .bold))
+                                .foregroundColor((SandGPTTokenizerManager.tokenCount <= SandService.maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
+                            
+                        }
+                        
+                        Spacer()
+                            .frame(height: WindowComponent.Style.defaultContainerOuterPadding)
+                    }
+                    .allowsHitTesting(false)
+                }
             }
         }
     }

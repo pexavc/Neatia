@@ -5,7 +5,12 @@ import SandKit
 extension SandService {
     struct Center: GraniteCenter {
         struct State: GraniteState {
-            var query: String = ""
+            var query: String = "" {
+                didSet {
+                    SandGPTTokenizerManager.update(query)
+                }
+            }
+            
             var response: String = ""
             
             var isResponding: Bool = false
@@ -28,7 +33,7 @@ extension SandService {
             }
             
             var tokenCount: Int {
-                SandGPT.shared.gpt3Tokenizer.encoder.enconde(text: query).count
+                SandGPTTokenizerManager.tokenCount
             }
         }
         
@@ -45,5 +50,9 @@ extension SandService {
     
     struct Error: GraniteModel {
         var message: String
+    }
+    
+    static var maxTokenCount: Int {
+        2000
     }
 }

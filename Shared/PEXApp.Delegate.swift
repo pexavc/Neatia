@@ -26,25 +26,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menuBarManager?.statusItem?.button?.action = #selector(self.statusBarButtonClicked(sender:))
         
         let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("DidFinishLaunching"), object: nil)
+        nc.post(name: Notification.Name("nyc.stoic.Neatia.DidFinishLaunching"), object: nil)
     }
     
     func addMenuItems() {
         let menu = MenuBarManager.shared.menu
         menu.removeAllItems()
-        
-//        if MenuBarManager.shared.mountIsClosed {
-//            let item = NSMenuItem(title: "Show", action: #selector(ShowHideMount), keyEquivalent: "s")
-//            item.keyEquivalentModifierMask = NSEvent.ModifierFlags.option
-//            menu.addItem(item)
-//            
-//        } else {
-//            let item = NSMenuItem(title: "Hide", action: #selector(ShowHideMount), keyEquivalent: "s")
-//            item.keyEquivalentModifierMask = NSEvent.ModifierFlags.option
-//            menu.addItem(item)
-//        }
-//        
-//        menu.addItem(.separator())
         
         menu.addItem(withTitle: "Settings",
                      action: #selector(ShowSettings),
@@ -68,18 +55,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     @objc func ShowHideMount() {
         let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("ShowHideMount"), object: nil)
+        nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHideMount"), object: nil)
         MenuBarManager.shared.mountIsClosed.toggle()
     }
     
     @objc func ShowSettings() {
         MenuBarManager.shared.showPopOver()
-    }
-    
-    @objc func LogoutAccount() {
-        print("{TEST} sent logout event")
-        let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("Logout"), object: nil)
     }
     
     @objc func copyToClipboard(_ sender: NSMenuItem) {

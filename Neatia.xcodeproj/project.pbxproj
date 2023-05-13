@@ -99,6 +99,8 @@
 		717E613428A0D69B009A2B1A /* Home._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E613228A0D69B009A2B1A /* Home._.swift */; };
 		718148B72A0F65000054E71A /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B62A0F65000054E71A /* AccountManager.swift */; };
 		718148B82A0F65000054E71A /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B62A0F65000054E71A /* AccountManager.swift */; };
+		718148BA2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */; };
+		718148BB2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */; };
 		7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B18B2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B1932A0B5C8900C579A4 /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1902A0B5C8900C579A4 /* ConfigService.swift */; };
@@ -572,6 +574,7 @@
 		717D388A2887A44D00165D7D /* Home+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+View.swift"; sourceTree = "<group>"; };
 		717E613228A0D69B009A2B1A /* Home._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home._.swift; sourceTree = "<group>"; };
 		718148B62A0F65000054E71A /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandGPT.Tokenizer.swift; sourceTree = "<group>"; };
 		7192B1892A0B146600C579A4 /* SandGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandGPT.swift; sourceTree = "<group>"; };
 		7192B1902A0B5C8900C579A4 /* ConfigService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 		7192B1912A0B5C8900C579A4 /* ConfigService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigService+Center.swift"; sourceTree = "<group>"; };
@@ -1695,6 +1698,7 @@
 			children = (
 				71EDCFCD2A08D99A00857066 /* SandTask.swift */,
 				7192B1892A0B146600C579A4 /* SandGPT.swift */,
+				718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2107,6 +2111,7 @@
 				71BE32082A05AB3D00B76A69 /* Config.swift in Sources */,
 				71A28E27295237AE00EAE8EE /* PagerView.swift in Sources */,
 				71EDCFF72A09781000857066 /* ShortcutBar+Center.swift in Sources */,
+				718148BA2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */,
 				71A28DDD295232E300EAE8EE /* TimeDisplayModeSelector.swift in Sources */,
 				716214FF2A031E32009D19B6 /* NSTextView.swift in Sources */,
 				71A28DDB295232E300EAE8EE /* GraphPageBusinessLogic.swift in Sources */,
@@ -2340,6 +2345,7 @@
 				71A28DFA295232E300EAE8EE /* TimeDisplayMode.swift in Sources */,
 				71A28E28295237AE00EAE8EE /* PagerView.swift in Sources */,
 				71EDCFF82A09781000857066 /* ShortcutBar+Center.swift in Sources */,
+				718148BB2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */,
 				7197FB142964B4C0005EBBA4 /* GraniteToastViewEvent.swift in Sources */,
 				7197FB062964B4C0005EBBA4 /* GraniteModal.swift in Sources */,
 				71A28DDE295232E300EAE8EE /* TimeDisplayModeSelector.swift in Sources */,

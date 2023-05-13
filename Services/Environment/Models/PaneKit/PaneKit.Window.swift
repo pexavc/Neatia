@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 extension PaneKit {
     class Window: NSObject, Identifiable {
@@ -22,6 +23,10 @@ extension PaneKit {
         
         private var isVisible: Bool = false
         
+        let pubClickedOutside = NotificationCenter.default
+            .publisher(for: NSNotification.Name("nyc.stoic.Neatia.PaneKitClickedOutside"))
+        internal var cancellables = Set<AnyCancellable>()
+        
         init(size: CGSize = .init(800, 48), maxSize: CGSize = .init(800, 750)) {
             self.size = size
             self.maxSize = maxSize
@@ -33,6 +38,7 @@ extension PaneKit {
                 self?.main = AppWindow(self?.size ?? .zero)
                 self?.titleBarHeight = self?.main?.titlebarHeight ?? 0
                 self?.isPrepared = true
+                self?.observe()
                 self?.lastUpdate = .init()
                 print("[PaneKit.Window] Built \(self?.lastUpdate)")
             }
@@ -43,7 +49,7 @@ extension PaneKit {
         }
         
         func setSize(_ size: CGSize) {
-            let sizeAdjusted: CGSize = .init(min(maxSize.width, size.width), min(maxSize.height, size.height + titleBarHeight))
+            let sizeAdjusted: CGSize = .init(min(maxSize.width, size.width), min(maxSize.height, size.height + (titleBarHeight + WindowComponent.Style.defaultTitleBarHeight)))
             DispatchQueue.main.async { [weak self] in
                 self?.main?.setSize(sizeAdjusted, defaultSize: self?.size ?? .zero)
             }
@@ -53,9 +59,22 @@ extension PaneKit {
             if isVisible {
                 main?.close()
             } else {
+                main?.level = .floating
                 main?.makeKeyAndOrderFront(nil)
+                main?.level = .normal
             }
             isVisible.toggle()
+        }
+        
+        func observe() {
+            pubClickedOutside.sink { [weak self] _ in
+                guard self?.isVisible == true else { return }
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.main?.close()
+                    self?.isVisible = false
+                }
+            }.store(in: &cancellables)
         }
     }
 }
@@ -81,15 +100,15 @@ class AppWindow: NSWindow {
         hasShadow = true
         isOpaque = false
         
-        level = .floating
+//        level = .floating
         backgroundColor = .clear
         
-        standardWindowButton(.closeButton)?.isHidden = true
+        standardWindowButton(.closeButton)?.isHidden = false
         standardWindowButton(.miniaturizeButton)?.isHidden = true
         standardWindowButton(.zoomButton)?.isHidden = true
         
         titlebarAppearsTransparent = true
-        titleVisibility = .hidden
+//        titleVisibility = .hidden
     }
     
     static func originPoint(_ size: CGSize, newSize: CGSize, titleBarHeight: CGFloat = 28, currentMidPoint: CGPoint? = nil) -> CGPoint {

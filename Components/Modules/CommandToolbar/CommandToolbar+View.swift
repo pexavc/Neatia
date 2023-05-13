@@ -5,7 +5,7 @@ import SandKit
 extension CommandToolbar: View {
     public var view: some View {
         VStack {
-            Spacer().frame(height: WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
+            Spacer().frame(height: WindowComponent.Style.defaultComponentOuterPaddingContainerAware + WindowComponent.Style.defaultTitleBarHeight)
             
             ZStack(alignment: .trailing) {
                 HStack(spacing: 8) {
@@ -88,10 +88,12 @@ extension CommandToolbar {
                     .environment(\.colorScheme, .dark)
             }
             
-            Text("\(sand.state.tokenCount)/\(promptType.maxTokens)")
-                .font(Fonts.live(.subheadline, .boldItalic))
-                .foregroundColor(sand.state.query.utf16.count <= promptType.maxTokens ? Brand.Colors.green : Brand.Colors.red)
-                .padding(.leading, 16)
+            
+//            AppBlurView(tintColor: (sand.state.tokenCount <= promptType.maxTokens ? Brand.Colors.green : Brand.Colors.red).opacity(0.75)) {
+//                Text("\(sand.state.tokenCount)/\(promptType.maxTokens) token limit")
+//                    .font(Fonts.live(.subheadline, .bold))
+//                    .foregroundColor(.foreground)
+//            }
         }
     }
     

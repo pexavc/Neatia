@@ -22,7 +22,7 @@ struct PaneView: View {
                 .zIndex(2)
         }
         .frame(width: WindowComponent.Style.defaultWindowSize.width)
-        .frame(minHeight: WindowComponent.Style.defaultWindowSize.height)
+        .frame(minHeight: WindowComponent.Style.defaultWindowSize.height + WindowComponent.Style.defaultTitleBarHeight)
         //.preferredColorScheme(.light)
     }
 }

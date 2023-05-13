@@ -15,7 +15,7 @@ struct MacEditorTextView: NSViewRepresentable {
     var autoCompleteText: Binding<[String]> = .constant([])
     
     var isEditable: Bool = true
-    var font: NSFont?    = .systemFont(ofSize: 14, weight: .regular)
+    var font: NSFont?    = Fonts.nsFont(.defaultSize, .bold)
     var textColor: NSColor = Color.foreground.asNSColor
     
     var onEditingChanged: () -> Void       = {}
@@ -261,6 +261,11 @@ final class CustomTextView: NSView {
         textView.allowsUndo              = true
         textView.isRichText = false
         
+        let defaultWindowHeight = WindowComponent.Style.defaultWindowSize.height
+        let midPointY = defaultWindowHeight / 2
+        
+        textView.textContainerInset = .init(0, midPointY - ((self.font?.pointSize ?? 0) / 4))
+        
         return textView
     }()
     
@@ -297,6 +302,11 @@ final class CustomTextView: NSView {
         textView.textColor               = self.textColor
         textView.alphaValue = 0.5
         textView.isSelectable = false
+        
+        let defaultWindowHeight = WindowComponent.Style.defaultWindowSize.height
+        let midPointY = defaultWindowHeight / 2
+        
+        textView.textContainerInset = .init(0, midPointY - ((self.font?.pointSize ?? 0) / 4))
         
         return textView
     }()

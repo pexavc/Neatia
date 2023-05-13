@@ -34,6 +34,9 @@ class MenuBarManager: NSObject, NSMenuDelegate {
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) {
             [weak self] event in
             
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name("nyc.stoic.Neatia.PaneKitClickedOutside"), object: nil)
+            
             guard MenuBarManager.shared.maintainPopover == false else { return }
             self?.popover.performClose(event)
         }

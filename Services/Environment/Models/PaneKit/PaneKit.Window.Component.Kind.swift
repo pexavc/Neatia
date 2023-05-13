@@ -115,5 +115,9 @@ extension WindowComponent {
         static var commandMenuDefaultElements: CGFloat {
             7
         }
+        
+        static var defaultTitleBarHeight: CGFloat {
+            24
+        }
     }
 }

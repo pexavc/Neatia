@@ -14,6 +14,8 @@ extension Mount: View {
     
     var backgroundView: some View {
         VStack(spacing: 0) {
+            Spacer().frame(height: WindowComponent.Style.defaultTitleBarHeight)
+            
             if environment.state.isCommandActive {
                 VisualEffectBackground(overlayColor: Color.background)
                     .cornerRadius(8)
@@ -46,6 +48,8 @@ extension Mount: View {
     
     var mainView: some View {
         VStack(alignment: .leading, spacing: 0) {
+            Spacer().frame(height: WindowComponent.Style.defaultTitleBarHeight)
+            
             Spacer().frame(height: WindowComponent.Style.defaultContainerOuterPadding)
             
             if environment.state.isCommandToolbarActive {

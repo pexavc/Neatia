@@ -19,24 +19,13 @@ struct PEXApp: App {
     @Relay var account: AccountService
     
     let pubShowHideMount = NotificationCenter.default
-        .publisher(for: NSNotification.Name("ShowHideMount"))
-    
-    let pubLogout = NotificationCenter.default
-        .publisher(for: NSNotification.Name("Logout"))
+        .publisher(for: NSNotification.Name("nyc.stoic.Neatia.ShowHideMount"))
     
     let pubDidFinishLaunching = NotificationCenter.default
-        .publisher(for: NSNotification.Name("DidFinishLaunching"))
-    
-//    let pubActivate = NotificationCenter.default
-//        .publisher(for: NSNotification.Name("Activate"))
-    
+        .publisher(for: NSNotification.Name("nyc.stoic.Neatia.DidFinishLaunching"))
+
     internal var cancellables = Set<AnyCancellable>()
     init() {
-//        pubActivate.sink { _ in
-//
-////            WindowManager.Manager.shared.check()
-//        }.store(in: &cancellables)
-        
         pubShowHideMount.sink { _ in
             InteractionManager.shared.observeHotkey()
         }.store(in: &cancellables)
