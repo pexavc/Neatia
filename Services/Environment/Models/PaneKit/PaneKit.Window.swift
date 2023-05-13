@@ -8,9 +8,12 @@
 import Foundation
 import SwiftUI
 import Combine
+import Granite
 
 extension PaneKit {
     class Window: NSObject, Identifiable {
+        @SharedObject("nyc.stoic.Neatia.WindowVisibilityManager") var windowVisibility: WindowVisibilityManager
+        
         @Published var isPrepared: Bool = false
         
         private var main: AppWindow? = nil
@@ -20,8 +23,6 @@ extension PaneKit {
         let size: CGSize
         let maxSize: CGSize
         private(set) var titleBarHeight: CGFloat = 0
-        
-        private var isVisible: Bool = false
         
         let pubClickedOutside = NotificationCenter.default
             .publisher(for: NSNotification.Name("nyc.stoic.Neatia.PaneKitClickedOutside"))
@@ -56,23 +57,24 @@ extension PaneKit {
         }
         
         func toggle() {
-            if isVisible {
+            if windowVisibility.isVisible {
                 main?.close()
             } else {
                 main?.level = .floating
                 main?.makeKeyAndOrderFront(nil)
                 main?.level = .normal
             }
-            isVisible.toggle()
+            
+            windowVisibility.toggle()
         }
         
         func observe() {
             pubClickedOutside.sink { [weak self] _ in
-                guard self?.isVisible == true else { return }
+                guard self?.windowVisibility.isVisible == true else { return }
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.main?.close()
-                    self?.isVisible = false
+                    self?.windowVisibility.close()
                 }
             }.store(in: &cancellables)
         }

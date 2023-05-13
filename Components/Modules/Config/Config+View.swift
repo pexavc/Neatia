@@ -4,6 +4,7 @@ import AuthenticationServices
 import SandKit
 
 extension Config: View {
+    
     public var view: some View {
         VStack {
             if AccountManager.isLoggedIn {
@@ -30,12 +31,11 @@ extension Config: View {
     var mainView: some View {
         NavigationView {
             List {
-                Label(state.isMountClosed ? "Show" : "Hide",
-                      systemImage: state.isMountClosed ? "eye" : "eye.slash")
+                Label(windowVisibility.isVisible ? "Hide" : "Show",
+                      systemImage: windowVisibility.isVisible ? "eye.slash" : "eye")
                     .onTapGesture {
                         let nc = NotificationCenter.default
-                        nc.post(name: Notification.Name("ShowHideMount"), object: nil)
-                        center.$state.binding.isMountClosed.wrappedValue.toggle()
+                        nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHideMount"), object: nil)
                     }
                 Spacer()
                 

@@ -27,6 +27,12 @@ extension SandService {
             
             //Prompt Generation
             if let command = state.commandSet {
+                if SandGPTTokenizerManager.shared.kit.tokenCount > command.maxTokens {
+                    state.lastError = .init(message: "Please reduce the amount of text in order reach the token count limit. You are currently at \(SandGPTTokenizerManager.shared.kit.tokenCount)/\(SandService.maxTokenCount)")
+                    
+                    return
+                }
+                
                 if Prompts.all[command]?.hasSubcommand == true,
                     let subcommands = state.subCommandSet?.values {
                     
@@ -43,6 +49,12 @@ extension SandService {
                     prompt = Prompts.all[command]?.create(state.query) ?? state.query
                 }
             } else {
+                if SandGPTTokenizerManager.shared.kit.tokenCount > SandService.maxTokenCount {
+                    state.lastError = .init(message: "Please reduce the amount of text in order reach the token count limit. You are currently at \(SandGPTTokenizerManager.shared.kit.tokenCount)/\(SandService.maxTokenCount)")
+                    
+                    return
+                }
+                
                 prompt = state.query
             }
             

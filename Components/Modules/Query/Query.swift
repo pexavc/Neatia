@@ -15,12 +15,12 @@ struct Query: GraniteComponent {
                 for value in scValues {
                     helperText += value.value.additionalHelperText ?? ""
                 }
-                return helperText.isEmpty ? "Type something" : helperText
+                return helperText.isEmpty ? "Ask something" : helperText
             } else {
-                return helperText.isEmpty ? "Type something" : helperText
+                return helperText.isEmpty ? "Ask something" : helperText
             }
         } else {
-            return "Type something"
+            return "Ask something"
         }
     }
 }

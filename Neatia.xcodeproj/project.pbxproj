@@ -101,6 +101,8 @@
 		718148B82A0F65000054E71A /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B62A0F65000054E71A /* AccountManager.swift */; };
 		718148BA2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */; };
 		718148BB2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */; };
+		718148BD2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */; };
+		718148BE2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */; };
 		7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B18B2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B1932A0B5C8900C579A4 /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1902A0B5C8900C579A4 /* ConfigService.swift */; };
@@ -575,6 +577,7 @@
 		717E613228A0D69B009A2B1A /* Home._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home._.swift; sourceTree = "<group>"; };
 		718148B62A0F65000054E71A /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandGPT.Tokenizer.swift; sourceTree = "<group>"; };
+		718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaneKit.Window.Visibility.swift; sourceTree = "<group>"; };
 		7192B1892A0B146600C579A4 /* SandGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandGPT.swift; sourceTree = "<group>"; };
 		7192B1902A0B5C8900C579A4 /* ConfigService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 		7192B1912A0B5C8900C579A4 /* ConfigService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigService+Center.swift"; sourceTree = "<group>"; };
@@ -1717,6 +1720,7 @@
 			children = (
 				71EDCFDD2A094FB300857066 /* PaneKit.swift */,
 				71EDCFE02A094FF900857066 /* PaneKit.Window.swift */,
+				718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */,
 				71EDCFE62A09546000857066 /* PaneKit.Display.swift */,
 				71EDCFEC2A09675900857066 /* PaneKit.PaneView.swift */,
 				71EDCFE32A09520500857066 /* PaneKit.Window.Component.swift */,
@@ -1977,6 +1981,7 @@
 				71A28E02295233A300EAE8EE /* Brand.swift in Sources */,
 				71A28E8B295239D100EAE8EE /* String+Convenience.swift in Sources */,
 				71A28DF1295232E300EAE8EE /* PressAndHorizontalDragGesture.swift in Sources */,
+				718148BD2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */,
 				71DF107F28CC697600559DBC /* ProgressContent.swift in Sources */,
 				71EDCFEA2A095AF600857066 /* PaneKit.Window.Component.Kind.swift in Sources */,
 				71A28EA1295239D100EAE8EE /* MathOperators.swift in Sources */,
@@ -2211,6 +2216,7 @@
 				71A28DE0295232E300EAE8EE /* MovingNumbersView.swift in Sources */,
 				71A28E03295233A300EAE8EE /* Brand.swift in Sources */,
 				71A28E8C295239D100EAE8EE /* String+Convenience.swift in Sources */,
+				718148BE2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */,
 				71A28DF2295232E300EAE8EE /* PressAndHorizontalDragGesture.swift in Sources */,
 				71EDCFEB2A095AF600857066 /* PaneKit.Window.Component.Kind.swift in Sources */,
 				71DF108028CC697600559DBC /* ProgressContent.swift in Sources */,

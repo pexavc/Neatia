@@ -18,6 +18,8 @@ extension EnvironmentService {
             
             var isCommandActive: Bool = false
             var isCommandToolbarActive: Bool = false
+            
+            var isDisabled: Bool = false
         }
         
         @Event var boot: Boot.Reducer

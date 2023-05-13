@@ -52,6 +52,9 @@ extension Query: View {
                                     .Meta(isActive: isActive))
                     }
                 )
+                .alert(sand.state.lastError?.message ?? "", isPresented: sand.center.$state.binding.errorExists) {
+                    Button("OK", role: .cancel) { }
+                }
                 
                 if sand.state.query.isEmpty {
                     

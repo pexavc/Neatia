@@ -115,6 +115,7 @@ extension CommandToolbar {
                                     .font(Fonts.live(.subheadline, .bold))
                                     .foregroundColor(.foreground)
                                     .environment(\.colorScheme, .dark)
+                                    .padding(.bottom, 2)
                                 
                                 Spacer()
                                 
@@ -195,9 +196,6 @@ extension CommandToolbar {
                        print("[CommandToolbar] file selected: \(fileExt)")
                    }
                }.alert("Only these file extensions are allowed: \(acceptedFileExtensions.joined(separator: ", "))", isPresented: center.$state.binding.showAlert) {
-                   Button("OK", role: .cancel) { }
-               }
-               .alert(sand.state.lastError?.message ?? "", isPresented: sand.center.$state.binding.errorExists) {
                    Button("OK", role: .cancel) { }
                }
         

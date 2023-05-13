@@ -23,7 +23,7 @@ struct AccountConfigView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if VaultManager.hasAccess {
+            if VaultManager.isSubscribed {
                 standardView
             } else {
                 paywallView

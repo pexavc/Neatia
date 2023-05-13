@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import Granite
+import VaultKit
 
 @main
 struct PEXApp: App {
@@ -46,15 +47,21 @@ struct PEXApp: App {
                         }
                     }
                 }
+                .onChange(of: AccountManager.isLoggedIn) { newState in
+                    print("[MAIN] isLoggedIn \(newState)")
+                }
+                .onChange(of: VaultManager.isSubscribed) { newState in
+                    print("[MAIN] isSubscribed \(newState)")
+                }
         }
-        
-        Settings {
-            MacSettings {
-                MacSettingsItem(title: "Account",
-                               image: "gearshape",
-                               content: AccountConfigView())
-            }
-        }
+//
+//        Settings {
+//            MacSettings {
+//                MacSettingsItem(title: "Account",
+//                               image: "gearshape",
+//                               content: AccountConfigView())
+//            }
+//        }
     }
 }
 

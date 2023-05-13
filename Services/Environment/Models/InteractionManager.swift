@@ -21,7 +21,6 @@ class InteractionManager {
     var hotkeyObserver: (() -> Void)?
     var menubarShowHideMount: (() -> Void)?
     var hotKeyRef: EventHotKeyRef?
-    var mountIsClosed: Bool = true
     
     init() {
         

@@ -6,4 +6,6 @@ struct Config: GraniteComponent {
     
     @Relay var account: AccountService
     @Relay var config: ConfigService
+    
+    @SharedObject("nyc.stoic.Neatia.WindowVisibilityManager") var windowVisibility: WindowVisibilityManager
 }
