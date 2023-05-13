@@ -14,10 +14,32 @@ struct GeneralConfigView: View {
     @Relay var config: ConfigService
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Toggle("Visual guide", isOn: config.center.$state.binding.showVisualGuide)
-            Toggle("Start on launch", isOn: config.center.$state.binding.launchAtLogin)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("Settings")
+                    .font(Fonts.live(.title2, .bold))
+                    .foregroundColor(.foreground)
+                
+                Spacer()
+            }
+            .padding(.bottom, 8)
+            
+            HStack {
+                Toggle("Visual guide", isOn: config.center.$state.binding.showVisualGuide)
+                
+                Spacer()
+            }
+            
+            HStack {
+                Toggle("Start on launch", isOn: config.center.$state.binding.launchAtLogin)
+                
+                Spacer()
+            }
+            
+            
+            Spacer()
         }
-        .padding(8)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(16)
     }
 }

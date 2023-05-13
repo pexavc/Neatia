@@ -17,9 +17,9 @@ struct AccountConfigView: View {
     
     @Relay var account: AccountService
     
-    @State var selectedOption: VaultProduct? = VaultManager.shared.renewableProducts.first
+    @State var selectedOption: VaultProduct? = VaultManager.shared.productFor(VaultProducts.Renewable.monthly)
     
-    @State var nonRenewable: Bool = false
+//    @State var nonRenewable: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,12 +29,21 @@ struct AccountConfigView: View {
                 paywallView
             }
         }
-        .padding(8)
+        .padding(16)
     }
     
     var standardView: some View {
         Group {
             VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Text("Account")
+                        .font(Fonts.live(.title2, .bold))
+                        .foregroundColor(.foreground)
+                    
+                    Spacer()
+                }
+                .padding(.bottom, 8)
+                
                 if let purchase = VaultManager.currentPurchase {
                     subscriptionStats(purchase)
                         .frame(maxWidth: .infinity)
@@ -42,18 +51,21 @@ struct AccountConfigView: View {
                 
                 Spacer()
             }
-            .padding(.vertical, 8)
         }
     }
     
     var paywallView: some View {
         Group {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Get Access")
-                    .font(Fonts.live(.title2, .bold))
-                    .foregroundColor(.foreground)
+                HStack {
+                    Text("Get Access")
+                        .font(Fonts.live(.title2, .bold))
+                        .foregroundColor(.foreground)
+                    
+                    Spacer()
+                }
                 
-                AppBlurView(size: .init(0, 200),
+                AppBlurView(size: .init(0, 240),
                             tintColor: Brand.Colors.black.opacity(0.3)) {
                     VStack(alignment: .leading, spacing: 8) {
                         
@@ -78,49 +90,24 @@ struct AccountConfigView: View {
                             .foregroundColor(.foreground)
                     }
                 }
-                .frame(height: 200)
+                .frame(height: 240)
                 .environment(\.colorScheme, .dark)
                 
-                Spacer().frame(height: 8)
-            }
-            
-            VStack(alignment: .leading, spacing: 16) {
-                if nonRenewable {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Non-Renewable")
-                            .font(Fonts.live(.title3, .bold))
-                            .foregroundColor(.foreground)
+                Spacer()
+                
+                
+                Text("Subscription Plans")
+                    .font(Fonts.live(.title3, .bold))
+                    .foregroundColor(.foreground)
+                
+                HStack(spacing: 8) {
+                    ForEach(VaultManager.renewableProducts.ordered) { product in
                         
-                        HStack(spacing: 8) {
-                            ForEach(VaultManager.nonRenewableProducts.ordered) { product in
-                                optionView(product)
-                            }
-                        }
-                    }
-                } else {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Renewable")
-                            .font(Fonts.live(.title3, .bold))
-                            .foregroundColor(.foreground)
-                        
-                        ForEach(VaultManager.renewableProducts.ordered) { product in
-                            
-                            optionView(product)
-                        }
+                        optionView(product)
                     }
                 }
                 
-                Toggle("Non-renewable", isOn: $nonRenewable)
-                    .onChange(of: nonRenewable) { newState in
-                        
-                        if newState {
-                            selectedOption = VaultManager.shared.nonRenewableProducts.first
-                        } else {
-                            selectedOption = VaultManager.shared.renewableProducts.first
-                        }
-                    }
-                
-                AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
+                AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.45)) {
                     
                     HStack(spacing: 8) {
                         
@@ -131,19 +118,25 @@ struct AccountConfigView: View {
                                 .send(AccountService.Subscribe.Meta(product: selectedOption))
                         }) {
                             
-                            Text(nonRenewable ? "Purchase" : "Subscribe")
+                            //                            Text(nonRenewable ? "Purchase" : "Subscribe")
+                            Text("Subscribe")
                                 .font(Fonts.live(.headline, .bold))
                                 .foregroundColor(.foreground)
                             
                             Text(selectedOption?.metadata.displayPrice ?? "")
                                 .font(Fonts.live(.footnote, .regular))
-                                .foregroundColor(.foreground) + Text(selectedOption?.metadata.isRenewable == true ? "/mo" : "")
+                                .foregroundColor(.foreground) + //Text(selectedOption?.metadata.isRenewable == true ? "/mo" : "")
+                            Text(selectedOption?.metadata.displaySubscriptionPeriod ?? "")
                                 .font(Fonts.live(.footnote, .regular))
+                                .foregroundColor(.foreground) +
+                            Text(selectedOption?.metadata.displayPromo.isEmpty == true ? "" : " " + (selectedOption?.metadata.displayPromo ?? ""))
+                                .font(Fonts.live(.caption2, .regular))
                                 .foregroundColor(.foreground)
                         }.buttonStyle(PlainButtonStyle())
                     }
                 }
                 .environment(\.colorScheme, .dark)
+                                
             }
         }
     }
@@ -151,7 +144,7 @@ struct AccountConfigView: View {
     func optionView(_ product: VaultProduct) -> some View {
         AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
             HStack(spacing: 8) {
-                Text(product.metadata.displayName.replacingOccurrences(of: " Access", with: ""))
+                Text(product.metadata.displayName.replacingOccurrences(of: " Subscription", with: ""))
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
                 
@@ -178,7 +171,7 @@ extension AccountConfigView {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Subscription Status")
-                    .font(Fonts.live(.title2, .bold))
+                    .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
                 
                 Spacer()

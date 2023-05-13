@@ -15,7 +15,7 @@ extension Mount {
             Spacer()
             AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
                 
-                Text(session.isLoggedIn ? "Subscriben" : "Log In")
+                Text(session.isLoggedIn ? "Subscribe" : "Log In")
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
             }

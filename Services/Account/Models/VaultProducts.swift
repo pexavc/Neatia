@@ -10,20 +10,12 @@ import VaultKit
 
 struct VaultProducts {
     enum Renewable: String, VaultProductIterable {
-        case monthly = "monthlysubscriptionbasicneatia12"
+        case yearly = "nyc.stoic.neatia.basic.subscription.yearly"
+        case monthly = "nyc.stoic.neatia.basic.subscription.monthly"
+        case weekly = "nyc.stoic.neatia.basic.subscription.weekly"
         
         var kind: VaultProductKind {
             .renewable
-        }
-    }
-    
-    enum NonRenewable: String, VaultProductIterable {
-        case month = "monthlyNonRenewablesubscriptionbasic12"
-        case week = "weeklyNonRenewablesubscriptionbasic12"
-        case day = "dailyNonRenewablesubscriptionbasic12"
-        
-        var kind: VaultProductKind {
-            .nonRenewable
         }
     }
 }

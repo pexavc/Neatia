@@ -1,51 +1,7 @@
 {
   "identifier" : "13097840",
   "nonRenewingSubscriptions" : [
-    {
-      "displayPrice" : "3.99",
-      "familyShareable" : false,
-      "internalID" : "6449136861",
-      "localizations" : [
-        {
-          "description" : "Non-renewable full access for 1 day.",
-          "displayName" : "1 Day Access",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "dailyNonRenewablesubscriptionbasic12",
-      "referenceName" : "1 Day",
-      "type" : "NonRenewingSubscription"
-    },
-    {
-      "displayPrice" : "12.99",
-      "familyShareable" : false,
-      "internalID" : "6449136803",
-      "localizations" : [
-        {
-          "description" : "Non-renewable full access for 1 month.",
-          "displayName" : "1 Month Access",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "monthlyNonRenewablesubscriptionbasic12",
-      "referenceName" : "1 Month",
-      "type" : "NonRenewingSubscription"
-    },
-    {
-      "displayPrice" : "6.99",
-      "familyShareable" : false,
-      "internalID" : "6449137034",
-      "localizations" : [
-        {
-          "description" : "Non-renewable full access for 1 week.",
-          "displayName" : "1 Week Access",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "weeklyNonRenewablesubscriptionbasic12",
-      "referenceName" : "1 Week",
-      "type" : "NonRenewingSubscription"
-    }
+
   ],
   "products" : [
 
@@ -53,16 +9,48 @@
   "settings" : {
     "_applicationInternalID" : "6449069312",
     "_developerTeamID" : "CV8LAA8JAP",
-    "_lastSynchronizedDate" : 705638366.16686594
+    "_lastSynchronizedDate" : 705667824.61016798
   },
   "subscriptionGroups" : [
     {
-      "id" : "21339786",
+      "id" : "21339852",
       "localizations" : [
 
       ],
-      "name" : "Monthly Subscription",
+      "name" : "Basic Subscription",
       "subscriptions" : [
+        {
+          "adHocOffers" : [
+            {
+              "internalID" : "F3715842",
+              "numberOfPeriods" : 1,
+              "offerID" : "nyc.stoic.neatia.basic.subscription.monthly.promo",
+              "paymentMode" : "free",
+              "referenceName" : "Monthly Free Trial Basic",
+              "subscriptionPeriod" : "P3D"
+            }
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "12.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6449147597",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Monthly subscription for full access.",
+              "displayName" : "Monthly Subscription",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "nyc.stoic.neatia.basic.subscription.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Subscription",
+          "subscriptionGroupID" : "21339852",
+          "type" : "RecurringSubscription"
+        },
         {
           "adHocOffers" : [
 
@@ -70,22 +58,54 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "12.99",
+          "displayPrice" : "5.99",
           "familyShareable" : false,
           "groupNumber" : 1,
-          "internalID" : "6449136837",
+          "internalID" : "6449147684",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "A subscription is required for full access.",
-              "displayName" : "Monthly Subscription",
+              "description" : "Weekly subscription for full access.",
+              "displayName" : "Weekly Subscription",
               "locale" : "en_US"
             }
           ],
-          "productID" : "monthlysubscriptionbasicneatia12",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Monthly Subscription",
-          "subscriptionGroupID" : "21339786",
+          "productID" : "nyc.stoic.neatia.basic.subscription.weekly",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "Weekly Subscription",
+          "subscriptionGroupID" : "21339852",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+            {
+              "internalID" : "C1C5E705",
+              "numberOfPeriods" : 1,
+              "offerID" : "nyc.stoic.neatia.basic.subscription.yearly.promo",
+              "paymentMode" : "free",
+              "referenceName" : "Yearly Free Trial Basic",
+              "subscriptionPeriod" : "P3D"
+            }
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "120.99",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "6449147767",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Yearly subscription for full access.",
+              "displayName" : "Yearly Subscription",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "nyc.stoic.neatia.basic.subscription.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yearly Subscription",
+          "subscriptionGroupID" : "21339852",
           "type" : "RecurringSubscription"
         }
       ]

@@ -23,8 +23,7 @@ extension EnvironmentService {
             
             VaultManager
                 .load(
-                    VaultProducts.Renewable.vaultProducts +
-                    VaultProducts.NonRenewable.vaultProducts
+                    VaultProducts.Renewable.vaultProducts
                 )
         }
     }

@@ -14,31 +14,20 @@ struct PromptConfigView: View {
     @Relay var config: ConfigService
     
     var body: some View {
-        HStack {
-            Image(systemName: "option")
-                .font(.defaultFont)
-            
-            Text("+")
-                .font(.defaultFont)
-            
-            Menu {
-                ForEach(InteractionManager.HotkeyOptions.allCases, id: \.self) { item in
-                    
-                    Button {
-                        config
-                            .center
-                            .updateHotkey
-                            .send(ConfigService.Hotkey.Meta(key: item))
-                    } label: {
-                        Text(item.rawValue.uppercased())
-                            .font(.defaultFont)
-                    }
-                }
-            } label: {
-                Text(config.state.mountHotkey.rawValue.uppercased())
-                    .font(.defaultFont)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("Prompts")
+                    .font(Fonts.live(.title2, .bold))
+                    .foregroundColor(.foreground)
+                
+                Spacer()
             }
+            .padding(.bottom, 8)
+            
+            
+            Spacer()
         }
-        .padding(8)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(16)
     }
 }
