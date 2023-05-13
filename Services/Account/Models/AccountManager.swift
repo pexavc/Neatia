@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import Combine
+import Granite
 
 class AccountKit {
     private(set) var id: String? = nil {
@@ -17,6 +18,7 @@ class AccountKit {
     }
     
     @Published var isLoggedIn: Bool = false
+    @Published var isSubscribed: Bool = false
     
     init() {
         self.id = nil
@@ -24,6 +26,10 @@ class AccountKit {
     
     func load(_ user: User) {
         self.id = user.uid
+    }
+    
+    func isSubscribed(_ state: Bool) {
+        self.isSubscribed = state
     }
     
     func logout() {
@@ -34,21 +40,36 @@ class AccountKit {
 public class AccountManager: ObservableObject {
     static let shared: AccountManager = .init()
     
+    @SharedObject("nyc.stoic.Neatia.SessionManager") var sessionManager: SessionManager
+    
     internal var cancellables = Set<AnyCancellable>()
     
     let kit: AccountKit
     
     init() {
         kit = .init()
+        observe()
     }
     
     private func observe() {
         kit.$isLoggedIn
+            .receive(on: RunLoop.main)
             .removeDuplicates()
             .sink { [weak self] newValue in
                 
             print("[AccountManager] isLoggedIn Changed: \(newValue)")
             self?.objectWillChange.send()
+            self?.sessionManager.isLoggedIn(newValue)
+        }.store(in: &cancellables)
+        
+        kit.$isSubscribed
+            .receive(on: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] newValue in
+                
+            print("[AccountManager] isSubscribed Changed: \(newValue)")
+            self?.objectWillChange.send()
+            self?.sessionManager.isSubscribed(newValue)
         }.store(in: &cancellables)
     }
     
@@ -62,5 +83,9 @@ public class AccountManager: ObservableObject {
     
     public static var isLoggedIn: Bool {
         AccountManager.shared.kit.isLoggedIn
+    }
+    
+    public static func isSubscribed(_ state: Bool) {
+        AccountManager.shared.kit.isSubscribed(state)
     }
 }

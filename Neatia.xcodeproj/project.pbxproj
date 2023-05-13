@@ -103,6 +103,10 @@
 		718148BB2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */; };
 		718148BD2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */; };
 		718148BE2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */; };
+		718148C02A0F90E80054E71A /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148BF2A0F90E80054E71A /* SessionManager.swift */; };
+		718148C12A0F90E80054E71A /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148BF2A0F90E80054E71A /* SessionManager.swift */; };
+		718148C32A0F960C0054E71A /* Mount.Views.Locked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148C22A0F960C0054E71A /* Mount.Views.Locked.swift */; };
+		718148C42A0F960C0054E71A /* Mount.Views.Locked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148C22A0F960C0054E71A /* Mount.Views.Locked.swift */; };
 		7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B18B2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B1932A0B5C8900C579A4 /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1902A0B5C8900C579A4 /* ConfigService.swift */; };
@@ -578,6 +582,8 @@
 		718148B62A0F65000054E71A /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		718148B92A0F818F0054E71A /* SandGPT.Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandGPT.Tokenizer.swift; sourceTree = "<group>"; };
 		718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaneKit.Window.Visibility.swift; sourceTree = "<group>"; };
+		718148BF2A0F90E80054E71A /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		718148C22A0F960C0054E71A /* Mount.Views.Locked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mount.Views.Locked.swift; sourceTree = "<group>"; };
 		7192B1892A0B146600C579A4 /* SandGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandGPT.swift; sourceTree = "<group>"; };
 		7192B1902A0B5C8900C579A4 /* ConfigService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 		7192B1912A0B5C8900C579A4 /* ConfigService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigService+Center.swift"; sourceTree = "<group>"; };
@@ -871,6 +877,7 @@
 				719725F628CC7F0300A64334 /* Views */,
 				711B3F722885D43700F3080D /* PEXApp.swift */,
 				71CEBE0F2A0729E500DE6CDE /* PEXApp.Delegate.swift */,
+				718148BF2A0F90E80054E71A /* SessionManager.swift */,
 				712861842A0EFE6500046DCE /* Subscriptions.storekit */,
 				7128618D2A0F11C600046DCE /* GoogleService-Info.plist */,
 				711B3F742885D43B00F3080D /* Assets.xcassets */,
@@ -1558,6 +1565,7 @@
 			isa = PBXGroup;
 			children = (
 				71CEBDF62A0719FC00DE6CDE /* Mount.Views.Symbols.swift */,
+				718148C22A0F960C0054E71A /* Mount.Views.Locked.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2006,6 +2014,7 @@
 				719E2412295348B900CEB2FE /* Debug+View.swift in Sources */,
 				712BEB6329074FEC00D257B7 /* UIScreen.swift in Sources */,
 				716215152A0342CB009D19B6 /* MacEditorTextView.swift in Sources */,
+				718148C02A0F90E80054E71A /* SessionManager.swift in Sources */,
 				71DF109728CC698800559DBC /* RawRequest.swift in Sources */,
 				71A28E9D295239D100EAE8EE /* UINumericType.swift in Sources */,
 				71EDCFAF2A085C5800857066 /* TableView.swift in Sources */,
@@ -2031,6 +2040,7 @@
 				71EDCFE12A094FF900857066 /* PaneKit.Window.swift in Sources */,
 				71DF109928CC698800559DBC /* EmptyResponse.swift in Sources */,
 				71EDCFBE2A08832100857066 /* CommandToolbar+View.swift in Sources */,
+				718148C32A0F960C0054E71A /* Mount.Views.Locked.swift in Sources */,
 				71DF10AF28CC698800559DBC /* NetworkService+Request.swift in Sources */,
 				71A28E77295239D100EAE8EE /* LinearGradient+Convenience.swift in Sources */,
 				7197FAD22964A0AA005EBBA4 /* GraniteTimerView.swift in Sources */,
@@ -2241,6 +2251,7 @@
 				716215162A0342CB009D19B6 /* MacEditorTextView.swift in Sources */,
 				71FBA7FE296D16110090B630 /* GraniteScrollView.swift in Sources */,
 				719E2413295348B900CEB2FE /* Debug+View.swift in Sources */,
+				718148C12A0F90E80054E71A /* SessionManager.swift in Sources */,
 				712BEB6429074FEC00D257B7 /* UIScreen.swift in Sources */,
 				71DF109828CC698800559DBC /* RawRequest.swift in Sources */,
 				71EDCFB02A085C5800857066 /* TableView.swift in Sources */,
@@ -2266,6 +2277,7 @@
 				71EDCFE22A094FF900857066 /* PaneKit.Window.swift in Sources */,
 				71DF10B028CC698800559DBC /* NetworkService+Request.swift in Sources */,
 				71EDCFBF2A08832100857066 /* CommandToolbar+View.swift in Sources */,
+				718148C42A0F960C0054E71A /* Mount.Views.Locked.swift in Sources */,
 				71A28E78295239D100EAE8EE /* LinearGradient+Convenience.swift in Sources */,
 				712BEB5D29074CFB00D257B7 /* CameraContent.swift in Sources */,
 				71DF10A828CC698800559DBC /* NetworkService+Center.swift in Sources */,

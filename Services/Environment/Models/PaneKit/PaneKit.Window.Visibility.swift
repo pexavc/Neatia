@@ -34,7 +34,7 @@ final class WindowVisibilityManager: Equatable, SharableObject {
         .init()
     }
     
-    public let id : UUID = .init()
+    public let id : String = "nys.stoic.Neatia.WindowVisibilityManager"
     
     internal var cancellables = Set<AnyCancellable>()
     

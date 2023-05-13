@@ -153,7 +153,9 @@ extension Mount: View {
             
             toolbarViews
             
-            //paywallView
+            if session.isLocked {
+                lockedView
+            }
         }
     }
 }

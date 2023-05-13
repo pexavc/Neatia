@@ -12,8 +12,6 @@ import VaultKit
 
 @main
 struct PEXApp: App {
-    var isDebug: Bool = true
-    
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @Relay var environment: EnvironmentService
@@ -26,9 +24,16 @@ struct PEXApp: App {
         .publisher(for: NSNotification.Name("nyc.stoic.Neatia.DidFinishLaunching"))
 
     internal var cancellables = Set<AnyCancellable>()
+    
     init() {
         pubShowHideMount.sink { _ in
             InteractionManager.shared.observeHotkey()
+        }.store(in: &cancellables)
+        
+        VaultManager.shared.$isSubscribed
+            .removeDuplicates()
+            .sink { newValue in
+                AccountManager.isSubscribed(newValue)
         }.store(in: &cancellables)
     }
     
