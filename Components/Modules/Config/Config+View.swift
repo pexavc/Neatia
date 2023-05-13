@@ -7,7 +7,7 @@ extension Config: View {
     
     public var view: some View {
         VStack {
-            if AccountManager.isLoggedIn {
+            if session.isLoggedIn {
                 mainView
             } else {
                 signInView

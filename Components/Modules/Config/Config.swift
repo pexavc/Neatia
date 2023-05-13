@@ -8,4 +8,5 @@ struct Config: GraniteComponent {
     @Relay var config: ConfigService
     
     @SharedObject("nyc.stoic.Neatia.WindowVisibilityManager") var windowVisibility: WindowVisibilityManager
+    @SharedObject("nyc.stoic.Neatia.SessionManager") var session: SessionManager
 }

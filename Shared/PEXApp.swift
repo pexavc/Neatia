@@ -59,14 +59,6 @@ struct PEXApp: App {
                     print("[MAIN] isSubscribed \(newState)")
                 }
         }
-//
-//        Settings {
-//            MacSettings {
-//                MacSettingsItem(title: "Account",
-//                               image: "gearshape",
-//                               content: AccountConfigView())
-//            }
-//        }
     }
 }
 
