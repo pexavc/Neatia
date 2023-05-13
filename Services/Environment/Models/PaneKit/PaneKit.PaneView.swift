@@ -1,6 +1,6 @@
 //
 //  WindowManager.VisualEffectView.swift
-//  Sina
+//  Neatia
 //
 //  Created by Ritesh Pakala on 5/7/23.
 //

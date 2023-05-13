@@ -1,6 +1,7 @@
 import Granite
 import SwiftUI
 import AuthenticationServices
+import SandKit
 
 extension Config: View {
     public var view: some View {
@@ -85,29 +86,87 @@ extension Config: View {
     }
     
     var signInView: some View {
-        SignInWithAppleButton(.signIn) { request in
-            request.requestedScopes = [ .email, .fullName ]
-            request.nonce = account.sha256(account.randomNonceString())
-            MenuBarManager.shared.maintainPopover = true
-        } onCompletion: { result in
-            switch result {
-            case .success(let authResults):
-                account.center.login.send(AccountService.Login.Meta(authResults: authResults))
+        ZStack {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(spacing: 16) {
+                    LogoView()
+                        .frame(width: 120, height: 120)
+                    
+                    VStack {
+                        AppBlurView(size: .init(0, 80),
+                                    tintColor: Brand.Colors.black.opacity(0.3)) {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Neatia")
+                                    .font(Fonts.live(.title2, .bold))
+                                    .foregroundColor(.foreground)
+                                
+                                Text("New sight.")
+                                    .font(Fonts.live(.headline, .regular))
+                                    .foregroundColor(.foreground)
+                            }
+                        }
+                        .environment(\.colorScheme, .dark)
+                        
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.top, WindowComponent.Style.defaultComponentOuterPadding)
+                .padding(.horizontal, WindowComponent.Style.defaultComponentOuterPadding)
                 
-                print("Authorisation successful")
-            default:
-                print("{TEST} failed")
+//                AppBlurView(size: .init(0, 200),
+//                            tintColor: Brand.Colors.black.opacity(0.3)) {
+//                    VStack(alignment: .leading, spacing: 8) {
+//                        Text("Neatia turns the world of AI chat bots into an easy to access shortcut on your Mac.\n\n(⌥ + N) and get an answer that could jump start a workflow, remove writer's block, or help with that job hunt.\n")
+//                            .font(Fonts.live(.headline, .regular))
+//                            .foregroundColor(.foreground)
+//
+//                        Text("Sign-in and pick a membership plan to get started.")
+//                            .font(Fonts.live(.headline, .regular))
+//                            .foregroundColor(.foreground)
+//                    }
+//                }
+//                .environment(\.colorScheme, .dark)
+                
+                
+                
+                FeatureImageSliderView()
+                
+                
+                Spacer()
+                
+                SignInWithAppleButton(.signIn) { request in
+                    request.requestedScopes = [ .email, .fullName ]
+                    request.nonce = account.sha256(account.randomNonceString())
+                    MenuBarManager.shared.maintainPopover = true
+                } onCompletion: { result in
+                    switch result {
+                    case .success(let authResults):
+                        account.center.login.send(AccountService.Login.Meta(authResults: authResults))
+                    default:
+                        break
+                    }
+                    
+                    MenuBarManager.shared.maintainPopover = false
+                }
+                .padding(.horizontal, WindowComponent.Style.defaultComponentOuterPadding)
+                .padding(.bottom, WindowComponent.Style.defaultComponentOuterPadding)
             }
             
-            MenuBarManager.shared.maintainPopover = false
+            VStack {
+                MarqueeTextView(
+                    text: Prompts.allCases.map({ "/"+$0.rawValue.capitalized+"..." }).joined(separator: "   "),
+                    fontSize: .headline,
+                    fontWeight: .bold,
+                    leftFade: 16,
+                    rightFade: 16,
+                    startDelay: 3
+                )
+                .frame(width: 360)
+                Spacer()
+            }
+            .rotationEffect(.degrees(90))
         }
-    }
-    
-    
-}
-
-struct ContentView: View {
-    var body: some View {
-        Text("Hello World")
     }
 }

@@ -1,6 +1,6 @@
 //
 //  Brand.Font.swift
-//  Sina
+//  Neatia
 //
 //  Created by Ritesh Pakala on 5/11/23.
 //

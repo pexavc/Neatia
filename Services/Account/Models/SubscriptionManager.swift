@@ -1,6 +1,6 @@
 //
 //  SubscriptionManager.swift
-//  Sina
+//  Neatia
 //
 //  Created by Ritesh Pakala on 5/8/23.
 //
@@ -12,7 +12,7 @@ class SubscriptionManager {
     static var shared: SubscriptionManager = .init()
     
     enum Product: String, CaseIterable {
-        case monthly = "sina.monthly.subscription.basic1299"
+        case monthly = "neatia.monthly.subscription.basic1299"
     }
     
     func retrieveProductInfo() {

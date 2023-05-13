@@ -240,7 +240,7 @@ struct AppBlurView<Content>: View where Content: View {
                 VisualEffectBackground(overlayColor: tintColor)
                     .cornerRadius(6.0)
                     .padding(.horizontal, -(padding.leading)))
-            .padding(.leading, padding.leading)
+            .padding(.horizontal, padding.leading)
     }
 }
 #endif

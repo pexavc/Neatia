@@ -3,7 +3,7 @@ import CryptoKit
 import Foundation
 
 struct AccountService: GraniteService {
-    @Service(.online) var center: Center
+    @Service var center: Center
     
     public func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)

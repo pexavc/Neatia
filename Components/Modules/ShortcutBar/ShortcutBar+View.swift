@@ -51,7 +51,6 @@ extension ShortcutBar {
                            height: WindowComponent.Style.defaultElementSize.height)
             }
         }
-        .padding(.trailing, 16)
         .onTapGesture {
             guard sand.state.response.isNotEmpty else { return }
             let markdown: String = sand.state.response

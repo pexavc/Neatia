@@ -1,5 +1,6 @@
 import Granite
 import SwiftUI
+import VaultKit
 
 extension AccountService {
     struct Center: GraniteCenter {
@@ -10,14 +11,9 @@ extension AccountService {
                     print("[AccountService] Logged in status: \(isLoggedIn)")
                 }
             }
-            var isSubscribed: Bool = false {
-                didSet {
-                    print("[AccountService] Subscription status: \(isLoggedIn)")
-                }
-            }
             
             var isLocked: Bool {
-                isLoggedIn == false || isSubscribed == false
+                isLoggedIn == false
             }
         }
         
@@ -26,6 +22,6 @@ extension AccountService {
         @Event var logout: Logout.Reducer
         @Event var subscribe: Subscribe.Reducer
         
-        @Store public var state: State
+        @Store(persist: "neatia.persistence.account.0001", autoSave: true) public var state: State
     }
 }

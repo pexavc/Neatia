@@ -1,6 +1,6 @@
 //
 //  TranslucentWindowBackground.swift
-//  Sina (iOS)
+//  Neatia (iOS)
 //
 //  Created by Ritesh Pakala on 5/3/23.
 //

@@ -16,10 +16,11 @@ extension ConfigService {
             
             //Hotkeys
             var mountHotkey: InteractionManager.HotkeyOptions = .s
+            
         }
         
         @Event var updateHotkey: Hotkey.Reducer
         
-        @Store(persist: "sina.persistence.config.0004", autoSave: true) public var state: State
+        @Store(persist: "neatia.persistence.config.0005", autoSave: true) public var state: State
     }
 }

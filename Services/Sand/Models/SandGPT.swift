@@ -1,6 +1,6 @@
 //
 //  SandGPT.swift
-//  Sina
+//  Neatia
 //
 //  Created by Ritesh Pakala on 5/9/23.
 //

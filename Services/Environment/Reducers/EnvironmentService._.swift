@@ -1,5 +1,6 @@
 import Granite
 import SwiftUI
+import VaultKit
 
 extension EnvironmentService {
     struct Boot: GraniteReducer {
@@ -19,6 +20,12 @@ extension EnvironmentService {
             InteractionManager.shared.setHotkeyObserver(hotkeyDetected)
             InteractionManager.shared.registerHotkey(config.state.mountHotkey)
 //            HotkeyManager.register()
+            
+            VaultManager
+                .load(
+                    VaultProducts.Renewable.vaultProducts +
+                    VaultProducts.NonRenewable.vaultProducts
+                )
         }
     }
 }

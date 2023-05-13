@@ -13,7 +13,7 @@ extension AccountService {
         
         func reduce(state: inout Center.State) {
             
-            if let user = Auth.auth().currentUser {
+            if let _ = Auth.auth().currentUser {
                 state.isLoggedIn = true
                 subscriptionCheck.send()
             } else {

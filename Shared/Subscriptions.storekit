@@ -1,0 +1,98 @@
+{
+  "identifier" : "13097840",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "6449136861",
+      "localizations" : [
+        {
+          "description" : "Non-renewable full access for 1 day.",
+          "displayName" : "1 Day Access",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "dailyNonRenewablesubscriptionbasic12",
+      "referenceName" : "1 Day",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "6449136803",
+      "localizations" : [
+        {
+          "description" : "Non-renewable full access for 1 month.",
+          "displayName" : "1 Month Access",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "monthlyNonRenewablesubscriptionbasic12",
+      "referenceName" : "1 Month",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "6.99",
+      "familyShareable" : false,
+      "internalID" : "6449137034",
+      "localizations" : [
+        {
+          "description" : "Non-renewable full access for 1 week.",
+          "displayName" : "1 Week Access",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "weeklyNonRenewablesubscriptionbasic12",
+      "referenceName" : "1 Week",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6449069312",
+    "_developerTeamID" : "CV8LAA8JAP",
+    "_lastSynchronizedDate" : 705638366.16686594
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21339786",
+      "localizations" : [
+
+      ],
+      "name" : "Monthly Subscription",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "12.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6449136837",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "A subscription is required for full access.",
+              "displayName" : "Monthly Subscription",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "monthlysubscriptionbasicneatia12",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Subscription",
+          "subscriptionGroupID" : "21339786",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

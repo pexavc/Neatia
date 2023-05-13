@@ -125,7 +125,6 @@ extension CommandToolbar {
                                     .animation(.default, value: state.toggleDropdown)
                             }
                         }
-                        .padding(.trailing, 14)
                         .frame(width: 136, height: WindowComponent.Style.defaultElementSize.height)
                         .onTapGesture {
                             center.$state.binding.scSelected.wrappedValue = sc.id

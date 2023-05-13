@@ -1,6 +1,6 @@
 //
 //  PaneKit.Window.Component.swift
-//  Sina
+//  Neatia
 //
 //  Created by Ritesh Pakala on 5/8/23.
 //

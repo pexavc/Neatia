@@ -24,6 +24,31 @@
 		711B3FDE2885D4F000F3080D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711B3FD82885D4F000F3080D /* Home.swift */; };
 		71266D2029512DAF003CAB29 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71266D1F29512DAF003CAB29 /* Overlay.swift */; };
 		71266D2129512DAF003CAB29 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71266D1F29512DAF003CAB29 /* Overlay.swift */; };
+		712861832A0EFDBF00046DCE /* VaultKit in Frameworks */ = {isa = PBXBuildFile; productRef = 712861822A0EFDBF00046DCE /* VaultKit */; };
+		712861852A0EFE6500046DCE /* Subscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 712861842A0EFE6500046DCE /* Subscriptions.storekit */; };
+		712861862A0EFE6500046DCE /* Subscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 712861842A0EFE6500046DCE /* Subscriptions.storekit */; };
+		7128618B2A0F08CB00046DCE /* VaultProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128618A2A0F08CB00046DCE /* VaultProducts.swift */; };
+		7128618C2A0F08CB00046DCE /* VaultProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128618A2A0F08CB00046DCE /* VaultProducts.swift */; };
+		7128618E2A0F11C600046DCE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7128618D2A0F11C600046DCE /* GoogleService-Info.plist */; };
+		7128618F2A0F11C600046DCE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7128618D2A0F11C600046DCE /* GoogleService-Info.plist */; };
+		712861912A0F431E00046DCE /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861902A0F431E00046DCE /* LogoView.swift */; };
+		712861922A0F431E00046DCE /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861902A0F431E00046DCE /* LogoView.swift */; };
+		712861942A0F43EE00046DCE /* MarqueeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861932A0F43EE00046DCE /* MarqueeTextView.swift */; };
+		712861952A0F43EE00046DCE /* MarqueeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861932A0F43EE00046DCE /* MarqueeTextView.swift */; };
+		712861972A0F441800046DCE /* View+OnValueChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861962A0F441800046DCE /* View+OnValueChanged.swift */; };
+		712861982A0F441800046DCE /* View+OnValueChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861962A0F441800046DCE /* View+OnValueChanged.swift */; };
+		7128619A2A0F4D8900046DCE /* FeatureImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861992A0F4D8900046DCE /* FeatureImageSliderView.swift */; };
+		7128619B2A0F4D8900046DCE /* FeatureImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861992A0F4D8900046DCE /* FeatureImageSliderView.swift */; };
+		712861A22A0F4EB600046DCE /* ACarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128619D2A0F4EB600046DCE /* ACarouselViewModel.swift */; };
+		712861A32A0F4EB600046DCE /* ACarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128619D2A0F4EB600046DCE /* ACarouselViewModel.swift */; };
+		712861A42A0F4EB600046DCE /* ACarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128619E2A0F4EB600046DCE /* ACarousel.swift */; };
+		712861A52A0F4EB600046DCE /* ACarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128619E2A0F4EB600046DCE /* ACarousel.swift */; };
+		712861A62A0F4EB600046DCE /* View+ReceiveTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128619F2A0F4EB600046DCE /* View+ReceiveTimer.swift */; };
+		712861A72A0F4EB600046DCE /* View+ReceiveTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128619F2A0F4EB600046DCE /* View+ReceiveTimer.swift */; };
+		712861A82A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861A02A0F4EB600046DCE /* ACarouselAutoScroll.swift */; };
+		712861A92A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861A02A0F4EB600046DCE /* ACarouselAutoScroll.swift */; };
+		712861AA2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861A12A0F4EB600046DCE /* AppLifeCycleModifier.swift */; };
+		712861AB2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861A12A0F4EB600046DCE /* AppLifeCycleModifier.swift */; };
 		712BEB5C29074CFB00D257B7 /* CameraContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB5929074CFB00D257B7 /* CameraContent.swift */; };
 		712BEB5D29074CFB00D257B7 /* CameraContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB5929074CFB00D257B7 /* CameraContent.swift */; };
 		712BEB5E29074CFB00D257B7 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB5A29074CFB00D257B7 /* CameraView.swift */; };
@@ -318,8 +343,6 @@
 		71BE323B2A05BBFC00B76A69 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE323A2A05BBFC00B76A69 /* FirebaseDatabaseSwift */; };
 		71BE323D2A05BBFC00B76A69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE323C2A05BBFC00B76A69 /* FirebaseStorage */; };
 		71BE323F2A05BBFC00B76A69 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE323E2A05BBFC00B76A69 /* FirebaseStorageCombine-Community */; };
-		71BE32412A05C6AD00B76A69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71BE32402A05C6AD00B76A69 /* GoogleService-Info.plist */; };
-		71BE32422A05C6AD00B76A69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71BE32402A05C6AD00B76A69 /* GoogleService-Info.plist */; };
 		71BE32442A05C79900B76A69 /* AccountService.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32432A05C79900B76A69 /* AccountService.Login.swift */; };
 		71BE32452A05C79900B76A69 /* AccountService.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32432A05C79900B76A69 /* AccountService.Login.swift */; };
 		71BE32472A05CEDA00B76A69 /* AccountService.Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32462A05CEDA00B76A69 /* AccountService.Logout.swift */; };
@@ -329,12 +352,6 @@
 		71BE324D2A05E89700B76A69 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BE324C2A05E89700B76A69 /* StoreKit.framework */; };
 		71BE324F2A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE324E2A05FB5D00B76A69 /* AccountService.Subscribe.swift */; };
 		71BE32502A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE324E2A05FB5D00B76A69 /* AccountService.Subscribe.swift */; };
-		71BE32562A06086800B76A69 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32542A06086700B76A69 /* StoreManager.swift */; };
-		71BE32572A06086800B76A69 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32542A06086700B76A69 /* StoreManager.swift */; };
-		71BE32582A06086800B76A69 /* IAPStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32552A06086700B76A69 /* IAPStore.swift */; };
-		71BE32592A06086800B76A69 /* IAPStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32552A06086700B76A69 /* IAPStore.swift */; };
-		71BE325B2A0609F900B76A69 /* IAPStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE325A2A0609F900B76A69 /* IAPStoreManager.swift */; };
-		71BE325C2A0609F900B76A69 /* IAPStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE325A2A0609F900B76A69 /* IAPStoreManager.swift */; };
 		71BE32612A06109D00B76A69 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE325E2A06109D00B76A69 /* Utilities.swift */; };
 		71BE32622A06109D00B76A69 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE325E2A06109D00B76A69 /* Utilities.swift */; };
 		71BE32632A06109D00B76A69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE325F2A06109D00B76A69 /* Regex.swift */; };
@@ -520,6 +537,18 @@
 		711B3FD82885D4F000F3080D /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		71266D1F29512DAF003CAB29 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
 		712861812A0EFD6D00046DCE /* VaultKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = VaultKit; path = ../VaultKit; sourceTree = "<group>"; };
+		712861842A0EFE6500046DCE /* Subscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Subscriptions.storekit; sourceTree = "<group>"; };
+		7128618A2A0F08CB00046DCE /* VaultProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultProducts.swift; sourceTree = "<group>"; };
+		7128618D2A0F11C600046DCE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		712861902A0F431E00046DCE /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		712861932A0F43EE00046DCE /* MarqueeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeTextView.swift; sourceTree = "<group>"; };
+		712861962A0F441800046DCE /* View+OnValueChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+OnValueChanged.swift"; sourceTree = "<group>"; };
+		712861992A0F4D8900046DCE /* FeatureImageSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureImageSliderView.swift; sourceTree = "<group>"; };
+		7128619D2A0F4EB600046DCE /* ACarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACarouselViewModel.swift; sourceTree = "<group>"; };
+		7128619E2A0F4EB600046DCE /* ACarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACarousel.swift; sourceTree = "<group>"; };
+		7128619F2A0F4EB600046DCE /* View+ReceiveTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+ReceiveTimer.swift"; sourceTree = "<group>"; };
+		712861A02A0F4EB600046DCE /* ACarouselAutoScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACarouselAutoScroll.swift; sourceTree = "<group>"; };
+		712861A12A0F4EB600046DCE /* AppLifeCycleModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLifeCycleModifier.swift; sourceTree = "<group>"; };
 		712BEB5929074CFB00D257B7 /* CameraContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraContent.swift; sourceTree = "<group>"; };
 		712BEB5A29074CFB00D257B7 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		712BEB5B29074CFB00D257B7 /* CameraContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraContentView.swift; sourceTree = "<group>"; };
@@ -664,15 +693,11 @@
 		71BE321B2A05B81500B76A69 /* MacSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacSettings.swift; sourceTree = "<group>"; };
 		71BE32222A05B90500B76A69 /* AccountService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AccountService+Center.swift"; sourceTree = "<group>"; };
 		71BE32232A05B90500B76A69 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
-		71BE32402A05C6AD00B76A69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71BE32432A05C79900B76A69 /* AccountService.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.Login.swift; sourceTree = "<group>"; };
 		71BE32462A05CEDA00B76A69 /* AccountService.Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.Logout.swift; sourceTree = "<group>"; };
 		71BE32492A05E37D00B76A69 /* MenuBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarManager.swift; sourceTree = "<group>"; };
 		71BE324C2A05E89700B76A69 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		71BE324E2A05FB5D00B76A69 /* AccountService.Subscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.Subscribe.swift; sourceTree = "<group>"; };
-		71BE32542A06086700B76A69 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
-		71BE32552A06086700B76A69 /* IAPStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPStore.swift; sourceTree = "<group>"; };
-		71BE325A2A0609F900B76A69 /* IAPStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPStoreManager.swift; sourceTree = "<group>"; };
 		71BE325E2A06109D00B76A69 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		71BE325F2A06109D00B76A69 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		71BE32602A06109D00B76A69 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -778,6 +803,7 @@
 				71EDCFD72A091E4800857066 /* SwiftyStoreKit in Frameworks */,
 				71BE323B2A05BBFC00B76A69 /* FirebaseDatabaseSwift in Frameworks */,
 				71A375072A01F5B800985D8D /* GraniteUI in Frameworks */,
+				712861832A0EFDBF00046DCE /* VaultKit in Frameworks */,
 				711513BF2A0E427200ED4E1E /* Ink in Frameworks */,
 				71BE324D2A05E89700B76A69 /* StoreKit.framework in Frameworks */,
 				71BE32352A05BBFB00B76A69 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -836,7 +862,6 @@
 			isa = PBXGroup;
 			children = (
 				71BE325D2A06109D00B76A69 /* Regex */,
-				71BE32532A06086700B76A69 /* StoreKit2Wrapper */,
 				7110C88A2A02598500824D58 /* MacOS */,
 				7197FAEF2964B4BF005EBBA4 /* Modal */,
 				71A28E2F295239D100EAE8EE /* Design */,
@@ -845,8 +870,8 @@
 				719725F628CC7F0300A64334 /* Views */,
 				711B3F722885D43700F3080D /* PEXApp.swift */,
 				71CEBE0F2A0729E500DE6CDE /* PEXApp.Delegate.swift */,
-				71BE325A2A0609F900B76A69 /* IAPStoreManager.swift */,
-				71BE32402A05C6AD00B76A69 /* GoogleService-Info.plist */,
+				712861842A0EFE6500046DCE /* Subscriptions.storekit */,
+				7128618D2A0F11C600046DCE /* GoogleService-Info.plist */,
 				711B3F742885D43B00F3080D /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -938,9 +963,22 @@
 			path = Reducers;
 			sourceTree = "<group>";
 		};
+		7128619C2A0F4EB600046DCE /* ACarousel */ = {
+			isa = PBXGroup;
+			children = (
+				7128619D2A0F4EB600046DCE /* ACarouselViewModel.swift */,
+				7128619E2A0F4EB600046DCE /* ACarousel.swift */,
+				7128619F2A0F4EB600046DCE /* View+ReceiveTimer.swift */,
+				712861A02A0F4EB600046DCE /* ACarouselAutoScroll.swift */,
+				712861A12A0F4EB600046DCE /* AppLifeCycleModifier.swift */,
+			);
+			path = ACarousel;
+			sourceTree = "<group>";
+		};
 		712BEB5829074CFB00D257B7 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				7128619C2A0F4EB600046DCE /* ACarousel */,
 				712BEB5929074CFB00D257B7 /* CameraContent.swift */,
 				712BEB5B29074CFB00D257B7 /* CameraContentView.swift */,
 				712BEB5A29074CFB00D257B7 /* CameraView.swift */,
@@ -970,6 +1008,7 @@
 				71266D1F29512DAF003CAB29 /* Overlay.swift */,
 				712BEB6B2907649600D257B7 /* AnimationCompletion.swift */,
 				7192B1972A0B5D0200C579A4 /* View+Background.swift */,
+				712861962A0F441800046DCE /* View+OnValueChanged.swift */,
 				716214FE2A031E32009D19B6 /* NSTextView.swift */,
 				716215012A031E7B009D19B6 /* Binding.swift */,
 			);
@@ -1021,6 +1060,8 @@
 				7197FAD82964A4E8005EBBA4 /* GraniteEmptyView.swift */,
 				71EDCFAE2A085C5800857066 /* TableView.swift */,
 				713FFDCB2A0DD27E00E6F9AF /* IconView.swift */,
+				712861932A0F43EE00046DCE /* MarqueeTextView.swift */,
+				712861902A0F431E00046DCE /* LogoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1411,6 +1452,7 @@
 			children = (
 				71BE32152A05B4FE00B76A69 /* AccountConfigView.swift */,
 				71BE32182A05B53800B76A69 /* GeneralConfigView.swift */,
+				712861992A0F4D8900046DCE /* FeatureImageSliderView.swift */,
 				713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */,
 				713FFDCE2A0DFA2E00E6F9AF /* ShortcutConfigView.swift */,
 				713FFDD42A0DFC9400E6F9AF /* PromptConfigView.swift */,
@@ -1437,15 +1479,6 @@
 				71BE324E2A05FB5D00B76A69 /* AccountService.Subscribe.swift */,
 			);
 			path = Reducers;
-			sourceTree = "<group>";
-		};
-		71BE32532A06086700B76A69 /* StoreKit2Wrapper */ = {
-			isa = PBXGroup;
-			children = (
-				71BE32542A06086700B76A69 /* StoreManager.swift */,
-				71BE32552A06086700B76A69 /* IAPStore.swift */,
-			);
-			path = StoreKit2Wrapper;
 			sourceTree = "<group>";
 		};
 		71BE325D2A06109D00B76A69 /* Regex */ = {
@@ -1676,6 +1709,7 @@
 			isa = PBXGroup;
 			children = (
 				71EDCFD82A091F2400857066 /* SubscriptionManager.swift */,
+				7128618A2A0F08CB00046DCE /* VaultProducts.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1780,6 +1814,7 @@
 				71508F652A0E382E008D0988 /* LaunchAtLogin */,
 				711513BE2A0E427200ED4E1E /* Ink */,
 				713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */,
+				712861822A0EFDBF00046DCE /* VaultKit */,
 			);
 			productName = "PEX (macOS)";
 			productReference = 711B3F7F2885D43B00F3080D /* Neatia.app */;
@@ -1879,9 +1914,10 @@
 			files = (
 				71A28EC8295243E000EAE8EE /* alexander.mtl in Resources */,
 				71A28EC4295243E000EAE8EE /* alexander.obj in Resources */,
-				71BE32412A05C6AD00B76A69 /* GoogleService-Info.plist in Resources */,
 				711B3F9E2885D43B00F3080D /* Assets.xcassets in Resources */,
 				71A28EC6295243E000EAE8EE /* alexander.jpg in Resources */,
+				712861852A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
+				7128618E2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1891,9 +1927,10 @@
 			files = (
 				71A28EC9295243E000EAE8EE /* alexander.mtl in Resources */,
 				71A28EC5295243E000EAE8EE /* alexander.obj in Resources */,
-				71BE32422A05C6AD00B76A69 /* GoogleService-Info.plist in Resources */,
 				711B3F9F2885D43B00F3080D /* Assets.xcassets in Resources */,
 				71A28EC7295243E000EAE8EE /* alexander.jpg in Resources */,
+				712861862A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
+				7128618F2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1969,12 +2006,12 @@
 				716215152A0342CB009D19B6 /* MacEditorTextView.swift in Sources */,
 				71DF109728CC698800559DBC /* RawRequest.swift in Sources */,
 				71A28E9D295239D100EAE8EE /* UINumericType.swift in Sources */,
-				71BE325B2A0609F900B76A69 /* IAPStoreManager.swift in Sources */,
 				71EDCFAF2A085C5800857066 /* TableView.swift in Sources */,
 				71A28E85295239D100EAE8EE /* RepresentableAsFloat.swift in Sources */,
 				719E23F8295330DB00CEB2FE /* GraniteToggle.swift in Sources */,
 				71A28DE3295232E300EAE8EE /* Misc.Visual.swift in Sources */,
 				71CEBE052A0719FC00DE6CDE /* Mount.Views.Symbols.swift in Sources */,
+				712861A22A0F4EB600046DCE /* ACarouselViewModel.swift in Sources */,
 				71EDCFED2A09675900857066 /* PaneKit.PaneView.swift in Sources */,
 				71A28E21295237AE00EAE8EE /* Passthrough.swift in Sources */,
 				71CEBDEC2A0718F900DE6CDE /* Query+View.swift in Sources */,
@@ -2016,7 +2053,6 @@
 				71CEBE102A0729E500DE6CDE /* PEXApp.Delegate.swift in Sources */,
 				71A28D9C295231E600EAE8EE /* Dictionary.swift in Sources */,
 				71EDCFF92A09781000857066 /* ShortcutBar+View.swift in Sources */,
-				71BE32582A06086800B76A69 /* IAPStore.swift in Sources */,
 				71CEBE282A075BCF00DE6CDE /* Response+Center.swift in Sources */,
 				71DF10AD28CC698800559DBC /* Requests.swift in Sources */,
 				712BEB5E29074CFB00D257B7 /* CameraView.swift in Sources */,
@@ -2028,6 +2064,7 @@
 				71BE320A2A05AB3D00B76A69 /* Config+Center.swift in Sources */,
 				71A28E7F295239D100EAE8EE /* Color+Convenience.swift in Sources */,
 				71BE324F2A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */,
+				712861912A0F431E00046DCE /* LogoView.swift in Sources */,
 				71DF109B28CC698800559DBC /* RequestMethod.swift in Sources */,
 				7197FB172964B4C0005EBBA4 /* GraniteSheetPresentationStyle.swift in Sources */,
 				71BE32192A05B53800B76A69 /* GeneralConfigView.swift in Sources */,
@@ -2037,13 +2074,14 @@
 				71A28E6B295239D100EAE8EE /* CGFloat+Convenience.swift in Sources */,
 				71CEBE332A077CEE00DE6CDE /* SandService+Center.swift in Sources */,
 				71A28E93295239D100EAE8EE /* Float+Angle.swift in Sources */,
+				7128619A2A0F4D8900046DCE /* FeatureImageSliderView.swift in Sources */,
 				71CEBE422A07A75A00DE6CDE /* CommandMenu+Center.swift in Sources */,
 				71DF107B28CC697600559DBC /* Double+Rounding.swift in Sources */,
 				71A28DEF295232E300EAE8EE /* GraphLinePlot.swift in Sources */,
 				71EDCFE42A09520500857066 /* PaneKit.Window.Component.swift in Sources */,
 				71FBA7FF296D16110090B630 /* GraniteScrollViewStyle.swift in Sources */,
 				713FFDC92A0DB1B100E6F9AF /* Brand.Font.swift in Sources */,
-				71BE32562A06086800B76A69 /* StoreManager.swift in Sources */,
+				712861942A0F43EE00046DCE /* MarqueeTextView.swift in Sources */,
 				71A28E89295239D100EAE8EE /* Comparible+Convenience.swift in Sources */,
 				71A28D96295231E600EAE8EE /* Double.swift in Sources */,
 				71A28EBC295243E000EAE8EE /* SceneKitWrapped.swift in Sources */,
@@ -2110,6 +2148,7 @@
 				711B3F9A2885D43B00F3080D /* PEXApp.swift in Sources */,
 				71A28E99295239D100EAE8EE /* Int+Angle.swift in Sources */,
 				71266D2029512DAF003CAB29 /* Overlay.swift in Sources */,
+				712861972A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCC2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71BE320C2A05AB3D00B76A69 /* Config+View.swift in Sources */,
 				7197FB152964B4C0005EBBA4 /* GraniteModalContainerView.swift in Sources */,
@@ -2122,6 +2161,7 @@
 				71A28EAB29523CC200EAE8EE /* GradientView.swift in Sources */,
 				71BEA9C728E3D95B00B58933 /* String.swift in Sources */,
 				71CEBDFD2A0719FC00DE6CDE /* Mount.swift in Sources */,
+				712861AA2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */,
 				71CEBE2A2A075BCF00DE6CDE /* Response.swift in Sources */,
 				71A28DF5295232E300EAE8EE /* GraphPage.swift in Sources */,
 				71A28E79295239D100EAE8EE /* GeometryProxy+Convenience.swift in Sources */,
@@ -2130,12 +2170,15 @@
 				71CEBDDD2A07175700DE6CDE /* EnvironmentService.swift in Sources */,
 				71A28E0A295233B200EAE8EE /* Fonts.swift in Sources */,
 				71A28DE9295232E300EAE8EE /* LinePlotValueStick.swift in Sources */,
+				7128618B2A0F08CB00046DCE /* VaultProducts.swift in Sources */,
 				7145EF0D28D43F1D00BFD19A /* Date.swift in Sources */,
 				7197FB212964B4C0005EBBA4 /* GraniteModalWindow.swift in Sources */,
+				712861A82A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */,
 				71CEBE032A0719FC00DE6CDE /* Mount.Views.Paywall.swift in Sources */,
 				71CEBE192A07339000DE6CDE /* EnvironmentService.Hotkey.swift in Sources */,
 				7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */,
 				71DF106D28CC697600559DBC /* DictionaryDecoder.swift in Sources */,
+				712861A42A0F4EB600046DCE /* ACarousel.swift in Sources */,
 				71A28ED3295244A700EAE8EE /* Special._.swift in Sources */,
 				7197FB132964B4C0005EBBA4 /* GraniteToastViewEvent.swift in Sources */,
 				712BEB6029074CFB00D257B7 /* CameraContentView.swift in Sources */,
@@ -2152,6 +2195,7 @@
 				71A28DD9295232E300EAE8EE /* Misc.Plot.swift in Sources */,
 				71A28E29295237AE00EAE8EE /* Padding.swift in Sources */,
 				71BE324A2A05E37D00B76A69 /* MenuBarManager.swift in Sources */,
+				712861A62A0F4EB600046DCE /* View+ReceiveTimer.swift in Sources */,
 				719E23F42953300900CEB2FE /* GraniteButton.swift in Sources */,
 				717C12A3293BF03C0060A446 /* Animations._.swift in Sources */,
 				71CEBE0D2A07249300DE6CDE /* InteractionManager.swift in Sources */,
@@ -2196,12 +2240,12 @@
 				719E2413295348B900CEB2FE /* Debug+View.swift in Sources */,
 				712BEB6429074FEC00D257B7 /* UIScreen.swift in Sources */,
 				71DF109828CC698800559DBC /* RawRequest.swift in Sources */,
-				71BE325C2A0609F900B76A69 /* IAPStoreManager.swift in Sources */,
 				71EDCFB02A085C5800857066 /* TableView.swift in Sources */,
 				71A28E9E295239D100EAE8EE /* UINumericType.swift in Sources */,
 				71A28E86295239D100EAE8EE /* RepresentableAsFloat.swift in Sources */,
 				719E23F9295330DB00CEB2FE /* GraniteToggle.swift in Sources */,
 				71CEBE062A0719FC00DE6CDE /* Mount.Views.Symbols.swift in Sources */,
+				712861A32A0F4EB600046DCE /* ACarouselViewModel.swift in Sources */,
 				71EDCFEE2A09675900857066 /* PaneKit.PaneView.swift in Sources */,
 				71A28DE4295232E300EAE8EE /* Misc.Visual.swift in Sources */,
 				71CEBDED2A0718F900DE6CDE /* Query+View.swift in Sources */,
@@ -2243,7 +2287,6 @@
 				71CEBE112A0729E500DE6CDE /* PEXApp.Delegate.swift in Sources */,
 				71A28D9D295231E600EAE8EE /* Dictionary.swift in Sources */,
 				71EDCFFA2A09781000857066 /* ShortcutBar+View.swift in Sources */,
-				71BE32592A06086800B76A69 /* IAPStore.swift in Sources */,
 				71CEBE292A075BCF00DE6CDE /* Response+Center.swift in Sources */,
 				71DF10AE28CC698800559DBC /* Requests.swift in Sources */,
 				712BEB5F29074CFB00D257B7 /* CameraView.swift in Sources */,
@@ -2255,6 +2298,7 @@
 				71BE320B2A05AB3D00B76A69 /* Config+Center.swift in Sources */,
 				71A28E84295239D100EAE8EE /* RepresentableAsInt.swift in Sources */,
 				71BE32502A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */,
+				712861922A0F431E00046DCE /* LogoView.swift in Sources */,
 				71A28E80295239D100EAE8EE /* Color+Convenience.swift in Sources */,
 				7197FB182964B4C0005EBBA4 /* GraniteSheetPresentationStyle.swift in Sources */,
 				71BE321A2A05B53800B76A69 /* GeneralConfigView.swift in Sources */,
@@ -2264,13 +2308,14 @@
 				71A28E6A295239D100EAE8EE /* CGVector+Convenience.swift in Sources */,
 				71CEBE342A077CEE00DE6CDE /* SandService+Center.swift in Sources */,
 				71A28E6C295239D100EAE8EE /* CGFloat+Convenience.swift in Sources */,
+				7128619B2A0F4D8900046DCE /* FeatureImageSliderView.swift in Sources */,
 				71CEBE432A07A75A00DE6CDE /* CommandMenu+Center.swift in Sources */,
 				7197FADA2964A4E8005EBBA4 /* GraniteEmptyView.swift in Sources */,
 				71A28E94295239D100EAE8EE /* Float+Angle.swift in Sources */,
 				71EDCFE52A09520500857066 /* PaneKit.Window.Component.swift in Sources */,
 				71DF107C28CC697600559DBC /* Double+Rounding.swift in Sources */,
 				713FFDCA2A0DB1B100E6F9AF /* Brand.Font.swift in Sources */,
-				71BE32572A06086800B76A69 /* StoreManager.swift in Sources */,
+				712861952A0F43EE00046DCE /* MarqueeTextView.swift in Sources */,
 				71A28DF0295232E300EAE8EE /* GraphLinePlot.swift in Sources */,
 				71A28E8A295239D100EAE8EE /* Comparible+Convenience.swift in Sources */,
 				71A28D97295231E600EAE8EE /* Double.swift in Sources */,
@@ -2337,6 +2382,7 @@
 				71BE320D2A05AB3D00B76A69 /* Config+View.swift in Sources */,
 				71A28EA0295239D100EAE8EE /* RepresentableAsCGFloat.swift in Sources */,
 				711B3F9B2885D43B00F3080D /* PEXApp.swift in Sources */,
+				712861982A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCD2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71A28E9A295239D100EAE8EE /* Int+Angle.swift in Sources */,
 				71266D2129512DAF003CAB29 /* Overlay.swift in Sources */,
@@ -2349,6 +2395,7 @@
 				71A28E66295239D100EAE8EE /* CGPoint+Convenience.swift in Sources */,
 				71A28EAC29523CC200EAE8EE /* GradientView.swift in Sources */,
 				71CEBDFE2A0719FC00DE6CDE /* Mount.swift in Sources */,
+				712861AB2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */,
 				71CEBE2B2A075BCF00DE6CDE /* Response.swift in Sources */,
 				7197FAD72964A36A005EBBA4 /* GraniteDisclaimerView.swift in Sources */,
 				71BEA9C828E3D95B00B58933 /* String.swift in Sources */,
@@ -2357,12 +2404,15 @@
 				71CEBDDE2A07175700DE6CDE /* EnvironmentService.swift in Sources */,
 				7197FAD32964A0AA005EBBA4 /* GraniteTimerView.swift in Sources */,
 				7197FB1E2964B4C0005EBBA4 /* GraniteSheetPresenterView.swift in Sources */,
+				7128618C2A0F08CB00046DCE /* VaultProducts.swift in Sources */,
 				71A28E7A295239D100EAE8EE /* GeometryProxy+Convenience.swift in Sources */,
 				71A28E0B295233B200EAE8EE /* Fonts.swift in Sources */,
+				712861A92A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */,
 				71CEBE042A0719FC00DE6CDE /* Mount.Views.Paywall.swift in Sources */,
 				71CEBE1A2A07339000DE6CDE /* EnvironmentService.Hotkey.swift in Sources */,
 				7192B18B2A0B146600C579A4 /* SandGPT.swift in Sources */,
 				71A28DEA295232E300EAE8EE /* LinePlotValueStick.swift in Sources */,
+				712861A52A0F4EB600046DCE /* ACarousel.swift in Sources */,
 				7145EF0E28D43F1D00BFD19A /* Date.swift in Sources */,
 				71DF106E28CC697600559DBC /* DictionaryDecoder.swift in Sources */,
 				71BE31C02A05929F00B76A69 /* MarkdownView.swift in Sources */,
@@ -2379,6 +2429,7 @@
 				71A28E2A295237AE00EAE8EE /* Padding.swift in Sources */,
 				719E23F52953300900CEB2FE /* GraniteButton.swift in Sources */,
 				71BE324B2A05E37D00B76A69 /* MenuBarManager.swift in Sources */,
+				712861A72A0F4EB600046DCE /* View+ReceiveTimer.swift in Sources */,
 				717C12A4293BF03C0060A446 /* Animations._.swift in Sources */,
 				71DF109628CC698800559DBC /* RequestOptions.swift in Sources */,
 				71CEBE0E2A07249300DE6CDE /* InteractionManager.swift in Sources */,
@@ -2814,6 +2865,10 @@
 		711513BE2A0E427200ED4E1E /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Ink;
+		};
+		712861822A0EFDBF00046DCE /* VaultKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VaultKit;
 		};
 		713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>877802446865-0u10g0ooaoue6bm6u0ic1mpklgk3jbkq.apps.googleusercontent.com</string>
+	<string>877802446865-hsuaq4bsv2oet6k0irbc2s5ru136hl2m.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.877802446865-0u10g0ooaoue6bm6u0ic1mpklgk3jbkq</string>
+	<string>com.googleusercontent.apps.877802446865-hsuaq4bsv2oet6k0irbc2s5ru136hl2m</string>
 	<key>API_KEY</key>
 	<string>AIzaSyC4E048SVV9P77aKRMHLXNNNRFjIJZJSX4</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>nyc.stoic.Sina</string>
+	<string>nyc.stoic.Neatia</string>
 	<key>PROJECT_ID</key>
 	<string>potential-6b824</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:877802446865:ios:8ca8336edac8d8473291b0</string>
+	<string>1:877802446865:ios:71f419b3825ca0a43291b0</string>
 </dict>
 </plist>
