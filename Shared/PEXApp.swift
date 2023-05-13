@@ -51,7 +51,7 @@ struct PEXApp: App {
                     account.center.checkLogin.send()
                     
                     //TODO: fires too early
-                    if account.center.state.isLoggedIn == false {
+                    if AccountManager.isLoggedIn == false {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             MenuBarManager.shared.showPopOver()
                         }

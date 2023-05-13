@@ -24,8 +24,9 @@ extension AccountService {
                         .Interact
                         .Meta(interaction: .disable))
             
-            state.isLoggedIn = false
             try? Auth.auth().signOut()
+            
+            AccountManager.logout()
         }
     }
 }

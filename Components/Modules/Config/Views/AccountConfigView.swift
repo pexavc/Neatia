@@ -42,6 +42,7 @@ struct AccountConfigView: View {
                 
                 Spacer()
             }
+            .padding(.vertical, 8)
         }
     }
     

@@ -1,7 +1,6 @@
 import Granite
 import AuthenticationServices
 import FirebaseAuth
-import SwiftyStoreKit
 
 extension AccountService {
     struct CheckLoginStatus: GraniteReducer {
@@ -13,11 +12,10 @@ extension AccountService {
         
         func reduce(state: inout Center.State) {
             
-            if let _ = Auth.auth().currentUser {
-                state.isLoggedIn = true
+            if let user = Auth.auth().currentUser {
+                AccountManager.load(user)
                 subscriptionCheck.send()
             } else {
-                state.isLoggedIn = false
                 environment
                     .center
                     .interact
@@ -80,8 +78,6 @@ extension AccountService {
             var authDataResult: AuthDataResult? = nil
         }
         
-//        @Relay var environment: EnvironmentService
-        
         @Event var subscriptionCheck: CheckSubscriptionStatus.Reducer
         
         @Payload var meta: Meta?
@@ -89,17 +85,9 @@ extension AccountService {
         func reduce(state: inout Center.State) {
             guard let result = self.meta?.authDataResult else { return }
             
-//            environment
-//                .center
-//                .interact
-//                .send(
-//                    EnvironmentService
-//                        .Interact
-//                        .Meta(interaction: .enable))
+            AccountManager.load(result.user)
             
-            state.isLoggedIn = true
             subscriptionCheck.send()
         }
-        
     }
 }

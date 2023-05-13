@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 import Firebase
-import SwiftyStoreKit
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var menuBarManager: MenuBarManager?
@@ -25,24 +24,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menuBarManager?.setup()
         MenuBarManager.shared.menu.delegate = self
         menuBarManager?.statusItem?.button?.action = #selector(self.statusBarButtonClicked(sender:))
-        
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                switch purchase.transaction.transactionState {
-                case .purchased, .restored:
-                    if purchase.needsFinishTransaction {
-                        // Deliver content from server, then:
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                    // Unlock content
-                    
-                    print("[AccountService] AppDelegate: restored")
-                case .failed, .purchasing, .deferred:
-                    print("[AccountService] AppDelegate: no purchases")
-                    break // do nothing
-                }
-            }
-        }
         
         let nc = NotificationCenter.default
         nc.post(name: Notification.Name("DidFinishLaunching"), object: nil)

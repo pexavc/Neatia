@@ -15,12 +15,12 @@ extension ConfigService {
             }
             
             //Hotkeys
-            var mountHotkey: InteractionManager.HotkeyOptions = .s
+            var mountHotkey: InteractionManager.HotkeyOptions = .n
             
         }
         
         @Event var updateHotkey: Hotkey.Reducer
         
-        @Store(persist: "neatia.persistence.config.0005", autoSave: true) public var state: State
+        @Store(persist: "neatia.persistence.config.0006", autoSave: true) public var state: State
     }
 }

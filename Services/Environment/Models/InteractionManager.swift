@@ -21,7 +21,7 @@ class InteractionManager {
     var hotkeyObserver: (() -> Void)?
     var menubarShowHideMount: (() -> Void)?
     var hotKeyRef: EventHotKeyRef?
-    var mountIsClosed: Bool = false
+    var mountIsClosed: Bool = true
     
     init() {
         
@@ -39,7 +39,7 @@ class InteractionManager {
 }
 
 extension InteractionManager {
-    func registerHotkey(_ key: HotkeyOptions = .s) {
+    func registerHotkey(_ key: HotkeyOptions = .n) {
         if self.hotKeyRef != nil {
             let status = UnregisterEventHotKey(hotKeyRef)
             NSLog("[InteractionManager] Un registered hotkey successfully")

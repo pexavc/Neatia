@@ -6,7 +6,7 @@ import SandKit
 extension Config: View {
     public var view: some View {
         VStack {
-            if account.state.isLoggedIn {
+            if AccountManager.isLoggedIn {
                 mainView
             } else {
                 signInView

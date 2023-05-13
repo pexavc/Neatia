@@ -97,6 +97,8 @@
 		717D388C2887A44D00165D7D /* Home+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D388A2887A44D00165D7D /* Home+View.swift */; };
 		717E613328A0D69B009A2B1A /* Home._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E613228A0D69B009A2B1A /* Home._.swift */; };
 		717E613428A0D69B009A2B1A /* Home._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E613228A0D69B009A2B1A /* Home._.swift */; };
+		718148B72A0F65000054E71A /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B62A0F65000054E71A /* AccountManager.swift */; };
+		718148B82A0F65000054E71A /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718148B62A0F65000054E71A /* AccountManager.swift */; };
 		7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B18B2A0B146600C579A4 /* SandGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1892A0B146600C579A4 /* SandGPT.swift */; };
 		7192B1932A0B5C8900C579A4 /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192B1902A0B5C8900C579A4 /* ConfigService.swift */; };
@@ -377,8 +379,6 @@
 		71CEBDFC2A0719FC00DE6CDE /* Mount+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF02A0719FC00DE6CDE /* Mount+Center.swift */; };
 		71CEBDFD2A0719FC00DE6CDE /* Mount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF12A0719FC00DE6CDE /* Mount.swift */; };
 		71CEBDFE2A0719FC00DE6CDE /* Mount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF12A0719FC00DE6CDE /* Mount.swift */; };
-		71CEBE032A0719FC00DE6CDE /* Mount.Views.Paywall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF52A0719FC00DE6CDE /* Mount.Views.Paywall.swift */; };
-		71CEBE042A0719FC00DE6CDE /* Mount.Views.Paywall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF52A0719FC00DE6CDE /* Mount.Views.Paywall.swift */; };
 		71CEBE052A0719FC00DE6CDE /* Mount.Views.Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF62A0719FC00DE6CDE /* Mount.Views.Symbols.swift */; };
 		71CEBE062A0719FC00DE6CDE /* Mount.Views.Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF62A0719FC00DE6CDE /* Mount.Views.Symbols.swift */; };
 		71CEBE072A0719FC00DE6CDE /* Query.Ask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDF82A0719FC00DE6CDE /* Query.Ask.swift */; };
@@ -468,9 +468,6 @@
 		71EDCFCE2A08D99A00857066 /* SandTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFCD2A08D99A00857066 /* SandTask.swift */; };
 		71EDCFCF2A08D99A00857066 /* SandTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFCD2A08D99A00857066 /* SandTask.swift */; };
 		71EDCFD52A0917AC00857066 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71EDCFD42A0917AC00857066 /* SwiftyStoreKit */; };
-		71EDCFD72A091E4800857066 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71EDCFD62A091E4800857066 /* SwiftyStoreKit */; };
-		71EDCFD92A091F2400857066 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFD82A091F2400857066 /* SubscriptionManager.swift */; };
-		71EDCFDA2A091F2400857066 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFD82A091F2400857066 /* SubscriptionManager.swift */; };
 		71EDCFDE2A094FB300857066 /* PaneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFDD2A094FB300857066 /* PaneKit.swift */; };
 		71EDCFDF2A094FB300857066 /* PaneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFDD2A094FB300857066 /* PaneKit.swift */; };
 		71EDCFE12A094FF900857066 /* PaneKit.Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFE02A094FF900857066 /* PaneKit.Window.swift */; };
@@ -574,6 +571,7 @@
 		717C12A2293BF03C0060A446 /* Animations._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations._.swift; sourceTree = "<group>"; };
 		717D388A2887A44D00165D7D /* Home+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+View.swift"; sourceTree = "<group>"; };
 		717E613228A0D69B009A2B1A /* Home._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home._.swift; sourceTree = "<group>"; };
+		718148B62A0F65000054E71A /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		7192B1892A0B146600C579A4 /* SandGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandGPT.swift; sourceTree = "<group>"; };
 		7192B1902A0B5C8900C579A4 /* ConfigService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 		7192B1912A0B5C8900C579A4 /* ConfigService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigService+Center.swift"; sourceTree = "<group>"; };
@@ -710,7 +708,6 @@
 		71CEBDEF2A0719FC00DE6CDE /* Mount+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mount+View.swift"; sourceTree = "<group>"; };
 		71CEBDF02A0719FC00DE6CDE /* Mount+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mount+Center.swift"; sourceTree = "<group>"; };
 		71CEBDF12A0719FC00DE6CDE /* Mount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mount.swift; sourceTree = "<group>"; };
-		71CEBDF52A0719FC00DE6CDE /* Mount.Views.Paywall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mount.Views.Paywall.swift; sourceTree = "<group>"; };
 		71CEBDF62A0719FC00DE6CDE /* Mount.Views.Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mount.Views.Symbols.swift; sourceTree = "<group>"; };
 		71CEBDF82A0719FC00DE6CDE /* Query.Ask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.Ask.swift; sourceTree = "<group>"; };
 		71CEBE092A0723ED00DE6CDE /* EnvironmentService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentService._.swift; sourceTree = "<group>"; };
@@ -755,7 +752,6 @@
 		71EDCFB92A08832100857066 /* CommandToolbar+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandToolbar+View.swift"; sourceTree = "<group>"; };
 		71EDCFBA2A08832100857066 /* CommandToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandToolbar.swift; sourceTree = "<group>"; };
 		71EDCFCD2A08D99A00857066 /* SandTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandTask.swift; sourceTree = "<group>"; };
-		71EDCFD82A091F2400857066 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		71EDCFDD2A094FB300857066 /* PaneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaneKit.swift; sourceTree = "<group>"; };
 		71EDCFE02A094FF900857066 /* PaneKit.Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaneKit.Window.swift; sourceTree = "<group>"; };
 		71EDCFE32A09520500857066 /* PaneKit.Window.Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaneKit.Window.Component.swift; sourceTree = "<group>"; };
@@ -800,7 +796,6 @@
 				71BE32312A05BBFB00B76A69 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				71BE322B2A05BBFB00B76A69 /* FirebaseAnalytics in Frameworks */,
 				71BE32372A05BBFB00B76A69 /* FirebaseCrashlytics in Frameworks */,
-				71EDCFD72A091E4800857066 /* SwiftyStoreKit in Frameworks */,
 				71BE323B2A05BBFC00B76A69 /* FirebaseDatabaseSwift in Frameworks */,
 				71A375072A01F5B800985D8D /* GraniteUI in Frameworks */,
 				712861832A0EFDBF00046DCE /* VaultKit in Frameworks */,
@@ -1556,7 +1551,6 @@
 		71CEBDF22A0719FC00DE6CDE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				71CEBDF52A0719FC00DE6CDE /* Mount.Views.Paywall.swift */,
 				71CEBDF62A0719FC00DE6CDE /* Mount.Views.Symbols.swift */,
 			);
 			path = Views;
@@ -1708,8 +1702,8 @@
 		71EDCFDB2A091F2C00857066 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				71EDCFD82A091F2400857066 /* SubscriptionManager.swift */,
 				7128618A2A0F08CB00046DCE /* VaultProducts.swift */,
+				718148B62A0F65000054E71A /* AccountManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1810,7 +1804,6 @@
 				71BE323C2A05BBFC00B76A69 /* FirebaseStorage */,
 				71BE323E2A05BBFC00B76A69 /* FirebaseStorageCombine-Community */,
 				71CEBDD22A0716D700DE6CDE /* SandKit */,
-				71EDCFD62A091E4800857066 /* SwiftyStoreKit */,
 				71508F652A0E382E008D0988 /* LaunchAtLogin */,
 				711513BE2A0E427200ED4E1E /* Ink */,
 				713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */,
@@ -2030,7 +2023,6 @@
 				71DF109928CC698800559DBC /* EmptyResponse.swift in Sources */,
 				71EDCFBE2A08832100857066 /* CommandToolbar+View.swift in Sources */,
 				71DF10AF28CC698800559DBC /* NetworkService+Request.swift in Sources */,
-				71EDCFD92A091F2400857066 /* SubscriptionManager.swift in Sources */,
 				71A28E77295239D100EAE8EE /* LinearGradient+Convenience.swift in Sources */,
 				7197FAD22964A0AA005EBBA4 /* GraniteTimerView.swift in Sources */,
 				712BEB5C29074CFB00D257B7 /* CameraContent.swift in Sources */,
@@ -2044,6 +2036,7 @@
 				71A28E81295239D100EAE8EE /* Edge+Convenience.swift in Sources */,
 				7197FB0F2964B4C0005EBBA4 /* GraniteToastView.swift in Sources */,
 				71EDCFB22A0864F100857066 /* SandService.Commands.swift in Sources */,
+				718148B72A0F65000054E71A /* AccountManager.swift in Sources */,
 				71A28D9A295231E600EAE8EE /* Array.swift in Sources */,
 				71DF107728CC697600559DBC /* NumberFormatter.swift in Sources */,
 				71A28E87295239D100EAE8EE /* RepresentableAsDouble.swift in Sources */,
@@ -2174,7 +2167,6 @@
 				7145EF0D28D43F1D00BFD19A /* Date.swift in Sources */,
 				7197FB212964B4C0005EBBA4 /* GraniteModalWindow.swift in Sources */,
 				712861A82A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */,
-				71CEBE032A0719FC00DE6CDE /* Mount.Views.Paywall.swift in Sources */,
 				71CEBE192A07339000DE6CDE /* EnvironmentService.Hotkey.swift in Sources */,
 				7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */,
 				71DF106D28CC697600559DBC /* DictionaryDecoder.swift in Sources */,
@@ -2264,7 +2256,6 @@
 				71DF10B028CC698800559DBC /* NetworkService+Request.swift in Sources */,
 				71EDCFBF2A08832100857066 /* CommandToolbar+View.swift in Sources */,
 				71A28E78295239D100EAE8EE /* LinearGradient+Convenience.swift in Sources */,
-				71EDCFDA2A091F2400857066 /* SubscriptionManager.swift in Sources */,
 				712BEB5D29074CFB00D257B7 /* CameraContent.swift in Sources */,
 				71DF10A828CC698800559DBC /* NetworkService+Center.swift in Sources */,
 				71A28EA4295239D100EAE8EE /* InnerShadowViewModifiers.swift in Sources */,
@@ -2278,6 +2269,7 @@
 				71FBA7FC296D16110090B630 /* GraniteScrollViewPositionIndicator.swift in Sources */,
 				71A28E82295239D100EAE8EE /* Edge+Convenience.swift in Sources */,
 				71EDCFB32A0864F100857066 /* SandService.Commands.swift in Sources */,
+				718148B82A0F65000054E71A /* AccountManager.swift in Sources */,
 				71A28D9B295231E600EAE8EE /* Array.swift in Sources */,
 				71DF107828CC697600559DBC /* NumberFormatter.swift in Sources */,
 				71A28E88295239D100EAE8EE /* RepresentableAsDouble.swift in Sources */,
@@ -2408,7 +2400,6 @@
 				71A28E7A295239D100EAE8EE /* GeometryProxy+Convenience.swift in Sources */,
 				71A28E0B295233B200EAE8EE /* Fonts.swift in Sources */,
 				712861A92A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */,
-				71CEBE042A0719FC00DE6CDE /* Mount.Views.Paywall.swift in Sources */,
 				71CEBE1A2A07339000DE6CDE /* EnvironmentService.Hotkey.swift in Sources */,
 				7192B18B2A0B146600C579A4 /* SandGPT.swift in Sources */,
 				71A28DEA295232E300EAE8EE /* LinePlotValueStick.swift in Sources */,
@@ -2949,11 +2940,6 @@
 			productName = GraniteUI;
 		};
 		71EDCFD42A0917AC00857066 /* SwiftyStoreKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71EDCFD32A0917AC00857066 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
-			productName = SwiftyStoreKit;
-		};
-		71EDCFD62A091E4800857066 /* SwiftyStoreKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 71EDCFD32A0917AC00857066 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
 			productName = SwiftyStoreKit;
