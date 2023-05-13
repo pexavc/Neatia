@@ -18,12 +18,31 @@ enum Interaction: GraniteModel {
 class InteractionManager {
     static var shared: InteractionManager = .init()
     
+    var popupObserver: ((EnvironmentService.ShowPopup.Meta<PopupView>) -> Void)?
+    var closePopupObserver: ((EnvironmentService.ClosePopup.Meta) -> Void)?
     var hotkeyObserver: (() -> Void)?
+    var promptStudioHotkeyObserver: (() -> Void)?
     var menubarShowHideMount: (() -> Void)?
     var hotKeyRef: EventHotKeyRef?
+    var promptStudioHotkeyRef: EventHotKeyRef?
+    var hotKeysRegistered: [UInt32: Kind] = [:]
     
+    enum Kind {
+        case mount
+        case promptStudio
+    }
     init() {
         
+    }
+    
+    func setPopupObserver<S: EventExecutable, SC: EventExecutable>(_ reducer: S, closeReducer: SC) {
+        popupObserver = { payload in
+            reducer.send(payload)
+        }
+        
+        closePopupObserver = { payload in
+            closeReducer.send(payload)
+        }
     }
     
     func setHotkeyObserver<S: EventExecutable>(_ reducer: S) {
@@ -32,16 +51,64 @@ class InteractionManager {
         }
     }
     
-    func observeHotkey() {
-        hotkeyObserver?()
+    func setPromptStudioHotkeyObserver<S: EventExecutable>(_ reducer: S) {
+        promptStudioHotkeyObserver = {
+            reducer.send()
+        }
+    }
+    
+    func showPopup<Content: View>(_ kind: InteractionManager.Kind,
+                                  size: CGSize,
+                                  bounds: CGRect,
+                                  edge: NSRectEdge,
+                                  @ViewBuilder content : (@escaping () -> Content)) {
+        popupObserver?(EnvironmentService
+            .ShowPopup
+            .Meta<PopupView>(kind: kind,
+                             size: size,
+                             bounds: bounds,
+                             preferredEdge: edge) {
+            PopupView(size: size) {
+                content()
+            }
+        })
+    }
+    
+    func closePopup(_ meta: EnvironmentService.ClosePopup.Meta) {
+        closePopupObserver?(meta)
+    }
+    
+    func observeHotkey(_ keyCode: UInt32? = nil, kind: Kind? = nil) {
+        if let code = keyCode {
+            if hotKeysRegistered[code] == .mount {
+                hotkeyObserver?()
+            } else if hotKeysRegistered[code] == .promptStudio {
+                promptStudioHotkeyObserver?()
+            }
+        } else if let kind = kind {
+            switch kind {
+            case .mount:
+                hotkeyObserver?()
+            case .promptStudio:
+                promptStudioHotkeyObserver?()
+            }
+        }
     }
 }
 
 extension InteractionManager {
-    func registerHotkey(_ key: HotkeyOptions = .n) {
-        if self.hotKeyRef != nil {
-            let status = UnregisterEventHotKey(hotKeyRef)
-            NSLog("[InteractionManager] Un registered hotkey successfully")
+    func registerHotkey(_ key: HotkeyOptions = .n, kind: Kind = .mount) {
+        switch kind {
+        case .mount:
+            if self.hotKeyRef != nil {
+                let status = UnregisterEventHotKey(hotKeyRef)
+                NSLog("[InteractionManager] Un registered hotkey successfully")
+            }
+        case .promptStudio:
+            if self.promptStudioHotkeyRef != nil {
+                let status = UnregisterEventHotKey(promptStudioHotkeyRef)
+                NSLog("[InteractionManager] Un registered prompt studio hotkey successfully")
+            }
         }
         
         var hotKeyRef: EventHotKeyRef?
@@ -52,6 +119,8 @@ extension InteractionManager {
         var gMyHotKeyID = EventHotKeyID()
         
         gMyHotKeyID.id = UInt32(keyCode)
+        
+        hotKeysRegistered[gMyHotKeyID.id] = kind
         
         // Not sure what "swat" vs "htk1" do.
         gMyHotKeyID.signature = OSType("swat".fourCharCodeValue)
@@ -65,22 +134,22 @@ extension InteractionManager {
         NSLog("[InteractionManager] Registering")
         InstallEventHandler(GetApplicationEventTarget(), {
             (nextHanlder, theEvent, userData) -> OSStatus in
-            // var hkCom = EventHotKeyID()
+             var hkCom = EventHotKeyID()
             
-            // GetEventParameter(theEvent,
-            //                   EventParamName(kEventParamDirectObject),
-            //                   EventParamType(typeEventHotKeyID),
-            //                   nil,
-            //                   MemoryLayout<EventHotKeyID>.size,
-            //                   nil,
-            //                   &hkCom)
+             GetEventParameter(theEvent,
+                               EventParamName(kEventParamDirectObject),
+                               EventParamType(typeEventHotKeyID),
+                               nil,
+                               MemoryLayout<EventHotKeyID>.size,
+                               nil,
+                               &hkCom)
             
 //            NSLog("Option + S Released!")
             
 //            let nc = NotificationCenter.default
 //            nc.post(name: Notification.Name("Activate"), object: nil)
             
-            InteractionManager.shared.observeHotkey()
+            InteractionManager.shared.observeHotkey(hkCom.id)
             
             
             return noErr
@@ -96,8 +165,14 @@ extension InteractionManager {
                                          &hotKeyRef)
         
         if status == noErr {
-            self.hotKeyRef = hotKeyRef
-            NSLog("[InteractionManager] Registered hotkey successfully")
+            switch kind {
+            case .mount:
+                self.hotKeyRef = hotKeyRef
+                NSLog("[InteractionManager] Registered hotkey successfully")
+            case .promptStudio:
+                self.promptStudioHotkeyRef = hotKeyRef
+                NSLog("[InteractionManager] Registered prompt studio hotkey successfully")
+            }
         } else {
             NSLog("[InteractionManager] error \(status)")
         }

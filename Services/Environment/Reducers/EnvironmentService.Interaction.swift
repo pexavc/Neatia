@@ -7,6 +7,7 @@
 
 import Foundation
 import Granite
+import SwiftUI
 
 extension EnvironmentService {
     struct Interact: GraniteReducer {
@@ -31,6 +32,62 @@ extension EnvironmentService {
             }
             
             state.lastInteraction = meta?.interaction ?? state.lastInteraction
+        }
+    }
+    
+    struct ShowPopup: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        struct Meta<Content: View>: GranitePayload {
+            let kind: InteractionManager.Kind
+            let size: CGSize
+            let bounds: CGRect
+            let preferredEdge: NSRectEdge
+            let content: () -> Content
+            
+            init(kind: InteractionManager.Kind,
+                 size: CGSize,
+                 bounds: CGRect,
+                 preferredEdge: NSRectEdge,
+                 @ViewBuilder content : (@escaping () -> Content)) {
+                self.kind = kind
+                self.size = size
+                self.bounds = bounds
+                self.preferredEdge = preferredEdge
+                self.content = content
+            }
+        }
+        
+        @Payload var meta: Meta<PopupView>?
+        
+        func reduce(state: inout Center.State) {
+            guard let meta = self.meta else { return }
+            switch meta.kind {
+            case .mount:
+                break
+            case .promptStudio:
+                state.promptStudioPane?.showPopover(size: meta.size, bounds: meta.bounds,preferredEdge: meta.preferredEdge, content: meta.content)
+            }
+        }
+    }
+    
+    struct ClosePopup: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        struct Meta: GranitePayload {
+            let kind: InteractionManager.Kind
+        }
+        
+        @Payload var meta: Meta?
+        
+        func reduce(state: inout Center.State) {
+            guard let meta = self.meta else { return }
+            switch meta.kind {
+            case .mount:
+                break
+            case .promptStudio:
+                state.promptStudioPane?.closePopover()
+            }
         }
     }
     

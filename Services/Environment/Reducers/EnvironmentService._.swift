@@ -8,7 +8,11 @@ extension EnvironmentService {
         
         @Relay var config: ConfigService
         
+        @Event var showPopup: ShowPopup.Reducer
+        @Event var closePopup: ClosePopup.Reducer
+        
         @Event var hotkeyDetected: HotkeyDetected.Reducer
+        @Event var promptStudioHotkeyDetected: PromptStudioHotkeyDetected.Reducer
         
         func reduce(state: inout Center.State) {
             state.pane = .init(defaultSize: WindowComponent.Style.defaultWindowSize) {
@@ -17,8 +21,18 @@ extension EnvironmentService {
             
             state.pane?.build()
             
+            state.promptStudioPane = .init(defaultSize: WindowComponent.Kind.promptStudio.defaultSize) {
+                PromptStudioPaneView()
+            }
+            
+            state.promptStudioPane?.build(title: "Prompt Studio", center: true)
+            
+            InteractionManager.shared.setPopupObserver(showPopup, closeReducer: closePopup)
+            
             InteractionManager.shared.setHotkeyObserver(hotkeyDetected)
+            InteractionManager.shared.setPromptStudioHotkeyObserver(promptStudioHotkeyDetected)
             InteractionManager.shared.registerHotkey(config.state.mountHotkey)
+            InteractionManager.shared.registerHotkey(config.state.promptStudioHotkey, kind: .promptStudio)
 //            HotkeyManager.register()
             
             VaultManager

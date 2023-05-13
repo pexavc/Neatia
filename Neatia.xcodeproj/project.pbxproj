@@ -463,6 +463,28 @@
 		71DF10B028CC698800559DBC /* NetworkService+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF109428CC698800559DBC /* NetworkService+Request.swift */; };
 		71E35C932954484A0094DB31 /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 71E35C922954484A0094DB31 /* Granite */; };
 		71E35C952954484D0094DB31 /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 71E35C942954484D0094DB31 /* GraniteUI */; };
+		71EA5BB72A10222E00B0F82D /* PromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BB42A10222E00B0F82D /* PromptService.swift */; };
+		71EA5BB82A10222E00B0F82D /* PromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BB42A10222E00B0F82D /* PromptService.swift */; };
+		71EA5BB92A10222E00B0F82D /* PromptService+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BB52A10222E00B0F82D /* PromptService+Center.swift */; };
+		71EA5BBA2A10222E00B0F82D /* PromptService+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BB52A10222E00B0F82D /* PromptService+Center.swift */; };
+		71EA5BBD2A1025E300B0F82D /* CustomPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BBC2A1025E300B0F82D /* CustomPrompt.swift */; };
+		71EA5BBE2A1025E300B0F82D /* CustomPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BBC2A1025E300B0F82D /* CustomPrompt.swift */; };
+		71EA5BC72A10278D00B0F82D /* PromptStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BC32A10278D00B0F82D /* PromptStudio.swift */; };
+		71EA5BC82A10278D00B0F82D /* PromptStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BC32A10278D00B0F82D /* PromptStudio.swift */; };
+		71EA5BC92A10278D00B0F82D /* PromptStudio+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BC42A10278D00B0F82D /* PromptStudio+View.swift */; };
+		71EA5BCA2A10278D00B0F82D /* PromptStudio+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BC42A10278D00B0F82D /* PromptStudio+View.swift */; };
+		71EA5BCB2A10278D00B0F82D /* PromptStudio+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BC52A10278D00B0F82D /* PromptStudio+Center.swift */; };
+		71EA5BCC2A10278D00B0F82D /* PromptStudio+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BC52A10278D00B0F82D /* PromptStudio+Center.swift */; };
+		71EA5BCF2A10343E00B0F82D /* PromptStudioEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */; };
+		71EA5BD02A10343E00B0F82D /* PromptStudioEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */; };
+		71EA5BD22A10380D00B0F82D /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BD12A10380D00B0F82D /* ColorPicker.swift */; };
+		71EA5BD32A10380D00B0F82D /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BD12A10380D00B0F82D /* ColorPicker.swift */; };
+		71EA5BD52A103BED00B0F82D /* PaneKit.PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BD42A103BED00B0F82D /* PaneKit.PopupView.swift */; };
+		71EA5BD62A103BED00B0F82D /* PaneKit.PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BD42A103BED00B0F82D /* PaneKit.PopupView.swift */; };
+		71EA5BD82A104B5100B0F82D /* SFSymbolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BD72A104B5100B0F82D /* SFSymbolPickerView.swift */; };
+		71EA5BD92A104B5100B0F82D /* SFSymbolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BD72A104B5100B0F82D /* SFSymbolPickerView.swift */; };
+		71EA5BDB2A1052AD00B0F82D /* PromptService._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BDA2A1052AD00B0F82D /* PromptService._.swift */; };
+		71EA5BDC2A1052AD00B0F82D /* PromptService._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BDA2A1052AD00B0F82D /* PromptService._.swift */; };
 		71EDCFAF2A085C5800857066 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFAE2A085C5800857066 /* TableView.swift */; };
 		71EDCFB02A085C5800857066 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFAE2A085C5800857066 /* TableView.swift */; };
 		71EDCFB22A0864F100857066 /* SandService.Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFB12A0864F100857066 /* SandService.Commands.swift */; };
@@ -758,6 +780,17 @@
 		71DF109328CC698800559DBC /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		71DF109428CC698800559DBC /* NetworkService+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+Request.swift"; sourceTree = "<group>"; };
 		71E35C91295447D60094DB31 /* Granite */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Granite; path = ../../repositories/Granite; sourceTree = "<group>"; };
+		71EA5BB42A10222E00B0F82D /* PromptService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptService.swift; sourceTree = "<group>"; };
+		71EA5BB52A10222E00B0F82D /* PromptService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PromptService+Center.swift"; sourceTree = "<group>"; };
+		71EA5BBC2A1025E300B0F82D /* CustomPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrompt.swift; sourceTree = "<group>"; };
+		71EA5BC32A10278D00B0F82D /* PromptStudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptStudio.swift; sourceTree = "<group>"; };
+		71EA5BC42A10278D00B0F82D /* PromptStudio+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PromptStudio+View.swift"; sourceTree = "<group>"; };
+		71EA5BC52A10278D00B0F82D /* PromptStudio+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PromptStudio+Center.swift"; sourceTree = "<group>"; };
+		71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptStudioEditorView.swift; sourceTree = "<group>"; };
+		71EA5BD12A10380D00B0F82D /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		71EA5BD42A103BED00B0F82D /* PaneKit.PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaneKit.PopupView.swift; sourceTree = "<group>"; };
+		71EA5BD72A104B5100B0F82D /* SFSymbolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolPickerView.swift; sourceTree = "<group>"; };
+		71EA5BDA2A1052AD00B0F82D /* PromptService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptService._.swift; sourceTree = "<group>"; };
 		71EDCFAE2A085C5800857066 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		71EDCFB12A0864F100857066 /* SandService.Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService.Commands.swift; sourceTree = "<group>"; };
 		71EDCFB82A08832100857066 /* CommandToolbar+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandToolbar+Center.swift"; sourceTree = "<group>"; };
@@ -943,6 +976,7 @@
 		711B3FB62885D48000F3080D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				71EA5BB32A10222E00B0F82D /* Prompt */,
 				7192B18F2A0B5C8900C579A4 /* Config */,
 				71CEBE2F2A077CEE00DE6CDE /* Sand */,
 				71CEBDD72A07175700DE6CDE /* Environment */,
@@ -1069,6 +1103,8 @@
 				71EDCFAE2A085C5800857066 /* TableView.swift */,
 				713FFDCB2A0DD27E00E6F9AF /* IconView.swift */,
 				712861932A0F43EE00046DCE /* MarqueeTextView.swift */,
+				71EA5BD12A10380D00B0F82D /* ColorPicker.swift */,
+				71EA5BD72A104B5100B0F82D /* SFSymbolPickerView.swift */,
 				712861902A0F431E00046DCE /* LogoView.swift */,
 			);
 			path = Views;
@@ -1399,6 +1435,7 @@
 		71A28ECA295243E400EAE8EE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				71EA5BC22A10278D00B0F82D /* PromptStudio */,
 				71EDCFF22A09781000857066 /* ShortcutBar */,
 				71EDCFB72A08832100857066 /* CommandToolbar */,
 				71CEBDEE2A0719FC00DE6CDE /* Mount */,
@@ -1686,6 +1723,60 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		71EA5BB32A10222E00B0F82D /* Prompt */ = {
+			isa = PBXGroup;
+			children = (
+				71EA5BBB2A10223800B0F82D /* Models */,
+				71EA5BB42A10222E00B0F82D /* PromptService.swift */,
+				71EA5BB52A10222E00B0F82D /* PromptService+Center.swift */,
+				71EA5BB62A10222E00B0F82D /* Reducers */,
+			);
+			path = Prompt;
+			sourceTree = "<group>";
+		};
+		71EA5BB62A10222E00B0F82D /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				71EA5BDA2A1052AD00B0F82D /* PromptService._.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		71EA5BBB2A10223800B0F82D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71EA5BBC2A1025E300B0F82D /* CustomPrompt.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		71EA5BC22A10278D00B0F82D /* PromptStudio */ = {
+			isa = PBXGroup;
+			children = (
+				71EA5BCD2A10342700B0F82D /* Views */,
+				71EA5BC32A10278D00B0F82D /* PromptStudio.swift */,
+				71EA5BC42A10278D00B0F82D /* PromptStudio+View.swift */,
+				71EA5BC52A10278D00B0F82D /* PromptStudio+Center.swift */,
+				71EA5BC62A10278D00B0F82D /* Reducers */,
+			);
+			path = PromptStudio;
+			sourceTree = "<group>";
+		};
+		71EA5BC62A10278D00B0F82D /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		71EA5BCD2A10342700B0F82D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		71EDCFB72A08832100857066 /* CommandToolbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1731,6 +1822,7 @@
 				718148BC2A0F89050054E71A /* PaneKit.Window.Visibility.swift */,
 				71EDCFE62A09546000857066 /* PaneKit.Display.swift */,
 				71EDCFEC2A09675900857066 /* PaneKit.PaneView.swift */,
+				71EA5BD42A103BED00B0F82D /* PaneKit.PopupView.swift */,
 				71EDCFE32A09520500857066 /* PaneKit.Window.Component.swift */,
 				71EDCFE92A095AF600857066 /* PaneKit.Window.Component.Kind.swift */,
 			);
@@ -1996,6 +2088,7 @@
 				71A28E67295239D100EAE8EE /* CGSize+Convenience.swift in Sources */,
 				71DF106F28CC697600559DBC /* DictionaryEncoder.swift in Sources */,
 				71A28EC2295243E000EAE8EE /* Special.swift in Sources */,
+				71EA5BB72A10222E00B0F82D /* PromptService.swift in Sources */,
 				71CEBE1C2A07451D00DE6CDE /* EnvironmentService.Interaction.swift in Sources */,
 				71A28E6D295239D100EAE8EE /* CGAffineTransform+Convenience.swift in Sources */,
 				7197FB192964B4C0005EBBA4 /* GraniteSheetContainerView.swift in Sources */,
@@ -2027,10 +2120,12 @@
 				71A28E21295237AE00EAE8EE /* Passthrough.swift in Sources */,
 				71CEBDEC2A0718F900DE6CDE /* Query+View.swift in Sources */,
 				7197FB1D2964B4C0005EBBA4 /* GraniteSheetPresenterView.swift in Sources */,
+				71EA5BB92A10222E00B0F82D /* PromptService+Center.swift in Sources */,
 				71A28E73295239D100EAE8EE /* Angle+Convenience.swift in Sources */,
 				71BE32252A05B90500B76A69 /* AccountService+Center.swift in Sources */,
 				71EDCFBC2A08832100857066 /* CommandToolbar+Center.swift in Sources */,
 				71A28E25295237AE00EAE8EE /* GraniteLoop.swift in Sources */,
+				71EA5BBD2A1025E300B0F82D /* CustomPrompt.swift in Sources */,
 				7197FB032964B4C0005EBBA4 /* GraniteModalManager.swift in Sources */,
 				71CEBE442A07A75A00DE6CDE /* CommandMenu+View.swift in Sources */,
 				71A28E2D295237AE00EAE8EE /* Run.swift in Sources */,
@@ -2046,6 +2141,7 @@
 				7197FAD22964A0AA005EBBA4 /* GraniteTimerView.swift in Sources */,
 				712BEB5C29074CFB00D257B7 /* CameraContent.swift in Sources */,
 				71DF10A728CC698800559DBC /* NetworkService+Center.swift in Sources */,
+				71EA5BC72A10278D00B0F82D /* PromptStudio.swift in Sources */,
 				71A28EA3295239D100EAE8EE /* InnerShadowViewModifiers.swift in Sources */,
 				71A28E2B295237AE00EAE8EE /* Keyboard.swift in Sources */,
 				71A28E08295233B200EAE8EE /* MenloFont.swift in Sources */,
@@ -2069,6 +2165,7 @@
 				71DF10AD28CC698800559DBC /* Requests.swift in Sources */,
 				712BEB5E29074CFB00D257B7 /* CameraView.swift in Sources */,
 				71EDCFE72A09546000857066 /* PaneKit.Display.swift in Sources */,
+				71EA5BC92A10278D00B0F82D /* PromptStudio+View.swift in Sources */,
 				71DF107528CC697600559DBC /* Style.swift in Sources */,
 				71A28E91295239D100EAE8EE /* Collection+Convenience.swift in Sources */,
 				71BE32472A05CEDA00B76A69 /* AccountService.Logout.swift in Sources */,
@@ -2093,6 +2190,8 @@
 				71EDCFE42A09520500857066 /* PaneKit.Window.Component.swift in Sources */,
 				71FBA7FF296D16110090B630 /* GraniteScrollViewStyle.swift in Sources */,
 				713FFDC92A0DB1B100E6F9AF /* Brand.Font.swift in Sources */,
+				71EA5BDB2A1052AD00B0F82D /* PromptService._.swift in Sources */,
+				71EA5BCB2A10278D00B0F82D /* PromptStudio+Center.swift in Sources */,
 				712861942A0F43EE00046DCE /* MarqueeTextView.swift in Sources */,
 				71A28E89295239D100EAE8EE /* Comparible+Convenience.swift in Sources */,
 				71A28D96295231E600EAE8EE /* Double.swift in Sources */,
@@ -2125,8 +2224,10 @@
 				71A28DF9295232E300EAE8EE /* TimeDisplayMode.swift in Sources */,
 				71BE32082A05AB3D00B76A69 /* Config.swift in Sources */,
 				71A28E27295237AE00EAE8EE /* PagerView.swift in Sources */,
+				71EA5BD52A103BED00B0F82D /* PaneKit.PopupView.swift in Sources */,
 				71EDCFF72A09781000857066 /* ShortcutBar+Center.swift in Sources */,
 				718148BA2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */,
+				71EA5BD22A10380D00B0F82D /* ColorPicker.swift in Sources */,
 				71A28DDD295232E300EAE8EE /* TimeDisplayModeSelector.swift in Sources */,
 				716214FF2A031E32009D19B6 /* NSTextView.swift in Sources */,
 				71A28DDB295232E300EAE8EE /* GraphPageBusinessLogic.swift in Sources */,
@@ -2166,6 +2267,7 @@
 				71BE320C2A05AB3D00B76A69 /* Config+View.swift in Sources */,
 				7197FB152964B4C0005EBBA4 /* GraniteModalContainerView.swift in Sources */,
 				717D388B2887A44D00165D7D /* Home+View.swift in Sources */,
+				71EA5BCF2A10343E00B0F82D /* PromptStudioEditorView.swift in Sources */,
 				71A28E61295239D100EAE8EE /* CGRect+Convenience.swift in Sources */,
 				71A28E7D295239D100EAE8EE /* EdgeInsets+Convenience.swift in Sources */,
 				71A28E95295239D100EAE8EE /* Int+Convenience.swift in Sources */,
@@ -2210,6 +2312,7 @@
 				712861A62A0F4EB600046DCE /* View+ReceiveTimer.swift in Sources */,
 				719E23F42953300900CEB2FE /* GraniteButton.swift in Sources */,
 				717C12A3293BF03C0060A446 /* Animations._.swift in Sources */,
+				71EA5BD82A104B5100B0F82D /* SFSymbolPickerView.swift in Sources */,
 				71CEBE0D2A07249300DE6CDE /* InteractionManager.swift in Sources */,
 				71DF109528CC698800559DBC /* RequestOptions.swift in Sources */,
 				71A28E9B295239D100EAE8EE /* Double+Convenience.swift in Sources */,
@@ -2233,6 +2336,7 @@
 				71A28EA2295239D100EAE8EE /* MathOperators.swift in Sources */,
 				71A28E68295239D100EAE8EE /* CGSize+Convenience.swift in Sources */,
 				71DF107028CC697600559DBC /* DictionaryEncoder.swift in Sources */,
+				71EA5BB82A10222E00B0F82D /* PromptService.swift in Sources */,
 				71CEBE1D2A07451D00DE6CDE /* EnvironmentService.Interaction.swift in Sources */,
 				71A28EC3295243E000EAE8EE /* Special.swift in Sources */,
 				71A28E6E295239D100EAE8EE /* CGAffineTransform+Convenience.swift in Sources */,
@@ -2264,10 +2368,12 @@
 				71A28DE4295232E300EAE8EE /* Misc.Visual.swift in Sources */,
 				71CEBDED2A0718F900DE6CDE /* Query+View.swift in Sources */,
 				71A28E22295237AE00EAE8EE /* Passthrough.swift in Sources */,
+				71EA5BBA2A10222E00B0F82D /* PromptService+Center.swift in Sources */,
 				71A28E74295239D100EAE8EE /* Angle+Convenience.swift in Sources */,
 				71BE32262A05B90500B76A69 /* AccountService+Center.swift in Sources */,
 				71EDCFBD2A08832100857066 /* CommandToolbar+Center.swift in Sources */,
 				7110C88D2A025A1400824D58 /* TranslucentWindowBackground.swift in Sources */,
+				71EA5BBE2A1025E300B0F82D /* CustomPrompt.swift in Sources */,
 				71A28E26295237AE00EAE8EE /* GraniteLoop.swift in Sources */,
 				71CEBE452A07A75A00DE6CDE /* CommandMenu+View.swift in Sources */,
 				71A28E2E295237AE00EAE8EE /* Run.swift in Sources */,
@@ -2283,6 +2389,7 @@
 				71DF10A828CC698800559DBC /* NetworkService+Center.swift in Sources */,
 				71A28EA4295239D100EAE8EE /* InnerShadowViewModifiers.swift in Sources */,
 				71A28E2C295237AE00EAE8EE /* Keyboard.swift in Sources */,
+				71EA5BC82A10278D00B0F82D /* PromptStudio.swift in Sources */,
 				7197FB1C2964B4C0005EBBA4 /* GraniteSheetManager.swift in Sources */,
 				7197FB222964B4C0005EBBA4 /* GraniteModalWindow.swift in Sources */,
 				71A28E09295233B200EAE8EE /* MenloFont.swift in Sources */,
@@ -2306,6 +2413,7 @@
 				71DF10AE28CC698800559DBC /* Requests.swift in Sources */,
 				712BEB5F29074CFB00D257B7 /* CameraView.swift in Sources */,
 				71EDCFE82A09546000857066 /* PaneKit.Display.swift in Sources */,
+				71EA5BCA2A10278D00B0F82D /* PromptStudio+View.swift in Sources */,
 				71FBA800296D16110090B630 /* GraniteScrollViewStyle.swift in Sources */,
 				71DF107628CC697600559DBC /* Style.swift in Sources */,
 				71BE32482A05CEDA00B76A69 /* AccountService.Logout.swift in Sources */,
@@ -2330,6 +2438,8 @@
 				71EDCFE52A09520500857066 /* PaneKit.Window.Component.swift in Sources */,
 				71DF107C28CC697600559DBC /* Double+Rounding.swift in Sources */,
 				713FFDCA2A0DB1B100E6F9AF /* Brand.Font.swift in Sources */,
+				71EA5BDC2A1052AD00B0F82D /* PromptService._.swift in Sources */,
+				71EA5BCC2A10278D00B0F82D /* PromptStudio+Center.swift in Sources */,
 				712861952A0F43EE00046DCE /* MarqueeTextView.swift in Sources */,
 				71A28DF0295232E300EAE8EE /* GraphLinePlot.swift in Sources */,
 				71A28E8A295239D100EAE8EE /* Comparible+Convenience.swift in Sources */,
@@ -2362,8 +2472,10 @@
 				716215002A031E32009D19B6 /* NSTextView.swift in Sources */,
 				71A28DFA295232E300EAE8EE /* TimeDisplayMode.swift in Sources */,
 				71A28E28295237AE00EAE8EE /* PagerView.swift in Sources */,
+				71EA5BD62A103BED00B0F82D /* PaneKit.PopupView.swift in Sources */,
 				71EDCFF82A09781000857066 /* ShortcutBar+Center.swift in Sources */,
 				718148BB2A0F818F0054E71A /* SandGPT.Tokenizer.swift in Sources */,
+				71EA5BD32A10380D00B0F82D /* ColorPicker.swift in Sources */,
 				7197FB142964B4C0005EBBA4 /* GraniteToastViewEvent.swift in Sources */,
 				7197FB062964B4C0005EBBA4 /* GraniteModal.swift in Sources */,
 				71A28DDE295232E300EAE8EE /* TimeDisplayModeSelector.swift in Sources */,
@@ -2403,6 +2515,7 @@
 				71A28E9A295239D100EAE8EE /* Int+Angle.swift in Sources */,
 				71266D2129512DAF003CAB29 /* Overlay.swift in Sources */,
 				717D388C2887A44D00165D7D /* Home+View.swift in Sources */,
+				71EA5BD02A10343E00B0F82D /* PromptStudioEditorView.swift in Sources */,
 				71A28E62295239D100EAE8EE /* CGRect+Convenience.swift in Sources */,
 				71A28E7E295239D100EAE8EE /* EdgeInsets+Convenience.swift in Sources */,
 				71A28E96295239D100EAE8EE /* Int+Convenience.swift in Sources */,
@@ -2447,6 +2560,7 @@
 				712861A72A0F4EB600046DCE /* View+ReceiveTimer.swift in Sources */,
 				717C12A4293BF03C0060A446 /* Animations._.swift in Sources */,
 				71DF109628CC698800559DBC /* RequestOptions.swift in Sources */,
+				71EA5BD92A104B5100B0F82D /* SFSymbolPickerView.swift in Sources */,
 				71CEBE0E2A07249300DE6CDE /* InteractionManager.swift in Sources */,
 				71A28E9C295239D100EAE8EE /* Double+Convenience.swift in Sources */,
 				71A28EA6295239D100EAE8EE /* InnerShadowExtensions.swift in Sources */,

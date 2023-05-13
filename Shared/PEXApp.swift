@@ -20,6 +20,9 @@ struct PEXApp: App {
     let pubShowHideMount = NotificationCenter.default
         .publisher(for: NSNotification.Name("nyc.stoic.Neatia.ShowHideMount"))
     
+    let pubShowHidePromptStudio = NotificationCenter.default
+        .publisher(for: NSNotification.Name("nyc.stoic.Neatia.ShowHidePromptStudio"))
+    
     let pubDidFinishLaunching = NotificationCenter.default
         .publisher(for: NSNotification.Name("nyc.stoic.Neatia.DidFinishLaunching"))
 
@@ -27,7 +30,11 @@ struct PEXApp: App {
     
     init() {
         pubShowHideMount.sink { _ in
-            InteractionManager.shared.observeHotkey()
+            InteractionManager.shared.observeHotkey(kind: .mount)
+        }.store(in: &cancellables)
+        
+        pubShowHidePromptStudio.sink { _ in
+            InteractionManager.shared.observeHotkey(kind: .promptStudio)
         }.store(in: &cancellables)
         
         VaultManager.shared.$isSubscribed
@@ -45,11 +52,9 @@ struct PEXApp: App {
                     environment.center.boot.send()
                     account.center.checkLogin.send()
                     
-                    //TODO: fires too early
-                    if AccountManager.isLoggedIn == false {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            MenuBarManager.shared.showPopOver()
-                        }
+                    //TODO: DEV
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        InteractionManager.shared.observeHotkey(kind: .promptStudio)
                     }
                 }
                 .onChange(of: AccountManager.isLoggedIn) { newState in

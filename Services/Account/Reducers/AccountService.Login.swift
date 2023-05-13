@@ -6,8 +6,6 @@ extension AccountService {
     struct CheckLoginStatus: GraniteReducer {
         typealias Center = AccountService.Center
         
-        @Relay var environment: EnvironmentService
-        
         @Event var subscriptionCheck: CheckSubscriptionStatus.Reducer
         
         func reduce(state: inout Center.State) {
@@ -16,13 +14,9 @@ extension AccountService {
                 AccountManager.load(user)
                 subscriptionCheck.send()
             } else {
-                environment
-                    .center
-                    .interact
-                    .send(
-                        EnvironmentService
-                            .Interact
-                            .Meta(interaction: .disable))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    MenuBarManager.shared.showPopOver()
+                }
             }
         }
     }

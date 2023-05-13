@@ -5,6 +5,7 @@ extension EnvironmentService {
     struct Center: GraniteCenter {
         struct State: GraniteState {
             var pane: PaneKit<PaneView>? = nil
+            var promptStudioPane: PaneKit<PromptStudioPaneView>? = nil
             
             var lastInteraction: Interaction = .disable {
                 didSet {

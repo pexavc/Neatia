@@ -17,4 +17,13 @@ extension EnvironmentService {
             //state.windowManager.toggle(.mount)
         }
     }
+    
+    struct PromptStudioHotkeyDetected: GraniteReducer {
+        typealias Center = EnvironmentService.Center
+        
+        func reduce(state: inout Center.State) {
+            state.promptStudioPane?.toggleWindow()
+            //state.windowManager.toggle(.mount)
+        }
+    }
 }

@@ -27,4 +27,20 @@ struct PaneView: View {
     }
 }
 
+struct PromptStudioPaneView: View {
 
+    var body: some View {
+        ZStack {
+            VisualEffectBackground()
+                .ignoresSafeArea()
+                .zIndex(0)
+                
+            PromptStudio()
+                .ignoresSafeArea()
+                .zIndex(2)
+        }
+        .frame(width: WindowComponent.Kind.promptStudio.size(.defaultWindow).width,
+               height: WindowComponent.Kind.promptStudio.size(.defaultWindow).height)
+        //.preferredColorScheme(.light)
+    }
+}

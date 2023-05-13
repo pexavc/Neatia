@@ -32,6 +32,7 @@ extension WindowComponent {
         case response
         case command
         case config
+        case promptStudio
         
         func size(_ windowSize: Kind.Size) -> CGSize {
             switch windowSize {
@@ -50,6 +51,8 @@ extension WindowComponent {
                                  (WindowComponent.Style.commandMenuElementHeight * WindowComponent.Style.commandMenuDefaultElements) + (WindowComponent.Style.defaultComponentOuterPadding))
                 case .config:
                     return .init(500, 450)
+                case .promptStudio:
+                    return .init(600, 600)
                 case .shortcutbar:
                     return WindowComponent.Style.defaultWindowSize
                 }
@@ -65,7 +68,8 @@ extension WindowComponent {
                         .spacer,
                         .shortcutbar,
                         .divider,
-                        .command:
+                        .command,
+                        .promptStudio:
                     return self.defaultSize
                 }
             }

@@ -41,7 +41,7 @@ struct ShortcutConfigView: View {
                             config
                                 .center
                                 .updateHotkey
-                                .send(ConfigService.Hotkey.Meta(key: item))
+                                .send(ConfigService.Hotkey.Meta(key: item, kind: .mount))
                         } label: {
                             VStack {
                                 Spacer()
@@ -53,6 +53,42 @@ struct ShortcutConfigView: View {
                     }
                 } label: {
                     Text(config.state.mountHotkey.rawValue.uppercased())
+                        .font(Fonts.live(.subheadline, .bold))
+                }
+                .frame(maxWidth: 60)
+                
+                Spacer()
+            }
+            
+            Text("Prompt Studio Activation")
+                .font(Fonts.live(.headline, .bold))
+                .foregroundColor(.foreground)
+            HStack {
+                Image(systemName: "option")
+                    .font(.defaultFont)
+                
+                Text("+")
+                    .font(.defaultFont)
+                
+                Menu {
+                    ForEach(InteractionManager.HotkeyOptions.allCases, id: \.self) { item in
+                        
+                        Button {
+                            config
+                                .center
+                                .updateHotkey
+                                .send(ConfigService.Hotkey.Meta(key: item, kind: .mount))
+                        } label: {
+                            VStack {
+                                Spacer()
+                                Text(item.rawValue.uppercased())
+                                    .font(Fonts.live(.subheadline, .bold))
+                                Spacer()
+                            }
+                        }
+                    }
+                } label: {
+                    Text(config.state.promptStudioHotkey.rawValue.uppercased())
                         .font(Fonts.live(.subheadline, .bold))
                 }
                 .frame(maxWidth: 60)

@@ -16,6 +16,7 @@ extension ConfigService {
             
             //Hotkeys
             var mountHotkey: InteractionManager.HotkeyOptions = .n
+            var promptStudioHotkey: InteractionManager.HotkeyOptions = .p
             
         }
         

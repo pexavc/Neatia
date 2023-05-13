@@ -22,24 +22,32 @@ extension PaneKit {
         
         let size: CGSize
         let maxSize: CGSize
+        let observeEvents: Bool
         private(set) var titleBarHeight: CGFloat = 0
         
         let pubClickedOutside = NotificationCenter.default
             .publisher(for: NSNotification.Name("nyc.stoic.Neatia.PaneKitClickedOutside"))
         internal var cancellables = Set<AnyCancellable>()
         
-        init(size: CGSize = .init(800, 48), maxSize: CGSize = .init(800, 750)) {
+        init(size: CGSize = .init(800, 48),
+             maxSize: CGSize = .init(800, 750),
+             observeEvents: Bool = false) {
             self.size = size
             self.maxSize = maxSize
+            self.observeEvents = observeEvents
             super.init()
         }
         
-        func build() {
+        func build(title: String? = nil, center: Bool = false) {
             DispatchQueue.main.async { [weak self] in
-                self?.main = AppWindow(self?.size ?? .zero)
+                self?.main = AppWindow(self?.size ?? .zero, title: title, center: center)
                 self?.titleBarHeight = self?.main?.titlebarHeight ?? 0
                 self?.isPrepared = true
-                self?.observe()
+                
+                if self?.observeEvents == true {
+                    self?.observe()
+                }
+                
                 self?.lastUpdate = .init()
                 print("[PaneKit.Window] Built \(self?.lastUpdate)")
             }
@@ -78,6 +86,10 @@ extension PaneKit {
                 }
             }.store(in: &cancellables)
         }
+        
+        func retrieve() -> NSWindow? {
+            self.main
+        }
     }
 }
 
@@ -87,9 +99,9 @@ class AppWindow: NSWindow {
     
     private var lastPoint: CGPoint? = nil
     
-    init(_ size: CGSize) {
+    init(_ size: CGSize, title: String? = nil, center: Bool = false) {
         
-        let origin = AppWindow.originPoint(size, newSize: .zero)
+        let origin = AppWindow.originPoint(size, newSize: .zero, center: center)
         
         super.init(contentRect: .init(origin: origin, size: size),
                    styleMask: [.fullSizeContentView, .titled, .closable],
@@ -110,10 +122,14 @@ class AppWindow: NSWindow {
         standardWindowButton(.zoomButton)?.isHidden = true
         
         titlebarAppearsTransparent = true
+        
+        if let windowTitle = title {
+            self.title = windowTitle
+        }
 //        titleVisibility = .hidden
     }
     
-    static func originPoint(_ size: CGSize, newSize: CGSize, titleBarHeight: CGFloat = 28, currentMidPoint: CGPoint? = nil) -> CGPoint {
+    static func originPoint(_ size: CGSize, newSize: CGSize, titleBarHeight: CGFloat = 28, currentMidPoint: CGPoint? = nil, center: Bool = false) -> CGPoint {
         guard let main = NSScreen.main else {
             return .zero
         }
@@ -136,7 +152,11 @@ class AppWindow: NSWindow {
         }
         
         if currentMidPoint == nil {
-            startPoint.y += (visibleFrame.height / 3) / 2
+            if center {
+                startPoint.y -= size.height / 2
+            } else {
+                startPoint.y += (visibleFrame.height / 3) / 2
+            }
         }
         
         return startPoint
