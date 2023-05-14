@@ -59,6 +59,7 @@ struct ShortcutConfigView: View {
                 
                 Spacer()
             }
+            .padding(.bottom, 8)
             
             Text("Prompt Studio Activation")
                 .font(Fonts.live(.headline, .bold))

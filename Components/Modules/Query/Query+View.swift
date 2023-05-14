@@ -68,7 +68,8 @@ extension Query: View {
                     .allowsHitTesting(false)
                 }
                 
-                if SandGPTTokenizerManager.shared.tokenCount > 0 {
+                if SandGPTTokenizerManager.tokenCount > 0 &&
+                    SandGPTTokenizerManager.shared.pause == false {
                     
                     VStack {
                         Spacer()
@@ -76,9 +77,9 @@ extension Query: View {
                         HStack {
                             Spacer()
                             
-                            Text("\(SandGPTTokenizerManager.tokenCount)/\(SandService.maxTokenCount)")
+                            Text("\(SandGPTTokenizerManager.shared.tokenCount)/\(SandService.maxTokenCount)")
                                 .font(Fonts.live(.caption, .bold))
-                                .foregroundColor((SandGPTTokenizerManager.shared.tokenCount <= SandService.maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
+                                .foregroundColor((SandGPTTokenizerManager.tokenCount <= SandService.maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
                             
                         }
                         

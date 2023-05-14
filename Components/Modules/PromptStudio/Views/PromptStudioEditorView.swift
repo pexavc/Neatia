@@ -180,6 +180,7 @@ struct PromptStudioEditorView: View {
                     
                     Spacer()
                 }
+                .padding(.bottom, 4)
                 
                 Text("Short Description")
                     .font(Fonts.live(.headline, .bold))
@@ -192,6 +193,7 @@ struct PromptStudioEditorView: View {
                         font: Fonts.nsFont(.defaultSize, .bold))
                 }
                 .frame(height: 60)
+                .padding(.bottom, 4)
                 
                 Text("Instructions")
                     .font(Fonts.live(.headline, .bold))
@@ -277,7 +279,7 @@ struct PromptStudioEditorView: View {
                                 showError = true
                             }
                         }) {
-                            Text(isEditing ? "Modify" : "Create")
+                            Text(isEditing ? "Update" : "Create")
                                 .font(Fonts.live(.headline, .bold))
                                 .foregroundColor(.foreground)
                         }.buttonStyle(PlainButtonStyle())
@@ -286,10 +288,11 @@ struct PromptStudioEditorView: View {
                     
                     Spacer()
                 }
+                .padding(.bottom, 8)
                 
                 Spacer()
             }
-            .padding(.top, WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
+            .padding(.vertical, WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
 //            VStack(spacing: 8) {
 //                MacEditorTextView(
 //                    text: $promptBody,

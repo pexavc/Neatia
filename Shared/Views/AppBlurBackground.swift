@@ -219,15 +219,18 @@ struct AppBlurView<Content>: View where Content: View {
     
     let size: CGSize
     let padding: EdgeInsets
+    let cornerRadius: CGFloat
     var tintColor: Color
     let content: () -> Content
 
     init(size: CGSize = WindowComponent.Style.defaultElementSize,
          padding: EdgeInsets = .init(16, 0),
+         cornerRadius: CGFloat = 6.0,
          tintColor: Color = .background,
          @ViewBuilder content: @escaping () -> Content) {
         self.size = size
         self.padding = padding
+        self.cornerRadius = cornerRadius
         self.tintColor = tintColor
         self.content = content
     }
@@ -238,7 +241,7 @@ struct AppBlurView<Content>: View where Content: View {
             .frame(height: size.height)
             .background(
                 VisualEffectBackground(overlayColor: tintColor)
-                    .cornerRadius(6.0)
+                    .cornerRadius(cornerRadius)
                     .padding(.horizontal, -(padding.leading)))
             .padding(.horizontal, padding.leading)
     }

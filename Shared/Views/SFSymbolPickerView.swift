@@ -47,14 +47,14 @@ public struct SFSymbolsPicker: View {
                             VStack {
                                 Spacer()
                                 Text(item.id.capitalized)
-                                    .font(Fonts.live(.subheadline, .bold))
+                                    .font(Fonts.live(.subheadline, .regular))
                                 Spacer()
                             }
                         }
                     }
                 } label: {
                     Text(self.category.id.capitalized)
-                        .font(Fonts.live(.subheadline, .bold))
+                        .font(Fonts.live(.subheadline, .regular))
                 }
                 .frame(maxWidth: 160)
                 
@@ -76,11 +76,10 @@ public struct SFSymbolsPicker: View {
                                 self.icon = icon
                             }
                         
-                    }.padding(.top, 5)
+                    }
                 }
-            }
+            }.padding(.vertical, 8)
         }
-            
     }
 }
 

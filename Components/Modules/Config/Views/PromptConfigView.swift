@@ -10,7 +10,7 @@ import SwiftUI
 import Granite
 
 struct PromptConfigView: View {
-    
+    @SharedObject("nyc.stoic.Neatia.WindowVisibilityManager") var windowVisibility: WindowVisibilityManager
     @Relay var config: ConfigService
     
     var body: some View {
@@ -24,8 +24,26 @@ struct PromptConfigView: View {
             }
             .padding(.bottom, 8)
             
+            PromptStudioCollectionView(preview: true)
             
             Spacer()
+            
+            AppBlurView(tintColor: Brand.Colors.purple.opacity(0.45)) {
+                
+                HStack(spacing: 8) {
+                    
+                    Button(action: {
+                        let nc = NotificationCenter.default
+                        nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHidePromptStudio"), object: nil)
+                    }) {
+                        
+                        Text("\(windowVisibility.isVisible(id: InteractionManager.Kind.promptStudio.rawValue) ? "Hide" : "Open") Studio")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    }.buttonStyle(PlainButtonStyle())
+                }
+            }
+            .environment(\.colorScheme, .dark)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)

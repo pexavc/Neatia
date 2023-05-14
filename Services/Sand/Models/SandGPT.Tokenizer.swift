@@ -31,6 +31,7 @@ class SandGPTTokenizerManager: ObservableObject {
     
     init() {
         kit = .init()
+        observe()
     }
     
     private func observe() {
