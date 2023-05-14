@@ -24,4 +24,20 @@ extension ConfigService {
             }
         }
     }
+    
+    //WIP
+    struct History: GraniteReducer {
+        typealias Center = ConfigService.Center
+        
+        struct Meta: GranitePayload {
+            let query: String
+        }
+        
+        @Payload var meta: Meta?
+        
+        func reduce(state: inout Center.State) {
+            guard let meta = self.meta else { return }
+            
+        }
+    }
 }
