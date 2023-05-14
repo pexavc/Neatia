@@ -121,6 +121,19 @@ public struct TableRowView: View {
                 if let trailingText = row.textModel.trailing {
                     Text(trailingText)
                 }
+            case .label:
+                if let trailingText = row.textModel.trailing {
+                    Text(trailingText)
+                        .font(Fonts.live(.footnote, .bold))
+                        .padding(.vertical, 4)
+                        .foregroundColor(Color.orange)
+                        .background(
+                            RoundedRectangle(cornerRadius: 6)
+                                .strokeBorder(Color.orange, lineWidth: 2)
+                                .padding(.horizontal, -6)
+                        )
+                        .padding(.horizontal, 6)
+                }
             default:
                 if let trailingText = row.textModel.trailing {
                     Text(trailingText)
@@ -147,6 +160,7 @@ public struct TableRowView: View {
 public enum TableRowKind {
     case dropdown(DropdownProperties)
     case toggle
+    case label
     case none
     
     public struct DropdownProperties {

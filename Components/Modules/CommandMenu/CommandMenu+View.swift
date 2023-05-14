@@ -35,8 +35,10 @@ extension CommandMenu: View {
         for command in sortedCases.isEmpty ? cases : sortedCases {
             let prompt = prompts.prompt(command)
             list.append(
-                TableRow(text: .init("/\(command.capitalized)...",
-                                     subLeading: .init("\(prompt?.description ?? "")")),
+                TableRow(kind: .label,
+                        text: .init("/\(command.capitalized)...",
+                                     subLeading: .init("\(prompt?.description ?? "")"),
+                                     trailing: prompt?.isSystemPrompt == true ? nil : .init("custom")),
                          graphic: .init(prompt?.iconName ?? "",
                                         leadingBGColor: prompt?.baseColor ?? Brand.Colors.black)) {
                     sand
