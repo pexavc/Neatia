@@ -177,25 +177,32 @@ extension AccountConfigView {
                 Spacer()
             }
             
-            AppBlurView(size: .init(0, 80),
+            AppBlurView(size: .init(0, 90),
                         tintColor: Brand.Colors.black.opacity(0.3)) {
                 VStack(alignment: .leading, spacing: 8) {
                     if let date = currentPurchase.expirationDate {
-                        Text("Expiration Date: \(date.asString)")
-                            .font(Fonts.live(.headline, .regular))
+                        Text("Expiration Date: ")
+                            .font(Fonts.live(.subheadline, .bold))
+                            .foregroundColor(.foreground) + Text(date.asString)
+                            .font(Fonts.live(.subheadline, .regular))
                             .foregroundColor(.foreground)
                     }
                     
-                    Text("Purchase Date: \(currentPurchase.purchaseDate.asString)")
-                        .font(Fonts.live(.headline, .regular))
+                    Text("Purchase Date: ")
+                        .font(Fonts.live(.subheadline, .bold))
+                        .foregroundColor(.foreground) + Text(currentPurchase.purchaseDate.asString)
+                        .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                     
-                    Text("Renews: \(currentPurchase.isRenewable ? "Yes" : "No")")
-                        .font(Fonts.live(.headline, .regular))
+                    Text("Renews: ")
+                        .font(Fonts.live(.subheadline, .bold))
+                        .foregroundColor(.foreground) + Text("\(currentPurchase.isRenewable ? "Yes" : "No")")
+                        .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
             }
             .environment(\.colorScheme, .dark)
+            .frame(height: 90)
         }
     }
 }
