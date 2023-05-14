@@ -25,11 +25,24 @@ struct PromptStudioEditorView: View {
         }
     }
     
+    var modeText: String {
+        if promptCreativity > 0.7 {
+            return "Very Creative"
+        } else if promptCreativity > 0.5 {
+            return "Creative"
+        } else if promptCreativity > 0.3 {
+            return "Strict"
+        } else {
+            return "Very Strict"
+        }
+    }
+    
     @State var promptCommand: String
     @State var promptBody: String
     @State var promptDescription: String
     @State var promptColor: String = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
     @State var promptIcon: String
+    @State var promptCreativity: Double = 0.7
     @State var showError: Bool = false
     
     let tokenizer: GPT3Tokenizer = .init()
@@ -39,7 +52,8 @@ struct PromptStudioEditorView: View {
               prompt: promptBody,
               iconName: promptIcon,
               baseColorHex: promptColor,
-              description: promptDescription)
+              description: promptDescription,
+              creativity: promptCreativity)
     }
     
     init() {
@@ -58,6 +72,7 @@ struct PromptStudioEditorView: View {
         promptDescription = prompt.description
         promptColor = prompt.baseColorHex
         promptIcon = prompt.iconName
+        promptCreativity = promptCreativity
     }
     
     var promptTokenCount: Int {
@@ -179,6 +194,28 @@ struct PromptStudioEditorView: View {
                             SFSymbolsPicker(icon: $promptIcon)
                         }
                         .frame(width: 60, height: 60)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Mode")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                        
+                        HStack(spacing: 16) {
+                            AppBlurView(size: .init(60, 60)) {
+                                Text(modeText)
+                                    .font(Fonts.live(.footnote, .bold))
+                                    .foregroundColor(.foreground)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .frame(width: 60, height: 60)
+                            .padding(.horizontal, 16)
+                            
+                            CustomSliderView(value: $promptCreativity,
+                                             color: Brand.Colors.purple.opacity(0.45))
+                                .frame(height: 30)
+                            //Slider(value: $promptCreativity, in: 0...1)
+                        }
                     }
                     
                     

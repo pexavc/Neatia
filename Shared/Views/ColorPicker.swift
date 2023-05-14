@@ -37,7 +37,7 @@ struct ColorPicker: View {
     @Binding var hex: String
     
     var gridSize: CGSize = CGSize(width: 200, height: 160)
-    var sliderSize: CGSize = CGSize(width: 180, height: 8)
+    var sliderSize: CGSize = CGSize(width: 180, height: 16)
     
     static func toHex<F: BinaryFloatingPoint>(h: F, s: F, b: F) -> String {
         var red, green, blue, i, f, p, q, t: F

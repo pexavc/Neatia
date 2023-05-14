@@ -70,6 +70,8 @@
 		713D86702A118D2300AE32CE /* FileTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D866E2A118D2300AE32CE /* FileTextEditorView.swift */; };
 		713D86742A118E3F00AE32CE /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86732A118E3F00AE32CE /* FileProcessor.swift */; };
 		713D86752A118E3F00AE32CE /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86732A118E3F00AE32CE /* FileProcessor.swift */; };
+		713D86772A11A92900AE32CE /* CustomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86762A11A92900AE32CE /* CustomSliderView.swift */; };
+		713D86782A11A92900AE32CE /* CustomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86762A11A92900AE32CE /* CustomSliderView.swift */; };
 		713FFDC62A0DB19000E6F9AF /* Brand.Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDC52A0DB19000E6F9AF /* Brand.Color.swift */; };
 		713FFDC72A0DB19000E6F9AF /* Brand.Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDC52A0DB19000E6F9AF /* Brand.Color.swift */; };
 		713FFDC92A0DB1B100E6F9AF /* Brand.Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDC82A0DB1B100E6F9AF /* Brand.Font.swift */; };
@@ -597,6 +599,7 @@
 		713D866B2A118C2C00AE32CE /* SandService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService._.swift; sourceTree = "<group>"; };
 		713D866E2A118D2300AE32CE /* FileTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTextEditorView.swift; sourceTree = "<group>"; };
 		713D86732A118E3F00AE32CE /* FileProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
+		713D86762A11A92900AE32CE /* CustomSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliderView.swift; sourceTree = "<group>"; };
 		713FFDC52A0DB19000E6F9AF /* Brand.Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.Color.swift; sourceTree = "<group>"; };
 		713FFDC82A0DB1B100E6F9AF /* Brand.Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.Font.swift; sourceTree = "<group>"; };
 		713FFDCB2A0DD27E00E6F9AF /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
@@ -1134,6 +1137,7 @@
 				71EDCFAE2A085C5800857066 /* TableView.swift */,
 				713FFDCB2A0DD27E00E6F9AF /* IconView.swift */,
 				712861932A0F43EE00046DCE /* MarqueeTextView.swift */,
+				713D86762A11A92900AE32CE /* CustomSliderView.swift */,
 				71EA5BD12A10380D00B0F82D /* ColorPicker.swift */,
 				71EA5BD72A104B5100B0F82D /* SFSymbolPickerView.swift */,
 				712861902A0F431E00046DCE /* LogoView.swift */,
@@ -2304,6 +2308,7 @@
 				712861972A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCC2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71BE320C2A05AB3D00B76A69 /* Config+View.swift in Sources */,
+				713D86772A11A92900AE32CE /* CustomSliderView.swift in Sources */,
 				713D866C2A118C2C00AE32CE /* SandService._.swift in Sources */,
 				7197FB152964B4C0005EBBA4 /* GraniteModalContainerView.swift in Sources */,
 				717D388B2887A44D00165D7D /* Home+View.swift in Sources */,
@@ -2557,6 +2562,7 @@
 				712861982A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCD2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71A28E9A295239D100EAE8EE /* Int+Angle.swift in Sources */,
+				713D86782A11A92900AE32CE /* CustomSliderView.swift in Sources */,
 				713D866D2A118C2C00AE32CE /* SandService._.swift in Sources */,
 				71266D2129512DAF003CAB29 /* Overlay.swift in Sources */,
 				717D388C2887A44D00165D7D /* Home+View.swift in Sources */,
