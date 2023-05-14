@@ -10,18 +10,24 @@ import Combine
 import Granite
 
 class WindowVisibilityKit {
-    @Published var isVisible: Bool = false
+    @Published var isVisible: [String:Bool] = [:]
     
-    public func toggle() {
-        isVisible.toggle()
+    public init(ids: [String]) {
+        for id in ids {
+            isVisible[id] = false
+        }
     }
     
-    public func open() {
-        isVisible = true
+    public func toggle(_ id: String) {
+        isVisible[id] = isVisible[id] == true ? false : true
     }
     
-    public func close() {
-        isVisible = false
+    public func open(_ id: String) {
+        isVisible[id] = true
+    }
+    
+    public func close(_ id: String) {
+        isVisible[id] = false
     }
 }
 
@@ -41,7 +47,7 @@ final class WindowVisibilityManager: Equatable, SharableObject {
     let kit: WindowVisibilityKit
     
     init() {
-        kit = .init()
+        kit = .init(ids: InteractionManager.Kind.allCases.map { $0.rawValue })
         observe()
     }
     
@@ -54,25 +60,25 @@ final class WindowVisibilityManager: Equatable, SharableObject {
         }.store(in: &cancellables)
     }
     
-    public func toggle() {
+    public func toggle(id: String) {
         DispatchQueue.main.async {
-            self.kit.toggle()
+            self.kit.toggle(id)
         }
     }
     
-    public var isVisible: Bool {
-        kit.isVisible
+    public func isVisible(id: String) -> Bool {
+        kit.isVisible[id] == true
     }
     
-    public func open() {
+    public func open(id: String) {
         DispatchQueue.main.async {
-            self.kit.open()
+            self.kit.open(id)
         }
     }
     
-    public func close() {
+    public func close(id: String) {
         DispatchQueue.main.async {
-            self.kit.close()
+            self.kit.close(id)
         }
     }
 }

@@ -26,6 +26,9 @@ class SandGPTTokenizerManager: ObservableObject {
     
     let kit: SandGPTTokenizerKit
     
+    @Published var tokenCount: Int = 0
+    @Published var pause: Bool = false
+    
     init() {
         kit = .init()
     }
@@ -35,18 +38,20 @@ class SandGPTTokenizerManager: ObservableObject {
             .receive(on: RunLoop.main)
             .removeDuplicates()
             .sink { [weak self] newValue in
-            
+            self?.tokenCount = newValue
+            guard SandGPTTokenizerManager.shared.pause == false else { return }
             self?.objectWillChange.send()
         }.store(in: &cancellables)
     }
     
     public static func update(_ query: String) {
+        guard SandGPTTokenizerManager.shared.pause == false else { return }
         DispatchQueue.global(qos: .utility).async {
             SandGPTTokenizerManager.shared.kit.update(query)
         }
     }
     
     public static var tokenCount: Int {
-        SandGPTTokenizerManager.shared.kit.tokenCount
+        SandGPTTokenizerManager.shared.tokenCount
     }
 }

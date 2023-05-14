@@ -20,14 +20,19 @@ class PaneKit<Content: View>: Equatable, Codable {
     
     internal var componentStorage: [WindowComponent : CGSize] = [ : ]
     
-    let id: UUID = .init()
+    let id: String
     let window: PaneKit.Window
     let defaultSize: CGSize
     let content: () -> Content
     private var activePopover: NSPopover? = nil
     
-    init(defaultSize: CGSize, @ViewBuilder content : (@escaping () -> Content)) {
-        window = .init(size: defaultSize, maxSize: WindowComponent.Style.maxWindowSize)
+    init(id: String,
+         defaultSize: CGSize,
+         @ViewBuilder content : (@escaping () -> Content)) {
+        self.id = id
+        window = .init(id: id,
+                       size: defaultSize,
+                       maxSize: WindowComponent.Style.maxWindowSize)
         self.defaultSize = defaultSize
         self.content = content
     }
@@ -109,10 +114,10 @@ class PaneKit<Content: View>: Equatable, Codable {
     
     public required convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let id = try? container.decode(UUID.self, forKey: .id)
+        let id = try? container.decode(String.self, forKey: .id)
         let defaultSize = try? container.decode(CGSize.self, forKey: .defaultSize)
         
-        self.init(defaultSize: defaultSize ?? .zero) { EmptyView() as! Content }
+        self.init(id: id ?? UUID().uuidString, defaultSize: defaultSize ?? .zero) { EmptyView() as! Content }
     }
 }
 

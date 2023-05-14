@@ -31,8 +31,8 @@ extension Config: View {
     var mainView: some View {
         NavigationView {
             List {
-                Label(windowVisibility.isVisible ? "Hide" : "Show",
-                      systemImage: windowVisibility.isVisible ? "eye.slash" : "eye")
+                Label(windowVisibility.isVisible(id: InteractionManager.Kind.mount.rawValue) ? "Hide" : "Show",
+                      systemImage: windowVisibility.isVisible(id: InteractionManager.Kind.mount.rawValue) ? "eye.slash" : "eye")
                     .onTapGesture {
                         let nc = NotificationCenter.default
                         nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHideMount"), object: nil)

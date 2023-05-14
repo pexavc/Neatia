@@ -27,10 +27,11 @@ class InteractionManager {
     var promptStudioHotkeyRef: EventHotKeyRef?
     var hotKeysRegistered: [UInt32: Kind] = [:]
     
-    enum Kind {
+    enum Kind: String, CaseIterable {
         case mount
         case promptStudio
     }
+    
     init() {
         
     }

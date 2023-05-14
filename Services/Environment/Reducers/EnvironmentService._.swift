@@ -15,13 +15,15 @@ extension EnvironmentService {
         @Event var promptStudioHotkeyDetected: PromptStudioHotkeyDetected.Reducer
         
         func reduce(state: inout Center.State) {
-            state.pane = .init(defaultSize: WindowComponent.Style.defaultWindowSize) {
+            state.pane = .init(id: InteractionManager.Kind.mount.rawValue,
+                               defaultSize: WindowComponent.Style.defaultWindowSize) {
                 PaneView()
             }
             
             state.pane?.build()
             
-            state.promptStudioPane = .init(defaultSize: WindowComponent.Kind.promptStudio.defaultSize) {
+            state.promptStudioPane = .init(id: InteractionManager.Kind.promptStudio.rawValue,
+                                           defaultSize: WindowComponent.Kind.promptStudio.defaultSize) {
                 PromptStudioPaneView()
             }
             

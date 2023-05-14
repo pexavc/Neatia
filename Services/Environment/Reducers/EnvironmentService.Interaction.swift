@@ -185,6 +185,8 @@ extension EnvironmentService {
                 return
             }
             
+            SandGPTTokenizerManager.shared.pause = meta.isActive
+            
             if meta.isActive {
                 state.pane?.display {
                     WindowComponent(WindowComponent.Kind.query)

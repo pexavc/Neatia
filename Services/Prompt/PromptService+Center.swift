@@ -6,17 +6,13 @@ extension PromptService {
     struct Center: GraniteCenter {
         struct State: GraniteState {
             var customPrompts: [CustomPrompt] = []
-            
-            var commands: [CustomCommand] {
-                customPrompts.map {  $0.command }
-            }
         }
         
         @Event var create: Create.Reducer
         @Event var modify: Modify.Reducer
         @Event var delete: Delete.Reducer
         
-        @Store(persist: "neatia.persistence.prompt.0000", autoSave: true) public var state: State
+        @Store(persist: "neatia.persistence.prompts.0001", autoSave: true) public var state: State
     }
     
     static var maxTokenCount: Int {
@@ -28,7 +24,7 @@ extension PromptService {
     }
     
     var customCommands: [String] {
-        state.commands.map { $0.command.lowercased() }
+        state.customPrompts.map({ $0.command }).map({ $0.command.lowercased() })
     }
     
     var systemPrompts: [Prompts] {

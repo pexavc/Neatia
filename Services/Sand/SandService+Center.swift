@@ -31,10 +31,6 @@ extension SandService {
             var isCommandSet: Bool {
                 commandSet != nil
             }
-            
-            var tokenCount: Int {
-                SandGPTTokenizerManager.tokenCount
-            }
         }
         
         @Event public var ask: Ask.Reducer

@@ -29,9 +29,13 @@ extension PaneKit {
             .publisher(for: NSNotification.Name("nyc.stoic.Neatia.PaneKitClickedOutside"))
         internal var cancellables = Set<AnyCancellable>()
         
-        init(size: CGSize = .init(800, 48),
+        let id: String
+        
+        init(id: String,
+             size: CGSize = .init(800, 48),
              maxSize: CGSize = .init(800, 750),
              observeEvents: Bool = false) {
+            self.id = id
             self.size = size
             self.maxSize = maxSize
             self.observeEvents = observeEvents
@@ -65,7 +69,7 @@ extension PaneKit {
         }
         
         func toggle() {
-            if windowVisibility.isVisible {
+            if windowVisibility.isVisible(id: self.id) {
                 main?.close()
             } else {
                 main?.level = .floating
@@ -73,16 +77,16 @@ extension PaneKit {
                 main?.level = .normal
             }
             
-            windowVisibility.toggle()
+            windowVisibility.toggle(id: self.id)
         }
         
         func observe() {
             pubClickedOutside.sink { [weak self] _ in
-                guard self?.windowVisibility.isVisible == true else { return }
+                guard self?.windowVisibility.isVisible(id: self?.id ?? "") == true else { return }
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.main?.close()
-                    self?.windowVisibility.close()
+                    self?.windowVisibility.close(id: self?.id ?? "")
                 }
             }.store(in: &cancellables)
         }
