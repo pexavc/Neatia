@@ -34,6 +34,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
     var baseColorHex: String
     var description: String
     var dateCreated: Date
+    var config: PromptConfig
     
     var hasSubcommand: Bool {
         false
@@ -43,7 +44,8 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
          prompt: String,
          iconName: String,
          baseColorHex: String,
-         description: String) {
+         description: String,
+         config: PromptConfig? = nil) {
         
         self.command = command
         self.prompt = prompt
@@ -51,6 +53,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
         self.baseColorHex = baseColorHex
         self.description = description
         self.dateCreated = .init()
+        self.config = config ?? .init()
     }
 }
 

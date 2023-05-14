@@ -35,6 +35,7 @@ class SandGPT {
     
     func ask<E: EventExecutable>(_ prompt: String,
                                  withSystemPrompt systemPrompt: String? = nil,
+                                 withConfig config: PromptConfig,
                                  event: E) {
         print("[SandGPT] prompt token count: \(prompt.components(separatedBy: " ").count)")
         guard prompt.isNotEmpty else { return }
@@ -69,7 +70,8 @@ class SandGPT {
                     var replyDebouncerInit: CGFloat = CFAbsoluteTimeGetCurrent()
                     var reply: String = ""
                     for try await nextWord in try await client.streamedAnswer.ask(prompt,
-                                                                                        withSystemPrompt: systemPrompt) {
+                                                                                  withSystemPrompt: systemPrompt,
+                    withConfig: config) {
                         
                         SandGPT.shared.updateCompletedTimer(event)
                         

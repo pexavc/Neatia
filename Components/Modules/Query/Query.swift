@@ -24,4 +24,8 @@ struct Query: GraniteComponent {
             return "Ask something"
         }
     }
+    
+    var maxTokenCount: Int {
+        prompts.maxTokenCount(sand.state.commandSet)
+    }
 }

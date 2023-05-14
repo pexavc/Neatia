@@ -144,58 +144,77 @@ extension CommandToolbar {
     
     func fileSelectionView(_ sc: any AnySubcommand) -> some View {
         
-        let acceptedFileExtensions = sand.state.subCommandSet?[sc.id]?.value.acceptedFileExtensions ?? []
-        
         let scValue = sand.state.subCommandSet?[sc.id]?.value
-        let url = sand.state.subCommandFileSet?[sc.id]?[scValue?.id ?? ""]
-        return AppBlurView(padding: .init(url == nil ? 8 : 14, 0),
+        
+        let acceptedFileExtensions = scValue?.acceptedFileExtensions ?? []
+        
+        let baseEditorProperties: FileTextEditorView.Properties = .init(titleText: scValue?.fileDescription.capitalized ?? "Text Editor", maxTokenCount: scValue?.fileMaxTokenCount ?? SubcommandValue.defaultMaxTokenCount, isEditing: false, documentContents: "")
+        
+        if state.editorProperties == nil {
+            center.$state.binding.editorProperties.wrappedValue = baseEditorProperties
+        } else {
+            center.$state.binding.editorProperties.wrappedValue?.isModifiable(true)
+        }
+        
+        let fileProperties = center.state.editorProperties ?? baseEditorProperties
+        
+        let fileDescriptor = sand.state.subCommandFileSet?[sc.id]?[scValue?.id ?? ""]
+        return AppBlurView(padding: .init(fileDescriptor == nil ? 8 : 14, 0),
                            tintColor: Brand.Colors.black.opacity(0.3)) {
-                    HStack(spacing: 8) {
-                        if scValue != nil, let fileUrl = url {
-                            
-                            Text(fileUrl.lastPathComponent)
-                               .lineLimit(1)
-                               .font(Fonts.live(.subheadline, .bold))
-                               .foregroundColor(.foreground)
-                               .environment(\.colorScheme, .dark)
-                            
-                            Spacer()
-                        }
-                       
-                        IconView(systemName: "doc.fill.badge.plus",
-                                withBlur: true)
-                            .frame(width: WindowComponent.Style.defaultElementSize.height, height: WindowComponent.Style.defaultElementSize.height)
-                   }
-               }
-               .frame(width: url == nil ? WindowComponent.Style.defaultElementSize.height : 136, height: WindowComponent.Style.defaultElementSize.height)
-               .padding(.trailing, url == nil ? 8 : 14)
-               .animation(.default, value: url == nil)
-               .onTapGesture {
-                   let panel = NSOpenPanel()
-                   panel.allowsMultipleSelection = false
-                   panel.canChooseDirectories = false
-                   if panel.runModal() == .OK {
-                       let url = panel.url
-                       let fileExt = panel.url?.pathExtension
-                       let fileName = panel.url?.lastPathComponent
-                       
-                       if acceptedFileExtensions.contains((fileExt ?? "").lowercased()),
-                          let fileURL = url {
+            
+                    PopupableView(.mount,
+                                  size: .init(600, 600),
+                                  edge: .maxY, {
+                        
+                        HStack(spacing: 8) {
+                            if scValue != nil, let description = fileDescriptor {
+                                
+                                Text(description)
+                                   .lineLimit(1)
+                                   .font(Fonts.live(.subheadline, .bold))
+                                   .foregroundColor(.foreground)
+                                   .environment(\.colorScheme, .dark)
+                                
+                                Spacer()
+                            }
                            
-                           sand
-                               .center
-                               .setSubCommandFile
-                               .send(SandService
-                                   .SetSubCommandFile
-                                   .Meta(id: sc.id,
-                                         subcommandValueId: sand.state.subCommandSet?[sc.id]?.value.id ?? "",
-                                         fileURL: fileURL))
-                       } else {
-                           center.$state.binding.showAlert.wrappedValue.toggle()
+                            IconView(systemName: "doc.fill.badge.plus",
+                                    withBlur: true)
+                                .frame(width: WindowComponent.Style.defaultElementSize.height, height: WindowComponent.Style.defaultElementSize.height)
                        }
-                       print("[CommandToolbar] file selected: \(fileExt)")
-                   }
-               }.alert("Only these file extensions are allowed: \(acceptedFileExtensions.joined(separator: ", "))", isPresented: center.$state.binding.showAlert) {
+                    }) {
+                        FileTextEditorView(fileProperties)
+                            .attach({ output in
+                                if output.isEditing == false {
+                                    center.$state.binding.editorProperties.wrappedValue = nil
+                                }
+                            }, at: \.closeEditor)
+                            .attach({ output in
+                                if output.isEditing {
+                                    center.$state.binding.editorProperties.wrappedValue?.updateContents(output.documentContents)
+                                }
+                                
+                                //Update SandService
+                                guard let contents = state.editorProperties?.documentContents else {
+                                    return
+                                }
+                                sand
+                                   .center
+                                   .setSubCommandFileContents
+                                   .send(SandService
+                                       .SetSubCommandFileContents
+                                       .Meta(id: sc.id,
+                                             subcommandValueId: scValue?.id ?? "",
+                                             contents: contents))
+                            }, at: \.confirmEditor)
+                    }
+                    .frame(height: WindowComponent.Style.defaultElementSize.height)
+            
+               }
+               .frame(width: fileDescriptor == nil ? WindowComponent.Style.defaultElementSize.height : 136, height: WindowComponent.Style.defaultElementSize.height)
+               .padding(.trailing, fileDescriptor == nil ? 8 : 14)
+               .animation(.default, value: fileDescriptor == nil)
+               .alert("Only these file extensions are allowed: \(acceptedFileExtensions.joined(separator: ", "))", isPresented: center.$state.binding.showFileExtAlert) {
                    Button("OK", role: .cancel) { }
                }
         

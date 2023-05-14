@@ -77,9 +77,9 @@ extension Query: View {
                         HStack {
                             Spacer()
                             
-                            Text("\(SandGPTTokenizerManager.shared.tokenCount)/\(SandService.maxTokenCount)")
+                            Text("\(SandGPTTokenizerManager.shared.tokenCount)/\(maxTokenCount)")
                                 .font(Fonts.live(.caption, .bold))
-                                .foregroundColor((SandGPTTokenizerManager.tokenCount <= SandService.maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
+                                .foregroundColor((SandGPTTokenizerManager.tokenCount <= maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
                             
                         }
                         

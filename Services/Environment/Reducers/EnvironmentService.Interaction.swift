@@ -64,7 +64,7 @@ extension EnvironmentService {
             guard let meta = self.meta else { return }
             switch meta.kind {
             case .mount:
-                break
+                state.pane?.showPopover(size: meta.size, bounds: meta.bounds,preferredEdge: meta.preferredEdge, content: meta.content)
             case .promptStudio:
                 state.promptStudioPane?.showPopover(size: meta.size, bounds: meta.bounds,preferredEdge: meta.preferredEdge, content: meta.content)
             }
@@ -184,8 +184,6 @@ extension EnvironmentService {
                 state.isCommandActive == false*/ {
                 return
             }
-            
-            SandGPTTokenizerManager.shared.pause = meta.isActive
             
             if meta.isActive {
                 state.pane?.display {

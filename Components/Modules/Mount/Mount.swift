@@ -2,8 +2,6 @@ import Granite
 import SandKit
 import SwiftUI
 
-//API KEY: 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
-
 struct Mount: GraniteComponent {
     @Command var center: Center
     

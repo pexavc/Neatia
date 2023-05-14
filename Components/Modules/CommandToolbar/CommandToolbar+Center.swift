@@ -6,7 +6,9 @@ extension CommandToolbar {
         struct State: GraniteState {
             var scSelected: String = ""
             var toggleDropdown: Bool = false
-            var showAlert: Bool = false
+            var showFileExtAlert: Bool = false
+            
+            var editorProperties: FileTextEditorView.Properties? = nil
         }
         
         @Store public var state: State

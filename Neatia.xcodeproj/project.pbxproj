@@ -62,6 +62,14 @@
 		712BEB6C2907649600D257B7 /* AnimationCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB6B2907649600D257B7 /* AnimationCompletion.swift */; };
 		712BEB6D2907649600D257B7 /* AnimationCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB6B2907649600D257B7 /* AnimationCompletion.swift */; };
 		713D16AF2A0EF20B00F46AC3 /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */; };
+		713D86692A118C2400AE32CE /* SandService.SubCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86682A118C2400AE32CE /* SandService.SubCommands.swift */; };
+		713D866A2A118C2400AE32CE /* SandService.SubCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86682A118C2400AE32CE /* SandService.SubCommands.swift */; };
+		713D866C2A118C2C00AE32CE /* SandService._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D866B2A118C2C00AE32CE /* SandService._.swift */; };
+		713D866D2A118C2C00AE32CE /* SandService._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D866B2A118C2C00AE32CE /* SandService._.swift */; };
+		713D866F2A118D2300AE32CE /* FileTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D866E2A118D2300AE32CE /* FileTextEditorView.swift */; };
+		713D86702A118D2300AE32CE /* FileTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D866E2A118D2300AE32CE /* FileTextEditorView.swift */; };
+		713D86742A118E3F00AE32CE /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86732A118E3F00AE32CE /* FileProcessor.swift */; };
+		713D86752A118E3F00AE32CE /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86732A118E3F00AE32CE /* FileProcessor.swift */; };
 		713FFDC62A0DB19000E6F9AF /* Brand.Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDC52A0DB19000E6F9AF /* Brand.Color.swift */; };
 		713FFDC72A0DB19000E6F9AF /* Brand.Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDC52A0DB19000E6F9AF /* Brand.Color.swift */; };
 		713FFDC92A0DB1B100E6F9AF /* Brand.Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDC82A0DB1B100E6F9AF /* Brand.Font.swift */; };
@@ -585,6 +593,10 @@
 		712BEB652907502600D257B7 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		712BEB6B2907649600D257B7 /* AnimationCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCompletion.swift; sourceTree = "<group>"; };
 		713D16AD2A0EF1CC00F46AC3 /* GPT3-Tokenizer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "GPT3-Tokenizer"; path = "../GPT3-Tokenizer"; sourceTree = "<group>"; };
+		713D86682A118C2400AE32CE /* SandService.SubCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService.SubCommands.swift; sourceTree = "<group>"; };
+		713D866B2A118C2C00AE32CE /* SandService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService._.swift; sourceTree = "<group>"; };
+		713D866E2A118D2300AE32CE /* FileTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTextEditorView.swift; sourceTree = "<group>"; };
+		713D86732A118E3F00AE32CE /* FileProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
 		713FFDC52A0DB19000E6F9AF /* Brand.Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.Color.swift; sourceTree = "<group>"; };
 		713FFDC82A0DB1B100E6F9AF /* Brand.Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.Font.swift; sourceTree = "<group>"; };
 		713FFDCB2A0DD27E00E6F9AF /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
@@ -1029,6 +1041,22 @@
 				712BEB5A29074CFB00D257B7 /* CameraView.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		713D86712A118D2800AE32CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				713D866E2A118D2300AE32CE /* FileTextEditorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		713D86722A118E3400AE32CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				713D86732A118E3F00AE32CE /* FileProcessor.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7145EF0B28D43F1700BFD19A /* Extensions */ = {
@@ -1649,8 +1677,10 @@
 		71CEBE322A077CEE00DE6CDE /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
+				713D866B2A118C2C00AE32CE /* SandService._.swift */,
 				71CEBE372A077E7800DE6CDE /* SandService.Ask.swift */,
 				71EDCFB12A0864F100857066 /* SandService.Commands.swift */,
+				713D86682A118C2400AE32CE /* SandService.SubCommands.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -1784,6 +1814,8 @@
 		71EDCFB72A08832100857066 /* CommandToolbar */ = {
 			isa = PBXGroup;
 			children = (
+				713D86722A118E3400AE32CE /* Models */,
+				713D86712A118D2800AE32CE /* Views */,
 				71EDCFB82A08832100857066 /* CommandToolbar+Center.swift */,
 				71EDCFB92A08832100857066 /* CommandToolbar+View.swift */,
 				71EDCFBA2A08832100857066 /* CommandToolbar.swift */,
@@ -2083,6 +2115,7 @@
 				71A28E8D295239D100EAE8EE /* Double+Angle.swift in Sources */,
 				71A28DDF295232E300EAE8EE /* MovingNumbersView.swift in Sources */,
 				71A28E02295233A300EAE8EE /* Brand.swift in Sources */,
+				713D866F2A118D2300AE32CE /* FileTextEditorView.swift in Sources */,
 				71A28E8B295239D100EAE8EE /* String+Convenience.swift in Sources */,
 				71A28DF1295232E300EAE8EE /* PressAndHorizontalDragGesture.swift in Sources */,
 				718148BD2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */,
@@ -2179,6 +2212,7 @@
 				71A28E7F295239D100EAE8EE /* Color+Convenience.swift in Sources */,
 				71BE324F2A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */,
 				712861912A0F431E00046DCE /* LogoView.swift in Sources */,
+				713D86742A118E3F00AE32CE /* FileProcessor.swift in Sources */,
 				71DF109B28CC698800559DBC /* RequestMethod.swift in Sources */,
 				7197FB172964B4C0005EBBA4 /* GraniteSheetPresentationStyle.swift in Sources */,
 				71BE32192A05B53800B76A69 /* GeneralConfigView.swift in Sources */,
@@ -2270,6 +2304,7 @@
 				712861972A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCC2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71BE320C2A05AB3D00B76A69 /* Config+View.swift in Sources */,
+				713D866C2A118C2C00AE32CE /* SandService._.swift in Sources */,
 				7197FB152964B4C0005EBBA4 /* GraniteModalContainerView.swift in Sources */,
 				717D388B2887A44D00165D7D /* Home+View.swift in Sources */,
 				71EA5BCF2A10343E00B0F82D /* PromptStudioEditorView.swift in Sources */,
@@ -2286,6 +2321,7 @@
 				71A28DF5295232E300EAE8EE /* GraphPage.swift in Sources */,
 				71A28E79295239D100EAE8EE /* GeometryProxy+Convenience.swift in Sources */,
 				71FBA7FB296D16110090B630 /* GraniteScrollViewPositionIndicator.swift in Sources */,
+				713D86692A118C2400AE32CE /* SandService.SubCommands.swift in Sources */,
 				71EDCFC02A08832100857066 /* CommandToolbar.swift in Sources */,
 				71CEBDDD2A07175700DE6CDE /* EnvironmentService.swift in Sources */,
 				71A28E0A295233B200EAE8EE /* Fonts.swift in Sources */,
@@ -2332,6 +2368,7 @@
 				71A28E8E295239D100EAE8EE /* Double+Angle.swift in Sources */,
 				7197FB202964B4C0005EBBA4 /* GraniteSheet+View.swift in Sources */,
 				71A28DE0295232E300EAE8EE /* MovingNumbersView.swift in Sources */,
+				713D86702A118D2300AE32CE /* FileTextEditorView.swift in Sources */,
 				71A28E03295233A300EAE8EE /* Brand.swift in Sources */,
 				71A28E8C295239D100EAE8EE /* String+Convenience.swift in Sources */,
 				718148BE2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */,
@@ -2428,6 +2465,7 @@
 				71A28E84295239D100EAE8EE /* RepresentableAsInt.swift in Sources */,
 				71BE32502A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */,
 				712861922A0F431E00046DCE /* LogoView.swift in Sources */,
+				713D86752A118E3F00AE32CE /* FileProcessor.swift in Sources */,
 				71A28E80295239D100EAE8EE /* Color+Convenience.swift in Sources */,
 				7197FB182964B4C0005EBBA4 /* GraniteSheetPresentationStyle.swift in Sources */,
 				71BE321A2A05B53800B76A69 /* GeneralConfigView.swift in Sources */,
@@ -2519,6 +2557,7 @@
 				712861982A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCD2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71A28E9A295239D100EAE8EE /* Int+Angle.swift in Sources */,
+				713D866D2A118C2C00AE32CE /* SandService._.swift in Sources */,
 				71266D2129512DAF003CAB29 /* Overlay.swift in Sources */,
 				717D388C2887A44D00165D7D /* Home+View.swift in Sources */,
 				71EA5BD02A10343E00B0F82D /* PromptStudioEditorView.swift in Sources */,
@@ -2535,6 +2574,7 @@
 				7197FAD72964A36A005EBBA4 /* GraniteDisclaimerView.swift in Sources */,
 				71BEA9C828E3D95B00B58933 /* String.swift in Sources */,
 				71A28DF6295232E300EAE8EE /* GraphPage.swift in Sources */,
+				713D866A2A118C2400AE32CE /* SandService.SubCommands.swift in Sources */,
 				71EDCFC12A08832100857066 /* CommandToolbar.swift in Sources */,
 				71CEBDDE2A07175700DE6CDE /* EnvironmentService.swift in Sources */,
 				7197FAD32964A0AA005EBBA4 /* GraniteTimerView.swift in Sources */,

@@ -8,6 +8,7 @@
 import Foundation
 import Granite
 import SwiftUI
+import GPT3_Tokenizer
 
 struct PromptStudioEditorView: View {
     @GraniteAction<Void> var closeCreatePrompt
@@ -30,6 +31,8 @@ struct PromptStudioEditorView: View {
     @State var promptColor: String = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
     @State var promptIcon: String
     @State var showError: Bool = false
+    
+    let tokenizer: GPT3Tokenizer = .init()
     
     var asCustomPrompt: CustomPrompt {
         .init(.init(promptCommand),
@@ -58,19 +61,20 @@ struct PromptStudioEditorView: View {
     }
     
     var promptTokenCount: Int {
-        SandGPT.shared.gpt3Tokenizer.encoder.enconde(text: promptBody).count
+        //SandGPT.shared.gpt3Tokenizer.encoder.enconde(text: promptBody).count
+        tokenizer.encoder.enconde(text: promptBody).count
     }
     
     var isValid: Bool {
         promptCommand.isNotEmpty &&
         promptBody.isNotEmpty &&
         promptDescription.isNotEmpty &&
-        promptTokenCount <= PromptService.maxTokenCount
+        promptTokenCount <= PromptService.customPromptMaxTokenCount
     }
     
     var errorMessage: String {
-        if promptTokenCount <= PromptService.maxTokenCount {
-            return "Reduce the token count of your instructions to \(PromptService.maxTokenCount) tokens or less."
+        if promptTokenCount <= PromptService.customPromptMaxTokenCount {
+            return "Reduce the token count of your instructions to \(PromptService.customPromptMaxTokenCount) tokens or less."
         }
         
         var string: String = "You still need to add "
@@ -214,9 +218,9 @@ struct PromptStudioEditorView: View {
                         HStack {
                             Spacer()
                             
-                            Text("\(promptTokenCount)/\(PromptService.maxTokenCount)")
+                            Text("\(promptTokenCount)/\(PromptService.customPromptMaxTokenCount)")
                                 .font(Fonts.live(.caption, .bold))
-                                .foregroundColor((promptTokenCount <= PromptService.maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
+                                .foregroundColor((promptTokenCount <= PromptService.customPromptMaxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
                             
                         }
                         

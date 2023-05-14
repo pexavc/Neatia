@@ -15,8 +15,24 @@ extension PromptService {
         @Store(persist: "neatia.persistence.prompts.0001", autoSave: true) public var state: State
     }
     
-    static var maxTokenCount: Int {
+    static var normalPromptMaxTokenCount: Int {
+        2000
+    }
+    
+    static var systemPromptMaxTokenCount: Int {
         1200
+    }
+    
+    static var customPromptMaxTokenCount: Int {
+        1200
+    }
+    
+    func maxTokenCount(_ command: String?) -> Int {
+        if let prompt = prompt(command) {
+            return prompt.maxTokens
+        } else {
+            return PromptService.normalPromptMaxTokenCount
+        }
     }
     
     var commands: [String] {

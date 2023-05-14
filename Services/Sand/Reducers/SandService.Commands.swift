@@ -28,6 +28,8 @@ extension SandService {
                         .CommandMenuActivated
                         .Meta(isActive: meta.isActive))
             
+            SandGPTTokenizerManager.shared.pause = meta.isActive
+            
             if meta.isActive {
                 state.commandAutoComplete = prompts.commands
             } else {
@@ -62,6 +64,8 @@ extension SandService {
             
             state.commandSet = meta.reset ? nil : meta.value.lowercased().replacingOccurrences(of: "/", with: "")
             
+            SandGPTTokenizerManager.shared.pause = false
+            
             if let command = state.commandSet {
                 if let basic = prompts.prompt(command) {
                     state.subCommandSet = [:]
@@ -77,96 +81,6 @@ extension SandService {
                 
                 state.query = ""
             }
-        }
-    }
-    
-    struct SetSubCommand: GraniteReducer {
-        typealias Center = SandService.Center
-        
-        struct Meta: GranitePayload {
-            let id: String
-            let subcommandValueId: String
-        }
-        
-        @Payload var meta: Meta?
-        
-        @Relay var prompts: PromptService
-        
-        func reduce(state: inout Center.State) {
-            guard let meta = self.meta else { return }
-            
-            if let command = state.commandSet {
-                if let basic = prompts.prompt(command) {
-                    for subcommand in basic.subCommands {
-                        if let value = subcommand.values.first(where: { $0.id == meta.subcommandValueId }) {
-                            state.subCommandSet?[meta.id] = Prompts.subCommand(subcommand, scValue: value)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    struct SetSubCommandFile: GraniteReducer {
-        typealias Center = SandService.Center
-        
-        struct Meta: GranitePayload {
-            let id: String
-            let subcommandValueId: String
-            let fileURL: URL
-        }
-        
-        @Payload var meta: Meta?
-        
-        func reduce(state: inout Center.State) {
-            guard let meta = self.meta else { return }
-            
-            state.subCommandFileSet?[meta.id]?[meta.subcommandValueId] = meta.fileURL
-            
-            //TODO: should be "smarter"
-            if let scv = state.subCommandSet?[meta.id],
-               scv.value.acceptsFile,
-               scv.value.acceptedFileExtensions.contains(meta.fileURL.pathExtension.lowercased()) {
-                
-                var value = scv.value
-                
-                if let pdf = PDFDocument(url: meta.fileURL) {
-                    let pageCount = pdf.pageCount
-                    let documentContent = NSMutableAttributedString()
-
-                    for i in 0 ..< pageCount {
-                        guard let page = pdf.page(at: i) else { continue }
-                        guard let pageContent = page.attributedString else { continue }
-                        documentContent.append(pageContent)
-                    }
-                    
-                    print("[SandService] [SetSCVFile] \(documentContent.string)")
-                    
-                    value.updateFileContents(documentContent.string)
-                    state.subCommandSet?[meta.id] = Prompts.Subcommand(id: scv.id, value: value)
-                } else {
-                    print("[SandService] [SetSCVFile] error, couldn't create pdf")
-                }
-            } else {
-                print("[SandService] [SetSCVFile] set command is nil? \(state.subCommandSet?[meta.id] == nil)")
-            }
-        }
-        
-        
-    }
-    
-    struct Reset: GraniteReducer {
-        typealias Center = SandService.Center
-        
-        func reduce(state: inout Center.State) {
-            
-            state.query = ""
-            state.response = ""
-            state.isResponding = false
-            state.commandAutoComplete = []
-            state.subCommandSet = nil
-            state.subCommandFileSet = nil
-            state.commandSet = nil
         }
     }
 }

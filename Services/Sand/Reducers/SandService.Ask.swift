@@ -14,17 +14,21 @@ extension SandService {
         func reduce(state: inout Center.State) {
             guard SandGPT.shared.isResponding == false else { return }
             
+            let maxTokenCount: Int = prompts.maxTokenCount(state.commandSet)
+            
             let systemPrompt: String? = nil
             
             state.lastError = nil
             
             let userPrompt: String
             
+            let engineeredPrompt: BasicPrompt? = prompts.prompt(state.commandSet)
+            
             //Prompt Generation
             if let command = state.commandSet,
-               let prompt = prompts.prompt(command) {
-                if SandGPTTokenizerManager.shared.kit.tokenCount > prompt.maxTokens {
-                    state.lastError = .init(message: "Please reduce the amount of text in order reach the token count limit. You are currently at \(SandGPTTokenizerManager.shared.kit.tokenCount)/\(SandService.maxTokenCount)")
+               let prompt = engineeredPrompt {
+                if SandGPTTokenizerManager.shared.kit.tokenCount > maxTokenCount {
+                    state.lastError = .init(message: "Please reduce the amount of text in order reach the token count limit. You are currently at \(SandGPTTokenizerManager.shared.kit.tokenCount)/\(maxTokenCount)")
                     
                     return
                 }
@@ -44,14 +48,18 @@ extension SandService {
                 } else {
                     userPrompt = prompt.create(state.query)
                 }
+                print("[SandService] Using /\(command.capitalized) \(prompt.isSystemPrompt ? "" : "(custom)") ------------- ")
+                print(prompt.debugDescription)
             } else {
-                if SandGPTTokenizerManager.shared.kit.tokenCount > SandService.maxTokenCount {
-                    state.lastError = .init(message: "Please reduce the amount of text in order reach the token count limit. You are currently at \(SandGPTTokenizerManager.shared.kit.tokenCount)/\(SandService.maxTokenCount)")
+                if SandGPTTokenizerManager.shared.kit.tokenCount > maxTokenCount {
+                    state.lastError = .init(message: "Please reduce the amount of text in order reach the token count limit. You are currently at \(SandGPTTokenizerManager.shared.kit.tokenCount)/\(maxTokenCount)")
                     
                     return
                 }
                 
                 userPrompt = state.query
+                
+                print("[SandService] Normal Query --------------------- ")
             }
             
             //UI
@@ -71,6 +79,7 @@ extension SandService {
             
             SandGPT.shared.ask(userPrompt,
                                withSystemPrompt: systemPrompt,
+                               withConfig: engineeredPrompt?.config ?? .init(),
                                event: received)
         }
     }

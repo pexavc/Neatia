@@ -19,7 +19,7 @@ extension SandService {
             
             var commandSet: String? = nil
             var subCommandSet: [String: Prompts.Subcommand]? = nil
-            var subCommandFileSet: [String: [String: URL]]? = nil
+            var subCommandFileSet: [String: [String: String]]? = nil
             var lastError: Error? = nil {
                 didSet {
                     errorExists = lastError != nil
@@ -38,6 +38,7 @@ extension SandService {
         @Event public var setCommand: SetCommand.Reducer
         @Event public var setSubCommand: SetSubCommand.Reducer
         @Event public var setSubCommandFile: SetSubCommandFile.Reducer
+        @Event public var setSubCommandFileContents: SetSubCommandFileContents.Reducer
         
         @Event public var reset: Reset.Reducer
         
@@ -46,9 +47,5 @@ extension SandService {
     
     struct Error: GraniteModel {
         var message: String
-    }
-    
-    static var maxTokenCount: Int {
-        2000
     }
 }
