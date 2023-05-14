@@ -6,13 +6,14 @@ struct CommandToolbar: GraniteComponent {
     @Command var center: Center
     
     @Relay var sand: SandService
+    @Relay var prompts: PromptService
     
     var prompt: BasicPrompt {
-        Prompts.all[sand.state.commandSet ?? .empty] ?? Prompts.Empty()
+        prompts.prompt(sand.state.commandSet) ?? Prompts.Empty()
     }
     
-    var promptType: Prompts {
-        sand.state.commandSet ?? .empty
+    var command: String {
+        sand.state.commandSet ?? "UNKNOWN"
     }
     
     var indexOfSCSelected: CGFloat {

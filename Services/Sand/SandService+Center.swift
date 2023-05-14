@@ -17,7 +17,7 @@ extension SandService {
             
             var commandAutoComplete: [String] = []
             
-            var commandSet: Prompts? = nil
+            var commandSet: String? = nil
             var subCommandSet: [String: Prompts.Subcommand]? = nil
             var subCommandFileSet: [String: [String: URL]]? = nil
             var lastError: Error? = nil {

@@ -485,6 +485,8 @@
 		71EA5BD92A104B5100B0F82D /* SFSymbolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BD72A104B5100B0F82D /* SFSymbolPickerView.swift */; };
 		71EA5BDB2A1052AD00B0F82D /* PromptService._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BDA2A1052AD00B0F82D /* PromptService._.swift */; };
 		71EA5BDC2A1052AD00B0F82D /* PromptService._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BDA2A1052AD00B0F82D /* PromptService._.swift */; };
+		71EA5BDE2A105F0C00B0F82D /* PromptStudioCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BDD2A105F0C00B0F82D /* PromptStudioCollectionView.swift */; };
+		71EA5BDF2A105F0C00B0F82D /* PromptStudioCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BDD2A105F0C00B0F82D /* PromptStudioCollectionView.swift */; };
 		71EDCFAF2A085C5800857066 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFAE2A085C5800857066 /* TableView.swift */; };
 		71EDCFB02A085C5800857066 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFAE2A085C5800857066 /* TableView.swift */; };
 		71EDCFB22A0864F100857066 /* SandService.Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFB12A0864F100857066 /* SandService.Commands.swift */; };
@@ -791,6 +793,7 @@
 		71EA5BD42A103BED00B0F82D /* PaneKit.PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaneKit.PopupView.swift; sourceTree = "<group>"; };
 		71EA5BD72A104B5100B0F82D /* SFSymbolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolPickerView.swift; sourceTree = "<group>"; };
 		71EA5BDA2A1052AD00B0F82D /* PromptService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptService._.swift; sourceTree = "<group>"; };
+		71EA5BDD2A105F0C00B0F82D /* PromptStudioCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptStudioCollectionView.swift; sourceTree = "<group>"; };
 		71EDCFAE2A085C5800857066 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		71EDCFB12A0864F100857066 /* SandService.Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService.Commands.swift; sourceTree = "<group>"; };
 		71EDCFB82A08832100857066 /* CommandToolbar+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandToolbar+Center.swift"; sourceTree = "<group>"; };
@@ -1773,6 +1776,7 @@
 			isa = PBXGroup;
 			children = (
 				71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */,
+				71EA5BDD2A105F0C00B0F82D /* PromptStudioCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2132,6 +2136,7 @@
 				71A28DF7295232E300EAE8EE /* Haptic.swift in Sources */,
 				7110C88C2A02599A00824D58 /* TranslucentWindowBackground.swift in Sources */,
 				71CEBE0A2A0723ED00DE6CDE /* EnvironmentService._.swift in Sources */,
+				71EA5BDE2A105F0C00B0F82D /* PromptStudioCollectionView.swift in Sources */,
 				71EDCFE12A094FF900857066 /* PaneKit.Window.swift in Sources */,
 				71DF109928CC698800559DBC /* EmptyResponse.swift in Sources */,
 				71EDCFBE2A08832100857066 /* CommandToolbar+View.swift in Sources */,
@@ -2380,6 +2385,7 @@
 				71A28DF8295232E300EAE8EE /* Haptic.swift in Sources */,
 				71DF109A28CC698800559DBC /* EmptyResponse.swift in Sources */,
 				71CEBE0B2A0723ED00DE6CDE /* EnvironmentService._.swift in Sources */,
+				71EA5BDF2A105F0C00B0F82D /* PromptStudioCollectionView.swift in Sources */,
 				71EDCFE22A094FF900857066 /* PaneKit.Window.swift in Sources */,
 				71DF10B028CC698800559DBC /* NetworkService+Request.swift in Sources */,
 				71EDCFBF2A08832100857066 /* CommandToolbar+View.swift in Sources */,

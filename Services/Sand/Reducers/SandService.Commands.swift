@@ -14,6 +14,7 @@ extension SandService {
         @Payload var meta: Meta?
         
         @Relay var environment: EnvironmentService
+        @Relay var prompts: PromptService
         
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
@@ -28,7 +29,7 @@ extension SandService {
                         .Meta(isActive: meta.isActive))
             
             if meta.isActive {
-                state.commandAutoComplete = Prompts.allCases.map { $0.rawValue.capitalized }
+                state.commandAutoComplete = prompts.commands
             } else {
                 state.commandAutoComplete = []
             }
@@ -46,6 +47,7 @@ extension SandService {
         @Payload var meta: Meta?
         
         @Relay var environment: EnvironmentService
+        @Relay var prompts: PromptService
         
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
@@ -58,10 +60,10 @@ extension SandService {
                         .CommandToolbarActivated
                         .Meta(isActive: meta.reset == false))
             
-            state.commandSet = meta.reset ? nil : .init(rawValue: meta.value.lowercased().replacingOccurrences(of: "/", with: ""))
+            state.commandSet = meta.reset ? nil : meta.value.lowercased().replacingOccurrences(of: "/", with: "")
             
             if let command = state.commandSet {
-                if let basic = Prompts.all[command] {
+                if let basic = prompts.prompt(command) {
                     state.subCommandSet = [:]
                     state.subCommandFileSet = [:]
                     
@@ -70,9 +72,7 @@ extension SandService {
                             state.subCommandSet?[subcommand.id] = Prompts.subCommand(subcommand, scValue: value)
                             state.subCommandFileSet?[subcommand.id] = [:]
                         }
-                        
                     }
-                    
                 }
                 
                 state.query = ""
@@ -90,11 +90,13 @@ extension SandService {
         
         @Payload var meta: Meta?
         
+        @Relay var prompts: PromptService
+        
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             
             if let command = state.commandSet {
-                if let basic = Prompts.all[command] {
+                if let basic = prompts.prompt(command) {
                     for subcommand in basic.subCommands {
                         if let value = subcommand.values.first(where: { $0.id == meta.subcommandValueId }) {
                             state.subCommandSet?[meta.id] = Prompts.subCommand(subcommand, scValue: value)

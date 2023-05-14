@@ -34,7 +34,6 @@ public struct SFSymbolsPicker: View {
     // MARK: - View body
     
     public var body: some View {
-        
         VStack (spacing: 8){
             HStack(spacing: 8) {
                 Spacer()

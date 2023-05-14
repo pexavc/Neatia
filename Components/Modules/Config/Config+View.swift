@@ -154,19 +154,19 @@ extension Config: View {
                 .padding(.bottom, WindowComponent.Style.defaultComponentOuterPadding)
             }
             
-            VStack {
-                MarqueeTextView(
-                    text: Prompts.allCases.map({ "/"+$0.rawValue.capitalized+"..." }).joined(separator: "   "),
-                    fontSize: .headline,
-                    fontWeight: .bold,
-                    leftFade: 16,
-                    rightFade: 16,
-                    startDelay: 3
-                )
-                .frame(width: 360)
-                Spacer()
-            }
-            .rotationEffect(.degrees(90))
+//            VStack {
+//                MarqueeTextView(
+//                    text: Prompts.allCases.map({ "/"+$0.rawValue.capitalized+"..." }).joined(separator: "   "),
+//                    fontSize: .headline,
+//                    fontWeight: .bold,
+//                    leftFade: 16,
+//                    rightFade: 16,
+//                    startDelay: 3
+//                )
+//                .frame(width: 360)
+//                Spacer()
+//            }
+//            .rotationEffect(.degrees(90))
         }
     }
 }

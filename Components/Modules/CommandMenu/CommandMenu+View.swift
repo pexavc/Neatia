@@ -23,28 +23,29 @@ extension CommandMenu: View {
     
     var rows: [TableRow] {
         var list: [TableRow] = []
-        var cases: [Prompts] = Prompts.allCases
-        var sortedCases: [Prompts] = []
+        var cases: [String] = prompts.commands
+        var sortedCases: [String] = []
         if sand.state.query.hasPrefix("/") {
             let suggestions: [String] = sand.state.query.suggestions(sand.state.commandAutoComplete).map { String($0.lowercased().suffix($0.count - 1)) }
             
-            cases.removeAll(where: { suggestions.contains($0.rawValue) })
-            sortedCases = Array(suggestions.map { .init(rawValue: $0.lowercased()) ?? .empty }) + cases
+            cases.removeAll(where: { suggestions.contains($0.lowercased()) })
+            sortedCases = Array(suggestions.map { $0 }) + cases
         }
         
-        for prompt in sortedCases.isEmpty ? cases : sortedCases {
+        for command in sortedCases.isEmpty ? cases : sortedCases {
+            let prompt = prompts.prompt(command)
             list.append(
-                TableRow(text: .init("/\(prompt.rawValue.capitalized)...",
-                                     subLeading: .init("\(Prompts.all[prompt]?.description ?? "")")),
-                         graphic: .init(Prompts.all[prompt]?.iconName ?? "",
-                                        leadingBGColor: Prompts.all[prompt]?.baseColor ?? Brand.Colors.black)) {
+                TableRow(text: .init("/\(command.capitalized)...",
+                                     subLeading: .init("\(prompt?.description ?? "")")),
+                         graphic: .init(prompt?.iconName ?? "",
+                                        leadingBGColor: prompt?.baseColor ?? Brand.Colors.black)) {
                     sand
                         .center
                         .setCommand
                         .send(
                             SandService
                                 .SetCommand
-                                .Meta(value: prompt.rawValue, reset: false))
+                                .Meta(value: command, reset: false))
                 }
             )
         }

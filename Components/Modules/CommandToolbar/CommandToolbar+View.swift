@@ -82,7 +82,7 @@ extension CommandToolbar {
     var leadingView: some View {
         Group {
             AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
-                Text("/" + promptType.rawValue.capitalized)
+                Text("/" + command.capitalized)
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
                     .environment(\.colorScheme, .dark)

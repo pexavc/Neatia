@@ -7,10 +7,11 @@ struct Query: GraniteComponent {
     @Relay var environment: EnvironmentService
     @Relay var account: AccountService
     @Relay var sand: SandService
+    @Relay var prompts: PromptService
     
     //TODO: could be a better way to generate helper text, a "smarter" way. But for now order matters in SandKit
     var helperText: String {
-        if var helperText = sand.state.commandSet?.basic.subCommandHelperText {
+        if var helperText = prompts.prompt(sand.state.commandSet)?.subCommandHelperText {
             if let scValues = sand.state.subCommandSet?.values {
                 for value in scValues {
                     helperText += value.value.additionalHelperText ?? ""

@@ -9,31 +9,27 @@ extension SandService {
         @Event var received: AskResponse.Reducer
         
         @Relay var environment: EnvironmentService
+        @Relay var prompts: PromptService
         
         func reduce(state: inout Center.State) {
             guard SandGPT.shared.isResponding == false else { return }
             
             let systemPrompt: String? = nil
             
-//            if let command = state.commandSet {
-//                systemPrompt = Prompts.all[command]?.prompt
-//            } else {
-//                systemPrompt = nil
-//            }
-            
             state.lastError = nil
             
-            let prompt: String
+            let userPrompt: String
             
             //Prompt Generation
-            if let command = state.commandSet {
-                if SandGPTTokenizerManager.shared.kit.tokenCount > command.maxTokens {
+            if let command = state.commandSet,
+               let prompt = prompts.prompt(command) {
+                if SandGPTTokenizerManager.shared.kit.tokenCount > prompt.maxTokens {
                     state.lastError = .init(message: "Please reduce the amount of text in order reach the token count limit. You are currently at \(SandGPTTokenizerManager.shared.kit.tokenCount)/\(SandService.maxTokenCount)")
                     
                     return
                 }
                 
-                if Prompts.all[command]?.hasSubcommand == true,
+                if prompt.hasSubcommand == true,
                     let subcommands = state.subCommandSet?.values {
                     
                     //TODO: this would also be changed once (maybe) when subcommand system gets more sophisticated
@@ -44,9 +40,9 @@ extension SandService {
                         return
                     }
                     
-                    prompt = Prompts.all[command]?.createWithSubCommand(state.query, subCommands: Array(subcommands)) ?? state.query
+                    userPrompt = prompt.createWithSubCommand(state.query, subCommands: Array(subcommands))
                 } else {
-                    prompt = Prompts.all[command]?.create(state.query) ?? state.query
+                    userPrompt = prompt.create(state.query)
                 }
             } else {
                 if SandGPTTokenizerManager.shared.kit.tokenCount > SandService.maxTokenCount {
@@ -55,7 +51,7 @@ extension SandService {
                     return
                 }
                 
-                prompt = state.query
+                userPrompt = state.query
             }
             
             //UI
@@ -73,7 +69,7 @@ extension SandService {
             
             //print("[SandService] Command for prompt: \(state.commandSet)")
             
-            SandGPT.shared.ask(prompt,
+            SandGPT.shared.ask(userPrompt,
                                withSystemPrompt: systemPrompt,
                                event: received)
         }

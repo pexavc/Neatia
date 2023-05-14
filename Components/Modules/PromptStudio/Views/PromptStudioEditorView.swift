@@ -10,6 +10,10 @@ import Granite
 import SwiftUI
 
 struct PromptStudioEditorView: View {
+    @GraniteAction<Void> var closeCreatePrompt
+    
+    @Relay var service: PromptService
+    
     var isEditing: Bool = false
     
     var titleText: String {
@@ -20,11 +24,38 @@ struct PromptStudioEditorView: View {
         }
     }
     
-    @State var promptCommand: String = ""
-    @State var promptBody: String = ""
-    @State var promptDescription: String = ""
+    @State var promptCommand: String
+    @State var promptBody: String
+    @State var promptDescription: String
     @State var promptColor: String = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
-    @State var promptIcon: String = "questionmark"
+    @State var promptIcon: String
+    @State var showError: Bool = false
+    
+    var asCustomPrompt: CustomPrompt {
+        .init(.init(promptCommand),
+              prompt: promptBody,
+              iconName: promptIcon,
+              baseColorHex: promptColor,
+              description: promptDescription)
+    }
+    
+    init() {
+        promptCommand = ""
+        promptBody = ""
+        promptDescription = ""
+        promptColor = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
+        promptIcon = "questionmark"
+    }
+    
+    init(_ prompt: CustomPrompt) {
+        self.isEditing = true
+        
+        promptCommand = prompt.command.command
+        promptBody = prompt.prompt
+        promptDescription = prompt.description
+        promptColor = prompt.baseColorHex
+        promptIcon = prompt.iconName
+    }
     
     var promptTokenCount: Int {
         SandGPT.shared.gpt3Tokenizer.encoder.enconde(text: promptBody).count
@@ -37,6 +68,37 @@ struct PromptStudioEditorView: View {
         promptTokenCount <= PromptService.maxTokenCount
     }
     
+    var errorMessage: String {
+        if promptTokenCount <= PromptService.maxTokenCount {
+            return "Reduce the token count of your instructions to \(PromptService.maxTokenCount) tokens or less."
+        }
+        
+        var string: String = "You still need to add "
+        
+        var issues: [String] = []
+        if promptCommand.isEmpty {
+            issues.append("a command")
+        }
+        
+        if promptDescription.isEmpty {
+            issues.append("a description")
+        }
+        
+        if promptBody.isEmpty {
+            if issues.count > 0 {
+                issues.append("and instructions")
+            } else {
+                issues.append("instructions")
+            }
+        } else if issues.count > 1 {
+            issues.insert("and", at: issues.count - 1)
+        }
+        
+        string += issues.joined(separator: issues.count > 2 ? ", " : " ")
+        
+        return string
+    }
+    
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 8) {
@@ -46,6 +108,18 @@ struct PromptStudioEditorView: View {
                         .foregroundColor(.foreground)
                     
                     Spacer()
+                    
+                    AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
+                        Button(action: {
+                            closeCreatePrompt.perform()
+                        }) {
+                            Text("Back")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }.buttonStyle(PlainButtonStyle())
+                    }
+                    .environment(\.colorScheme, .dark)
+                    .padding(.top, 4)
                 }
                 .padding(.bottom, 8)
                 
@@ -154,13 +228,56 @@ struct PromptStudioEditorView: View {
                 
                 Spacer()
                 
-                HStack {
+                HStack(spacing: 16) {
                     Spacer()
-                    AppBlurView(tintColor: (isValid ? Brand.Colors.purple : Brand.Colors.red).opacity(0.45)) {
+                    
+                    if isEditing {
+                        AppBlurView(tintColor: Brand.Colors.red.opacity(0.3)) {
+                            Button(action: {
+                                service
+                                    .center
+                                    .delete
+                                    .send(PromptService
+                                        .Delete
+                                        .Meta(prompt: asCustomPrompt))
+                                
+                                closeCreatePrompt.perform()
+                            }) {
+                                Text("Delete")
+                                    .font(Fonts.live(.headline, .bold))
+                                    .foregroundColor(.foreground)
+                            }.buttonStyle(PlainButtonStyle())
+                        }
+                        .environment(\.colorScheme, .dark)
+                    }
+                    
+                    AppBlurView(tintColor: Brand.Colors.purple.opacity(0.45)) {
                         Button(action: {
-                            
+                            if isValid {
+                                if isEditing {
+                                    
+                                    service
+                                        .center
+                                        .modify
+                                        .send(PromptService
+                                            .Modify
+                                            .Meta(prompt: asCustomPrompt))
+                                } else {
+                                    
+                                    service
+                                        .center
+                                        .create
+                                        .send(PromptService
+                                            .Create
+                                            .Meta(prompt: asCustomPrompt))
+                                }
+                                
+                                closeCreatePrompt.perform()
+                            } else {
+                                showError = true
+                            }
                         }) {
-                            Text("Create")
+                            Text(isEditing ? "Modify" : "Create")
                                 .font(Fonts.live(.headline, .bold))
                                 .foregroundColor(.foreground)
                         }.buttonStyle(PlainButtonStyle())
@@ -182,6 +299,9 @@ struct PromptStudioEditorView: View {
 //            .padding(WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
         }
         .padding(16)
+        .alert(errorMessage, isPresented: $showError) {
+            Button("OK", role: .cancel) { }
+        }
     }
     
     var background: some View {

@@ -23,12 +23,17 @@ struct CustomCommand: GraniteModel, Identifiable {
     }
 }
 
-struct CustomPrompt: GraniteModel, BasicPrompt {
+struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
+    var id: String {
+        dateCreated.asStringWithTime
+    }
+    
     var command: CustomCommand
     var prompt: String
     var iconName: String
     var baseColorHex: String
     var description: String
+    var dateCreated: Date
     
     var hasSubcommand: Bool {
         false
@@ -45,6 +50,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt {
         self.iconName = iconName
         self.baseColorHex = baseColorHex
         self.description = description
+        self.dateCreated = .init()
     }
 }
 
@@ -52,4 +58,6 @@ extension CustomPrompt {
     var baseColor: Color {
         .init(hex: baseColorHex)
     }
+    
+    public var isSystemPrompt: Bool { false }
 }
