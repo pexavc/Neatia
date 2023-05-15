@@ -19,7 +19,7 @@ struct AccountConfigView: View {
     
     @State var selectedOption: VaultProduct? = VaultManager.shared.productFor(VaultProducts.Renewable.monthly)
     
-//    @State var nonRenewable: Bool = false
+    @State var reducedPricing: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -58,85 +58,129 @@ struct AccountConfigView: View {
         Group {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("Get Access")
+                    Text("Free & Premium features")
                         .font(Fonts.live(.title2, .bold))
                         .foregroundColor(.foreground)
                     
                     Spacer()
                 }
                 
-                AppBlurView(size: .init(0, 240),
+                AppBlurView(size: .init(0, 100),
                             tintColor: Brand.Colors.black.opacity(0.3)) {
                     VStack(alignment: .leading, spacing: 8) {
                         
-                        Text("• Templated shortcuts to get GPT backed answers at speed.")
-                            .font(Fonts.live(.headline, .regular))
+                        Text("• Custom API Keys. Tune additional parameters before making queries.")
+                            .font(Fonts.live(.subheadline, .regular))
                             .foregroundColor(.foreground)
                         
-                        Text("• Store outputs, locally in-app, to recall later or download reponses as PDFs.")
-                            .font(Fonts.live(.headline, .regular))
-                            .foregroundColor(.foreground)
-                        
-                        Text("• Re-word resumes or generate cover letters.")
-                            .font(Fonts.live(.headline, .regular))
-                            .foregroundColor(.foreground)
-                        
-                        Text("• Easily accessible with a command and no personal data is stored or shared.")
-                            .font(Fonts.live(.headline, .regular))
-                            .foregroundColor(.foreground)
-                        
-                        Text("• And much more...")
-                            .font(Fonts.live(.headline, .regular))
+                        Text("• Custom prompts to repeat queries at speed with a command you set.")
+                            .font(Fonts.live(.subheadline, .regular))
                             .foregroundColor(.foreground)
                     }
                 }
-                .frame(height: 240)
+                .frame(height: 100)
                 .environment(\.colorScheme, .dark)
+                .padding(.bottom, 8)
                 
-                Spacer()
-                
-                
-                Text("Subscription Plans")
-                    .font(Fonts.live(.title3, .bold))
-                    .foregroundColor(.foreground)
-                
-                HStack(spacing: 8) {
-                    ForEach(VaultManager.renewableProducts.ordered) { product in
-                        
-                        optionView(product)
-                    }
-                }
-                
-                AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.45)) {
+                HStack {
+                    Text("Premium features")
+                        .font(Fonts.live(.headline, .bold))
+                        .foregroundColor(.foreground)
                     
-                    HStack(spacing: 8) {
+                    Spacer()
+                }
+                
+                AppBlurView(size: .init(0, 100),
+                            tintColor: Brand.Colors.black.opacity(0.3)) {
+                    VStack(alignment: .leading, spacing: 8) {
                         
-                        Button(action: {
-                            account
-                                .center
-                                .subscribe
-                                .send(AccountService.Subscribe.Meta(product: selectedOption))
-                        }) {
-                            
-                            //                            Text(nonRenewable ? "Purchase" : "Subscribe")
-                            Text("Subscribe")
-                                .font(Fonts.live(.headline, .bold))
-                                .foregroundColor(.foreground)
-                            
-                            Text(selectedOption?.metadata.displayPrice ?? "")
-                                .font(Fonts.live(.footnote, .regular))
-                                .foregroundColor(.foreground) + //Text(selectedOption?.metadata.isRenewable == true ? "/mo" : "")
-                            Text(selectedOption?.metadata.displaySubscriptionPeriod ?? "")
-                                .font(Fonts.live(.footnote, .regular))
-                                .foregroundColor(.foreground) +
-                            Text(selectedOption?.metadata.displayPromo.isEmpty == true ? "" : " " + (selectedOption?.metadata.displayPromo ?? ""))
-                                .font(Fonts.live(.caption2, .regular))
-                                .foregroundColor(.foreground)
-                        }.buttonStyle(PlainButtonStyle())
+                        Text("• Neatia engineered prompts and tuning. They update or new ones get added weekly.")
+                            .font(Fonts.live(.subheadline, .regular))
+                            .foregroundColor(.foreground)
+                        
+                        Text("• Extended featureset for custom prompts in Prompt Studio.")
+                            .font(Fonts.live(.subheadline, .regular))
+                            .foregroundColor(.foreground)
                     }
                 }
+                .frame(height: 100)
                 .environment(\.colorScheme, .dark)
+                .padding(.bottom, 8)
+                
+                Group {
+                    Spacer()
+                    Text("Subscription Plans")
+                        .font(Fonts.live(.headline, .bold))
+                        .foregroundColor(.foreground)
+                        .padding(.bottom, 8)
+                    
+                    if reducedPricing {
+                        HStack(spacing: 8) {
+                            ForEach(VaultManager.productsFor(VaultProducts.RenewableReduced.allCases).ordered) { product in
                                 
+                                optionView(product)
+                            }
+                        }
+                        .padding(.bottom, 8)
+                    } else {
+                        HStack(spacing: 8) {
+                            ForEach(VaultManager.productsFor(VaultProducts.Renewable.allCases).ordered) { product in
+                                
+                                optionView(product)
+                            }
+                        }
+                        .padding(.bottom, 8)
+                    }
+                    
+                    AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.45)) {
+                        
+                        HStack(spacing: 8) {
+                            
+                            Button(action: {
+                                account
+                                    .center
+                                    .subscribe
+                                    .send(AccountService.Subscribe.Meta(product: selectedOption))
+                            }) {
+                                Text("Subscribe")
+                                    .font(Fonts.live(.headline, .bold))
+                                    .foregroundColor(.foreground)
+                                
+                                Divider()
+                                
+                                Text(selectedOption?.metadata.displayPrice ?? "")
+                                    .font(Fonts.live(.subheadline, .bold))
+                                    .foregroundColor(.foreground) + //Text(selectedOption?.metadata.isRenewable == true ? "/mo" : "")
+                                Text(selectedOption?.metadata.displaySubscriptionPeriod ?? "")
+                                    .font(Fonts.live(.footnote, .regular))
+                                    .foregroundColor(.foreground) +
+                                Text(selectedOption?.metadata.displayPromo.isEmpty == true ? "" : " " + (selectedOption?.metadata.displayPromo ?? ""))
+                                    .font(Fonts.live(.footnote, .regular))
+                                    .foregroundColor(.foreground)
+                            }.buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                    .environment(\.colorScheme, .dark)
+                }
+                
+                Group {
+                    Spacer()
+                    
+                    HStack {
+                        Toggle("Have an OpenAI API Key? See cheaper options.", isOn: $reducedPricing)
+                        
+                        Spacer()
+                    }
+                    .onChange(of: reducedPricing) { newValue in
+                        if newValue {
+                            selectedOption = VaultManager.shared.productFor(VaultProducts.RenewableReduced.monthly)
+                        } else {
+                            selectedOption = VaultManager.shared.productFor(VaultProducts.Renewable.monthly)
+                        }
+                    }
+                    
+                    Spacer()
+                }
             }
         }
     }
@@ -144,7 +188,7 @@ struct AccountConfigView: View {
     func optionView(_ product: VaultProduct) -> some View {
         AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
             HStack(spacing: 8) {
-                Text(product.metadata.displayName.replacingOccurrences(of: " Subscription", with: ""))
+                Text(sanitizeDisplayName(product.metadata.displayName))
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
                 
@@ -163,6 +207,10 @@ struct AccountConfigView: View {
         .onTapGesture {
             selectedOption = product
         }
+    }
+    
+    func sanitizeDisplayName(_ value: String) -> String {
+        return value.replacingOccurrences(of: " Subscription", with: "").replacingOccurrences(of: " Reduced", with: "")
     }
 }
 

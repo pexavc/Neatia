@@ -11,7 +11,7 @@ extension Query: View {
                 MacEditorTextView(
                     text: sand.center.$state.binding.query,
                     autoCompleteText: sand.center.$state.binding.commandAutoComplete,
-                    isEditable: true,
+                    isEditable: sessionManager.isLocked == false,
                     font: Fonts.nsFont(.defaultSize, .bold),
                     onEditingChanged: {
                         center.$state.binding.wrappedValue.isEditing = true

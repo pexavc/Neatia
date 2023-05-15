@@ -29,7 +29,7 @@ struct MacEditorTextView: NSViewRepresentable {
         autoCompleteText.isNotEmpty
     }
     
-    @State private var lastLineCount: Int = 1
+    @State private var lastLineCount: Int = 0
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)

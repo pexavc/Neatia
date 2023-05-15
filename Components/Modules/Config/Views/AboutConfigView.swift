@@ -53,7 +53,7 @@ struct AboutConfigView: View {
             HStack {
                 Image("logo_granite")
                     .resizable()
-                    .frame(width: 24, height: 24)
+                    .frame(width: 20, height: 20)
                 Text("Built with ")
                     .font(Fonts.live(.subheadline, .bold))
                 + Text("Granite")
@@ -62,7 +62,7 @@ struct AboutConfigView: View {
                 
                 Spacer()
             }
-            .frame(height: 24)
+            .frame(height: 20)
             .onTapGesture {
                 if let url = URL(string: "https://www.github.com/pexavc/granite") {
                     openURL(url)

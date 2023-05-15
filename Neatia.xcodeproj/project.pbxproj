@@ -163,6 +163,8 @@
 		7197FB202964B4C0005EBBA4 /* GraniteSheet+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197FB012964B4BF005EBBA4 /* GraniteSheet+View.swift */; };
 		7197FB212964B4C0005EBBA4 /* GraniteModalWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197FB022964B4BF005EBBA4 /* GraniteModalWindow.swift */; };
 		7197FB222964B4C0005EBBA4 /* GraniteModalWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197FB022964B4BF005EBBA4 /* GraniteModalWindow.swift */; };
+		71991A7D2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */; };
+		71991A7E2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */; };
 		719E23F129532FE800CEB2FE /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E23F029532FE800CEB2FE /* BasicButton.swift */; };
 		719E23F229532FE800CEB2FE /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E23F029532FE800CEB2FE /* BasicButton.swift */; };
 		719E23F42953300900CEB2FE /* GraniteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E23F32953300900CEB2FE /* GraniteButton.swift */; };
@@ -647,6 +649,7 @@
 		7197FB002964B4BF005EBBA4 /* GraniteSheetPresenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraniteSheetPresenterView.swift; sourceTree = "<group>"; };
 		7197FB012964B4BF005EBBA4 /* GraniteSheet+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GraniteSheet+View.swift"; sourceTree = "<group>"; };
 		7197FB022964B4BF005EBBA4 /* GraniteModalWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraniteModalWindow.swift; sourceTree = "<group>"; };
+		71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAndPrivacyConfigView.swift; sourceTree = "<group>"; };
 		719E23F029532FE800CEB2FE /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		719E23F32953300900CEB2FE /* GraniteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraniteButton.swift; sourceTree = "<group>"; };
 		719E23F7295330DB00CEB2FE /* GraniteToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraniteToggle.swift; sourceTree = "<group>"; };
@@ -1532,6 +1535,7 @@
 			children = (
 				71BE32152A05B4FE00B76A69 /* AccountConfigView.swift */,
 				71BE32182A05B53800B76A69 /* GeneralConfigView.swift */,
+				71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */,
 				712861992A0F4D8900046DCE /* FeatureImageSliderView.swift */,
 				713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */,
 				713FFDCE2A0DFA2E00E6F9AF /* ShortcutConfigView.swift */,
@@ -2121,6 +2125,7 @@
 				71A28E02295233A300EAE8EE /* Brand.swift in Sources */,
 				713D866F2A118D2300AE32CE /* FileTextEditorView.swift in Sources */,
 				71A28E8B295239D100EAE8EE /* String+Convenience.swift in Sources */,
+				71991A7D2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift in Sources */,
 				71A28DF1295232E300EAE8EE /* PressAndHorizontalDragGesture.swift in Sources */,
 				718148BD2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */,
 				71DF107F28CC697600559DBC /* ProgressContent.swift in Sources */,
@@ -2375,6 +2380,7 @@
 				71A28DE0295232E300EAE8EE /* MovingNumbersView.swift in Sources */,
 				713D86702A118D2300AE32CE /* FileTextEditorView.swift in Sources */,
 				71A28E03295233A300EAE8EE /* Brand.swift in Sources */,
+				71991A7E2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift in Sources */,
 				71A28E8C295239D100EAE8EE /* String+Convenience.swift in Sources */,
 				718148BE2A0F89050054E71A /* PaneKit.Window.Visibility.swift in Sources */,
 				71A28DF2295232E300EAE8EE /* PressAndHorizontalDragGesture.swift in Sources */,

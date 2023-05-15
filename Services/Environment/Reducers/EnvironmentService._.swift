@@ -15,6 +15,8 @@ extension EnvironmentService {
         @Event var promptStudioHotkeyDetected: PromptStudioHotkeyDetected.Reducer
         
         func reduce(state: inout Center.State) {
+            
+            //Windows
             state.pane = .init(id: InteractionManager.Kind.mount.rawValue,
                                defaultSize: WindowComponent.Style.defaultWindowSize) {
                 PaneView()
@@ -29,18 +31,31 @@ extension EnvironmentService {
             
             state.promptStudioPane?.build(title: "Prompt Studio", center: true)
             
+            //Interactions Hotkeys
             InteractionManager.shared.setPopupObserver(showPopup, closeReducer: closePopup)
             
             InteractionManager.shared.setHotkeyObserver(hotkeyDetected)
             InteractionManager.shared.setPromptStudioHotkeyObserver(promptStudioHotkeyDetected)
             InteractionManager.shared.registerHotkey(config.state.mountHotkey)
             InteractionManager.shared.registerHotkey(config.state.promptStudioHotkey, kind: .promptStudio)
-//            HotkeyManager.register()
             
+            //IAP - Subscriptions
             VaultManager
                 .load(
-                    VaultProducts.Renewable.vaultProducts
+                    VaultProducts.Renewable.vaultProducts +
+                    VaultProducts.RenewableReduced.vaultProducts
                 )
+            
+            //Config
+            config.center.$state.binding.isAccountTabActive.wrappedValue = true
+            
+            //SandGPT
+            if config.state.isCustomAPIKeySet {
+                SandGPT.shared.CUSTOM_API_KEY = config.state.customAPIKey
+                SandGPT.shared.useCustomAPI()
+            } else {
+                SandGPT.shared.useMainAPI()
+            }
         }
     }
 }

@@ -28,7 +28,6 @@ extension Mount: View {
                     Spacer()
                         .frame(height: WindowComponent.Kind.divider.defaultSize.height)
                     
-                    
                     VisualEffectBackground(overlayColor: Color.background)
                         .cornerRadius(8)
                         .foregroundColor(.background)
@@ -38,7 +37,6 @@ extension Mount: View {
                 if environment.state.isResponseActive ||
                    environment.state.isCommandToolbarActive {
                     
-                
                     Spacer()
                 }
             }
@@ -98,7 +96,6 @@ extension Mount: View {
                     }
                     
                     if environment.state.isCommandActive {
-                        
                         CommandMenu()
                             .frame(
                                 maxHeight: WindowComponent.Kind.command.defaultSize.height)

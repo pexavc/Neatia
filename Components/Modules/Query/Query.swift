@@ -4,6 +4,8 @@ import SandKit
 struct Query: GraniteComponent {
     @Command var center: Center
     
+    @SharedObject("nyc.stoic.Neatia.SessionManager") var sessionManager: SessionManager
+    
     @Relay var environment: EnvironmentService
     @Relay var account: AccountService
     @Relay var sand: SandService

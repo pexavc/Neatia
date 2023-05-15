@@ -18,4 +18,13 @@ struct VaultProducts {
             .renewable
         }
     }
+    
+    enum RenewableReduced: String, VaultProductIterable {
+        case yearly = "nyc.stoic.neatia.reduced.basic.subscription.yearly"
+        case monthly = "nyc.stoic.neatia.reduced.basic.subscription.monthly"
+        
+        var kind: VaultProductKind {
+            .renewable
+        }
+    }
 }

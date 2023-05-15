@@ -13,6 +13,7 @@ import VaultKit
 class SessionManagerKit {
     @Published var isLoggedIn: Bool = false
     @Published var isSubscribed: Bool = false
+    @Published var isCustomAPI: Bool = false
     
     public func isLoggedIn(_ state: Bool) {
         isLoggedIn = state
@@ -20,6 +21,10 @@ class SessionManagerKit {
     
     public func isSubscribed(_ state: Bool) {
         isSubscribed = state
+    }
+    
+    public func isCustomAPI(_ state: Bool) {
+        isCustomAPI = state
     }
 }
 
@@ -38,7 +43,12 @@ final class SessionManager: Equatable, SharableObject {
     internal var cancellables = Set<AnyCancellable>()
     
     var isLocked: Bool {
-        kit.isSubscribed == false || kit.isLoggedIn == false
+        return ((
+            kit.isSubscribed == false || kit.isLoggedIn == false
+        ) &&
+        (
+            kit.isCustomAPI == false || kit.isLoggedIn == false
+        ))
     }
     
     var isLoggedIn: Bool {
@@ -78,6 +88,10 @@ final class SessionManager: Equatable, SharableObject {
     
     public func isSubscribed(_ state: Bool) {
         kit.isSubscribed = state
+    }
+    
+    public func isCustomAPI(_ state: Bool) {
+        kit.isCustomAPI = state
     }
     
     public func checkSubscription() {

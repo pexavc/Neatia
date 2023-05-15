@@ -9,7 +9,7 @@
   "settings" : {
     "_applicationInternalID" : "6449069312",
     "_developerTeamID" : "CV8LAA8JAP",
-    "_lastSynchronizedDate" : 705805827.77081203
+    "_lastSynchronizedDate" : 705824727.87686706
   },
   "subscriptionGroups" : [
     {
@@ -22,7 +22,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "595F0175",
+              "internalID" : "5CBD92DA",
               "numberOfPeriods" : 1,
               "offerID" : "nyc.stoic.neatia.basic.subscription.monthly.promo",
               "paymentMode" : "free",
@@ -79,7 +79,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "42E786FB",
+              "internalID" : "076E08F1",
               "numberOfPeriods" : 1,
               "offerID" : "nyc.stoic.neatia.basic.subscription.yearly.promo",
               "paymentMode" : "free",
@@ -106,6 +106,65 @@
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "Yearly Subscription",
           "subscriptionGroupID" : "21339852",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    },
+    {
+      "id" : "21340020",
+      "localizations" : [
+
+      ],
+      "name" : "Basic Subscription Reduced",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "3.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6449174289",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Monthly subscription for personal API usage.",
+              "displayName" : "Monthly Subscription Reduced",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "nyc.stoic.neatia.reduced.basic.subscription.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Subscription Reduced",
+          "subscriptionGroupID" : "21340020",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "35.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6449174243",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Yearly subscription for personal API usage.",
+              "displayName" : "Yearly Subscription Reduced",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "nyc.stoic.neatia.reduced.basic.subscription.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yearly Subscription Reduced",
+          "subscriptionGroupID" : "21340020",
           "type" : "RecurringSubscription"
         }
       ]

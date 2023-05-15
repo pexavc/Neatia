@@ -14,16 +14,19 @@ import GPT3_Tokenizer
 class SandGPT {
     static let shared: SandGPT = .init()
     
-    static var API_KEY: String {
-        SandGPT.API_DEV_KEY
-        //"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"
+    @SharedObject("nyc.stoic.Neatia.SessionManager") var session: SessionManager
+    
+    var CUSTOM_API_KEY: Data? = nil {
+        didSet {
+            session.isCustomAPI(CUSTOM_API_KEY != nil)
+        }
     }
     
-    static var API_DEV_KEY: String {
+    static var API_KEY: String {
         "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"
     }
     
-    let client = ChatGPT(apiKey: SandGPT.API_KEY, defaultModel: .custom(modelId: "gpt-3.5-turbo"))
+    private var client: ChatGPT? = nil
     
     let gpt3Tokenizer = GPT3Tokenizer()
     
@@ -38,7 +41,7 @@ class SandGPT {
                                  withConfig config: PromptConfig,
                                  event: E) {
         print("[SandGPT] prompt token count: \(prompt.components(separatedBy: " ").count)")
-        guard prompt.isNotEmpty else { return }
+        guard prompt.isNotEmpty, let client = self.client else { return }
         
         currentTask?.cancel()
         currentTask = .init()
@@ -109,5 +112,20 @@ class SandGPT {
     struct Response: GranitePayload {
         var data: String?
         var isComplete: Bool
+    }
+}
+
+extension SandGPT {
+    func useCustomAPI() {
+        print("[SandGPT] Using custom API \(CUSTOM_API_KEY == nil)")
+        guard let customAPIKeyData = self.CUSTOM_API_KEY else { return }
+        guard let customAPIKey = String(data: customAPIKeyData, encoding: .utf8) else { return }
+        let APIKey = ConfigService.encryptDecrypt(message: customAPIKey, key: ConfigService.secret)
+        self.client = ChatGPT(apiKey: APIKey, defaultModel: .custom(modelId: "gpt-3.5-turbo"))
+    }
+    
+    func useMainAPI() {
+        print("[SandGPT] Using main API \(CUSTOM_API_KEY == nil)")
+        self.client = ChatGPT(apiKey: SandGPT.API_KEY, defaultModel: .custom(modelId: "gpt-3.5-turbo"))
     }
 }

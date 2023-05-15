@@ -31,34 +31,54 @@ extension Config: View {
     var mainView: some View {
         NavigationView {
             List {
-                Label(windowVisibility.isVisible(id: InteractionManager.Kind.mount.rawValue) ? "Hide" : "Show",
-                      systemImage: windowVisibility.isVisible(id: InteractionManager.Kind.mount.rawValue) ? "eye.slash" : "eye")
+                Group {
+                    Text("\(config.state.isCustomAPIKeySet ? "Personal API" : "Neatia API")")
+                        .font(Fonts.live(.footnote, .bold))
+                        .padding(.vertical, 4)
+                        .foregroundColor(config.state.isCustomAPIKeySet ? Color.orange : Color.purple)
+                        .background(
+                            RoundedRectangle(cornerRadius: 6)
+                                .strokeBorder(config.state.isCustomAPIKeySet ? Color.orange : Color.purple, lineWidth: 2)
+                                .padding(.horizontal, -6)
+                        )
+                        .padding(.horizontal, 6)
+                        .onTapGesture {
+                            config.center.$state.binding.isSettingsActive.wrappedValue = true
+                        }
+                    
+                    HStack(spacing: 4) {
+                        Label(windowVisibility.isVisible(id: InteractionManager.Kind.mount.rawValue) ? "Hide" : "Show",
+                              systemImage: windowVisibility.isVisible(id: InteractionManager.Kind.mount.rawValue) ? "eye.slash" : "eye")
+                        Text("(⌥ + \(config.state.mountHotkey.rawValue.capitalized))")
+                            .font(Fonts.live(.caption2, .bold))
+                        Spacer()
+                    }
+                    .frame(width: 160)
                     .onTapGesture {
                         let nc = NotificationCenter.default
                         nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHideMount"), object: nil)
                     }
+                }
+                
                 Spacer()
                 
-                //Caption
-                Text("General")
-                //Navigation links
-                //Replace "ContentView" with your destination
                 Group{
+                    Text("General")
                     NavigationLink(destination:
                                     AccountConfigView()
-                        .attach(account.center.subscribe, at: \.subscribe), isActive: center.$state.binding.isAccountTabActive) {
+                        .attach(account.center.subscribe, at: \.subscribe), isActive: config.center.$state.binding.isAccountTabActive) {
                         Label("Account", systemImage: "person")
                     }
-                    NavigationLink(destination: GeneralConfigView()) {
+                    
+                    NavigationLink(destination: GeneralConfigView(), isActive: config.center.$state.binding.isSettingsActive) {
                         Label("Settings", systemImage: "gear")
-                    }
-                    NavigationLink(destination: AboutConfigView()) {
-                        Label("About", systemImage: "questionmark.circle")
                     }
                 }
                 Spacer()
-                Text("Customize")
+                
+                
                 Group {
+                    Text("Customize")
                     NavigationLink(destination: PromptConfigView()) {
                         Label("Prompts", systemImage: "note.text")
                     }
@@ -67,8 +87,19 @@ extension Config: View {
                         Label("Shortcuts", systemImage: "option")
                     }
                 }
-                //Add some space again!
                 Spacer()
+                
+                Group {
+                    Text("Info")
+                    NavigationLink(destination: DataAndPrivacyConfigView(), isActive: config.center.$state.binding.isDataPrivacyTabActive) {
+                        Label("Data & Privacy", systemImage: "lock.shield")
+                    }
+                    NavigationLink(destination: AboutConfigView()) {
+                        Label("About", systemImage: "questionmark.circle")
+                    }
+                }
+                Spacer()
+                
                 //Divider also looks great!
                 Divider()
                 Group {
