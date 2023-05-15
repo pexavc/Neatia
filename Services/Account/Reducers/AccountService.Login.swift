@@ -12,7 +12,6 @@ extension AccountService {
             
             if let user = Auth.auth().currentUser {
                 AccountManager.load(user)
-                subscriptionCheck.send()
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     MenuBarManager.shared.showPopOver()

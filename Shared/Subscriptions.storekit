@@ -9,7 +9,7 @@
   "settings" : {
     "_applicationInternalID" : "6449069312",
     "_developerTeamID" : "CV8LAA8JAP",
-    "_lastSynchronizedDate" : 705667824.61016798
+    "_lastSynchronizedDate" : 705805827.77081203
   },
   "subscriptionGroups" : [
     {
@@ -22,7 +22,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "F3715842",
+              "internalID" : "595F0175",
               "numberOfPeriods" : 1,
               "offerID" : "nyc.stoic.neatia.basic.subscription.monthly.promo",
               "paymentMode" : "free",
@@ -79,7 +79,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "C1C5E705",
+              "internalID" : "42E786FB",
               "numberOfPeriods" : 1,
               "offerID" : "nyc.stoic.neatia.basic.subscription.yearly.promo",
               "paymentMode" : "free",
