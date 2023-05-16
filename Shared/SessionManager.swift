@@ -31,7 +31,8 @@ class SessionManagerKit {
 final class SessionManager: Equatable, SharableObject {
     static func == (lhs: SessionManager, rhs: SessionManager) -> Bool {
         lhs.kit.isLoggedIn == rhs.kit.isLoggedIn &&
-        lhs.kit.isSubscribed == rhs.kit.isSubscribed
+        lhs.kit.isSubscribed == rhs.kit.isSubscribed &&
+        lhs.kit.isCustomAPI == rhs.kit.isCustomAPI
     }
     
     public static var initialValue: SessionManager {

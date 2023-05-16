@@ -86,6 +86,11 @@
 		713FFDD62A0DFC9400E6F9AF /* PromptConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDD42A0DFC9400E6F9AF /* PromptConfigView.swift */; };
 		713FFDD82A0E2CA000E6F9AF /* AboutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */; };
 		713FFDD92A0E2CA000E6F9AF /* AboutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */; };
+		714238232A12D1BF00E3A55A /* MarqueKit in Frameworks */ = {isa = PBXBuildFile; productRef = 714238222A12D1BF00E3A55A /* MarqueKit */; };
+		714238262A12D8B700E3A55A /* pieta.png in Resources */ = {isa = PBXBuildFile; fileRef = 714238252A12D8B700E3A55A /* pieta.png */; };
+		714238272A12D8B700E3A55A /* pieta.png in Resources */ = {isa = PBXBuildFile; fileRef = 714238252A12D8B700E3A55A /* pieta.png */; };
+		714238292A1313F800E3A55A /* TuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714238282A1313F800E3A55A /* TuningView.swift */; };
+		7142382A2A1313F800E3A55A /* TuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714238282A1313F800E3A55A /* TuningView.swift */; };
 		7145EF0D28D43F1D00BFD19A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF0C28D43F1D00BFD19A /* Date.swift */; };
 		7145EF0E28D43F1D00BFD19A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF0C28D43F1D00BFD19A /* Date.swift */; };
 		7145EF1928D44DEE00BFD19A /* UIApplication+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF1828D44DEE00BFD19A /* UIApplication+SafeArea.swift */; };
@@ -609,6 +614,9 @@
 		713FFDD12A0DFB9400E6F9AF /* ConfigService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService._.swift; sourceTree = "<group>"; };
 		713FFDD42A0DFC9400E6F9AF /* PromptConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptConfigView.swift; sourceTree = "<group>"; };
 		713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutConfigView.swift; sourceTree = "<group>"; };
+		714238212A12CCE000E3A55A /* MarqueKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MarqueKit; path = ../MarqueKit; sourceTree = "<group>"; };
+		714238252A12D8B700E3A55A /* pieta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieta.png; sourceTree = "<group>"; };
+		714238282A1313F800E3A55A /* TuningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuningView.swift; sourceTree = "<group>"; };
 		7145EF0C28D43F1D00BFD19A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7145EF1828D44DEE00BFD19A /* UIApplication+SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+SafeArea.swift"; sourceTree = "<group>"; };
 		71508F632A0E3776008D0988 /* LaunchAtLogin */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LaunchAtLogin; path = ../LaunchAtLogin; sourceTree = "<group>"; };
@@ -867,6 +875,7 @@
 				712861832A0EFDBF00046DCE /* VaultKit in Frameworks */,
 				711513BF2A0E427200ED4E1E /* Ink in Frameworks */,
 				71BE324D2A05E89700B76A69 /* StoreKit.framework in Frameworks */,
+				714238232A12D1BF00E3A55A /* MarqueKit in Frameworks */,
 				71BE32352A05BBFB00B76A69 /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -900,6 +909,7 @@
 		711B3F6C2885D43700F3080D = {
 			isa = PBXGroup;
 			children = (
+				714238212A12CCE000E3A55A /* MarqueKit */,
 				712861812A0EFD6D00046DCE /* VaultKit */,
 				713D16AD2A0EF1CC00F46AC3 /* GPT3-Tokenizer */,
 				71E35C91295447D60094DB31 /* Granite */,
@@ -1105,6 +1115,7 @@
 		7192B18F2A0B5C8900C579A4 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				714238252A12D8B700E3A55A /* pieta.png */,
 				7192B1902A0B5C8900C579A4 /* ConfigService.swift */,
 				7192B1912A0B5C8900C579A4 /* ConfigService+Center.swift */,
 				7192B1922A0B5C8900C579A4 /* Reducers */,
@@ -1815,6 +1826,7 @@
 			children = (
 				71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */,
 				71EA5BDD2A105F0C00B0F82D /* PromptStudioCollectionView.swift */,
+				714238282A1313F800E3A55A /* TuningView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1960,6 +1972,7 @@
 				711513BE2A0E427200ED4E1E /* Ink */,
 				713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */,
 				712861822A0EFDBF00046DCE /* VaultKit */,
+				714238222A12D1BF00E3A55A /* MarqueKit */,
 			);
 			productName = "PEX (macOS)";
 			productReference = 711B3F7F2885D43B00F3080D /* Neatia.app */;
@@ -2060,6 +2073,7 @@
 				71A28EC8295243E000EAE8EE /* alexander.mtl in Resources */,
 				71A28EC4295243E000EAE8EE /* alexander.obj in Resources */,
 				711B3F9E2885D43B00F3080D /* Assets.xcassets in Resources */,
+				714238262A12D8B700E3A55A /* pieta.png in Resources */,
 				71A28EC6295243E000EAE8EE /* alexander.jpg in Resources */,
 				712861852A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
 				7128618E2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
@@ -2073,6 +2087,7 @@
 				71A28EC9295243E000EAE8EE /* alexander.mtl in Resources */,
 				71A28EC5295243E000EAE8EE /* alexander.obj in Resources */,
 				711B3F9F2885D43B00F3080D /* Assets.xcassets in Resources */,
+				714238272A12D8B700E3A55A /* pieta.png in Resources */,
 				71A28EC7295243E000EAE8EE /* alexander.jpg in Resources */,
 				712861862A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
 				7128618F2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
@@ -2356,6 +2371,7 @@
 				7197FB0B2964B4C0005EBBA4 /* GraniteAlertViewStyle.swift in Sources */,
 				71CEBE352A077CEE00DE6CDE /* SandService.swift in Sources */,
 				71CEBE382A077E7800DE6CDE /* SandService.Ask.swift in Sources */,
+				714238292A1313F800E3A55A /* TuningView.swift in Sources */,
 				7161D2FB29540AD00070FE59 /* View+Overlay.swift in Sources */,
 				71A28DD9295232E300EAE8EE /* Misc.Plot.swift in Sources */,
 				71A28E29295237AE00EAE8EE /* Padding.swift in Sources */,
@@ -2611,6 +2627,7 @@
 				7161D2FC29540AD00070FE59 /* View+Overlay.swift in Sources */,
 				71CEBE362A077CEE00DE6CDE /* SandService.swift in Sources */,
 				71CEBE392A077E7800DE6CDE /* SandService.Ask.swift in Sources */,
+				7142382A2A1313F800E3A55A /* TuningView.swift in Sources */,
 				71A28DDA295232E300EAE8EE /* Misc.Plot.swift in Sources */,
 				71A28E2A295237AE00EAE8EE /* Padding.swift in Sources */,
 				719E23F52953300900CEB2FE /* GraniteButton.swift in Sources */,
@@ -3060,6 +3077,10 @@
 		713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "GPT3 Tokenizer";
+		};
+		714238222A12D1BF00E3A55A /* MarqueKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MarqueKit;
 		};
 		71508F652A0E382E008D0988 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;

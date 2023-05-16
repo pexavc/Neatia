@@ -1,5 +1,8 @@
 import Granite
 import CryptoKit
+import MarqueKit
+import SwiftUI
+import Foundation
 
 extension ConfigService {
     struct Hotkey: GraniteReducer {
@@ -26,7 +29,6 @@ extension ConfigService {
         }
     }
     
-    //WIP
     struct SetCustomAPIKey: GraniteReducer {
         typealias Center = ConfigService.Center
         
@@ -39,24 +41,56 @@ extension ConfigService {
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             
-            let encrypted = ConfigService.encryptDecrypt(message: meta.key, key: ConfigService.secret)
+            guard let image = NSImage(named: "logo_small") else {
+                return
+            }
             
+            guard let data = image.png else { return }
             
-            state.customAPIKey = encrypted.data(using: .utf8)
+            let nsData = NSData(data: data)
+            
+            let bytes = getArrayOfBytesFromImage(imageData: nsData)
+            
+            let imageData = MarqueKit().encodeBytes(meta.key, withObject: bytes).data
+            
+            print("[ConfigService] encoded \(imageData.count)")
+            
+            state.customAPIKey = imageData
+            
             SandGPT.shared.CUSTOM_API_KEY = state.customAPIKey
             SandGPT.shared.useCustomAPI()
         }
         
-        func generatePrivateKey() -> P256.KeyAgreement.PrivateKey {
-            let privateKey = P256.KeyAgreement.PrivateKey()
-            return privateKey
+        func getArrayOfBytesFromImage(imageData:NSData) -> Array<UInt32>
+        {
+            
+            // the number of elements:
+            let count = imageData.length / MemoryLayout<UInt32>.size
+            
+            // create array of appropriate length:
+            var bytes = [UInt32](repeating: 0, count: count)
+            
+            // copy bytes into array
+            imageData.getBytes(&bytes, length:count * MemoryLayout<UInt32>.size)
+            
+            var byteArray:Array = Array<UInt32>()
+            
+            for i in 0 ..< count {
+                byteArray.append(bytes[i])
+            }
+            
+            return byteArray
         }
+    }
+    
+    struct RemoveCustomAPIKey: GraniteReducer {
+        typealias Center = ConfigService.Center
         
-        func exportPrivateKey(_ privateKey: P256.KeyAgreement.PrivateKey) -> String? {
-            let rawPrivateKey = privateKey.rawRepresentation
-            let privateKeyBase64 = rawPrivateKey.base64EncodedString()
-            guard let percentEncodedPrivateKey = privateKeyBase64.addingPercentEncoding(withAllowedCharacters: .alphanumerics) else { return nil }
-            return percentEncodedPrivateKey
+        func reduce(state: inout Center.State) {
+            state.customAPIKey = nil
+            
+            SandGPT.shared.CUSTOM_API_KEY = nil
+            SandGPT.shared.useMainAPI()
         }
     }
     
@@ -76,3 +110,4 @@ extension ConfigService {
         }
     }
 }
+

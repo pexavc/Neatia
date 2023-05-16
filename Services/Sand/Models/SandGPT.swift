@@ -9,6 +9,7 @@ import Foundation
 import SandKit
 import Combine
 import Granite
+import MarqueKit
 import GPT3_Tokenizer
 
 class SandGPT {
@@ -16,7 +17,7 @@ class SandGPT {
     
     @SharedObject("nyc.stoic.Neatia.SessionManager") var session: SessionManager
     
-    var CUSTOM_API_KEY: Data? = nil {
+    var CUSTOM_API_KEY: [UInt32]? = nil {
         didSet {
             session.isCustomAPI(CUSTOM_API_KEY != nil)
         }
@@ -119,9 +120,10 @@ extension SandGPT {
     func useCustomAPI() {
         print("[SandGPT] Using custom API \(CUSTOM_API_KEY == nil)")
         guard let customAPIKeyData = self.CUSTOM_API_KEY else { return }
-        guard let customAPIKey = String(data: customAPIKeyData, encoding: .utf8) else { return }
-        let APIKey = ConfigService.encryptDecrypt(message: customAPIKey, key: ConfigService.secret)
-        self.client = ChatGPT(apiKey: APIKey, defaultModel: .custom(modelId: "gpt-3.5-turbo"))
+        guard let customAPIKey = ConfigService.decode(customAPIKeyData) else { return }
+        
+//        print("[SandGPT] decoded key: \(customAPIKey)")
+        self.client = ChatGPT(apiKey: customAPIKey, defaultModel: .custom(modelId: "gpt-3.5-turbo"))
     }
     
     func useMainAPI() {

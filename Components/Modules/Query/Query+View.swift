@@ -11,7 +11,6 @@ extension Query: View {
                 MacEditorTextView(
                     text: sand.center.$state.binding.query,
                     autoCompleteText: sand.center.$state.binding.commandAutoComplete,
-                    isEditable: sessionManager.isLocked == false,
                     font: Fonts.nsFont(.defaultSize, .bold),
                     onEditingChanged: {
                         center.$state.binding.wrappedValue.isEditing = true
@@ -52,6 +51,7 @@ extension Query: View {
                                     .Meta(isActive: isActive))
                     }
                 )
+                .allowsHitTesting(session.isLocked == false)
                 .alert(sand.state.lastError?.message ?? "", isPresented: sand.center.$state.binding.errorExists) {
                     Button("OK", role: .cancel) { }
                 }

@@ -10,6 +10,7 @@ extension SandService {
         
         @Relay var environment: EnvironmentService
         @Relay var prompts: PromptService
+        @Relay var config: ConfigService
         
         func reduce(state: inout Center.State) {
             guard SandGPT.shared.isResponding == false else { return }
@@ -75,7 +76,8 @@ extension SandService {
             state.response = ""
             state.isResponding = true
             
-            //print("[SandService] Command for prompt: \(state.commandSet)")
+            print("[SandService] Command for prompt: \(state.commandSet)")
+            print("[SandService] Use custom config: \(config.state.customPromptConfigEnabled)")
             
             SandGPT.shared.ask(userPrompt,
                                withSystemPrompt: systemPrompt,

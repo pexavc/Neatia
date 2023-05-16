@@ -1,6 +1,8 @@
 import Granite
 import SwiftUI
 import LaunchAtLogin
+import MarqueKit
+import SandKit
 
 extension ConfigService {
     struct Center: GraniteCenter {
@@ -18,8 +20,12 @@ extension ConfigService {
             var mountHotkey: InteractionManager.HotkeyOptions = .n
             var promptStudioHotkey: InteractionManager.HotkeyOptions = .p
             
+            //Config
+            var customPromptConfigEnabled: Bool = false
+            var customPromptConfig: PromptConfig = .init()
+            
             //API Key
-            var customAPIKey: Data? = nil
+            var customAPIKey: [UInt32]? = nil
             
             var isCustomAPIKeySet: Bool {
                 customAPIKey != nil
@@ -57,21 +63,23 @@ extension ConfigService {
         
         @Event var updateHotkey: Hotkey.Reducer
         @Event var setAPIKey: SetCustomAPIKey.Reducer
+        @Event var removeAPIKey: RemoveCustomAPIKey.Reducer
         
-        @Store(persist: "neatia.persistence.config.0012", autoSave: true) public var state: State
+        @Store(persist: "neatia.persistence.config.0013", autoSave: true, preload: true) public var state: State
     }
     
-    static func encrypt(c: Character, key: Character) -> String? {
-        let byte = [c.utf8() ^ key.utf8()]
-        return String(bytes: byte, encoding: .utf8)
-    }
-     
-    static func encryptDecrypt(message: String, key: String) -> String {
-        return zip(message, key).compactMap { encrypt(c: $0.0, key: $0.1) }.joined()
-    }
-    
-    static var secret: String {
-        "ialrughbdjilajbvkWERVRUBN35bsdfgs"
+    static func decode(_ bytes: [UInt32]) -> String? {
+        let result = MarqueKit().searchBytes(bytes)
+        guard let payload = result.payload.components(separatedBy: "<m12>").filter({ $0.isNotEmpty }).first?.components(separatedBy: "</m12>").first else {
+            return nil
+        }
+        
+        if let decodedData = Data(base64Encoded: payload),
+           let decodedString = String(data: decodedData, encoding: .utf8) {
+            return decodedString
+        } else {
+            return nil
+        }
     }
 }
 

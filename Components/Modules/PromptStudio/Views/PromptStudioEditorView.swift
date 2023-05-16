@@ -197,7 +197,7 @@ struct PromptStudioEditorView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Mode")
+                        Text("Tune")
                             .font(Fonts.live(.headline, .bold))
                             .foregroundColor(.foreground)
                         
@@ -211,10 +211,28 @@ struct PromptStudioEditorView: View {
                             .frame(width: 60, height: 60)
                             .padding(.horizontal, 16)
                             
-                            CustomSliderView(value: $promptCreativity,
-                                             color: Brand.Colors.purple.opacity(0.45))
-                                .frame(height: 30)
-                            //Slider(value: $promptCreativity, in: 0...1)
+                            VStack(alignment: .center) {
+                                CustomSliderView(value: $promptCreativity,
+                                                 color: Brand.Colors.purple.opacity(0.45))
+                                    .frame(height: 30)
+                                
+                                PopupableView(.promptStudio,
+                                              size: .init(460, 400),
+                                              edge: .maxY, {
+                                    Text("Advanced")
+                                        .font(Fonts.live(.footnote, .bold))
+                                        .padding(.vertical, 4)
+                                        .foregroundColor(Color.gray)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 6)
+                                                .strokeBorder(Color.gray, lineWidth: 2)
+                                                .padding(.horizontal, -6)
+                                        )
+                                        .padding(.horizontal, 6)
+                                }) {
+                                    TuningView(isPopup: true)
+                                }
+                            }
                         }
                     }
                     

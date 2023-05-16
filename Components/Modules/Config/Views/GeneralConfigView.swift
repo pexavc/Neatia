@@ -26,7 +26,7 @@ struct GeneralConfigView: View {
             }
             .padding(.bottom, 8)
             
-            Text("Start-up Behavior")
+            Text("Behavior")
                 .font(Fonts.live(.headline, .bold))
                 .foregroundColor(.foreground)
             
@@ -37,52 +37,78 @@ struct GeneralConfigView: View {
             }
             .padding(.bottom, 8)
             
-            Text("Accessibility")
-                .font(Fonts.live(.headline, .bold))
-                .foregroundColor(.foreground)
+//            Text("Accessibility")
+//                .font(Fonts.live(.headline, .bold))
+//                .foregroundColor(.foreground)
+//
+//            HStack {
+//                Toggle("Visual guide", isOn: config.center.$state.binding.showVisualGuide)
+//
+//                Spacer()
+//            }
+//            .padding(.bottom, 8)
             
-            HStack {
-                Toggle("Visual guide", isOn: config.center.$state.binding.showVisualGuide)
+            if config.state.isCustomAPIKeySet {
                 
-                Spacer()
-            }
-            .padding(.bottom, 8)
-            
-            Text("Custom API Key for OpenAI's ChatGPT")
-                .font(Fonts.live(.headline, .bold))
-                .foregroundColor(.foreground)
-            
-            AppBlurView(size: .init(0, 60),
-                        tintColor: Brand.Colors.black.opacity(0.3)) {
-                MacEditorTextView(
-                    text: $apiKey,
-                    isEditable: true,
-                    font: Fonts.nsFont(.defaultSize, .bold))
-            }
-            .frame(height: 60)
-            
-            AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
+                TuningView(updateCustomConfigDirectly: true)
                 
-                Button(action: {
-                    config
-                        .center
-                        .setAPIKey
-                        .send(ConfigService.SetCustomAPIKey.Meta(key: apiKey))
-                }) {
-                    Text("Set API Key")
-                        .font(Fonts.live(.headline, .bold))
-                        .foregroundColor(.foreground)
-                }.buttonStyle(PlainButtonStyle())
+            } else {
+                Text("Custom API Key for OpenAI's ChatGPT")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                
+                AppBlurView(size: .init(0, 60),
+                            tintColor: Brand.Colors.black.opacity(0.3)) {
+                    MacEditorTextView(
+                        text: $apiKey,
+                        isEditable: true,
+                        font: Fonts.nsFont(.defaultSize, .bold))
+                }
+                .frame(height: 60)
+                
+                AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
+                    
+                    Button(action: {
+                        config
+                            .center
+                            .setAPIKey
+                            .send(ConfigService.SetCustomAPIKey.Meta(key: apiKey))
+                    }) {
+                        Text("Set API Key")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    }.buttonStyle(PlainButtonStyle())
+                }
+                .environment(\.colorScheme, .dark)
+                .padding(.bottom, 8)
+                
+                Text("More options appear after a key is set, to help you customize your experience.")
             }
-            .environment(\.colorScheme, .dark)
-            .padding(.bottom, 8)
-            
-            Text("More options appear after a key is set, to help you customize your experience.")
             
             
             Spacer()
+            
+            if config.state.isCustomAPIKeySet {
+                AppBlurView(tintColor: Brand.Colors.red.opacity(0.3)) {
+                    
+                    Button(action: {
+                        config
+                            .center
+                            .removeAPIKey
+                            .send()
+                    }) {
+                        Text("Delete API Key")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    }.buttonStyle(PlainButtonStyle())
+                }
+                .environment(\.colorScheme, .dark)
+            }
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
     }
+    
+    
 }

@@ -4,12 +4,12 @@ import SandKit
 struct Query: GraniteComponent {
     @Command var center: Center
     
-    @SharedObject("nyc.stoic.Neatia.SessionManager") var sessionManager: SessionManager
-    
     @Relay var environment: EnvironmentService
     @Relay var account: AccountService
     @Relay var sand: SandService
     @Relay var prompts: PromptService
+    
+    @SharedObject("nyc.stoic.Neatia.SessionManager") var session: SessionManager
     
     //TODO: could be a better way to generate helper text, a "smarter" way. But for now order matters in SandKit
     var helperText: String {
