@@ -40,6 +40,7 @@ class SandGPT {
     func ask<E: EventExecutable>(_ prompt: String,
                                  withSystemPrompt systemPrompt: String? = nil,
                                  withConfig config: PromptConfig,
+                                 stream: Bool = false,
                                  event: E) {
         print("[SandGPT] prompt token count: \(prompt.components(separatedBy: " ").count)")
         guard prompt.isNotEmpty, let client = self.client else { return }
@@ -59,34 +60,42 @@ class SandGPT {
                 
                 timer.invalidate()
                 
-                guard let client = self?.client else {
-                    self?.isResponding = false
-                    return
-                }
-                
                 print("[SandGPT] creatingTask")
                 
-                self?.updateCompletedTimer(event)
-                
+                if stream {
+                    self?.updateCompletedTimer(event)
+                }
                 
                 self?.currentTask?.task = Task {
                     
-                    var replyDebouncerInit: CGFloat = CFAbsoluteTimeGetCurrent()
                     var reply: String = ""
-                    for try await nextWord in try await client.streamedAnswer.ask(prompt,
-                                                                                  withSystemPrompt: systemPrompt,
-                    withConfig: config) {
-                        
-                        SandGPT.shared.updateCompletedTimer(event)
-                        
-                        reply += nextWord
-                        
-                        //print("[SandGPT] streaming // nextWord: \(nextWord)")
-                        
-                        if CFAbsoluteTimeGetCurrent() - replyDebouncerInit >= 0.24 {
-                            replyDebouncerInit = CFAbsoluteTimeGetCurrent()
-                            event.send(Response(data: reply, isComplete: false))
+                    
+                    if stream {
+                        var replyDebouncerInit: CGFloat = CFAbsoluteTimeGetCurrent()
+                        for try await nextWord in try await client
+                            .streamedAnswer.ask(prompt,
+                                                withSystemPrompt: systemPrompt,
+                                                withConfig: config) {
+                            
+                            SandGPT.shared.updateCompletedTimer(event)
+                            
+                            reply += nextWord
+                            
+                            //print("[SandGPT] streaming // nextWord: \(nextWord)")
+                            
+                            if CFAbsoluteTimeGetCurrent() - replyDebouncerInit >= 0.24 {
+                                replyDebouncerInit = CFAbsoluteTimeGetCurrent()
+                                event.send(Response(data: reply, isComplete: false, isStream: true))
+                            }
                         }
+                    } else {
+                        reply = try await client.ask(prompt, withSystemPrompt: systemPrompt, withConfig: config)
+                        
+                        DispatchQueue.main.async { [weak self] in
+                            self?.isResponding = false
+                        }
+                        
+                        event.send(Response(data: reply, isComplete: true, isStream: false))
                     }
                 }
             }
@@ -105,7 +114,7 @@ class SandGPT {
                     DispatchQueue.main.async { [weak self] in
                         self?.isResponding = false
                     }
-                    event.send(Response(data: nil, isComplete: true))
+                    event.send(Response(data: nil, isComplete: true, isStream: true))
                 }
         }
     }
@@ -113,6 +122,7 @@ class SandGPT {
     struct Response: GranitePayload {
         var data: String?
         var isComplete: Bool
+        var isStream: Bool
     }
 }
 

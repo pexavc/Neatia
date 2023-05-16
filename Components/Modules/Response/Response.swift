@@ -5,4 +5,5 @@ struct Response: GraniteComponent {
     
     @Relay var environment: EnvironmentService
     @Relay var sand: SandService
+    @Relay var config: ConfigService
 }

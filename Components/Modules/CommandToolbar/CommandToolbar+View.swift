@@ -34,7 +34,7 @@ extension CommandToolbar: View {
             }
             .frame(width: 136)
             //`0` is the sc index
-            .offset(x: -1*((WindowComponent.Style.defaultElementSize.height + 8) + (indexOfSCSelected * 136) + (indexOfSCSelected * 8)), y: (WindowComponent.Style.defaultElementSize.height - 4) + WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
+            .offset(x: -1*((WindowComponent.Style.defaultElementSize.height + 8) + (indexOfSCSelected * 136) + (indexOfSCSelected * 8)), y: (WindowComponent.Style.defaultElementSize.height - 4) + WindowComponent.Style.defaultComponentOuterPaddingContainerAware + WindowComponent.Style.defaultTitleBarHeight)
         }
     }
 }

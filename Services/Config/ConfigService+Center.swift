@@ -16,11 +16,14 @@ extension ConfigService {
                 }
             }
             
+            //GPT
+            var streamResponse: Bool = false
+            
             //Hotkeys
             var mountHotkey: InteractionManager.HotkeyOptions = .n
             var promptStudioHotkey: InteractionManager.HotkeyOptions = .p
             
-            //Config
+            //Prompt Config
             var customPromptConfigEnabled: Bool = false
             var customPromptConfig: PromptConfig = .init()
             
@@ -65,7 +68,7 @@ extension ConfigService {
         @Event var setAPIKey: SetCustomAPIKey.Reducer
         @Event var removeAPIKey: RemoveCustomAPIKey.Reducer
         
-        @Store(persist: "neatia.persistence.config.0013", autoSave: true, preload: true) public var state: State
+        @Store(persist: "neatia.persistence.config.0014", autoSave: true, preload: true) public var state: State
     }
     
     static func decode(_ bytes: [UInt32]) -> String? {

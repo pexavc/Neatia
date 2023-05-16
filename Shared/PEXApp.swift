@@ -54,8 +54,8 @@ struct PEXApp: App {
                     
                     //TODO: DEV
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                        InteractionManager.shared.observeHotkey(kind: .promptStudio)
-                        MenuBarManager.shared.showPopOver()
+                        InteractionManager.shared.observeHotkey(kind: .mount)
+//                        MenuBarManager.shared.showPopOver()
                     }
                 }
                 .onChange(of: AccountManager.isLoggedIn) { newState in

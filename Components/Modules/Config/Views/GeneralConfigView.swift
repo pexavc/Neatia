@@ -35,6 +35,13 @@ struct GeneralConfigView: View {
                 
                 Spacer()
             }
+            
+            HStack {
+                Toggle("Stream Response", isOn: config.center.$state.binding.streamResponse)
+                
+                Spacer()
+            }
+            .padding(.bottom, 8)
             .padding(.bottom, 8)
             
 //            Text("Accessibility")

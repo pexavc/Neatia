@@ -11,7 +11,7 @@ extension Response: View {
                                             0,
                                             Fonts.Details.from(.defaultResponseSize).actualHeight,
                                             0)) { lineCount in
-                    guard lineCount > 0 else { return }
+                    guard lineCount > 0 && config.state.streamResponse else { return }
                     environment
                         .center
                         .responseWindowSize

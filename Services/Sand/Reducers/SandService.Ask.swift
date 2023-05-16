@@ -1,6 +1,7 @@
 import Granite
 import SandKit
 import Foundation
+import Markdown
 
 extension SandService {
     struct Ask: GraniteReducer {
@@ -17,13 +18,13 @@ extension SandService {
             
             let maxTokenCount: Int = prompts.maxTokenCount(state.commandSet)
             
-            let systemPrompt: String? = nil
-            
             state.lastError = nil
             
             let userPrompt: String
             
             let engineeredPrompt: BasicPrompt? = prompts.prompt(state.commandSet)
+            
+            let systemPrompt: String? = engineeredPrompt?.config.systemPrompt
             
             //Prompt Generation
             if let command = state.commandSet,
@@ -78,7 +79,7 @@ extension SandService {
             
             print("[SandService] Command for prompt: \(state.commandSet)")
             print("[SandService] Use custom config: \(config.state.customPromptConfigEnabled)")
-            
+            print("[SandService] Use System prompt: \(systemPrompt)")
             SandGPT.shared.ask(userPrompt,
                                withSystemPrompt: systemPrompt,
                                withConfig: engineeredPrompt?.config ?? .init(),
@@ -91,15 +92,57 @@ extension SandService {
         
         @Payload var response: SandGPT.Response?
         
+        @Event var processDocument: AskDocumentResponse.Reducer
+        
         func reduce(state: inout Center.State) {
             guard response?.isComplete == false else {
                 print("[SandService] AskIsComplete")
-                state.isResponding = false
+                
+                if response?.isStream == false {
+                    if let payload = response {
+                        processDocument.send(payload)
+                    } else {
+                        state.response = response?.data ?? ""
+                    }
+                } else {
+                    state.isResponding = false
+                }
+                
                 return
             }
+            print("[SandService] test")
             
             state.response = response?.data ?? ""
-            print("[SandService] Sending: \(state.response)")
+            //print("[SandService] Sending: \(state.response)")
+        }
+    }
+    
+    struct AskDocumentResponse: GraniteReducer {
+        typealias Center = SandService.Center
+        
+        @Relay var environment: EnvironmentService
+        
+        @Payload var response: SandGPT.Response?
+        
+        func reduce(state: inout Center.State) {
+            guard let response = response?.data else { return }
+            let doc = Document(parsing: response, source: nil)
+            let lineCount = Int(doc.range?.upperBound.line ?? 0)
+            
+            environment
+                .center
+                .responseWindowSize
+                .send(
+                    EnvironmentService
+                        .ResponseWindowSizeUpdated
+                        .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0)))
+            
+            state.response = response
+            state.isResponding = false
+        }
+        
+        var thread: DispatchQueue? {
+            .global(qos: .utility)
         }
     }
 }

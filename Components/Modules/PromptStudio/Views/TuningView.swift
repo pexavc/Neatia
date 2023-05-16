@@ -153,13 +153,13 @@ struct TuningView: View {
                         .foregroundColor(.foreground)
                     
                     HStack(spacing: 8) {
-                        AppBlurView(size: .init(24, 48),
+                        AppBlurView(size: .init(20, 36),
                                     tintColor: Brand.Colors.black.opacity(0.3)) {
                             Text("\(promptNumberOfAnswers)")
                                 .font(Fonts.live(.subheadline, .bold))
                                 .foregroundColor(.foreground)
                         }
-                        .frame(width: 24, height: 48)
+                        .frame(width: 24, height: 36)
                         .padding(.horizontal, 16)
                         
                         Stepper(value: $promptNumberOfAnswers, in: 1...4) {
@@ -175,15 +175,16 @@ struct TuningView: View {
                         .foregroundColor(.foreground)
                     
                     HStack(spacing: 8) {
-                        AppBlurView(size: .init(48, 48),
+                        AppBlurView(size: .init(44, 36),
                                     tintColor: Brand.Colors.black.opacity(0.3)) {
                             TextField(.init(""), text: $promptMaxTokensDisplay)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .multilineTextAlignment(.center)
                                 .font(Fonts.live(.subheadline, .bold))
                                 .foregroundColor(.foreground)
+                                .padding(.bottom, 2)
                         }
-                        .frame(width: 48, height: 48)
+                        .frame(width: 48, height: 36)
                         .padding(.horizontal, 16)
                         .onChange(of: promptMaxTokensDisplay) { newValue in
                             if let intValue = Int(newValue) {
@@ -211,15 +212,16 @@ struct TuningView: View {
                     .foregroundColor(.foreground)
                 
                 HStack(spacing: 8) {
-                    AppBlurView(size: .init(104, 48),
+                    AppBlurView(size: .init(100, 36),
                                 tintColor: Brand.Colors.black.opacity(0.3)) {
                         TextField(.init(""), text: $promptEngine)
                             .textFieldStyle(PlainTextFieldStyle())
                             .multilineTextAlignment(.center)
                             .font(Fonts.live(.subheadline, .bold))
                             .foregroundColor(.foreground)
+                            .padding(.bottom, 2)
                     }
-                    .frame(width: 104, height: 48)
+                    .frame(width: 104, height: 36)
                     .padding(.horizontal, 16)
                 }
             }
