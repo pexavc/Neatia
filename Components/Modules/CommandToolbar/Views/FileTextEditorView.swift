@@ -68,16 +68,16 @@ struct FileTextEditorView: View {
     }
     
     var errorMessage: String {
-        if documentTokenCount <= maxTokenCount {
+        if documentTokenCount > maxTokenCount {
             return "Reduce the token count of your instructions to \(maxTokenCount) tokens or less."
         }
         
-        var string: String = "You still need to add "
+        var string: String = ""
         
         var issues: [String] = []
         
         if documentContents.isEmpty {
-            issues.append("a document")
+            issues.append("You still need to add a document")
         }
         
         string += issues.joined(separator: issues.count > 2 ? ", " : " ")
@@ -142,7 +142,17 @@ struct FileTextEditorView: View {
                 }
                 .frame(height: 440)
                 
-                Spacer()
+                if showError {
+                    HStack {
+                        Spacer()
+                        Text(errorMessage)
+                            .font(Fonts.live(.footnote, .bold))
+                            .foregroundColor(Brand.Colors.red)
+                        Spacer()
+                    }
+                } else {
+                    Spacer()
+                }
                 
                 HStack(spacing: 16) {
                     Spacer()
@@ -171,8 +181,8 @@ struct FileTextEditorView: View {
             .padding(.vertical, WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
         }
         .padding(16)
-        .alert(errorMessage, isPresented: $showError) {
-            Button("OK", role: .cancel) { }
-        }
+//        .alert(errorMessage, isPresented: $showError) {
+//            Button("OK", role: .cancel) { }
+//        }
     }
 }

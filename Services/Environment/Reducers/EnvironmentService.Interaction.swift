@@ -84,7 +84,7 @@ extension EnvironmentService {
             guard let meta = self.meta else { return }
             switch meta.kind {
             case .mount:
-                break
+                state.pane?.closePopover()
             case .promptStudio:
                 state.promptStudioPane?.closePopover()
             }

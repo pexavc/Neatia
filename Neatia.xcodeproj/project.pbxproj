@@ -91,6 +91,8 @@
 		714238272A12D8B700E3A55A /* pieta.png in Resources */ = {isa = PBXBuildFile; fileRef = 714238252A12D8B700E3A55A /* pieta.png */; };
 		714238292A1313F800E3A55A /* TuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714238282A1313F800E3A55A /* TuningView.swift */; };
 		7142382A2A1313F800E3A55A /* TuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714238282A1313F800E3A55A /* TuningView.swift */; };
+		7142382C2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142382B2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift */; };
+		7142382D2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142382B2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift */; };
 		7145EF0D28D43F1D00BFD19A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF0C28D43F1D00BFD19A /* Date.swift */; };
 		7145EF0E28D43F1D00BFD19A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF0C28D43F1D00BFD19A /* Date.swift */; };
 		7145EF1928D44DEE00BFD19A /* UIApplication+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF1828D44DEE00BFD19A /* UIApplication+SafeArea.swift */; };
@@ -617,6 +619,7 @@
 		714238212A12CCE000E3A55A /* MarqueKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MarqueKit; path = ../MarqueKit; sourceTree = "<group>"; };
 		714238252A12D8B700E3A55A /* pieta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieta.png; sourceTree = "<group>"; };
 		714238282A1313F800E3A55A /* TuningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuningView.swift; sourceTree = "<group>"; };
+		7142382B2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantToolbar.FileSelection.swift; sourceTree = "<group>"; };
 		7145EF0C28D43F1D00BFD19A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7145EF1828D44DEE00BFD19A /* UIApplication+SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+SafeArea.swift"; sourceTree = "<group>"; };
 		71508F632A0E3776008D0988 /* LaunchAtLogin */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LaunchAtLogin; path = ../LaunchAtLogin; sourceTree = "<group>"; };
@@ -1063,6 +1066,7 @@
 			isa = PBXGroup;
 			children = (
 				713D866E2A118D2300AE32CE /* FileTextEditorView.swift */,
+				7142382B2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2188,6 +2192,7 @@
 				71A28E25295237AE00EAE8EE /* GraniteLoop.swift in Sources */,
 				71EA5BBD2A1025E300B0F82D /* CustomPrompt.swift in Sources */,
 				7197FB032964B4C0005EBBA4 /* GraniteModalManager.swift in Sources */,
+				7142382C2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift in Sources */,
 				71CEBE442A07A75A00DE6CDE /* CommandMenu+View.swift in Sources */,
 				71A28E2D295237AE00EAE8EE /* Run.swift in Sources */,
 				71A28DF7295232E300EAE8EE /* Haptic.swift in Sources */,
@@ -2444,6 +2449,7 @@
 				7110C88D2A025A1400824D58 /* TranslucentWindowBackground.swift in Sources */,
 				71EA5BBE2A1025E300B0F82D /* CustomPrompt.swift in Sources */,
 				71A28E26295237AE00EAE8EE /* GraniteLoop.swift in Sources */,
+				7142382D2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift in Sources */,
 				71CEBE452A07A75A00DE6CDE /* CommandMenu+View.swift in Sources */,
 				71A28E2E295237AE00EAE8EE /* Run.swift in Sources */,
 				71A28DF8295232E300EAE8EE /* Haptic.swift in Sources */,

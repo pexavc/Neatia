@@ -88,7 +88,7 @@ struct PromptStudioEditorView: View {
     }
     
     var errorMessage: String {
-        if promptTokenCount <= PromptService.customPromptMaxTokenCount {
+        if promptTokenCount > PromptService.customPromptMaxTokenCount {
             return "Reduce the token count of your instructions to \(PromptService.customPromptMaxTokenCount) tokens or less."
         }
         
