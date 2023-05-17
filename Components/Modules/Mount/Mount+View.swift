@@ -73,10 +73,7 @@ extension Mount: View {
                 Spacer().frame(height: WindowComponent.Kind.divider.defaultSize.height)
                 
                 if environment.state.isCommandActive {
-                    Rectangle()
-                        .foregroundColor(.secondaryBackground)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 3)
+                    Divider()
                         .padding(.horizontal,
                                  WindowComponent.Style.defaultContainerOuterPadding)
                 }
@@ -117,8 +114,9 @@ extension Mount: View {
             if environment.state.isCommandToolbarActive {
                 CommandToolbar()
                     .frame(minHeight: WindowComponent.Kind.toolbar.defaultSize.height)
-                    .padding(.horizontal,
-                             WindowComponent.Style.defaultComponentOuterPadding)
+                //Moved inside component for divider's padding
+//                    .padding(.horizontal,
+//                             WindowComponent.Style.defaultComponentOuterPadding)
                     .backgroundIf(config.state.showVisualGuide) {
                         Color.clear
                             .border(.green, width: 2)

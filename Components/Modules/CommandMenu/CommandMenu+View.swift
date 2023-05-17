@@ -34,11 +34,13 @@ extension CommandMenu: View {
         
         for command in sortedCases.isEmpty ? cases : sortedCases {
             let prompt = prompts.prompt(command)
+            let isLocked = prompt?.isSystemPrompt == true && session.isSubscribed == false
+            let labelText: LocalizedStringKey? = isLocked ? .init("subscribe") : (prompt?.isSystemPrompt == true ? nil : .init("custom"))
             list.append(
-                TableRow(kind: .label(Color.orange),
+                TableRow(kind: .label(isLocked ? Color.gray : Color.orange),
                         text: .init("/\(command.capitalized)...",
                                      subLeading: .init("\(prompt?.description ?? "")"),
-                                     trailing: prompt?.isSystemPrompt == true ? nil : .init("custom")),
+                                     trailing: labelText),
                          graphic: .init(prompt?.iconName ?? "",
                                         leadingBGColor: prompt?.baseColor ?? Brand.Colors.black,
                                         texture: prompt?.isSystemPrompt == true)) {

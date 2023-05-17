@@ -30,7 +30,7 @@ extension CommandToolbar {
         
         let estimatedWidth = fileDocumentTokenCountLabel.count * 14
         
-        let fileDescriptor = sand.state.subCommandFileSet?[sc.id]?[scValue?.id ?? ""]
+        //let fileDescriptor = sand.state.subCommandFileSet?[sc.id]?[scValue?.id ?? ""]
         
         return AppBlurView(padding: .init(fileProperties.documentTokenCount > 0 ? 8 : 0, 0),
                            tintColor: Brand.Colors.black.opacity(0.3)) {
@@ -95,7 +95,8 @@ extension CommandToolbar {
                     .frame(height: WindowComponent.Style.defaultElementSize.height)
             
                }
-               .frame(width: fileProperties.documentTokenCount <= 0 ? WindowComponent.Style.defaultElementSize.width : (estimatedWidth + WindowComponent.Style.defaultElementSize.width), height: WindowComponent.Style.defaultElementSize.height)
+               .frame(width: fileProperties.documentTokenCount <= 0 ? WindowComponent.Style.defaultElementSize.width : (estimatedWidth + WindowComponent.Style.defaultElementSize.width),
+                      height: WindowComponent.Style.defaultElementSize.height)
                .alert("Only these file extensions are allowed: \(acceptedFileExtensions.joined(separator: ", "))", isPresented: center.$state.binding.showFileExtAlert) {
                    Button("OK", role: .cancel) { }
                }

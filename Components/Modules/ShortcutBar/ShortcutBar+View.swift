@@ -39,14 +39,19 @@ extension ShortcutBar: View {
 
 extension ShortcutBar {
     var copyToClipboardView: some View {
+        
         AppBlurView(padding: .init(16)) {
             Button {
                 guard sand.state.response.isNotEmpty else { return }
                 
+                center.$state.binding.lastCopiedText.wrappedValue = sand.state.response
+                let pasteboard = NSPasteboard.general
+                pasteboard.declareTypes([.string], owner: nil)
+                pasteboard.setString(state.lastCopiedText, forType: .string)
                 
             } label : {
                 HStack(spacing: 8) {
-                    Text("Copy To Clipboard")
+                    Text(state.lastCopiedText == sand.state.response ? "Copied" : "Copy To Clipboard")
                         .lineLimit(1)
                         .font(Fonts.live(.subheadline, .bold))
                         .foregroundColor(.foreground)
@@ -55,7 +60,7 @@ extension ShortcutBar {
                     Divider()
                         .padding(.horizontal, 2)
                     
-                    IconView(systemName: "doc.on.doc")
+                    IconView(systemName: "doc.on.clipboard\(state.lastCopiedText == sand.state.response ? ".fill" : "")")
                         .frame(width: 24,
                                height: WindowComponent.Style.defaultElementSize.height)
                 }
@@ -94,9 +99,11 @@ extension ShortcutBar {
                     Divider()
                         .padding(.horizontal, 2)
                     
-                    IconView(systemName: "arrow.down.square")
-                        .frame(width: 24,
-                               height: WindowComponent.Style.defaultElementSize.height)
+                    Image(systemName: "arrow.down.square")
+                        .font(Fonts.live(.title3, .bold))
+                        .foregroundColor(.foreground)
+                        .environment(\.colorScheme, .dark)
+                        .padding(.bottom, 2)
                 }
             }
             .buttonStyle(PlainButtonStyle())

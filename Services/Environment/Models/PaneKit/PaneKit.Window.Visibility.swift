@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Granite
+import ApplicationServices
 
 class WindowVisibilityKit {
     @Published var isVisible: [String:Bool] = [:]
@@ -43,6 +44,7 @@ final class WindowVisibilityManager: Equatable, SharableObject {
     public static var id : String = "nyc.stoic.Neatia.WindowVisibilityManager"
     
     internal var cancellables = Set<AnyCancellable>()
+    internal var windowNumbers = Set<Int>()
     
     let kit: WindowVisibilityKit
     
@@ -55,8 +57,17 @@ final class WindowVisibilityManager: Equatable, SharableObject {
         kit.$isVisible
             .receive(on: RunLoop.main)
             .removeDuplicates()
-            .sink { [weak self] _ in
+            .sink { [weak self] newValue in
             self?.objectWillChange.send()
+                
+            let showInDock = newValue.values.contains(true)
+            let transformState = showInDock ?
+                  ProcessApplicationTransformState(kProcessTransformToForegroundApplication)
+                : ProcessApplicationTransformState(kProcessTransformToUIElementApplication)
+            var psn = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kCurrentProcess))
+
+            let transformStatus: OSStatus = TransformProcessType(&psn, transformState)
+            print("[WindowVisibility] dock state changed: \(transformStatus == 0)")
         }.store(in: &cancellables)
     }
     
@@ -80,5 +91,9 @@ final class WindowVisibilityManager: Equatable, SharableObject {
         DispatchQueue.main.async {
             self.kit.close(id)
         }
+    }
+    
+    public func addWindowNumber(_ id: Int) {
+        windowNumbers.insert(id)
     }
 }

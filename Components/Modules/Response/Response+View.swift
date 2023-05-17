@@ -28,10 +28,10 @@ extension Response: View {
                 }
                 .environment(\.font, Fonts.live(.defaultResponseSize, .regular))
                 .padding(.horizontal, 4)
-                .animation(
-                    .default,
-                    value: sand.state.response.count
-                )
+//                .animation(
+//                    .default,
+//                    value: sand.state.response.count
+//                )
                 .frame(maxWidth: .infinity,
                        maxHeight: .infinity)
                 
@@ -47,25 +47,26 @@ struct LoadingView: View {
     
     @State var timer: Timer?
     
-    @State var containerWidth: CGFloat = 0
     @State var percent: CGFloat = 0.0
     
     var body: some View {
         GeometryReader { proxy in
             
             Brand.Colors.purple
-                .opacity(0.35)
-                .frame(width: containerWidth * percent)
+                .opacity(0.25)
+                .frame(width: proxy.width * percent)
                 .frame(maxHeight: .infinity)
                 .animation(.default, value: percent)
                 .onAppear {
-                    self.containerWidth = proxy.width
-                    
                     timer = Timer
-                        .scheduledTimer(withTimeInterval: 2.randomBetween(3),
-                                        repeats: true) { _ in
+                        .scheduledTimer(withTimeInterval: 3.randomBetween(4),
+                                        repeats: true) { timer in
                             
-                            percent += 0.1
+                            percent += 0.05.randomBetween(0.1)
+                            
+                            if percent >= 1.0 {
+                                timer.invalidate()
+                            }
                         }
                 }
         }

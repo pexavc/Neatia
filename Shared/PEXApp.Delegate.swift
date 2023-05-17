@@ -13,11 +13,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var menuBarManager: MenuBarManager?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApplication.shared.delegate = self
+        
         FirebaseApp.configure()
         
         //Window close
         if let window = NSApplication.shared.windows.first {
             window.close()
+//            window.is
         }
         
         menuBarManager = MenuBarManager.shared
@@ -27,6 +30,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         
         let nc = NotificationCenter.default
         nc.post(name: Notification.Name("nyc.stoic.Neatia.DidFinishLaunching"), object: nil)
+    }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication,
+                                       hasVisibleWindows flag: Bool) -> Bool {
+        return false
     }
     
     func addMenuItems() {

@@ -90,17 +90,33 @@ extension SandService {
     struct AskResponse: GraniteReducer {
         typealias Center = SandService.Center
         
+        @Relay var environment: EnvironmentService
+        
         @Payload var response: SandGPT.Response?
         
-        @Event var processDocument: AskDocumentResponse.Reducer
+        //@Event var processDocument: AskDocumentResponse.Reducer
         
         func reduce(state: inout Center.State) {
             guard response?.isComplete == false else {
                 print("[SandService] AskIsComplete")
                 
                 if response?.isStream == false {
-                    if let payload = response {
-                        processDocument.send(payload)
+                    if let payload = response, let data = payload.data {
+                        //processDocument.send(payload)
+                        let doc = Document(parsing: data, source: nil)
+                        let lineCount = Int(doc.range?.upperBound.line ?? 0)
+                        
+                        environment
+                            .center
+                            .responseWindowSize
+                            .send(
+                                EnvironmentService
+                                    .ResponseWindowSizeUpdated
+                                    .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0)))
+                        
+                        state.response = data
+                        state.isResponding = false
+                        
                     } else {
                         state.response = response?.data ?? ""
                     }
@@ -116,6 +132,7 @@ extension SandService {
         }
     }
     
+    //Weird race condition in continued reducers? check issue#1 in granite
     struct AskDocumentResponse: GraniteReducer {
         typealias Center = SandService.Center
         

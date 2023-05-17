@@ -5,4 +5,6 @@ struct CommandMenu: GraniteComponent {
     
     @Relay var sand: SandService
     @Relay var prompts: PromptService
+    
+    @SharedObject(SessionManager.id) var session: SessionManager
 }

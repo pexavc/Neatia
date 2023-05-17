@@ -21,6 +21,7 @@ extension PaneKit {
         private(set) var lastUpdate: Date = .init()
         
         let size: CGSize
+        let useMain: Bool
         let maxSize: CGSize
         let observeEvents: Bool
         private(set) var titleBarHeight: CGFloat = 0
@@ -32,10 +33,12 @@ extension PaneKit {
         let id: String
         
         init(id: String,
+             useMain: Bool,
              size: CGSize = .init(800, 48),
              maxSize: CGSize = .init(800, 750),
              observeEvents: Bool = false) {
             self.id = id
+            self.useMain = useMain
             self.size = size
             self.maxSize = maxSize
             self.observeEvents = observeEvents
@@ -45,6 +48,7 @@ extension PaneKit {
         func build(title: String? = nil, center: Bool = false) {
             DispatchQueue.main.async { [weak self] in
                 self?.main = AppWindow(self?.size ?? .zero, title: title, center: center)
+                
                 self?.titleBarHeight = self?.main?.titlebarHeight ?? 0
                 self?.isPrepared = true
                 

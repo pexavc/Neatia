@@ -18,7 +18,8 @@ extension EnvironmentService {
             
             //Windows
             state.pane = .init(id: InteractionManager.Kind.mount.rawValue,
-                               defaultSize: WindowComponent.Style.defaultWindowSize) {
+                               defaultSize: WindowComponent.Style.defaultWindowSize,
+                               useMain: true) {
                 PaneView()
             }
             

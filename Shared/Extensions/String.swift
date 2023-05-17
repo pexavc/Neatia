@@ -21,4 +21,8 @@ extension String {
     var sanitized: String {
         self.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "[^A-Za-z0-9]+", with: "", options: [.regularExpression])
     }
+    
+    var newlinesSanitized: String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }

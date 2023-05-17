@@ -28,9 +28,11 @@ class PaneKit<Content: View>: Equatable, Codable {
     
     init(id: String,
          defaultSize: CGSize,
+         useMain: Bool = false,
          @ViewBuilder content : (@escaping () -> Content)) {
         self.id = id
         window = .init(id: id,
+                       useMain: useMain,
                        size: defaultSize,
                        maxSize: WindowComponent.Style.maxWindowSize)
         self.defaultSize = defaultSize

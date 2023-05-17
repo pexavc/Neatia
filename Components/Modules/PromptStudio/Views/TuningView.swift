@@ -245,6 +245,12 @@ struct TuningView: View {
                     .padding(.horizontal, 16)
                 }
             }
+            .onChange(of: promptEngine) { newValue in
+                let sanitized = newValue.newlinesSanitized
+                if newValue.utf8.count != sanitized.utf8.count {
+                    promptEngine = sanitized
+                }
+            }
         }
     }
 }

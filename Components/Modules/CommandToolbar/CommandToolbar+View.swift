@@ -23,6 +23,11 @@ extension CommandToolbar: View {
                 .frame(height: WindowComponent.Kind.toolbar.defaultSize.height)
                 
             }//ZStack end
+            .padding(.horizontal, WindowComponent.Style.defaultComponentOuterPadding)
+            
+            Divider()
+                .padding(.horizontal,
+                         WindowComponent.Style.defaultContainerOuterPadding)
             
             Spacer()
                 .allowsHitTesting(false)
@@ -35,6 +40,7 @@ extension CommandToolbar: View {
             .frame(width: 136)
             //`0` is the sc index
             .offset(x: -1*((WindowComponent.Style.defaultElementSize.height + 8) + (indexOfSCSelected * 136) + (indexOfSCSelected * 8)), y: (WindowComponent.Style.defaultElementSize.height - 4) + WindowComponent.Style.defaultComponentOuterPaddingContainerAware + WindowComponent.Style.defaultTitleBarHeight)
+            .padding(.horizontal, WindowComponent.Style.defaultComponentOuterPadding)
         }
     }
 }
@@ -147,6 +153,7 @@ extension CommandToolbar {
                  bgColor: prompt.baseColor.opacity(0.75),
                  withBlur: false,
                  withTexture: prompt.isSystemPrompt)
-            .frame(width: WindowComponent.Style.defaultElementSize.height, height: WindowComponent.Style.defaultElementSize.height)
+            .frame(width: WindowComponent.Style.defaultElementSize.height,
+                   height: WindowComponent.Style.defaultElementSize.height)
     }
 }

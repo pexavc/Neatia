@@ -189,6 +189,12 @@ public struct CustomCode: CodeMarkdownStyle {
     struct Label: View {
         @ScaledMetric(wrappedValue: 15) private var padding
 
+        @State var lastCopiedText: String = ""
+        
+        var isCopied: Bool {
+            lastCopiedText == configuration.code
+        }
+        
         let configuration: Configuration
 
         var body: some View {
@@ -201,16 +207,34 @@ public struct CustomCode: CodeMarkdownStyle {
             #endif
             .background(Color.secondaryBackground.opacity(0.5).cornerRadius(8))
             .overlay(
-                configuration.language.flatMap { Text($0) }?
-                    .padding(5)
-                    .font(.footnote.weight(.semibold))
-                    .foregroundColor(.accentColor)
-                    //.foregroundColor(.secondary)
-                    #if os(iOS)
-                    .background(Color(.systemBackground))
-                    #endif
-                    .cornerRadius(6)
-                    .padding(5),
+                VStack(alignment: .trailing, spacing: 8) {
+                    configuration.language.flatMap { Text($0) }?
+                        .padding(5)
+                        .font(.footnote.weight(.semibold))
+                        .foregroundColor(.accentColor)
+                        //.foregroundColor(.secondary)
+                        #if os(iOS)
+                        .background(Color(.systemBackground))
+                        #endif
+                        .cornerRadius(6)
+                        .padding(5)
+                    
+                    Button {
+                        lastCopiedText = configuration.code
+                        
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.declareTypes([.string], owner: nil)
+                        pasteboard.setString(lastCopiedText, forType: .string)
+                    } label : {
+                        IconView(systemName: "doc.on.clipboard\(isCopied ? ".fill" : "")",
+                                 //bgColor: Brand.Colors.black.opacity(0.5),
+                                 withBlur: true)
+                            .frame(width: 24,
+                                   height: WindowComponent.Style.defaultElementSize.height)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.trailing, 12)
+                },
                 alignment: .topTrailing
             )
             .environment(\.layoutDirection, .leftToRight)

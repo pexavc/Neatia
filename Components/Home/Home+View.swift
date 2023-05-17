@@ -8,7 +8,8 @@ extension Home: View {
     
     public var view: some View {
         ZStack {
-            Mount()
+            Special()
+//            EmptyView()
         }
     }
 }
