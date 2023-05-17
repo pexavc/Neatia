@@ -58,7 +58,7 @@ extension ShortcutBar {
                         .environment(\.colorScheme, .dark)
                     
                     Divider()
-                        .padding(.horizontal, 2)
+                        .padding(.horizontal, 8)
                     
                     IconView(systemName: "doc.on.clipboard\(state.lastCopiedText == sand.state.response ? ".fill" : "")")
                         .frame(width: 24,
@@ -97,7 +97,7 @@ extension ShortcutBar {
                         .environment(\.colorScheme, .dark)
                     
                     Divider()
-                        .padding(.horizontal, 2)
+                        .padding(.horizontal, 8)
                     
                     Image(systemName: "arrow.down.square")
                         .font(Fonts.live(.title3, .bold))
