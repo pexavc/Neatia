@@ -24,7 +24,7 @@ extension Color {
         default:
             (a, r, g, b) = (1, 1, 1, 0)
         }
-
+        
         self.init(
             .sRGB,
             red: Double(r) / 255,
@@ -36,5 +36,33 @@ extension Color {
     
     var asNSColor: NSColor {
         NSColor(self)
+    }
+    
+}
+
+extension Color {
+    typealias RGBA = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+    var rgba: RGBA? {
+        var (r, g, b, a): RGBA = (0, 0, 0, 0)
+        
+        self.asNSColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        
+        return (r, g, b, a)
+    }
+    var hexaRGB: String? {
+        guard let (red, green, blue, _) = rgba else { return nil }
+        return String(format: "#%02x%02x%02x",
+                      Int(red * 255),
+                      Int(green * 255),
+                      Int(blue * 255))
+    }
+    var hexaRGBA: String? {
+        guard let (red, green, blue, alpha) = rgba else { return nil }
+        return String(format: "#%02x%02x%02x%02x",
+                      Int(red * 255),
+                      Int(green * 255),
+                      Int(blue * 255),
+                      Int(alpha * 255))
     }
 }

@@ -5,7 +5,7 @@ import SandKit
 extension PromptService {
     struct Center: GraniteCenter {
         struct State: GraniteState {
-            var customPrompts: [CustomPrompt] = []
+            var customPrompts: [CustomCommand : CustomPrompt] = [ : ]
         }
         
         @Event var create: Create.Reducer
@@ -40,7 +40,7 @@ extension PromptService {
     }
     
     var customCommands: [String] {
-        state.customPrompts.map({ $0.command }).map({ $0.command.lowercased() })
+        state.customPrompts.keys.map({ $0.command.lowercased() })
     }
     
     var systemPrompts: [Prompts] {
@@ -54,7 +54,8 @@ extension PromptService {
     func prompt(_ command: String?) -> BasicPrompt? {
         guard let value = command else { return nil }
         if customCommands.contains(value.lowercased()) {
-            return state.customPrompts.first(where: { $0.command.command.lowercased() == value.lowercased() })
+            let command: CustomCommand = .init(value.lowercased())
+            return state.customPrompts[command]
         } else if let systemPrompt = Prompts.init(rawValue: value.lowercased()) {
             return Prompts.all[systemPrompt]
         } else {

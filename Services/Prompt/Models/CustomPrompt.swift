@@ -10,7 +10,7 @@ import Granite
 import SandKit
 import SwiftUI
 
-struct CustomCommand: GraniteModel, Identifiable {
+struct CustomCommand: GraniteModel, Identifiable, Hashable {
     var id: String {
         command
     }
@@ -35,6 +35,8 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
     var description: String
     var dateCreated: Date
     var creativity: Double?
+    var role: String
+    var customConfig: PromptConfig?
     
     var config: PromptConfig {
         .init(temperature: creativity)
@@ -49,7 +51,9 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
          iconName: String,
          baseColorHex: String,
          description: String,
-         creativity: Double?) {
+         creativity: Double?,
+         role: String,
+         customConfig: PromptConfig?) {
         
         self.command = command
         self.prompt = prompt
@@ -58,6 +62,8 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
         self.description = description
         self.dateCreated = .init()
         self.creativity = creativity
+        self.role = role
+        self.customConfig = customConfig
     }
 }
 

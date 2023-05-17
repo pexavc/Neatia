@@ -20,17 +20,17 @@ struct ColorPicker: View {
     @GestureState fileprivate var satBrightState: DragState = .inactive
     @State var hue: Double = 0.5 {
         didSet {
-            hex = ColorPicker.toHex(h: hue, s: saturation, b: brightness)
+            hex = ColorPicker.toHex(h: hue, s: saturation, b: 1.0 - brightness)
         }
     }
     @State var saturation: Double = 0.5 {
         didSet {
-            hex = ColorPicker.toHex(h: hue, s: saturation, b: brightness)
+            hex = ColorPicker.toHex(h: hue, s: saturation, b: 1.0 - brightness)
         }
     }
     @State var brightness: Double = 0.5 {
         didSet {
-            hex = ColorPicker.toHex(h: hue, s: saturation, b: brightness)
+            hex = ColorPicker.toHex(h: hue, s: saturation, b: 1.0 - brightness)
         }
     }
     
@@ -55,7 +55,8 @@ struct ColorPicker: View {
         case 300..<360: red = b; green = p; blue = q
         default: fatalError()
         }
-        return "#" + UInt8(red * 255).hexa + UInt8(green * 255).hexa + UInt8(blue * 255).hexa
+        
+        return ("#" + UInt8(red * 255).hexa + UInt8(green * 255).hexa + UInt8(blue * 255).hexa)
     }
     
     /// Prevent the draggable element from going over its limit
@@ -77,6 +78,7 @@ struct ColorPicker: View {
         } else {
             return value + Double(state/limit)
         }
+//        return max(0, min(1, Double(state/limit)))
     }
     
     /// Labels for each of the Hue, Saturation and Brightness
@@ -118,7 +120,7 @@ struct ColorPicker: View {
                             .foregroundColor(.foreground.opacity(0.75))
                             .padding(4)
                     }
-                }
+                }.allowsHitTesting(false)
             }
             .frame(width: gridSize.width, height: gridSize.height)
             
@@ -196,7 +198,9 @@ struct ColorPicker: View {
     
     func makeSatBrightColors(stepSize: Double) -> [Color] {
         stride(from: 0, to: 1, by: stepSize).map {
-            Color(hue: limitValue(self.hue, self.sliderSize.width, hueState.translation.width), saturation: $0, brightness: 1-$0)
+            Color(hue: limitValue(self.hue, self.sliderSize.width, hueState.translation.width),
+                  saturation: $0,
+                  brightness: 1-$0)
         }
     }
     
@@ -222,8 +226,10 @@ struct ColorPicker: View {
         .onEnded { value in
             guard case .second(true, let drag?) = value else { return }
             
-            self.saturation = self.limitValue(self.saturation, proxy.size.width, drag.translation.width)
-            self.brightness = self.limitValue(self.brightness, proxy.size.height, drag.translation.height)
+            self.saturation = max(0, min(1.0, drag.location.x / proxy.size.width))
+            //self.limitValue(self.saturation, proxy.size.width, drag.translation.width)
+            self.brightness = max(0, min(1.0, drag.location.y / proxy.size.height))
+            //self.limitValue(self.brightness, proxy.size.height, drag.translation.height)
         }
         
         
@@ -233,14 +239,20 @@ struct ColorPicker: View {
             .foregroundColor(.white)
             .frame(width: 16, height: 16, alignment: .center)
             .position(x: limitDisplacement(self.saturation, self.gridSize.width, self.satBrightState.translation.width) , y: limitDisplacement(self.brightness, self.gridSize.height, self.satBrightState.translation.height))
-            .animation(.interactiveSpring())
             .gesture(longPressDrag)
     }
     
     var satBrightnessGrid: some View {
         GeometryReader { (proxy: GeometryProxy) in
-            LinearGradient(gradient: Gradient(colors: self.makeSatBrightColors(stepSize: 0.05)), startPoint: .topLeading, endPoint: .bottomTrailing).frame(width: self.gridSize.width, height: self.gridSize.height).overlay(self.generateSBHandle(proxy: proxy))
+            LinearGradient(gradient: Gradient(colors: self.makeSatBrightColors(stepSize: 0.05)),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+            .frame(width: self.gridSize.width,
+                   height: self.gridSize.height)
+            .overlay(self.generateSBHandle(proxy: proxy))
         }
+        .frame(width: self.gridSize.width,
+               height: self.gridSize.height)
     }
 }
 

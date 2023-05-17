@@ -10,7 +10,7 @@ import SwiftUI
 import Granite
 
 struct PromptConfigView: View {
-    @SharedObject("nyc.stoic.Neatia.WindowVisibilityManager") var windowVisibility: WindowVisibilityManager
+    @SharedObject(WindowVisibilityManager.id) var windowVisibility: WindowVisibilityManager
     @Relay var config: ConfigService
     
     var body: some View {

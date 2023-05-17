@@ -10,5 +10,5 @@ struct Mount: GraniteComponent {
     @Relay var sand: SandService
     @Relay var config: ConfigService
     
-    @SharedObject("nyc.stoic.Neatia.SessionManager") var session: SessionManager
+    @SharedObject(SessionManager.id) var session: SessionManager
 }

@@ -9,9 +9,12 @@ import Foundation
 import Granite
 import SwiftUI
 import GPT3_Tokenizer
+import SandKit
 
 struct PromptStudioEditorView: View {
     @GraniteAction<Void> var closeCreatePrompt
+    
+    @SharedObject(SessionManager.id) var session: SessionManager
     
     @Relay var service: PromptService
     
@@ -40,9 +43,12 @@ struct PromptStudioEditorView: View {
     @State var promptCommand: String
     @State var promptBody: String
     @State var promptDescription: String
+    @State var promptRole: String
     @State var promptColor: String = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
     @State var promptIcon: String
     @State var promptCreativity: Double = 0.7
+    @State var promptCustomConfig: PromptConfig? = nil
+    
     @State var showError: Bool = false
     
     let tokenizer: GPT3Tokenizer = .init()
@@ -53,7 +59,9 @@ struct PromptStudioEditorView: View {
               iconName: promptIcon,
               baseColorHex: promptColor,
               description: promptDescription,
-              creativity: promptCreativity)
+              creativity: promptCreativity,
+              role: promptRole,
+              customConfig: promptCustomConfig)
     }
     
     init() {
@@ -62,6 +70,7 @@ struct PromptStudioEditorView: View {
         promptDescription = ""
         promptColor = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
         promptIcon = "questionmark"
+        promptRole = "Assistant"
     }
     
     init(_ prompt: CustomPrompt) {
@@ -72,6 +81,7 @@ struct PromptStudioEditorView: View {
         promptDescription = prompt.description
         promptColor = prompt.baseColorHex
         promptIcon = prompt.iconName
+        promptRole = prompt.role
         promptCreativity = promptCreativity
     }
     
@@ -84,12 +94,19 @@ struct PromptStudioEditorView: View {
         promptCommand.isNotEmpty &&
         promptBody.isNotEmpty &&
         promptDescription.isNotEmpty &&
-        promptTokenCount <= PromptService.customPromptMaxTokenCount
+        promptTokenCount <= PromptService.customPromptMaxTokenCount &&
+        (
+            service.commands.contains(promptCommand) == false && isEditing == false || isEditing
+        )
     }
     
     var errorMessage: String {
         if promptTokenCount > PromptService.customPromptMaxTokenCount {
             return "Reduce the token count of your instructions to \(PromptService.customPromptMaxTokenCount) tokens or less."
+        }
+        
+        if service.commands.contains(promptCommand) && isEditing == false {
+            return "Command already exists"
         }
         
         var string: String = "You still need to add "
@@ -142,150 +159,23 @@ struct PromptStudioEditorView: View {
                 }
                 .padding(.bottom, 8)
                 
-                HStack(spacing: 16) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        
-                        Text("Command")
-                            .font(Fonts.live(.headline, .bold))
-                            .foregroundColor(.foreground)
-                        
-                        AppBlurView(size: .init(120, 60)) {
-                            MacEditorTextView(
-                                text: $promptCommand,
-                                isEditable: true,
-                                font: Fonts.nsFont(.defaultSize, .bold))
-                        }
-                        .frame(width: 120, height: 60)
-                        .padding(.horizontal, 16)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Color")
-                            .font(Fonts.live(.headline, .bold))
-                            .foregroundColor(.foreground)
-                        
-                        PopupableView(.promptStudio,
-                                      size: .init(200, 200),
-                                      edge: .maxX, {
-                            RoundedRectangle(cornerRadius: 6)
-                                .frame(width: 60, height: 60)
-                                .foregroundColor(Color(hex: promptColor))
-                        }) {
-                            ColorPicker(hex: $promptColor)
-                        }
-                        .frame(width: 60, height: 60)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Icon")
-                            .font(Fonts.live(.headline, .bold))
-                            .foregroundColor(.foreground)
-                        
-                        PopupableView(.promptStudio,
-                                      size: .init(200, 300),
-                                      edge: .maxX, {
-                            
-                            AppBlurView(size: .init(0, 60)) {
-                                Image(systemName: promptIcon)
-                                    .font(Fonts.live(.title, .bold))
-                            }
-                            .frame(width: 60, height: 60)
-                        }) {
-                            SFSymbolsPicker(icon: $promptIcon)
-                        }
-                        .frame(width: 60, height: 60)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Tune")
-                            .font(Fonts.live(.headline, .bold))
-                            .foregroundColor(.foreground)
-                        
-                        HStack(spacing: 16) {
-                            AppBlurView(size: .init(60, 60)) {
-                                Text(modeText)
-                                    .font(Fonts.live(.footnote, .bold))
-                                    .foregroundColor(.foreground)
-                                    .multilineTextAlignment(.center)
-                            }
-                            .frame(width: 60, height: 60)
-                            .padding(.horizontal, 16)
-                            
-                            VStack(alignment: .center) {
-                                CustomSliderView(value: $promptCreativity,
-                                                 color: Brand.Colors.purple.opacity(0.45))
-                                    .frame(height: 30)
-                                
-                                PopupableView(.promptStudio,
-                                              size: .init(460, 400),
-                                              edge: .maxY, {
-                                    Text("Advanced")
-                                        .font(Fonts.live(.footnote, .bold))
-                                        .padding(.vertical, 4)
-                                        .foregroundColor(Color.gray)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 6)
-                                                .strokeBorder(Color.gray, lineWidth: 2)
-                                                .padding(.horizontal, -6)
-                                        )
-                                        .padding(.horizontal, 6)
-                                }) {
-                                    TuningView(isPopup: true)
-                                }
-                            }
-                        }
-                    }
-                    
-                    
-                    Spacer()
-                }
-                .padding(.bottom, 4)
+                //includes tuneView
+                commandView
+                    .padding(.bottom, 4)
                 
-                Text("Short Description")
-                    .font(Fonts.live(.headline, .bold))
-                    .foregroundColor(.foreground)
-                
-                AppBlurView(size: .init(0, 60)) {
-                    MacEditorTextView(
-                        text: $promptDescription,
-                        isEditable: true,
-                        font: Fonts.nsFont(.defaultSize, .bold))
+                HStack() {
+                    
+                    shortDescriptionView
+                    
+                    roleView
                 }
-                .frame(height: 60)
                 .padding(.bottom, 4)
                 
                 Text("Instructions")
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
                 
-                ZStack {
-                    AppBlurView(size: .init(0, 240)) {
-                        MacEditorTextView(
-                            text: $promptBody,
-                            isEditable: true,
-                            font: Fonts.nsFont(.defaultSize, .bold))
-                    }
-                    .frame(height: 240)
-                    
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-                            
-                            Text("\(promptTokenCount)/\(PromptService.customPromptMaxTokenCount)")
-                                .font(Fonts.live(.caption, .bold))
-                                .foregroundColor((promptTokenCount <= PromptService.customPromptMaxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
-                            
-                        }
-                        
-                        Spacer()
-                            .frame(height: WindowComponent.Style.defaultContainerOuterPadding)
-                    }
-                    .padding(8)
-                    .allowsHitTesting(false)
-                }
-                .frame(height: 240)
+                instructionsView
                 
                 Spacer()
                 
@@ -372,5 +262,238 @@ struct PromptStudioEditorView: View {
                 .cornerRadius(8)
         }
         .padding(WindowComponent.Style.defaultContainerOuterPadding)
+    }
+}
+
+extension PromptStudioEditorView {
+    var commandView: some View {
+        HStack(spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
+                
+                Text("Command")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                
+                AppBlurView(size: .init(120, 60)) {
+                    MacEditorTextView(
+                        text: $promptCommand,
+                        isEditable: true,
+                        font: Fonts.nsFont(.defaultSize, .bold))
+                }
+                .frame(width: 120, height: 60)
+                .padding(.horizontal, 16)
+            }
+            .onChange(of: promptCommand) { newValue in
+                let sanitized = newValue.sanitized
+                if newValue.utf8.count != sanitized.utf8.count {
+                    promptCommand = sanitized
+                }
+            }
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Color")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                
+                PopupableView(.promptStudio,
+                              size: .init(200, 200),
+                              edge: .maxX, {
+                    RoundedRectangle(cornerRadius: 6)
+                        .frame(width: 60, height: 60)
+                        .foregroundColor(Color(hex: promptColor))
+                }) {
+                    ColorPicker(hex: $promptColor)
+                }
+                .frame(width: 60, height: 60)
+            }
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Icon")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                
+                PopupableView(.promptStudio,
+                              size: .init(200, 300),
+                              edge: .maxX, {
+                    
+                    AppBlurView(size: .init(0, 60)) {
+                        Image(systemName: promptIcon)
+                            .font(Fonts.live(.title, .bold))
+                    }
+                    .frame(width: 60, height: 60)
+                }) {
+                    SFSymbolsPicker(icon: $promptIcon)
+                }
+                .frame(width: 60, height: 60)
+            }
+            
+            VStack(alignment: .leading, spacing: 8) {
+                
+                HStack(spacing: 8) {
+                    Label {
+                        Text("Tune")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    } icon: {
+                        Image (systemName: "rotate.3d")
+                            .padding(.top, 2)
+                    }
+                    
+                    Spacer()
+                    
+                }.frame(maxWidth: .infinity)
+                
+                tuneView
+            }
+            
+            
+            Spacer()
+        }
+    }
+    
+    var tuneView: some View {
+        Group {
+            if let customConfig = promptCustomConfig,
+               session.isSubscribed {
+                HStack(spacing: 8) {
+                    PopupableView(.promptStudio,
+                                  size: .init(460, 360),
+                                  edge: .maxY, {
+                        
+                        AppBlurView(size: .init(0, 60),
+                                    tintColor: Brand.Colors.purple.opacity(0.45)) {
+                            Image(systemName: "gearshape")
+                                .font(Fonts.live(.title, .bold))
+                                .foregroundColor(.foreground)
+                        }
+                        .frame(width: 60, height: 60)
+                        .environment(\.colorScheme, .dark)
+                        
+                    }) {
+                        TuningView(isPopup: true, config: customConfig)
+                            .attach({ config in
+                                self.promptCustomConfig = config
+                            }, at: \.setConfig)
+                    }
+                    .frame(width: 60, height: 60)
+                    
+                    AppBlurView(size: .init(0, 60),
+                                tintColor: Brand.Colors.red.opacity(0.45)) {
+                        Text("Reset")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    }
+                    .frame(height: 60)
+                    .environment(\.colorScheme, .dark)
+                    
+                    Spacer()
+                }
+            } else {
+                HStack(spacing: 16) {
+                    AppBlurView(size: .init(60, 60)) {
+                        Text(modeText)
+                            .font(Fonts.live(.footnote, .bold))
+                            .foregroundColor(.foreground)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(width: 60, height: 60)
+                    .padding(.horizontal, 16)
+                    
+                    VStack(alignment: .center) {
+                        CustomSliderView(value: $promptCreativity,
+                                         color: Brand.Colors.purple.opacity(0.45))
+                        .frame(height: 30)
+                        
+                        PopupableView(.promptStudio,
+                                      size: .init(460, 360),
+                                      edge: .maxY, {
+                            
+                            Text("Advanced")
+                                .font(Fonts.live(.footnote, .bold))
+                                .foregroundColor(.foreground)
+                                .padding(.vertical, 4)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .strokeBorder(Color.gray, lineWidth: 2)
+                                        .padding(.horizontal, -6)
+                                )
+                                .padding(.horizontal, 6)
+                            
+                        }) {
+                            TuningView(isPopup: true)
+                                .attach({ config in
+                                    self.promptCustomConfig = config
+                                    InteractionManager.shared.closePopup(.init(kind: .promptStudio))
+                                }, at: \.setConfig)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    var shortDescriptionView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Short Description")
+                .font(Fonts.live(.headline, .bold))
+                .foregroundColor(.foreground)
+            
+            AppBlurView(size: .init(0, 60)) {
+                MacEditorTextView(
+                    text: $promptDescription,
+                    isEditable: true,
+                    font: Fonts.nsFont(.defaultSize, .bold))
+            }
+            .frame(height: 60)
+        }
+    }
+    
+    var roleView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if session.isSubscribed {
+                Text("Role")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                
+                AppBlurView(size: .init(0, 60)) {
+                    MacEditorTextView(
+                        text: $promptRole,
+                        isEditable: true,
+                        font: Fonts.nsFont(.defaultSize, .bold))
+                }
+                .frame(height: 60)
+            }
+        }
+    }
+    
+    var instructionsView: some View {
+        ZStack {
+            AppBlurView(size: .init(0, 240)) {
+                MacEditorTextView(
+                    text: $promptBody,
+                    isEditable: true,
+                    font: Fonts.nsFont(.defaultSize, .bold))
+            }
+            .frame(height: 240)
+            
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Text("\(promptTokenCount)/\(PromptService.customPromptMaxTokenCount)")
+                        .font(Fonts.live(.caption, .bold))
+                        .foregroundColor((promptTokenCount <= PromptService.customPromptMaxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
+                    
+                }
+                
+                Spacer()
+                    .frame(height: WindowComponent.Style.defaultContainerOuterPadding)
+            }
+            .padding(8)
+            .allowsHitTesting(false)
+        }
+        .frame(height: 240)
     }
 }

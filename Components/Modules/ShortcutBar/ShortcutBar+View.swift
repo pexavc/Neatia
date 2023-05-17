@@ -27,6 +27,7 @@ extension ShortcutBar: View {
                     ProgressView()
                         .scaleEffect(.init(0.75, 0.75))
                 } else if sand.state.response.isNotEmpty {
+                    copyToClipboardView
                     downloadButtonView
                 }
             }
@@ -37,37 +38,68 @@ extension ShortcutBar: View {
 }
 
 extension ShortcutBar {
-    var downloadButtonView: some View {
+    var copyToClipboardView: some View {
         AppBlurView(padding: .init(16)) {
-            HStack(spacing: 8) {
-                Text("Download PDF")
-                    .lineLimit(1)
-                    .font(Fonts.live(.subheadline, .bold))
-                    .foregroundColor(.foreground)
-                    .environment(\.colorScheme, .dark)
+            Button {
+                guard sand.state.response.isNotEmpty else { return }
                 
-                IconView(systemName: "arrow.down.square")
-                    .frame(width: 24,
-                           height: WindowComponent.Style.defaultElementSize.height)
-            }
-        }
-        .onTapGesture {
-            guard sand.state.response.isNotEmpty else { return }
-            let markdown: String = sand.state.response
-            let parser = MarkdownParser()
-            let result = parser.parse(markdown)
-            
-            let panel = NSSavePanel()
-            panel.nameFieldLabel = "Save generation as:"
-            panel.nameFieldStringValue = "neatia-\(Date().asStringWithTime).pdf"
-            panel.canCreateDirectories = true
-            panel.begin { response in
-                if response == NSApplication.ModalResponse.OK,
-                   let fileURL = panel.url {
-                    createPDF(htmlString: result.html, url: fileURL)
+                
+            } label : {
+                HStack(spacing: 8) {
+                    Text("Copy To Clipboard")
+                        .lineLimit(1)
+                        .font(Fonts.live(.subheadline, .bold))
+                        .foregroundColor(.foreground)
+                        .environment(\.colorScheme, .dark)
+                    
+                    Divider()
+                        .padding(.horizontal, 2)
+                    
+                    IconView(systemName: "doc.on.doc")
+                        .frame(width: 24,
+                               height: WindowComponent.Style.defaultElementSize.height)
                 }
             }
-            
+            .buttonStyle(PlainButtonStyle())
+        }
+    }
+    
+    var downloadButtonView: some View {
+        AppBlurView(padding: .init(16)) {
+            Button {
+                guard sand.state.response.isNotEmpty else { return }
+                let markdown: String = sand.state.response
+                let parser = MarkdownParser()
+                let result = parser.parse(markdown)
+                
+                let panel = NSSavePanel()
+                panel.nameFieldLabel = "Save generation as:"
+                panel.nameFieldStringValue = "neatia-\(Date().asStringWithTime).pdf"
+                panel.canCreateDirectories = true
+                panel.begin { response in
+                    if response == NSApplication.ModalResponse.OK,
+                       let fileURL = panel.url {
+                        createPDF(htmlString: result.html, url: fileURL)
+                    }
+                }
+                
+            } label : {
+                HStack(spacing: 8) {
+                    Text("Download PDF")
+                        .lineLimit(1)
+                        .font(Fonts.live(.subheadline, .bold))
+                        .foregroundColor(.foreground)
+                        .environment(\.colorScheme, .dark)
+                    
+                    Divider()
+                        .padding(.horizontal, 2)
+                    
+                    IconView(systemName: "arrow.down.square")
+                        .frame(width: 24,
+                               height: WindowComponent.Style.defaultElementSize.height)
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
         }
     }
     

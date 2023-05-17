@@ -9,7 +9,7 @@ struct Query: GraniteComponent {
     @Relay var sand: SandService
     @Relay var prompts: PromptService
     
-    @SharedObject("nyc.stoic.Neatia.SessionManager") var session: SessionManager
+    @SharedObject(SessionManager.id) var session: SessionManager
     
     //TODO: could be a better way to generate helper text, a "smarter" way. But for now order matters in SandKit
     var helperText: String {

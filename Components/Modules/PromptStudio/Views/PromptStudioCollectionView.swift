@@ -12,7 +12,7 @@ import SwiftUI
 struct PromptStudioCollectionView: View {
     var preview: Bool = false
     
-    @SharedObject("nyc.stoic.Neatia.WindowVisibilityManager") var windowVisibility: WindowVisibilityManager
+    @SharedObject(WindowVisibilityManager.id) var windowVisibility: WindowVisibilityManager
     
     @Relay var service: PromptService
     
@@ -57,7 +57,7 @@ struct PromptStudioCollectionView: View {
                             .frame(width: 360, height: 80)
                         } else {
                             
-                            ForEach(service.state.customPrompts) { prompt in
+                            ForEach(Array(service.state.customPrompts.values)) { prompt in
                                 
                                 Button {
                                     if preview {

@@ -26,9 +26,13 @@ extension CommandToolbar {
         }
         
         let fileProperties = center.state.editorProperties ?? baseEditorProperties
+        let fileDocumentTokenCountLabel = "\(fileProperties.documentTokenCount) token\(fileProperties.documentTokenCount > 1 ? "s" : "")"
+        
+        let estimatedWidth = fileDocumentTokenCountLabel.count * 14
         
         let fileDescriptor = sand.state.subCommandFileSet?[sc.id]?[scValue?.id ?? ""]
-        return AppBlurView(padding: .init(fileDescriptor == nil ? 8 : 14, 0),
+        
+        return AppBlurView(padding: .init(fileProperties.documentTokenCount > 0 ? 8 : 0, 0),
                            tintColor: Brand.Colors.black.opacity(0.3)) {
             
                     PopupableView(.mount,
@@ -36,20 +40,25 @@ extension CommandToolbar {
                                   edge: .maxY, {
                         
                         HStack(spacing: 8) {
-                            if scValue != nil, let description = fileDescriptor {
+                            if scValue != nil, fileProperties.documentTokenCount > 0 {
                                 
-                                Text(description)
+                                
+                                Text(fileDocumentTokenCountLabel)
                                    .lineLimit(1)
                                    .font(Fonts.live(.subheadline, .bold))
                                    .foregroundColor(.foreground)
                                    .environment(\.colorScheme, .dark)
+                                   .padding(.leading, 8)
                                 
                                 Spacer()
+                                
+                                Divider()
+                                
                             }
                            
                             IconView(systemName: "doc.fill.badge.plus",
-                                    withBlur: true)
-                                .frame(width: WindowComponent.Style.defaultElementSize.height, height: WindowComponent.Style.defaultElementSize.height)
+                                    withBlur: false)
+                                .frame(width: WindowComponent.Style.defaultElementSize.width, height: WindowComponent.Style.defaultElementSize.height)
                        }
                     }) {
                         FileTextEditorView(fileProperties)
@@ -60,9 +69,12 @@ extension CommandToolbar {
                                 InteractionManager.shared.closePopup(.init(kind: .mount))
                             }, at: \.closeEditor)
                             .attach({ output in
-                                if output.isEditing {
-                                    center.$state.binding.editorProperties.wrappedValue?.updateContents(output.documentContents)
-                                }
+                                center.$state
+                                    .binding
+                                    .editorProperties
+                                    .wrappedValue?
+                                    .updateContents(output.documentContents,
+                                                    tokenCount: output.documentTokenCount)
                                 
                                 //Update SandService
                                 guard let contents = state.editorProperties?.documentContents else {
@@ -83,9 +95,7 @@ extension CommandToolbar {
                     .frame(height: WindowComponent.Style.defaultElementSize.height)
             
                }
-               .frame(width: fileDescriptor == nil ? WindowComponent.Style.defaultElementSize.height : 136, height: WindowComponent.Style.defaultElementSize.height)
-               .padding(.trailing, fileDescriptor == nil ? 8 : 14)
-               .animation(.default, value: fileDescriptor == nil)
+               .frame(width: fileProperties.documentTokenCount <= 0 ? WindowComponent.Style.defaultElementSize.width : (estimatedWidth + WindowComponent.Style.defaultElementSize.width), height: WindowComponent.Style.defaultElementSize.height)
                .alert("Only these file extensions are allowed: \(acceptedFileExtensions.joined(separator: ", "))", isPresented: center.$state.binding.showFileExtAlert) {
                    Button("OK", role: .cancel) { }
                }

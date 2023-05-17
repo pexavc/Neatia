@@ -144,8 +144,9 @@ extension CommandToolbar {
 
     var trailingView: some View {
         IconView(systemName: prompt.iconName,
-                 bgColor: prompt.baseColor,
-                 withBlur: true)
+                 bgColor: prompt.baseColor.opacity(0.75),
+                 withBlur: false,
+                 withTexture: prompt.isSystemPrompt)
             .frame(width: WindowComponent.Style.defaultElementSize.height, height: WindowComponent.Style.defaultElementSize.height)
     }
 }

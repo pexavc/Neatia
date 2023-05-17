@@ -15,7 +15,7 @@ import GPT3_Tokenizer
 class SandGPT {
     static let shared: SandGPT = .init()
     
-    @SharedObject("nyc.stoic.Neatia.SessionManager") var session: SessionManager
+    @SharedObject(SessionManager.id) var session: SessionManager
     
     var CUSTOM_API_KEY: [UInt32]? = nil {
         didSet {

@@ -110,7 +110,6 @@ extension SandService {
                 
                 return
             }
-            print("[SandService] test")
             
             state.response = response?.data ?? ""
             //print("[SandService] Sending: \(state.response)")
@@ -142,7 +141,7 @@ extension SandService {
         }
         
         var thread: DispatchQueue? {
-            .global(qos: .utility)
+            .main
         }
     }
 }

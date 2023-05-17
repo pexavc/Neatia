@@ -6,6 +6,12 @@ extension Response: View {
     public var view: some View {
         VStack(spacing: 0) {
             ZStack {
+                if sand.state.isResponding {
+                    LoadingView()
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .offset(x: -WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
+                }
+                
                 MarkdownView(markdown: sand.state.response,
                              padding: .init(Fonts.Details.from(.defaultResponseSize).actualHeight,
                                             0,
@@ -33,6 +39,35 @@ extension Response: View {
                     ProgressView()
                 }
             }
+        }
+    }
+}
+
+struct LoadingView: View {
+    
+    @State var timer: Timer?
+    
+    @State var containerWidth: CGFloat = 0
+    @State var percent: CGFloat = 0.0
+    
+    var body: some View {
+        GeometryReader { proxy in
+            
+            Brand.Colors.purple
+                .opacity(0.35)
+                .frame(width: containerWidth * percent)
+                .frame(maxHeight: .infinity)
+                .animation(.default, value: percent)
+                .onAppear {
+                    self.containerWidth = proxy.width
+                    
+                    timer = Timer
+                        .scheduledTimer(withTimeInterval: 2.randomBetween(3),
+                                        repeats: true) { _ in
+                            
+                            percent += 0.1
+                        }
+                }
         }
     }
 }

@@ -93,11 +93,12 @@ public struct TableRowView: View {
     @State var isHovering: Bool = false
     
     public var body: some View {
-        HStack {
+        HStack(spacing: 16) {
             if let graphic = row.graphicModel {
                 IconView(systemName: graphic.leading,
                          bgColor: graphic.leadingBGColor,
-                         withBlur: true)
+                         withBlur: false,
+                         withTexture: graphic.texture)
                     .padding(.vertical, 24)
             }
             
@@ -121,15 +122,16 @@ public struct TableRowView: View {
                 if let trailingText = row.textModel.trailing {
                     Text(trailingText)
                 }
-            case .label:
+            case .label(let color):
                 if let trailingText = row.textModel.trailing {
                     Text(trailingText)
                         .font(Fonts.live(.footnote, .bold))
                         .padding(.vertical, 4)
-                        .foregroundColor(Color.orange)
+                        .foregroundColor(color)
                         .background(
                             RoundedRectangle(cornerRadius: 6)
-                                .strokeBorder(Color.orange, lineWidth: 2)
+                                .strokeBorder(color,
+                                              lineWidth: 2)
                                 .padding(.horizontal, -6)
                         )
                         .padding(.horizontal, 6)
@@ -160,7 +162,7 @@ public struct TableRowView: View {
 public enum TableRowKind {
     case dropdown(DropdownProperties)
     case toggle
-    case label
+    case label(Color)
     case none
     
     public struct DropdownProperties {
@@ -221,11 +223,13 @@ public struct TableRow : Identifiable, Hashable, Equatable {
         let leading: String
         let trailing: String?
         let leadingBGColor: Color
+        let texture: Bool
         
-        init(_ leading: String, leadingBGColor: Color, trailing: String? = nil) {
+        init(_ leading: String, leadingBGColor: Color, trailing: String? = nil, texture: Bool = false) {
             self.leading = leading
             self.leadingBGColor = leadingBGColor
             self.trailing = trailing
+            self.texture = texture
         }
     }
     

@@ -35,6 +35,26 @@ struct TuningView: View {
               engine: promptEngine)
     }
     
+    init(isPopup: Bool = false,
+         updateCustomConfigDirectly: Bool = false,
+         config: PromptConfig) {
+        self.isPopup = isPopup
+        self.updateCustomConfigDirectly = updateCustomConfigDirectly
+        
+        self.promptTemperature = config.temperature ?? self.promptTemperature
+        self.promptTopP = config.topP ?? self.promptTopP
+        self.useTopP = config.topP != nil
+        self.promptNumberOfAnswers = Int(config.numberOfAnswers ?? Double(self.promptNumberOfAnswers))
+        self.promptMaxTokens = config.maximumTokens ?? self.promptMaxTokens
+        self.promptEngine = config.engine
+    }
+    
+    init(isPopup: Bool = false,
+         updateCustomConfigDirectly: Bool = false) {
+        self.isPopup = isPopup
+        self.updateCustomConfigDirectly = updateCustomConfigDirectly
+    }
+    
     var body: some View {
         customizeAPIView
     }

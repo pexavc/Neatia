@@ -39,7 +39,7 @@ final class SessionManager: Equatable, SharableObject {
         .init()
     }
     
-    public let id : String = "nys.stoic.Neatia.SessionManager"
+    public static var id : String = "nyc.stoic.Neatia.SessionManager"
     
     internal var cancellables = Set<AnyCancellable>()
     

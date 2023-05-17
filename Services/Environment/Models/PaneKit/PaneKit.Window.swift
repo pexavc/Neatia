@@ -12,7 +12,7 @@ import Granite
 
 extension PaneKit {
     class Window: NSObject, Identifiable {
-        @SharedObject("nyc.stoic.Neatia.WindowVisibilityManager") var windowVisibility: WindowVisibilityManager
+        @SharedObject(WindowVisibilityManager.id) var windowVisibility: WindowVisibilityManager
         
         @Published var isPrepared: Bool = false
         

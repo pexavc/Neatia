@@ -19,18 +19,21 @@ struct FileTextEditorView: View {
         let maxTokenCount: Int
         var isEditing: Bool
         var documentContents: String
+        var documentTokenCount: Int = 0
         
         mutating func isModifiable(_ state: Bool) {
             isEditing = state
         }
         
-        mutating func updateContents(_ contents: String) {
+        mutating func updateContents(_ contents: String, tokenCount: Int) {
             documentContents = contents
+            documentTokenCount = tokenCount
         }
     }
     
     struct Output: GraniteModel {
         let documentContents: String
+        let documentTokenCount: Int
         let maxTokenCount: Int
         let isEditing: Bool
     }
@@ -46,6 +49,7 @@ struct FileTextEditorView: View {
     
     var currentOutput: Output {
         .init(documentContents: documentContents,
+              documentTokenCount: documentTokenCount,
               maxTokenCount: maxTokenCount,
               isEditing: isEditing)
     }

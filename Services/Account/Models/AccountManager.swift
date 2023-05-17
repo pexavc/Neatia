@@ -40,7 +40,7 @@ class AccountKit {
 public class AccountManager: ObservableObject {
     static let shared: AccountManager = .init()
     
-    @SharedObject("nyc.stoic.Neatia.SessionManager") var sessionManager: SessionManager
+    @SharedObject(SessionManager.id) var session: SessionManager
     
     internal var cancellables = Set<AnyCancellable>()
     
@@ -59,7 +59,7 @@ public class AccountManager: ObservableObject {
                 
             print("[AccountManager] isLoggedIn Changed: \(newValue)")
             self?.objectWillChange.send()
-            self?.sessionManager.isLoggedIn(newValue)
+            self?.session.isLoggedIn(newValue)
         }.store(in: &cancellables)
         
         kit.$isSubscribed
@@ -69,7 +69,7 @@ public class AccountManager: ObservableObject {
                 
             print("[AccountManager] isSubscribed Changed: \(newValue)")
             self?.objectWillChange.send()
-            self?.sessionManager.isSubscribed(newValue)
+            self?.session.isSubscribed(newValue)
         }.store(in: &cancellables)
     }
     
