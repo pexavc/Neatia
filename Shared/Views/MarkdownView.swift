@@ -235,14 +235,19 @@ public struct CustomCode: CodeMarkdownStyle {
                         pasteboard.declareTypes([.string], owner: nil)
                         pasteboard.setString(lastCopiedText, forType: .string)
                     } label : {
-                        IconView(systemName: "doc.on.clipboard\(isCopied ? ".fill" : "")",
-                                 //bgColor: Brand.Colors.black.opacity(0.5),
-                                 withBlur: true)
-                            .frame(width: 24,
+                        Image(systemName: "doc.on.clipboard\(isCopied ? ".fill" : "")")
+                            .font(Fonts.live(.headline, .bold))
+                            .frame(width: WindowComponent.Style.defaultElementSize.width,
                                    height: WindowComponent.Style.defaultElementSize.height)
+                            .foregroundColor(.foreground)
+                            .environment(\.colorScheme, .dark)
+                            .padding(.bottom, 2)
+                            .background(Brand.Colors.black.opacity(0.3).cornerRadius(6))
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .padding(.trailing, 12)
+                    .frame(width: WindowComponent.Style.defaultElementSize.width,
+                           height: WindowComponent.Style.defaultElementSize.height)
+                    .padding(.trailing, 10)
                 },
                 alignment: .topTrailing
             )

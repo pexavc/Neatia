@@ -48,5 +48,6 @@ extension SandService {
     
     struct Error: GraniteModel {
         var message: String
+        var symbol: String = ""
     }
 }

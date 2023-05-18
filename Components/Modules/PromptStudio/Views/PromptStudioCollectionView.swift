@@ -44,17 +44,14 @@ struct PromptStudioCollectionView: View {
                         }
                         
                         if service.state.customPrompts.isEmpty && preview {
-                            AppBlurView(size: .init(0, 80),
-                                        tintColor: Brand.Colors.black.opacity(0.3)) {
-                                HStack {
-                                    Text("Open the studio to create custom prompts with commands to personalize experience.")
-                                        .font(Fonts.live(.defaultSize, .bold))
-                                    
-                                    Spacer()
-                                    
-                                }
+                            HStack {
+                                Text("Open the studio to create custom commands/prompts. Helping you customize your experience and repeat repetitive tasks effeciently.")
+                                    .font(Fonts.live(.defaultSize, .bold))
+                                
+                                Spacer()
+                                
                             }
-                            .frame(width: 360, height: 80)
+                            .frame(width: 360)
                         } else {
                             
                             ForEach(Array(service.state.customPrompts.values)) { prompt in

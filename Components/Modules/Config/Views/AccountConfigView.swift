@@ -29,27 +29,24 @@ struct AccountConfigView: View {
                 paywallView
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
     }
     
     var standardView: some View {
         Group {
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text("Account")
-                        .font(Fonts.live(.title2, .bold))
-                        .foregroundColor(.foreground)
-                    
-                    Spacer()
-                }
-                .padding(.bottom, 8)
-                
-                if let purchase = VaultManager.currentPurchase {
-                    subscriptionStats(purchase)
-                        .frame(maxWidth: .infinity)
-                }
+            HStack {
+                Text("Account")
+                    .font(Fonts.live(.title2, .bold))
+                    .foregroundColor(.foreground)
                 
                 Spacer()
+            }
+            .padding(.bottom, 8)
+            
+            if let purchase = VaultManager.currentPurchase {
+                subscriptionStats(purchase)
+                    .frame(maxWidth: .infinity)
             }
         }
     }
@@ -224,33 +221,46 @@ extension AccountConfigView {
                 
                 Spacer()
             }
+            .padding(.bottom, 8)
             
-            AppBlurView(size: .init(0, 90),
-                        tintColor: Brand.Colors.black.opacity(0.3)) {
-                VStack(alignment: .leading, spacing: 8) {
-                    if let date = currentPurchase.expirationDate {
-                        Text("Expiration Date: ")
-                            .font(Fonts.live(.subheadline, .bold))
-                            .foregroundColor(.foreground) + Text(date.asString)
-                            .font(Fonts.live(.subheadline, .regular))
-                            .foregroundColor(.foreground)
-                    }
-                    
-                    Text("Purchase Date: ")
+            VStack(alignment: .leading, spacing: 8) {
+                if let date = currentPurchase.expirationDate {
+                    Text("Expiration Date: ")
                         .font(Fonts.live(.subheadline, .bold))
-                        .foregroundColor(.foreground) + Text(currentPurchase.purchaseDate.asString)
-                        .font(Fonts.live(.subheadline, .regular))
-                        .foregroundColor(.foreground)
-                    
-                    Text("Renews: ")
-                        .font(Fonts.live(.subheadline, .bold))
-                        .foregroundColor(.foreground) + Text("\(currentPurchase.isRenewable ? "Yes" : "No")")
+                        .foregroundColor(.foreground) + Text(date.asString)
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
+                
+                Text("Purchase Date: ")
+                    .font(Fonts.live(.subheadline, .bold))
+                    .foregroundColor(.foreground) + Text(currentPurchase.purchaseDate.asString)
+                    .font(Fonts.live(.subheadline, .regular))
+                    .foregroundColor(.foreground)
+                
+                Text("Renews: ")
+                    .font(Fonts.live(.subheadline, .bold))
+                    .foregroundColor(.foreground) + Text("\(currentPurchase.isRenewable ? "Yes" : "No")")
+                    .font(Fonts.live(.subheadline, .regular))
+                    .foregroundColor(.foreground)
+                
+                Spacer()
+                
+                AppBlurView(tintColor: Brand.Colors.red.opacity(0.45)) {
+                    
+                    HStack(spacing: 8) {
+                        Button {
+                            account.center.logout.send()
+                        } label: {
+                            
+                            Text("Logout")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }.buttonStyle(PlainButtonStyle())
+                    }
+                }
             }
             .environment(\.colorScheme, .dark)
-            .frame(height: 90)
         }
     }
 }

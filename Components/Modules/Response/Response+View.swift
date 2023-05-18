@@ -7,7 +7,7 @@ extension Response: View {
         VStack(spacing: 0) {
             ZStack {
                 if config.state.streamResponse == false && sand.state.isResponding {
-                    LoadingView()
+                    LoadingView(bgColor: prompt?.baseColor ?? Brand.Colors.purple)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .offset(x: -WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
                 }
@@ -49,6 +49,7 @@ extension Response: View {
 }
 
 struct LoadingView: View {
+    var bgColor: Color
     
     @State var timer: Timer?
     
@@ -57,7 +58,7 @@ struct LoadingView: View {
     var body: some View {
         GeometryReader { proxy in
             
-            Brand.Colors.purple
+            bgColor
                 .opacity(0.25)
                 .frame(width: proxy.width * percent)
                 .frame(maxHeight: .infinity)
@@ -67,7 +68,7 @@ struct LoadingView: View {
                         .scheduledTimer(withTimeInterval: 3.randomBetween(4),
                                         repeats: true) { timer in
                             
-                            percent += 0.05.randomBetween(0.1)
+                            percent += 0.05.randomBetween(percent >= 0.5 ? 0.07 : 0.25)
                             
                             if percent >= 1.0 {
                                 timer.invalidate()

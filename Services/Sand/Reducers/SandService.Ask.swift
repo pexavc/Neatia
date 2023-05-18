@@ -2,6 +2,7 @@ import Granite
 import SandKit
 import Foundation
 import Markdown
+import SwiftUI
 
 extension SandService {
     struct Ask: GraniteReducer {
@@ -41,7 +42,8 @@ extension SandService {
                     //TODO: this would also be changed once (maybe) when subcommand system gets more sophisticated
                     if let firstScv = subcommands.filter({ $0.value.acceptsFile }).filter({ $0.value.fileContents.isEmpty }).first {
                         
-                        state.lastError = .init(message: "Please upload a file type of \(firstScv.value.acceptedFileExtensions.map { $0.uppercased() }.joined(separator: ", ")).")
+                        //TODO: multiple file types
+                        state.lastError = .init(message: "Please add a portion of text to accompany the prompt by clicking the   􀣘  symbol in the command toolbar.")//.init(message: "Please upload a file type of \(firstScv.value.acceptedFileExtensions.map { $0.uppercased() }.joined(separator: ", ")).")
                         
                         return
                     }
