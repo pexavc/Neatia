@@ -61,9 +61,7 @@ extension ConfigService {
             SandGPT.shared.useCustomAPI()
         }
         
-        func getArrayOfBytesFromImage(imageData:NSData) -> Array<UInt32>
-        {
-            
+        func getArrayOfBytesFromImage(imageData:NSData) -> Array<UInt32> {
             // the number of elements:
             let count = imageData.length / MemoryLayout<UInt32>.size
             

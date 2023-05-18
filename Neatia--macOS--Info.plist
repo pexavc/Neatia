@@ -7,5 +7,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>UTTypeIdentifier</key>
+	<string>neatia</string>
 </dict>
 </plist>

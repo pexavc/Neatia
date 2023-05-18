@@ -54,7 +54,7 @@ struct PEXApp: App {
                     
                     //TODO: DEV
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        InteractionManager.shared.observeHotkey(kind: .mount)
+                        InteractionManager.shared.observeHotkey(kind: .promptStudio)
 //                        MenuBarManager.shared.showPopOver()
                     }
                 }
