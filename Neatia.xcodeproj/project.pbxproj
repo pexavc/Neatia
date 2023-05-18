@@ -106,6 +106,10 @@
 		716215032A031E7B009D19B6 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716215012A031E7B009D19B6 /* Binding.swift */; };
 		716215152A0342CB009D19B6 /* MacEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716215142A0342CB009D19B6 /* MacEditorTextView.swift */; };
 		716215162A0342CB009D19B6 /* MacEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716215142A0342CB009D19B6 /* MacEditorTextView.swift */; };
+		7163516B2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163516A2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift */; };
+		7163516C2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163516A2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift */; };
+		7163516E2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */; };
+		7163516F2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */; };
 		717C129F293BEF730060A446 /* AppBlurBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C129E293BEF730060A446 /* AppBlurBackground.swift */; };
 		717C12A0293BEF730060A446 /* AppBlurBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C129E293BEF730060A446 /* AppBlurBackground.swift */; };
 		717C12A3293BF03C0060A446 /* Animations._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C12A2293BF03C0060A446 /* Animations._.swift */; };
@@ -629,6 +633,8 @@
 		716214FE2A031E32009D19B6 /* NSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextView.swift; sourceTree = "<group>"; };
 		716215012A031E7B009D19B6 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		716215142A0342CB009D19B6 /* MacEditorTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditorTextView.swift; sourceTree = "<group>"; };
+		7163516A2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDictionaryEncoderDecoder.swift; sourceTree = "<group>"; };
+		7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptStudioEditorView.ExportImport.swift; sourceTree = "<group>"; };
 		717C129E293BEF730060A446 /* AppBlurBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlurBackground.swift; sourceTree = "<group>"; };
 		717C12A2293BF03C0060A446 /* Animations._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations._.swift; sourceTree = "<group>"; };
 		717D388A2887A44D00165D7D /* Home+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+View.swift"; sourceTree = "<group>"; };
@@ -1742,6 +1748,7 @@
 			isa = PBXGroup;
 			children = (
 				71DF106228CC697600559DBC /* DictionaryDecoder.swift */,
+				7163516A2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift */,
 				71DF106328CC697600559DBC /* DictionaryEncoder.swift */,
 				71DF106428CC697600559DBC /* DictionaryCodingKey.swift */,
 				71DF106528CC697600559DBC /* DictionaryErrors.swift */,
@@ -1841,6 +1848,7 @@
 			isa = PBXGroup;
 			children = (
 				71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */,
+				7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */,
 				71EA5BDD2A105F0C00B0F82D /* PromptStudioCollectionView.swift */,
 				714238282A1313F800E3A55A /* TuningView.swift */,
 			);
@@ -2331,6 +2339,7 @@
 				7197FB112964B4C0005EBBA4 /* GraniteToastViewStyle.swift in Sources */,
 				71BE32652A06109D00B76A69 /* StringExtension.swift in Sources */,
 				71CEBE072A0719FC00DE6CDE /* Query.Ask.swift in Sources */,
+				7163516B2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift in Sources */,
 				7197FB1F2964B4C0005EBBA4 /* GraniteSheet+View.swift in Sources */,
 				7192B1952A0B5C8900C579A4 /* ConfigService+Center.swift in Sources */,
 				71A28DE7295232E300EAE8EE /* GraphInteractiveLinePlot.swift in Sources */,
@@ -2359,6 +2368,7 @@
 				71BEA9C728E3D95B00B58933 /* String.swift in Sources */,
 				71CEBDFD2A0719FC00DE6CDE /* Mount.swift in Sources */,
 				712861AA2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */,
+				7163516E2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */,
 				71CEBE2A2A075BCF00DE6CDE /* Response.swift in Sources */,
 				71A28DF5295232E300EAE8EE /* GraphPage.swift in Sources */,
 				71A28E79295239D100EAE8EE /* GeometryProxy+Convenience.swift in Sources */,
@@ -2589,6 +2599,7 @@
 				712BEB6D2907649600D257B7 /* AnimationCompletion.swift in Sources */,
 				71BE32662A06109D00B76A69 /* StringExtension.swift in Sources */,
 				71CEBE082A0719FC00DE6CDE /* Query.Ask.swift in Sources */,
+				7163516C2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift in Sources */,
 				717E613428A0D69B009A2B1A /* Home._.swift in Sources */,
 				7192B1962A0B5C8900C579A4 /* ConfigService+Center.swift in Sources */,
 				71A28DE8295232E300EAE8EE /* GraphInteractiveLinePlot.swift in Sources */,
@@ -2617,6 +2628,7 @@
 				71A28EAC29523CC200EAE8EE /* GradientView.swift in Sources */,
 				71CEBDFE2A0719FC00DE6CDE /* Mount.swift in Sources */,
 				712861AB2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */,
+				7163516F2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */,
 				71CEBE2B2A075BCF00DE6CDE /* Response.swift in Sources */,
 				7197FAD72964A36A005EBBA4 /* GraniteDisclaimerView.swift in Sources */,
 				71BEA9C828E3D95B00B58933 /* String.swift in Sources */,

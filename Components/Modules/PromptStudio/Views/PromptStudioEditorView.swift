@@ -84,7 +84,19 @@ struct PromptStudioEditorView: View {
         promptColor = prompt.baseColorHex
         promptIcon = prompt.iconName
         promptRole = prompt.role
-        promptCreativity = promptCreativity
+        promptCreativity = prompt.creativity ?? promptCreativity
+        promptCustomConfig = prompt.customConfig
+    }
+    
+    func update(_ prompt: CustomPrompt) {
+        promptCommand = prompt.command.command
+        promptBody = prompt.prompt
+        promptDescription = prompt.description
+        promptColor = prompt.baseColorHex
+        promptIcon = prompt.iconName
+        promptRole = prompt.role
+        promptCreativity = prompt.creativity ?? promptCreativity
+        promptCustomConfig = prompt.customConfig
     }
     
     var promptTokenCount: Int {
@@ -98,7 +110,7 @@ struct PromptStudioEditorView: View {
         promptDescription.isNotEmpty &&
         promptTokenCount <= PromptService.customPromptMaxTokenCount &&
         (
-            service.commands.contains(promptCommand) == false && isEditing == false || isEditing
+            (service.commands.contains(promptCommand.lowercased()) == false) || isEditing
         )
     }
     
@@ -107,7 +119,7 @@ struct PromptStudioEditorView: View {
             return "Reduce the token count of your instructions to \(PromptService.customPromptMaxTokenCount) tokens or less."
         }
         
-        if service.commands.contains(promptCommand) && isEditing == false {
+        if service.commands.contains(promptCommand.lowercased()) && isEditing == false {
             return "Command already exists"
         }
         
@@ -508,190 +520,3 @@ extension PromptStudioEditorView {
     }
 }
 
-extension PromptStudioEditorView {
-    var exportButtonView: some View {
-        AppBlurView(padding: .init(16)) {
-            Button {
-                if let dict = try? asCustomPrompt.toDictionaryPrompt() {
-                    let stringV = "\(dict)"
-                    
-                    guard let pietaURL = Bundle.main.url(forResource: "pieta", withExtension: ".png") else { return }
-                    guard let pieta = NSImage(contentsOf: pietaURL) else {
-                        return
-                    }
-                    
-                    guard let data = pieta.png else { return }
-                    
-                    let nsData = NSData(data: data)
-                    
-                    let bytes = getArrayOfBytesFromImage(imageData: nsData)
-                    
-                    let imageData = MarqueKit().encodeBytes(stringV, withObject: bytes).data
-                    
-                    let arraySize = MemoryLayout<UInt32>.size * imageData.count
-                    
-                    
-                    let base64Data = Data(bytes: UnsafeRawPointer(imageData),
-                                          count: arraySize)
-                    
-                    let base64String = data.base64EncodedString()
-                    
-                    print("[PromptStudioEditorView] encoded: \(imageData.count)")
-                    let panel = NSSavePanel()
-                    panel.nameFieldLabel = "Save prompt as:"
-                    panel.nameFieldStringValue = "\(self.promptCommand).neatia"
-                    panel.canCreateDirectories = true
-                    panel.allowedContentTypes = [.init(exportedAs: "neatia"), .init(importedAs: "neatia")]
-                    panel.begin { response in
-                        if response == NSApplication.ModalResponse.OK,
-                           let fileURL = panel.url {
-                            
-                            try? base64String.write(to: fileURL, atomically: true, encoding: .utf32)
-                        }
-                    }
-                    
-//                    if let decoded = ConfigService.decode(imageData) {
-//                        print("[PromptStudioEditorView] decoded: \(decoded)")
-//                    }
-                }
-//                guard sand.state.response.isNotEmpty else { return }
-//                let markdown: String = sand.state.response
-//                let parser = MarkdownParser()
-//                let result = parser.parse(markdown)
-//
-//                let panel = NSSavePanel()
-//                panel.nameFieldLabel = "Save generation as:"
-//                panel.nameFieldStringValue = "neatia-\(Date().asStringWithTime).pdf"
-//                panel.canCreateDirectories = true
-//                panel.begin { response in
-//                    if response == NSApplication.ModalResponse.OK,
-//                       let fileURL = panel.url {
-//                        createPDF(htmlString: result.html, url: fileURL)
-//                    }
-//                }
-                
-            } label : {
-                HStack(spacing: 8) {
-                    Text("Export")
-                        .lineLimit(1)
-                        .font(Fonts.live(.subheadline, .bold))
-                        .foregroundColor(.foreground)
-                        .environment(\.colorScheme, .dark)
-                    
-                    Divider()
-                        .padding(.horizontal, 8)
-                    
-                    Image(systemName: "arrow.up.square")
-                        .font(Fonts.live(.title3, .bold))
-                        .foregroundColor(.foreground)
-                        .environment(\.colorScheme, .dark)
-                        .padding(.bottom, 2)
-                }
-            }
-            .buttonStyle(PlainButtonStyle())
-        }
-    }
-    
-    var importButtonView: some View {
-        AppBlurView(padding: .init(16)) {
-            Button {
-                let panel = NSOpenPanel()
-                panel.allowsMultipleSelection = false
-                panel.canChooseDirectories = false
-                panel.canCreateDirectories = false
-                panel.allowedContentTypes = [.init(exportedAs: "neatia"), .init(importedAs: "neatia")]
-                if panel.runModal() == .OK {
-                    if let url = panel.url {
-                        print("[PS] 1")
-                        if let string = try? String(contentsOf: url) {
-                            print("[PS] 2")
-//                            let contents = string
-//                                .components(separatedBy: ",")
-//                                .compactMap( {
-//                                    $0.replacingOccurrences(of: "[", with: "")
-//                                    .replacingOccurrences(of: "]", with: "")
-//                                    .newlinesSanitized
-//
-//                                }
-//                            )
-                            
-                            
-                            if let newData = Data(base64Encoded: string) {
-                                let decodedString = String(data: newData, encoding: .utf32)
-                                let count = decodedString?.components(separatedBy: ",").count ?? 0
-                                print("[PS] 3 count: \(decodedString?.count)")
-                                newData.withUnsafeBytes { (bytes: UnsafePointer<UInt32>) -> Void in
-                                    let newArray = convert(count:count, data: bytes)
-                                    print("[PS] After conversion, newArray = ", newArray.count)
-                                }
-                            } else {
-                                fatalError("[PS] Failed to base-64 decode data!")
-                            }
-                            
-                        }
-                    }
-                }
-                
-            } label : {
-                HStack(spacing: 8) {
-                    Text("Import")
-                        .lineLimit(1)
-                        .font(Fonts.live(.subheadline, .bold))
-                        .foregroundColor(.foreground)
-                        .environment(\.colorScheme, .dark)
-                    
-                    Divider()
-                        .padding(.horizontal, 8)
-                    
-                    Image(systemName: "arrow.down.square")
-                        .font(Fonts.live(.title3, .bold))
-                        .foregroundColor(.foreground)
-                        .environment(\.colorScheme, .dark)
-                        .padding(.bottom, 2)
-                }
-            }
-            .buttonStyle(PlainButtonStyle())
-        }
-    }
-}
-
-func convert<T>(count: Int, data: UnsafePointer<T>) -> [T] {
-    let buffer = UnsafeBufferPointer(start: data, count: count);
-    return Array(buffer)
-}
-
-
-fileprivate extension Encodable {
-
-    /// Converting object to postable dictionary
-    func toDictionaryPrompt(_ encoder: JSONEncoder = JSONEncoder()) throws -> [String: Any] {
-        let data = try encoder.encode(self)
-        let object = try JSONSerialization.jsonObject(with: data)
-        guard let json = object as? [String: Any] else {
-            let context = DecodingError.Context(codingPath: [], debugDescription: "Deserialized object is not a dictionary")
-            throw DecodingError.typeMismatch(type(of: object), context)
-        }
-        return json
-    }
-}
-
-fileprivate func getArrayOfBytesFromImage(imageData:NSData) -> Array<UInt32>
-{
-    
-    // the number of elements:
-    let count = imageData.length / MemoryLayout<UInt32>.size
-    
-    // create array of appropriate length:
-    var bytes = [UInt32](repeating: 0, count: count)
-    
-    // copy bytes into array
-    imageData.getBytes(&bytes, length:count * MemoryLayout<UInt32>.size)
-    
-    var byteArray:Array = Array<UInt32>()
-    
-    for i in 0 ..< count {
-        byteArray.append(bytes[i])
-    }
-    
-    return byteArray
-}

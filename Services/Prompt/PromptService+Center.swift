@@ -36,7 +36,7 @@ extension PromptService {
     }
     
     var commands: [String] {
-        customCommands.map { $0.capitalized } + systemPromptsRaw
+        customCommands.map { $0.lowercased() } + systemPromptsRaw
     }
     
     var customCommands: [String] {
@@ -48,7 +48,7 @@ extension PromptService {
     }
     
     var systemPromptsRaw: [String] {
-        systemPrompts.map { $0.rawValue.capitalized }
+        systemPrompts.map { $0.rawValue.lowercased() }
     }
     
     func prompt(_ command: String?) -> BasicPrompt? {
