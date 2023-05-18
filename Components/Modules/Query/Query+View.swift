@@ -8,52 +8,59 @@ extension Query: View {
             //            Spacer().frame(height: Fonts.nsFont(.headline, .bold).actualHeight)
             
             ZStack(alignment: .top) {
-                MacEditorTextView(
-                    text: sand.center.$state.binding.query,
-                    autoCompleteText: sand.center.$state.binding.commandAutoComplete,
-                    font: Fonts.nsFont(.defaultSize, .bold),
-                    onEditingChanged: {
-                        center.$state.binding.wrappedValue.isEditing = true
-                    },
-                    onCommit: {
-                        guard environment.center.state.isCommandActive == false else {
-                            return
+                if session.isLocked {
+                    MacEditorTextView(
+                        text: .constant(""),
+                        isEditable: false,
+                        font: Fonts.nsFont(.defaultSize, .bold))
+                        .overlay(Color.clear)
+                } else {
+                    MacEditorTextView(
+                        text: sand.center.$state.binding.query,
+                        autoCompleteText: sand.center.$state.binding.commandAutoComplete,
+                        font: Fonts.nsFont(.defaultSize, .bold),
+                        onEditingChanged: {
+                            center.$state.binding.wrappedValue.isEditing = true
+                        },
+                        onCommit: {
+                            guard environment.center.state.isCommandActive == false else {
+                                return
+                            }
+                            
+                            sand.center.ask.send()
+                        },
+                        onTabComplete: { value in
+                            print("[MacEditorTextView] onTab")
+                            sand
+                                .center
+                                .setCommand
+                                .send(
+                                    SandService
+                                        .SetCommand
+                                        .Meta(value: value, reset: false))
+                        },
+                        lineCountUpdated: { lineCount in
+                            environment
+                                .center
+                                .queryWindowSize
+                                .send(
+                                    EnvironmentService
+                                        .QueryWindowSizeUpdated
+                                        .Meta(lineCount: lineCount))
+                        },
+                        commandMenuActive: { isActive in
+                            sand
+                                .center
+                                .activateCommands
+                                .send(
+                                    SandService
+                                        .ActivateCommands
+                                        .Meta(isActive: isActive))
                         }
-                        
-                        sand.center.ask.send()
-                    },
-                    onTabComplete: { value in
-                        print("[MacEditorTextView] onTab")
-                        sand
-                            .center
-                            .setCommand
-                            .send(
-                                SandService
-                                    .SetCommand
-                                    .Meta(value: value, reset: false))
-                    },
-                    lineCountUpdated: { lineCount in
-                        environment
-                            .center
-                            .queryWindowSize
-                            .send(
-                                EnvironmentService
-                                    .QueryWindowSizeUpdated
-                                    .Meta(lineCount: lineCount))
-                    },
-                    commandMenuActive: { isActive in
-                        sand
-                            .center
-                            .activateCommands
-                            .send(
-                                SandService
-                                    .ActivateCommands
-                                    .Meta(isActive: isActive))
+                    )
+                    .alert(sand.state.lastError?.message ?? "", isPresented: sand.center.$state.binding.errorExists) {
+                        Button("OK", role: .cancel) { }
                     }
-                )
-                .allowsHitTesting(session.isLocked == false)
-                .alert(sand.state.lastError?.message ?? "", isPresented: sand.center.$state.binding.errorExists) {
-                    Button("OK", role: .cancel) { }
                 }
                 
                 if sand.state.query.isEmpty {

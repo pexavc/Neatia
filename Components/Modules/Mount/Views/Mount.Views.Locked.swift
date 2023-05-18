@@ -16,30 +16,33 @@ extension Mount {
             Spacer()
             AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
                 
-                Text(session.isLoggedIn ? "Subscribe" : "Log In")
-                    .font(Fonts.live(.headline, .bold))
-                    .foregroundColor(.foreground)
+                Button {
+                    config.center.$state.binding.isAccountTabActive.wrappedValue = true
+                    MenuBarManager.shared.showPopOver()
+                } label : {
+                    Text(session.isLoggedIn ? "Subscribe" : "Log In")
+                        .font(Fonts.live(.headline, .bold))
+                        .foregroundColor(.foreground)
+                }
+                .buttonStyle(PlainButtonStyle())
             }
             .environment(\.colorScheme, .dark)
-            .onTapGesture {
-                config.center.$state.binding.isAccountTabActive.wrappedValue = true
-                MenuBarManager.shared.showPopOver()
-            }
             
             if session.isLoggedIn && session.isSubscribed == false {
                 Text("or")
                 
                 AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
-                    
-                    Text("Set API Key")
-                        .font(Fonts.live(.headline, .bold))
-                        .foregroundColor(.foreground)
+                    Button {
+                        config.center.$state.binding.isSettingsActive.wrappedValue = true
+                        MenuBarManager.shared.showPopOver()
+                    } label : {
+                        Text("Set API Key")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 .environment(\.colorScheme, .dark)
-                .onTapGesture {
-                    config.center.$state.binding.isSettingsActive.wrappedValue = true
-                    MenuBarManager.shared.showPopOver()
-                }
             }
             
             Spacer()

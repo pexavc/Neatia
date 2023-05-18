@@ -36,6 +36,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
     var dateCreated: Date
     var creativity: Double?
     var role: String
+    var tokenCount: Int
     var customConfig: PromptConfig?
     
     var config: PromptConfig {
@@ -46,6 +47,10 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
         false
     }
     
+    var promptTokenCount: Int {
+        tokenCount
+    }
+    
     init(_ command: CustomCommand,
          prompt: String,
          iconName: String,
@@ -53,6 +58,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
          description: String,
          creativity: Double?,
          role: String,
+         tokenCount: Int,
          customConfig: PromptConfig?) {
         
         self.command = command
@@ -63,6 +69,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
         self.dateCreated = .init()
         self.creativity = creativity
         self.role = role
+        self.tokenCount = tokenCount
         self.customConfig = customConfig
     }
 }

@@ -61,6 +61,7 @@ struct PromptStudioEditorView: View {
               description: promptDescription,
               creativity: promptCreativity,
               role: promptRole,
+              tokenCount: promptTokenCount,
               customConfig: promptCustomConfig)
     }
     

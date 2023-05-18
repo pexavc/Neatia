@@ -115,6 +115,13 @@ struct PromptStudioCollectionView: View {
                     Spacer()
                     
                     HStack {
+                        Text("Tokens: \(prompt.tokenCount)")
+                            .font(Fonts.live(.caption2, .bold))
+                        
+                        Spacer()
+                    }
+                    
+                    HStack {
                         Text("\(prompt.dateCreated.asString)")
                             .font(Fonts.live(.caption2, .bold))
                         
