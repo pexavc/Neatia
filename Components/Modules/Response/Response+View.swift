@@ -6,7 +6,7 @@ extension Response: View {
     public var view: some View {
         VStack(spacing: 0) {
             ZStack {
-                if sand.state.isResponding {
+                if config.state.streamResponse == false && sand.state.isResponding {
                     LoadingView()
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .offset(x: -WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
@@ -16,7 +16,8 @@ extension Response: View {
                              padding: .init(Fonts.Details.from(.defaultResponseSize).actualHeight,
                                             0,
                                             Fonts.Details.from(.defaultResponseSize).actualHeight,
-                                            0)) { lineCount in
+                                            0),
+                             isLazy: config.state.streamResponse) { lineCount in
                     guard lineCount > 0 && config.state.streamResponse else { return }
                     environment
                         .center
@@ -37,6 +38,10 @@ extension Response: View {
                 
                 if sand.state.isResponding && sand.state.response.isEmpty {
                     ProgressView()
+                }
+                
+                if sand.state.responseHelpers.isNotEmpty {
+                    ResponseHelperView(helperInfo: sand.state.responseHelpers)
                 }
             }
         }

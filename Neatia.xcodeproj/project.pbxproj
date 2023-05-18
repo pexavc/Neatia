@@ -344,6 +344,8 @@
 		71A28ED4295244A700EAE8EE /* Special._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ED2295244A700EAE8EE /* Special._.swift */; };
 		71A375052A01F5B800985D8D /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375042A01F5B800985D8D /* Granite */; };
 		71A375072A01F5B800985D8D /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375062A01F5B800985D8D /* GraniteUI */; };
+		71AC3CF42A15BD0F00C68047 /* ResponseHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */; };
+		71AC3CF52A15BE0E00C68047 /* ResponseHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */; };
 		71BE31BF2A05929F00B76A69 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE31BE2A05929F00B76A69 /* MarkdownView.swift */; };
 		71BE31C02A05929F00B76A69 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE31BE2A05929F00B76A69 /* MarkdownView.swift */; };
 		71BE32082A05AB3D00B76A69 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32042A05AB3D00B76A69 /* Config.swift */; };
@@ -747,6 +749,7 @@
 		71A28ECE2952441B00EAE8EE /* Special+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Special+Center.swift"; sourceTree = "<group>"; };
 		71A28ED2295244A700EAE8EE /* Special._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Special._.swift; sourceTree = "<group>"; };
 		71A92A7C2A0E341900DD7366 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHelperView.swift; sourceTree = "<group>"; };
 		71BE31BE2A05929F00B76A69 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		71BE32042A05AB3D00B76A69 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		71BE32052A05AB3D00B76A69 /* Config+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Config+Center.swift"; sourceTree = "<group>"; };
@@ -1526,6 +1529,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		71AC3CF22A15BCFF00C68047 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		71BE32032A05AB3D00B76A69 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1671,6 +1682,7 @@
 		71CEBE212A075BCF00DE6CDE /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				71AC3CF22A15BCFF00C68047 /* Views */,
 				71CEBE222A075BCF00DE6CDE /* Response+View.swift */,
 				71CEBE232A075BCF00DE6CDE /* Response+Center.swift */,
 				71CEBE242A075BCF00DE6CDE /* Response.swift */,
@@ -2385,6 +2397,7 @@
 				719E23F42953300900CEB2FE /* GraniteButton.swift in Sources */,
 				717C12A3293BF03C0060A446 /* Animations._.swift in Sources */,
 				71EA5BD82A104B5100B0F82D /* SFSymbolPickerView.swift in Sources */,
+				71AC3CF42A15BD0F00C68047 /* ResponseHelperView.swift in Sources */,
 				71CEBE0D2A07249300DE6CDE /* InteractionManager.swift in Sources */,
 				71DF109528CC698800559DBC /* RequestOptions.swift in Sources */,
 				71A28E9B295239D100EAE8EE /* Double+Convenience.swift in Sources */,
@@ -2642,6 +2655,7 @@
 				717C12A4293BF03C0060A446 /* Animations._.swift in Sources */,
 				71DF109628CC698800559DBC /* RequestOptions.swift in Sources */,
 				71EA5BD92A104B5100B0F82D /* SFSymbolPickerView.swift in Sources */,
+				71AC3CF52A15BE0E00C68047 /* ResponseHelperView.swift in Sources */,
 				71CEBE0E2A07249300DE6CDE /* InteractionManager.swift in Sources */,
 				71A28E9C295239D100EAE8EE /* Double+Convenience.swift in Sources */,
 				71A28EA6295239D100EAE8EE /* InnerShadowExtensions.swift in Sources */,
@@ -2875,8 +2889,8 @@
 				INFOPLIST_FILE = "Neatia--macOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Neatia;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Stoic Collective, LLC.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2907,8 +2921,8 @@
 				INFOPLIST_FILE = "Neatia--macOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Neatia;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Stoic Collective, LLC.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

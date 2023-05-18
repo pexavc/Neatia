@@ -42,7 +42,6 @@ struct GeneralConfigView: View {
                 Spacer()
             }
             .padding(.bottom, 8)
-            .padding(.bottom, 8)
             
 //            Text("Accessibility")
 //                .font(Fonts.live(.headline, .bold))

@@ -123,23 +123,19 @@ extension Config: View {
                     LogoView()
                         .frame(width: 120, height: 120)
                     
-                    VStack {
-                        AppBlurView(size: .init(0, 80),
-                                    tintColor: Brand.Colors.black.opacity(0.3)) {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("Neatia")
-                                    .font(Fonts.live(.title2, .bold))
-                                    .foregroundColor(.foreground)
-                                
-                                Text("New sight.")
-                                    .font(Fonts.live(.headline, .regular))
-                                    .foregroundColor(.foreground)
-                            }
+                    AppBlurView(size: .init(0, 80),
+                                tintColor: Brand.Colors.black.opacity(0.3)) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Neatia")
+                                .font(Fonts.live(.title2, .bold))
+                                .foregroundColor(.foreground)
+                            
+                            Text("New sight.")
+                                .font(Fonts.live(.headline, .regular))
+                                .foregroundColor(.foreground)
                         }
-                        .environment(\.colorScheme, .dark)
-                        
-                        Spacer()
                     }
+                    .environment(\.colorScheme, .dark)
                     
                     Spacer()
                 }

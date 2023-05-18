@@ -11,7 +11,7 @@ import Combine
 import Granite
 
 extension PaneKit {
-    class Window: NSObject, Identifiable {
+    class Window: NSObject, Identifiable, NSWindowDelegate {
         @SharedObject(WindowVisibilityManager.id) var windowVisibility: WindowVisibilityManager
         
         @Published var isPrepared: Bool = false
@@ -49,6 +49,8 @@ extension PaneKit {
             DispatchQueue.main.async { [weak self] in
                 self?.main = AppWindow(self?.size ?? .zero, title: title, center: center)
                 
+                self?.main?.delegate = self
+                
                 self?.titleBarHeight = self?.main?.titlebarHeight ?? 0
                 self?.isPrepared = true
                 
@@ -59,6 +61,10 @@ extension PaneKit {
                 self?.lastUpdate = .init()
                 print("[PaneKit.Window] Built \(self?.lastUpdate)")
             }
+        }
+        
+        func windowWillClose(_ notification: Notification) {
+            windowVisibility.close(id: self.id)
         }
         
         func setHost<Content: View>(_ controller: NSHostingController<Content>) {

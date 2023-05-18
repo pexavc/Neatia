@@ -278,6 +278,7 @@ extension EnvironmentService {
         
         struct Meta: GranitePayload {
             let lineCount: Int
+            var responseHelpersActive: Bool = false
         }
         
         @Payload var meta: Meta?
@@ -315,7 +316,7 @@ extension EnvironmentService {
                 
                 WindowComponent(WindowComponent.Kind.divider)
                 
-                WindowComponent(WindowComponent.Kind.response, size: isToolbarActive && newHeight <= 208 ? .init(0, 208) : responseWindowSize)
+                WindowComponent(WindowComponent.Kind.response, size: (isToolbarActive || meta.responseHelpersActive) && newHeight <= 208 ? .init(0, 208) : responseWindowSize)
                 
                 WindowComponent(WindowComponent.Kind.spacer)
 //

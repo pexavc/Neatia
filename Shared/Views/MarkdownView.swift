@@ -29,20 +29,29 @@ struct MarkdownView: View {
     var markdown: String
     var elementCount: ((Int) -> Void)
     var padding: EdgeInsets
+    var isLazy: Bool
 
-    init(markdown: String, padding: EdgeInsets = .init(0), _ elementCount: @escaping((Int) -> Void)) {
+    init(markdown: String,
+         padding: EdgeInsets = .init(0),
+         isLazy: Bool = true,
+         _ elementCount: @escaping((Int) -> Void)) {
         self.markdown = markdown
         self.elementCount = elementCount
         self.padding = padding
+        self.isLazy = isLazy
     }
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             if padding.top != .zero {
                 Spacer().frame(height: padding.top)
             }
             HStack {
-                LazyMarkdownText(markdown, paragraphSpacing: spacing, elementCount)
+                if isLazy {
+                    LazyMarkdownText(markdown, paragraphSpacing: spacing, elementCount)
+                } else {
+                    MarkdownText(markdown, paragraphSpacing: spacing, elementCount)
+                }
                 Spacer(minLength: 0)
             }
             

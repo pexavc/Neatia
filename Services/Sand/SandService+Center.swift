@@ -12,6 +12,7 @@ extension SandService {
             }
             
             var response: String = ""
+            var responseHelpers: [HelperInfo] = []
             
             var isResponding: Bool = false
             

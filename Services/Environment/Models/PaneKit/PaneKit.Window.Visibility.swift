@@ -60,14 +60,14 @@ final class WindowVisibilityManager: Equatable, SharableObject {
             .sink { [weak self] newValue in
             self?.objectWillChange.send()
                 
-            let showInDock = newValue.values.contains(true)
-            let transformState = showInDock ?
-                  ProcessApplicationTransformState(kProcessTransformToForegroundApplication)
-                : ProcessApplicationTransformState(kProcessTransformToUIElementApplication)
-            var psn = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kCurrentProcess))
-
-            let transformStatus: OSStatus = TransformProcessType(&psn, transformState)
-            print("[WindowVisibility] dock state changed: \(transformStatus == 0)")
+//            let showInDock = newValue.values.contains(true)
+//            let transformState = showInDock ?
+//                  ProcessApplicationTransformState(kProcessTransformToForegroundApplication)
+//                : ProcessApplicationTransformState(kProcessTransformToUIElementApplication)
+//            var psn = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kCurrentProcess))
+//
+//            let transformStatus: OSStatus = TransformProcessType(&psn, transformState)
+//            print("[WindowVisibility] dock state changed: \(transformStatus == 0)")
         }.store(in: &cancellables)
     }
     

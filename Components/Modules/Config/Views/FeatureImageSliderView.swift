@@ -13,16 +13,14 @@ struct FeatureImageSliderView: View {
     var body: some View {
         ACarousel(items) { item in
             VisualEffectBackground(overlayColor: Color.purple.opacity(0.5))
-                .frame(height: 180)
+                .frame(height: 260)
                 .overlay(item.image
                     .resizable()
-                    .scaledToFill()
-                    .scaleEffect(x: item.id != items[0].id ? 0.9 : 1,
-                                 y: item.id != items[0].id ? 0.9 : 1))
-                .clipShape(RoundedRectangle(cornerRadius: 30,
+                    .scaledToFill())
+                .clipShape(RoundedRectangle(cornerRadius: 24,
                     style: .continuous))
                 .shadow(radius: 9)
         }
-        .frame(height: 200)
+        .frame(height: 280)
     }
 }

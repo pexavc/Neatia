@@ -83,6 +83,7 @@ extension SandService {
             SandGPT.shared.ask(userPrompt,
                                withSystemPrompt: systemPrompt,
                                withConfig: engineeredPrompt?.config ?? .init(),
+                               stream: config.state.streamResponse,
                                event: received)
         }
     }
@@ -100,29 +101,32 @@ extension SandService {
             guard response?.isComplete == false else {
                 print("[SandService] AskIsComplete")
                 
-                if response?.isStream == false {
-                    if let payload = response, let data = payload.data {
-                        //processDocument.send(payload)
-                        let doc = Document(parsing: data, source: nil)
-                        let lineCount = Int(doc.range?.upperBound.line ?? 0)
-                        
-                        environment
-                            .center
-                            .responseWindowSize
-                            .send(
-                                EnvironmentService
-                                    .ResponseWindowSizeUpdated
-                                    .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0)))
-                        
-                        state.response = data
-                        state.isResponding = false
-                        
-                    } else {
-                        state.response = response?.data ?? ""
-                    }
-                } else {
-                    state.isResponding = false
+                if response?.isStream == false,
+                   let data = response?.data {
+                    
+                    state.response = data
                 }
+                
+                if state.response.isNotEmpty {
+                    
+                    state.responseHelpers = HelperInfo.generate(from: state.response)
+                    
+                    //processDocument.send(payload)
+                    let doc = Document(parsing: state.response, source: nil)
+                    let lineCount = Int(doc.range?.upperBound.line ?? 0)
+                    
+                    environment
+                        .center
+                        .responseWindowSize
+                        .send(
+                            EnvironmentService
+                                .ResponseWindowSizeUpdated
+                                .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0),
+                                      responseHelpersActive: state.responseHelpers.isNotEmpty))
+                    
+                }
+                
+                state.isResponding = false
                 
                 return
             }

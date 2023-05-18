@@ -18,6 +18,7 @@ extension SandService {
             
             state.query = ""
             state.response = ""
+            state.responseHelpers = []
             state.isResponding = false
             state.commandAutoComplete = []
             state.subCommandSet = nil
