@@ -18,6 +18,7 @@ struct PromptPreviewView: View {
     var prompt: BasicPrompt
     var size: CGSize = .init(126, 126)
     var styleSize: Size = .normal
+    var showCustomLabel: Bool = false
     
     var iconSize: CGFloat {
         switch styleSize {
@@ -86,6 +87,20 @@ struct PromptPreviewView: View {
                                 .font(Fonts.live(.caption2, .bold))
                             
                             Spacer()
+                            
+                            if showCustomLabel && prompt.isSystemPrompt == false {
+                                Text("custom")
+                                    .font(Fonts.live(.footnote, .bold))
+                                    .padding(.vertical, 4)
+                                    .foregroundColor(Color.orange)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .strokeBorder(Color.orange,
+                                                          lineWidth: 2)
+                                            .padding(.horizontal, -6)
+                                    )
+                                    .padding(.horizontal, 6)
+                            }
                         }
                     }
                 }
