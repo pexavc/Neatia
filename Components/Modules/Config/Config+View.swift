@@ -160,8 +160,10 @@ extension Config: View {
                 
                 FeatureImageSliderView()
                 
-                
-                Spacer()
+                Text("Sign in")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                    .padding(.horizontal, WindowComponent.Style.defaultComponentOuterPadding)
                 
                 SignInWithAppleButton(.signIn) { request in
                     request.requestedScopes = [ .email, .fullName ]

@@ -11,7 +11,7 @@ struct LogoView: View {
     @State private var isAnimating = false
     
     var foreverAnimation: Animation {
-        Animation.linear(duration: 24.0)
+        Animation.linear(duration: 84.0)
             .repeatForever(autoreverses: false)
     }
     

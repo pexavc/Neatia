@@ -44,7 +44,7 @@ extension PromptStudioEditorView {
                     panel.nameFieldLabel = "Save prompt as:"
                     panel.nameFieldStringValue = "\(self.promptCommand).neatia"
                     panel.canCreateDirectories = true
-                    panel.allowedContentTypes = [.init(exportedAs: "neatia"), .init(importedAs: "neatia")]
+                    panel.allowedContentTypes = [.init(exportedAs: "nyc.stoic.Neatia-neatia-custom-prompt-v1.0")]
                     panel.begin { response in
                         if response == NSApplication.ModalResponse.OK,
                            let fileURL = panel.url {
@@ -83,7 +83,7 @@ extension PromptStudioEditorView {
                 panel.allowsMultipleSelection = false
                 panel.canChooseDirectories = false
                 panel.canCreateDirectories = false
-                panel.allowedContentTypes = [.init(exportedAs: "neatia"), .init(importedAs: "neatia")]
+                panel.allowedContentTypes = [.init(exportedAs: "nyc.stoic.Neatia-neatia-custom-prompt-v1.0"), .init(importedAs: "nyc.stoic.Neatia-neatia-custom-prompt-v1.0")]
                 if panel.runModal() == .OK {
                     if let url = panel.url {
                         

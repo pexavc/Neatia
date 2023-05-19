@@ -7,7 +7,7 @@ struct FeatureImageSliderView: View {
         let image: Image
     }
     
-    static var images = ["0", "1", "2", "3", "4"]
+    static var images = ["0", "1", "2", "3", "4", "5"]
     let items: [Item] = FeatureImageSliderView.images.map { Item(image: Image("featureImages/\($0)")) }
     
     var body: some View {
