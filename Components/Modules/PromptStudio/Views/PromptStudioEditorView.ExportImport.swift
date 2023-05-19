@@ -108,7 +108,7 @@ extension PromptStudioEditorView {
                                             
                                             
                                             update(prompt)
-                                            print("[PS] 4 \(service.commands.contains(prompt.command.command.lowercased()))")
+                                            print("[PS] 4 \(service.commands.contains(prompt.command.value.lowercased()))")
                                         }
                                     } catch let error {
                                         print("{TEST} \(error.localizedDescription)")

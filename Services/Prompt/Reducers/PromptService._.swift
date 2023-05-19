@@ -13,11 +13,11 @@ extension PromptService {
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             
-            guard state.customPrompts[meta.prompt.command] == nil else {
+            guard state.customPrompts[meta.prompt.customCommand] == nil else {
                 return
             }
             
-            state.customPrompts[meta.prompt.command] = meta.prompt
+            state.customPrompts[meta.prompt.customCommand] = meta.prompt
         }
     }
     
@@ -33,7 +33,7 @@ extension PromptService {
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             
-            state.customPrompts[meta.prompt.command] = meta.prompt
+            state.customPrompts[meta.prompt.customCommand] = meta.prompt
         }
     }
     
@@ -49,7 +49,7 @@ extension PromptService {
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             
-            state.customPrompts[meta.prompt.command] = nil
+            state.customPrompts[meta.prompt.customCommand] = nil
         }
     }
 }

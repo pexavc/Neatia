@@ -66,12 +66,10 @@ struct PromptStudioCollectionView: View {
                                         editPrompt.perform(prompt)
                                     }
                                 } label: {
-                                    promptPreview(prompt)
+                                    PromptPreviewView(prompt: prompt)
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 .frame(width: 126, height: 126)
-                                
-                                
                             }
                         }
                         
@@ -81,57 +79,6 @@ struct PromptStudioCollectionView: View {
             }
             .padding(.top, WindowComponent.Style.defaultComponentOuterPaddingContainerAware)
         }.padding(preview ? 0 : 16)
-    }
-    
-    func promptPreview(_ prompt: CustomPrompt) -> some View {
-        AppBlurView(size: .init(0, 126),
-                    tintColor: prompt.baseColor.opacity(0.45)) {
-            
-            ZStack {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        AppBlurView(size: .init(24, 24),
-                                    padding: .init(.zero),
-                                    tintColor: Brand.Colors.black.opacity(0.3)) {
-                            Image(systemName: prompt.iconName)
-                                .font(Fonts.live(.caption2, .bold))
-                                .foregroundColor(.foreground)
-                                .environment(\.colorScheme, .dark)
-                                .padding(.bottom, 2)
-                        }
-                        .aspectRatio(1, contentMode: .fit)
-                        .frame(width: 24, height: 24)
-                        
-                        Text("/\(prompt.command.command)")
-                            .font(Fonts.live(.caption2, .bold))
-                        
-                        Spacer()
-                    }
-                    
-                    Text("\(prompt.description)")
-                        .lineLimit(nil)
-                        .font(Fonts.live(.caption, .regular))
-                    
-                    Spacer()
-                    
-                    HStack {
-                        Text("Tokens: \(prompt.tokenCount)")
-                            .font(Fonts.live(.caption2, .bold))
-                        
-                        Spacer()
-                    }
-                    
-                    HStack {
-                        Text("\(prompt.dateCreated.asString)")
-                            .font(Fonts.live(.caption2, .bold))
-                        
-                        Spacer()
-                    }
-                }
-                .padding(8)
-            }.frame(width: 126, height: 126)
-        }
-        .frame(width: 126, height: 126)
     }
     
     var addView: some View {

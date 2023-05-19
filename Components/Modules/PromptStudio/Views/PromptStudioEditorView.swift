@@ -78,7 +78,7 @@ struct PromptStudioEditorView: View {
     init(_ prompt: CustomPrompt) {
         self.isEditing = true
         
-        promptCommand = prompt.command.command
+        promptCommand = prompt.command.value
         promptBody = prompt.prompt
         promptDescription = prompt.description
         promptColor = prompt.baseColorHex
@@ -89,7 +89,7 @@ struct PromptStudioEditorView: View {
     }
     
     func update(_ prompt: CustomPrompt) {
-        promptCommand = prompt.command.command
+        promptCommand = prompt.command.value
         promptBody = prompt.prompt
         promptDescription = prompt.description
         promptColor = prompt.baseColorHex

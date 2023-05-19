@@ -21,9 +21,11 @@ struct AccountConfigView: View {
     
     @State var reducedPricing: Bool = false
     
+    @State var viewSubscription: Bool = true
+    
     var body: some View {
         VStack(alignment: .leading) {
-            if VaultManager.isSubscribed {
+            if VaultManager.isSubscribed || viewSubscription == false {
                 standardView
             } else {
                 paywallView
@@ -41,6 +43,19 @@ struct AccountConfigView: View {
                     .foregroundColor(.foreground)
                 
                 Spacer()
+                
+                if VaultManager.isSubscribed == false {
+                    AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.45)) {
+                        Button(action: {
+                            viewSubscription = true
+                        }) {
+                            Text("Subscribe")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }.buttonStyle(PlainButtonStyle())
+                    }
+                    .environment(\.colorScheme, .dark)
+                }
             }
             .padding(.bottom, 8)
             
@@ -48,6 +63,8 @@ struct AccountConfigView: View {
                 subscriptionStats(purchase)
                     .frame(maxWidth: .infinity)
             }
+            
+            Spacer()
         }
     }
     
@@ -60,6 +77,17 @@ struct AccountConfigView: View {
                         .foregroundColor(.foreground)
                     
                     Spacer()
+                    
+                    AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
+                        Button(action: {
+                            viewSubscription = false
+                        }) {
+                            Text("Back")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }.buttonStyle(PlainButtonStyle())
+                    }
+                    .environment(\.colorScheme, .dark)
                 }
                 
                 AppBlurView(size: .init(0, 100),

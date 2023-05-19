@@ -110,6 +110,8 @@
 		7163516C2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163516A2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift */; };
 		7163516E2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */; };
 		7163516F2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */; };
+		716351712A17179500C06533 /* PromptPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716351702A17179500C06533 /* PromptPreviewView.swift */; };
+		716351722A17179500C06533 /* PromptPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716351702A17179500C06533 /* PromptPreviewView.swift */; };
 		717C129F293BEF730060A446 /* AppBlurBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C129E293BEF730060A446 /* AppBlurBackground.swift */; };
 		717C12A0293BEF730060A446 /* AppBlurBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C129E293BEF730060A446 /* AppBlurBackground.swift */; };
 		717C12A3293BF03C0060A446 /* Animations._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717C12A2293BF03C0060A446 /* Animations._.swift */; };
@@ -635,6 +637,7 @@
 		716215142A0342CB009D19B6 /* MacEditorTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditorTextView.swift; sourceTree = "<group>"; };
 		7163516A2A16E20100C06533 /* BasicDictionaryEncoderDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDictionaryEncoderDecoder.swift; sourceTree = "<group>"; };
 		7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptStudioEditorView.ExportImport.swift; sourceTree = "<group>"; };
+		716351702A17179500C06533 /* PromptPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPreviewView.swift; sourceTree = "<group>"; };
 		717C129E293BEF730060A446 /* AppBlurBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlurBackground.swift; sourceTree = "<group>"; };
 		717C12A2293BF03C0060A446 /* Animations._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations._.swift; sourceTree = "<group>"; };
 		717D388A2887A44D00165D7D /* Home+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+View.swift"; sourceTree = "<group>"; };
@@ -1850,6 +1853,7 @@
 				71EA5BCE2A10343E00B0F82D /* PromptStudioEditorView.swift */,
 				7163516D2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift */,
 				71EA5BDD2A105F0C00B0F82D /* PromptStudioCollectionView.swift */,
+				716351702A17179500C06533 /* PromptPreviewView.swift */,
 				714238282A1313F800E3A55A /* TuningView.swift */,
 			);
 			path = Views;
@@ -2381,6 +2385,7 @@
 				7128618B2A0F08CB00046DCE /* VaultProducts.swift in Sources */,
 				7145EF0D28D43F1D00BFD19A /* Date.swift in Sources */,
 				7197FB212964B4C0005EBBA4 /* GraniteModalWindow.swift in Sources */,
+				716351712A17179500C06533 /* PromptPreviewView.swift in Sources */,
 				712861A82A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */,
 				71CEBE192A07339000DE6CDE /* EnvironmentService.Hotkey.swift in Sources */,
 				7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */,
@@ -2641,6 +2646,7 @@
 				7128618C2A0F08CB00046DCE /* VaultProducts.swift in Sources */,
 				71A28E7A295239D100EAE8EE /* GeometryProxy+Convenience.swift in Sources */,
 				71A28E0B295233B200EAE8EE /* Fonts.swift in Sources */,
+				716351722A17179500C06533 /* PromptPreviewView.swift in Sources */,
 				712861A92A0F4EB600046DCE /* ACarouselAutoScroll.swift in Sources */,
 				71CEBE1A2A07339000DE6CDE /* EnvironmentService.Hotkey.swift in Sources */,
 				7192B18B2A0B146600C579A4 /* SandGPT.swift in Sources */,

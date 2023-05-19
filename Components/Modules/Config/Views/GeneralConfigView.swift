@@ -88,7 +88,7 @@ struct GeneralConfigView: View {
                 .environment(\.colorScheme, .dark)
                 .padding(.bottom, 8)
                 
-                Text("More options appear after a key is set, to help you customize your experience.")
+                Text("More options appear after a key is set, helping you customize your experience.")
             }
             
             

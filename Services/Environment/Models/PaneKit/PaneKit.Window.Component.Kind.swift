@@ -48,7 +48,7 @@ extension WindowComponent {
                     return WindowComponent.Style.defaultWindowSize
                 case .command:
                     return .init(WindowComponent.Style.defaultWindowSize.width,
-                                 (WindowComponent.Style.commandMenuElementHeight * WindowComponent.Style.commandMenuDefaultElements) + (WindowComponent.Style.defaultComponentOuterPadding))
+                                 (/*WindowComponent.Style.commandMenuElementHeight * WindowComponent.Style.commandMenuDefaultElements*/450) + (WindowComponent.Style.defaultComponentOuterPadding))
                 case .config:
                     return .init(600, 530)
                 case .promptStudio:

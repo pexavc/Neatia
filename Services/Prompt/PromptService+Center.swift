@@ -12,7 +12,7 @@ extension PromptService {
         @Event var modify: Modify.Reducer
         @Event var delete: Delete.Reducer
         
-        @Store(persist: "neatia.persistence.prompts.0003", autoSave: true) public var state: State
+        @Store(persist: "neatia.persistence.prompts.0004", autoSave: true) public var state: State
     }
     
     static var normalPromptMaxTokenCount: Int {
@@ -20,7 +20,7 @@ extension PromptService {
     }
     
     static var systemPromptMaxTokenCount: Int {
-        1200
+        500
     }
     
     static var customPromptMaxTokenCount: Int {
@@ -40,7 +40,7 @@ extension PromptService {
     }
     
     var customCommands: [String] {
-        state.customPrompts.keys.map({ $0.command.lowercased() })
+        state.customPrompts.keys.map({ $0.value.lowercased() })
     }
     
     var systemPrompts: [Prompts] {

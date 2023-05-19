@@ -30,7 +30,7 @@ struct DataAndPrivacyConfigView: View {
                         .font(Fonts.live(.headline, .bold))
                         .foregroundColor(.foreground)
                     
-                    Text("Neatia stores nothing (ONLY LOCAL (Like on your computer, delete the app to remove anything you think might be statefully stored (like custom prompts, (too many parenthesis)))).\n\nIt only uses a service known as, Firebase, to manage authentication. For instance with Apple Sign-in (The only sign in method at the moment). An option where the user can choose to hide their email. But, firebase gives Neatia the capability to still have a user-id to personalize some experiences for you.")
+                    Text("Neatia stores nothing (ONLY LOCAL (Like on your computer, delete the app to remove anything you think might be statefully stored (like custom prompts))).\n\nIt only uses a service known as, Firebase, to manage authentication. For instance with Apple Sign-in (The only sign in method at the moment). An option where the user can choose to hide their email. But, Firebase gives Neatia the capability to still have a user-id and personalize some experiences for you.")
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
@@ -64,7 +64,7 @@ struct DataAndPrivacyConfigView: View {
                     
                     Text("NOT from API usage. (As of 05/18/2023)")
                         .font(Fonts.live(.subheadline, .regular))
-                        .foregroundColor(.foreground) + Text(" Read this statement by OpenAPI themselves. And yes, Neatia DOES NOT and WILL NOT opt in to share data.")
+                        .foregroundColor(.foreground) + Text(" Read this statement by OpenAI themselves. And yes, Neatia DOES NOT and WILL NOT opt in to share data.")
                         .foregroundColor(.accentColor)
                 }
                 .environment(\.colorScheme, .dark)
@@ -86,7 +86,7 @@ struct DataAndPrivacyConfigView: View {
                             .foregroundColor(.foreground) + Text(" Read (H.R.2701), (Search for the mention of \"30 days\"")
                             .foregroundColor(.accentColor)
                         
-                        Text("Soon enough, Neatia will have a collection of offline models for you to use without internet connection (besides downloading the model itself). This will finalize the last mile in having the accessibility to these technologies in your complete control.\n\n")
+                        Text("Soon enough, Neatia will have a collection of offline models for you to use without internet connection (besides downloading the model itself).\n\n")
                     }
                     .environment(\.colorScheme, .dark)
                     .onTapGesture {
@@ -126,7 +126,7 @@ struct DataAndPrivacyConfigView: View {
                             }
                         }) {
                             
-                            Text("Still have concerns? Email me!")
+                            Text("Still have concerns?")
                                 .font(Fonts.live(.headline, .bold))
                                 .foregroundColor(.foreground)
                         }.buttonStyle(PlainButtonStyle())
