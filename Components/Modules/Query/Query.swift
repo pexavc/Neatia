@@ -8,6 +8,7 @@ struct Query: GraniteComponent {
     @Relay var account: AccountService
     @Relay var sand: SandService
     @Relay var prompts: PromptService
+    @Relay var query: QueryService
     
     @SharedObject(SessionManager.id) var session: SessionManager
     

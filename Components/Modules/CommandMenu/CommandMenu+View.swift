@@ -65,7 +65,7 @@ extension CommandMenu: View {
                                    showSeperators: false,
                                    paddingRow: .init(WindowComponent.Style.defaultComponentOuterPaddingContainerAware, 0),
                                    paddingTable: .init(WindowComponent.Style.defaultContainerOuterPadding, 0)))
-            .animation(.default, value: sand.state.query.count)
+            .animation(.default, value: query.state.value.count)
             
             Spacer()
         }
@@ -74,8 +74,8 @@ extension CommandMenu: View {
     var basicPrompts: [BasicPrompt] {
         var cases: [String] = prompts.commands
         var sortedCases: [String] = []
-        if sand.state.query.hasPrefix("/") {
-            let suggestions: [String] = sand.state.query.suggestions(sand.state.commandAutoComplete).map { String($0.lowercased().suffix($0.count - 1)) }
+        if query.state.value.hasPrefix("/") {
+            let suggestions: [String] = query.state.value.suggestions(sand.state.commandAutoComplete).map { String($0.lowercased().suffix($0.count - 1)) }
             
             cases.removeAll(where: { suggestions.contains($0.lowercased()) })
             sortedCases = Array(suggestions.map { $0 }) + cases

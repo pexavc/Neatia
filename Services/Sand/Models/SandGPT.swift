@@ -119,6 +119,13 @@ class SandGPT {
         }
     }
     
+    func reset() {
+        self.currentTask?.cancel()
+        self.reqDebounceTimer?.invalidate()
+        self.replyCompletedTimer?.invalidate()
+        self.isResponding = false
+    }
+    
     struct Response: GranitePayload {
         var data: String?
         var isComplete: Bool

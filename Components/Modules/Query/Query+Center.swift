@@ -4,7 +4,7 @@ import SwiftUI
 extension Query {
     struct Center: GraniteCenter {
         struct State: GraniteState {
-            //var query: String = ""
+            var query: String = ""
             var isEditing: Bool = false
             //var response: String = ""
         }

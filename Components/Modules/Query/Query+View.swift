@@ -16,7 +16,7 @@ extension Query: View {
                         .overlay(Color.clear)
                 } else {
                     MacEditorTextView(
-                        text: sand.center.$state.binding.query,
+                        text: query.center.$state.binding.value,
                         autoCompleteText: sand.center.$state.binding.commandAutoComplete,
                         font: Fonts.nsFont(.defaultSize, .bold),
                         onEditingChanged: {
@@ -63,7 +63,7 @@ extension Query: View {
                     }
                 }
                 
-                if sand.state.query.isEmpty {
+                if query.state.value.isEmpty {
                     
                     MacEditorTextView(
                         text: .constant(helperText + "..."),

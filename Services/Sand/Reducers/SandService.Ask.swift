@@ -13,6 +13,7 @@ extension SandService {
         @Relay var environment: EnvironmentService
         @Relay var prompts: PromptService
         @Relay var config: ConfigService
+        @Relay var query: QueryService
         
         func reduce(state: inout Center.State) {
             guard SandGPT.shared.isResponding == false else { return }
@@ -48,9 +49,9 @@ extension SandService {
                         return
                     }
                     
-                    userPrompt = prompt.createWithSubCommand(state.query, subCommands: Array(subcommands))
+                    userPrompt = prompt.createWithSubCommand(query.state.value, subCommands: Array(subcommands))
                 } else {
-                    userPrompt = prompt.create(state.query)
+                    userPrompt = prompt.create(query.state.value)
                 }
                 print("[SandService] Using /\(command.capitalized) \(prompt.isSystemPrompt ? "" : "(custom)") ------------- ")
                 print(prompt.debugDescription)
@@ -61,7 +62,7 @@ extension SandService {
                     return
                 }
                 
-                userPrompt = state.query
+                userPrompt = query.state.value
                 
                 print("[SandService] Normal Query --------------------- ")
             }

@@ -5,12 +5,6 @@ import SandKit
 extension SandService {
     struct Center: GraniteCenter {
         struct State: GraniteState {
-            var query: String = "" {
-                didSet {
-                    SandGPTTokenizerManager.update(query)
-                }
-            }
-            
             var response: String = ""
             var responseHelpers: [HelperInfo] = []
             

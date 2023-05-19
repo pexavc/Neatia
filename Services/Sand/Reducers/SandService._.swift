@@ -14,9 +14,11 @@ extension SandService {
     struct Reset: GraniteReducer {
         typealias Center = SandService.Center
         
+        @Relay var query: QueryService
+        
         func reduce(state: inout Center.State) {
             
-            state.query = ""
+            query.center.$state.binding.value.wrappedValue = ""
             state.response = ""
             state.responseHelpers = []
             state.isResponding = false
@@ -25,6 +27,7 @@ extension SandService {
             state.subCommandFileSet = nil
             state.commandSet = nil
             SandGPTTokenizerManager.shared.pause = false
+            SandGPT.shared.reset()
         }
     }
 }

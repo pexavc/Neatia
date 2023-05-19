@@ -50,6 +50,7 @@ extension SandService {
         
         @Relay var environment: EnvironmentService
         @Relay var prompts: PromptService
+        @Relay var query: QueryService
         
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
@@ -79,7 +80,7 @@ extension SandService {
                     }
                 }
                 
-                state.query = ""
+                query.center.$state.binding.value.wrappedValue = ""
             }
         }
     }
