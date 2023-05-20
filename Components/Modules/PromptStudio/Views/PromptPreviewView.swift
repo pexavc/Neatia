@@ -75,7 +75,7 @@ struct PromptPreviewView: View {
                     Spacer()
                     
                     HStack {
-                        Text("Tokens: \(prompt.promptTokenCount)")
+                        Text("Tokens: \(prompt.maxTokens)")
                             .font(Fonts.live(.caption2, .bold))
                         
                         Spacer()

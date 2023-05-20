@@ -39,7 +39,8 @@ extension CommandMenu: View {
                             .send(
                                 SandService
                                     .SetCommand
-                                    .Meta(value: prompt.command.value, reset: false))
+                                    .Meta(value: prompt.command.value,
+                                          reset: false))
                     } label: {
                         PromptPreviewView(prompt: prompt,
                                           size: .init(170, 170),

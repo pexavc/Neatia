@@ -79,8 +79,12 @@ extension SandService {
             
             state.response = ""
             state.isResponding = true
+            state.responseHelpers = []
+            
+            SandGPT.shared.reset()
             
             print("[SandService] Command for prompt: \(state.commandSet)")
+            print("[SandService] Sub Command for prompt: \(state.subCommandSet?.values.compactMap { "\($0.id):\($0.value.id)" })")
             print("[SandService] Use custom config: \(config.state.customPromptConfigEnabled)")
             print("[SandService] Use System prompt: \(systemPrompt)")
             SandGPT.shared.ask(userPrompt,

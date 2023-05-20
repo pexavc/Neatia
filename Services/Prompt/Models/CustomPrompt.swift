@@ -52,6 +52,10 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
         tokenCount
     }
     
+    var maxTokens: Int {
+        PromptService.customPromptMaxTokenCount - promptTokenCount
+    }
+    
     init(_ command: CustomCommand,
          prompt: String,
          iconName: String,

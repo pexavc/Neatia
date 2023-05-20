@@ -20,14 +20,14 @@ extension BasicHelper {
 struct HelperInfo: BasicHelper, GraniteModel {
     enum Kind: GraniteModel {
         case color(String)
-        case link(String)
+        case link([String])
         
         var description: String {
             switch self {
             case .color(let hex):
                 return "color:\(hex)"
-            case .link(let url):
-                return "link:\(url)"
+            case .link(let urls):
+                return "link:\(urls.count)"
             }
         }
     }
@@ -41,7 +41,8 @@ struct HelperInfo: BasicHelper, GraniteModel {
                 info.append(.init(kind: .color(match.value)))
             }
         }
-        for match in response.match("[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?") {
+        var links: [String] = []
+        for match in response.match("(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})") {
             var value = match.value
             if match.value.hasSuffix(".") {
                 value = String(match.value.prefix(match.value.count - 1))
@@ -49,9 +50,20 @@ struct HelperInfo: BasicHelper, GraniteModel {
             if value.hasSuffix("/") {
                 value = String(value.prefix(value.count - 1))
             }
-            if value.count > 3 {
-                info.append(.init(kind: .link(value)))
+            if value.count > 3 && value.hasPrefix("/") == false {
+                let link: String
+                if value.contains("http://") {
+                    link = value.replacingOccurrences(of: "http://", with: "https://")
+                } else if value.contains("https://") == false {
+                    link = "https://\(value)"
+                } else {
+                    link = value
+                }
+                links.append(link)
             }
+        }
+        if links.isNotEmpty {
+            info.append(.init(kind: .link(links)))
         }
         
         return info
@@ -62,7 +74,24 @@ struct ResponseHelperView: View {
     
     var helperInfo: [HelperInfo]
     
-    var width: CGFloat = 200
+    var width: CGFloat {
+        let hasLinks: Bool = helperInfo
+            .first(where: {
+                switch $0.kind {
+                case .link:
+                    return true
+                default:
+                    return false
+                }
+            }
+        ) != nil
+        
+        if hasLinks {
+            return 400
+        } else {
+            return 200
+        }
+    }
     
     @State var open: Bool = false
     
@@ -93,9 +122,9 @@ struct ResponseHelperView: View {
                                 switch info.kind {
                                 case .color(let hex):
                                     ColorView(hex: hex)
-                                case .link(let link):
-                                    if URL(string: link) != nil {
-                                        LinkView(link: link)
+                                case .link(let links):
+                                    if URL(string: links[0]) != nil {
+                                        LinkView(links: links)
                                     }
                                 }
                             }
@@ -131,7 +160,13 @@ fileprivate struct ColorView: View {
 fileprivate struct LinkView: View {
     @Environment(\.openURL) var openURL
     
-    let link: String
+    let links: [String]
+    
+    var link: String {
+        links[linkIndex]
+    }
+    
+    @State private var linkIndex: Int = 0
     
     @State private var action = WebViewAction.idle
     @State private var state = WebViewState.empty
@@ -140,22 +175,70 @@ fileprivate struct LinkView: View {
     var body: some View {
         VStack(spacing: 8) {
             
-            Text(link)
-                .foregroundColor(.accentColor)
+            Text("Website Preview")
                 .font(Fonts.live(.footnote, .bold))
-                .onTapGesture {
-                    if let url = URL(string: link) {
-                        openURL(url)
-                    }
-                }
+                .foregroundColor(.foreground)
             
             GraniteWebView(action: $action,
                     state: $state,
                     restrictedPages: [],
                     htmlInState: true)
-                .frame(width: 160, height: 360)
+                .frame(height: 360)
                 .cornerRadius(6)
-                .allowsHitTesting(false)
+                .padding(.horizontal, 16)
+            
+            HStack {
+                VStack(alignment: .leading) {
+                    ForEach(links.uniques, id: \.self) { link in
+                        AppBlurView(padding: .init(16)) {
+                            HStack(spacing: 8) {
+                                Text(link.replacingOccurrences(of: "www.", with: "").prefix(24))
+                                    .lineLimit(1)
+                                    .font(Fonts.live(.subheadline, .bold))
+                                    .foregroundColor(.foreground)
+                                    .environment(\.colorScheme, .dark)
+                                
+                                Divider()
+                                    .padding(.horizontal, 8)
+                                
+                                Button {
+                                    if let url = URL(string: link) {
+                                        action = .load(URLRequest(url: url))
+                                    }
+                                    
+                                } label : {
+                                    
+                                    Image(systemName: "arrow.right.square")
+                                        .font(Fonts.live(.headline, .bold))
+                                        .foregroundColor(.foreground)
+                                        .environment(\.colorScheme, .dark)
+                                        .padding(.bottom, 2)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                
+                                Divider()
+                                    .padding(.horizontal, 8)
+                                
+                                Button {
+                                    if let url = URL(string: link) {
+                                        openURL(url)
+                                    }
+                                    
+                                } label : {
+                                    
+                                    Image(systemName: "globe")
+                                        .font(Fonts.live(.headline, .bold))
+                                        .foregroundColor(.foreground)
+                                        .environment(\.colorScheme, .dark)
+                                        .padding(.bottom, 2)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            }.padding(.horizontal, 16)
         }
         .onAppear {
             print("[Loading link] \(link)")

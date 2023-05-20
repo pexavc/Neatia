@@ -163,7 +163,8 @@ extension MacEditorTextView {
                     return true
                 }
             } else if commandSelector == #selector(NSResponder.insertTab(_:)),
-                      isCommandMenuActive {
+                      isCommandMenuActive,
+                      textView.string.hasPrefix("/") {
                 self.parent.onTabComplete(textView.string.count > 1 ? textView.string : self.autoCompleteTextSuggestion)
                 return true
             } else {

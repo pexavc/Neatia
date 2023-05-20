@@ -109,36 +109,11 @@ extension CommandToolbar {
                 Spacer()
                 
                 ForEach(prompt.subCommands, id: \.id) { sc in
-                    HStack(spacing: 8) {
-                        if sand.state.subCommandSet?[sc.id]?.value.acceptsFile == true {
-                            fileSelectionView(sc)
-                        }
-                        
-                        AppBlurView(padding: .init(14, 0),
-                                    tintColor: Brand.Colors.black.opacity(0.3)) {
-                            HStack {
-                                Text(sand.state.subCommandSet?[sc.id]?.value.id ?? "")
-                                    .font(Fonts.live(.subheadline, .bold))
-                                    .foregroundColor(.foreground)
-                                    .environment(\.colorScheme, .dark)
-                                    .padding(.bottom, 2)
-                                
-                                Spacer()
-                                
-                                Image(systemName: "arrowtriangle.\((state.toggleDropdown && sc.id == state.scSelected) ? "up" : "down").fill")
-                                    .resizable()
-                                    .frame(width: 9, height: 5)
-                                    .font(Fonts.live(.subheadline, .bold))
-                                    .foregroundColor(.foreground)
-                                    .environment(\.colorScheme, .dark)
-                                    .animation(.default, value: state.toggleDropdown)
-                            }
-                        }
-                        .frame(width: 136, height: WindowComponent.Style.defaultElementSize.height)
-                        .onTapGesture {
-                            center.$state.binding.scSelected.wrappedValue = sc.id
-                            center.$state.binding.toggleDropdown.wrappedValue.toggle()
-                        }
+                    if let conditional = sc.subCommandConditional,
+                       sand.state.subCommandSet?[conditional]?.value.id == sc.id {
+                        subCommandView(sc)
+                    } else if sc.subCommandConditional == nil {
+                        subCommandView(sc)
                     }
                 }
             }
@@ -146,6 +121,40 @@ extension CommandToolbar {
         }
         .rotationEffect(.init(degrees: 180))
         .frame(maxHeight: .infinity)
+    }
+    
+    func subCommandView(_ sc: any AnySubcommand) -> some View {
+        HStack(spacing: 8) {
+            if sand.state.subCommandSet?[sc.id]?.value.acceptsFile == true {
+                fileSelectionView(sc)
+            }
+            
+            AppBlurView(padding: .init(14, 0),
+                        tintColor: Brand.Colors.black.opacity(0.3)) {
+                HStack {
+                    Text(sand.state.subCommandSet?[sc.id]?.value.id ?? "")
+                        .font(Fonts.live(.subheadline, .bold))
+                        .foregroundColor(.foreground)
+                        .environment(\.colorScheme, .dark)
+                        .padding(.bottom, 2)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrowtriangle.\((state.toggleDropdown && sc.id == state.scSelected) ? "up" : "down").fill")
+                        .resizable()
+                        .frame(width: 9, height: 5)
+                        .font(Fonts.live(.subheadline, .bold))
+                        .foregroundColor(.foreground)
+                        .environment(\.colorScheme, .dark)
+                        .animation(.default, value: state.toggleDropdown)
+                }
+            }
+            .frame(width: 136, height: WindowComponent.Style.defaultElementSize.height)
+            .onTapGesture {
+                center.$state.binding.scSelected.wrappedValue = sc.id
+                center.$state.binding.toggleDropdown.wrappedValue.toggle()
+            }
+        }
     }
 
     var trailingView: some View {

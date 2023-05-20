@@ -30,6 +30,18 @@ extension SandService {
                         if let value = subcommand.values.first(where: { $0.id == meta.subcommandValueId }) {
                             state.subCommandSet?[meta.id] = Prompts.subCommand(subcommand, scValue: value)
                         }
+                        
+                        if let conditional = subcommand.subCommandConditional,
+                           meta.id != subcommand.id {
+                            if state.subCommandSet?[conditional]?.value.id != subcommand.id {
+                                
+                                print("[SandService] Remove subcommand")
+                                state.subCommandSet?[subcommand.id] = nil
+                            } else if let value = subcommand.values.first {
+                                print("[SandService] Add subcommand")
+                                state.subCommandSet?[subcommand.id] = Prompts.subCommand(subcommand, scValue: value)
+                            }
+                        }
                     }
                 }
             }

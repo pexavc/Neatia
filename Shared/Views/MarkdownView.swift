@@ -65,6 +65,7 @@ struct MarkdownView: View {
         .markdownCodeStyle(.custom)
         .markdownInlineCodeStyle(.custom)
         .markdownOrderedListBulletStyle(.custom)
+        .markdownUnorderedListBulletStyle(.custom)
         .markdownImageStyle(.custom)
         .markdownParagraphStyle(.custom)
         .markdownCode(showCode ? .visible : .hidden)
@@ -274,6 +275,17 @@ struct CustomOrderedBullet: OrderedListBulletMarkdownStyle {
 }
 
 extension OrderedListBulletMarkdownStyle where Self == CustomOrderedBullet {
+    static var custom: Self { .init() }
+}
+
+struct CustomUnorderedBulletList: UnorderedListBulletMarkdownStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(Fonts.live(.caption, .bold))
+    }
+}
+
+extension UnorderedListBulletMarkdownStyle where Self == CustomUnorderedBulletList {
     static var custom: Self { .init() }
 }
 

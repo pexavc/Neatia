@@ -63,7 +63,6 @@ extension SandService {
                 
                 //Setup main command
                 if let first = components.first,
-                   first.hasPrefix("/"),
                    let firstCommand = first.lowercased().suggestions(state.commandAutoComplete).first {
                     
                     //Setup Command toolbar
@@ -87,8 +86,6 @@ extension SandService {
             //Setup subcommands
             state.subCommandSet = [:]
             state.subCommandFileSet = [:]
-            
-            var subCommandSet: Bool = false
             
             if commandComponents.count > 1,
                commandComponents[1].newlinesSanitized.lowercased().isNotEmpty == true {
@@ -116,21 +113,26 @@ extension SandService {
                     if let scV = scVs.first {
                         if let sc = scV["subcommand"] as? (any AnySubcommand),
                            let value = scV["subcommandValue"] as? SubcommandValue {
-                            print("{TEST} set \(sc)")
                             state.subCommandSet?[sc.id] = Prompts.subCommand(sc, scValue: value)
                             state.subCommandFileSet?[sc.id] = [:]
-                            subCommandSet = true
                         }
                     }
                 }
             }
             
-            if subCommandSet == false,
-               let command = state.commandSet {
+            //Set rest of subcommand defaults if any
+            if let command = state.commandSet {
                 if let basic = prompts.prompt(command) {
                     
                     for subcommand in basic.subCommands {
-                        if let value = subcommand.values.first {
+                        if let conditional = subcommand.subCommandConditional {
+                            if state.subCommandSet?[conditional]?.value.id == subcommand.id,
+                               let value = subcommand.values.first{
+                                
+                                state.subCommandSet?[subcommand.id] = Prompts.subCommand(subcommand, scValue: value)
+                            }
+                        } else if state.subCommandSet?[subcommand.id] == nil,
+                           let value = subcommand.values.first {
                             state.subCommandSet?[subcommand.id] = Prompts.subCommand(subcommand, scValue: value)
                             state.subCommandFileSet?[subcommand.id] = [:]
                         }
@@ -149,7 +151,13 @@ extension String {
         
         let text = self
         
-        let textAfterCommand: String = String(text[text.index(after: text.startIndex)...])
+        let textAfterCommand: String
+        
+        if text.hasPrefix("/") {
+            textAfterCommand = String(text[text.index(after: text.startIndex)...])
+        } else {
+            textAfterCommand = text
+        }
 
         let isUppercased: Bool = textAfterCommand.first?.isUppercase == true
        

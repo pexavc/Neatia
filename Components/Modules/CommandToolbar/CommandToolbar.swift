@@ -16,10 +16,20 @@ struct CommandToolbar: GraniteComponent {
         sand.state.commandSet ?? "UNKNOWN"
     }
     
+    var conditionalsNotVisible: Int {
+        prompt.subCommands
+            .filter({ $0.subCommandConditional != nil })
+            .filter({ sand.state.subCommandSet?[$0.subCommandConditional ?? ""]?.value.id != $0.id })
+            .count
+    }
+    
     var indexOfSCSelected: CGFloat {
-        CGFloat(
-            (prompt.subCommands.count - 1) - (prompt.subCommands.firstIndex(where: { $0.id == state.scSelected }) ?? 0)
-        )
+        if let index = prompt.subCommands.firstIndex(where: { $0.id == state.scSelected }) {
+            let revisedIndex = ((prompt.subCommands.count - 1) - index) - conditionalsNotVisible
+            return CGFloat(revisedIndex)
+        } else {
+            return 0
+        }
     }
     
     var subcommandValues: [SubcommandValue] {
