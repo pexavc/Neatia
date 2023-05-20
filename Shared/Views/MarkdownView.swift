@@ -226,7 +226,8 @@ public struct CustomCode: CodeMarkdownStyle {
                         .background(Color(.systemBackground))
                         #endif
                         .cornerRadius(6)
-                        .padding(5)
+                        .padding(.horizontal, 5)
+                        .padding(.top, 5)
                     
                     Button {
                         lastCopiedText = configuration.code
@@ -248,6 +249,7 @@ public struct CustomCode: CodeMarkdownStyle {
                     .frame(width: WindowComponent.Style.defaultElementSize.width,
                            height: WindowComponent.Style.defaultElementSize.height)
                     .padding(.trailing, 10)
+                    .padding(.top, 8)
                 },
                 alignment: .topTrailing
             )

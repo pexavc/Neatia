@@ -30,7 +30,7 @@ struct DataAndPrivacyConfigView: View {
                         .font(Fonts.live(.headline, .bold))
                         .foregroundColor(.foreground)
                     
-                    Text("Neatia stores nothing (ONLY LOCAL (Like on your computer, delete the app to remove anything you think might be statefully stored (like custom prompts))).\n\nIt only uses a service known as, Firebase, to manage authentication. For instance with Apple Sign-in (The only sign in method at the moment). An option where the user can choose to hide their email. But, Firebase gives Neatia the capability to still have a user-id and personalize some experiences for you.")
+                    Text("Neatia stores nothing (ONLY LOCALLY (Delete the app to remove anything you think might be statefully stored (like custom prompts))).\n\nIt only uses a service known as, Firebase, to manage authentication. For instance with Apple Sign-in (The only sign in method at the moment). An option where the user can choose to hide their email. But, Firebase gives Neatia the capability to still have a user-id and personalize some experiences for you.")
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
@@ -40,7 +40,7 @@ struct DataAndPrivacyConfigView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     
                     HStack {
-                        Text("Backend-less? Uh...")
+                        Text("Backend-less?")
                             .font(Fonts.live(.headline, .bold))
                             .foregroundColor(.foreground)
                         
@@ -77,23 +77,23 @@ struct DataAndPrivacyConfigView: View {
                 
                 Group {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Uh... it still says they retain for 30 days for \"abuse\"?")
+                        Text("It still says they retain for 30 days for \"abuse\"?")
                             .font(Fonts.live(.headline, .bold))
                             .foregroundColor(.foreground)
                         
                         Text("Yes it's the only risk unfortunately. Doubtful it will be used, sensitively they must notify you if so ")
                             .font(Fonts.live(.subheadline, .regular))
-                            .foregroundColor(.foreground) + Text(" Read (H.R.2701), (Search for the mention of \"30 days\"")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.foreground)/* + Text(" Read (H.R.2701), (Search for the mention of \"30 days\"")
+                            .foregroundColor(.accentColor)*/
                         
                         Text("Soon enough, Neatia will have a collection of offline models for you to use without internet connection (besides downloading the model itself).\n\n")
                     }
                     .environment(\.colorScheme, .dark)
-                    .onTapGesture {
-                        if let url = URL(string: "https://www.congress.gov/bill/118th-congress/house-bill/2701/text/ih?overview=closed&format=txt") {
-                            openURL(url)
-                        }
-                    }
+//                    .onTapGesture {
+//                        if let url = URL(string: "https://www.congress.gov/bill/118th-congress/house-bill/2701/text/ih?overview=closed&format=txt") {
+//                            openURL(url)
+//                        }
+//                    }
                     
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {

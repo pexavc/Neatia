@@ -27,7 +27,16 @@ class SandGPT {
         "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"
     }
     
+    static var GOOGLE_API_KEY: String {
+        "AIzaSyB0rRmROpYiGeOYXKkzomhZ8hs6s_wvDhc"
+    }
+    
+    static var DEFAULT_ENGINE: String {
+        "gpt-3.5-turbo"
+    }
+    
     private var client: ChatGPT? = nil
+    private var lastEngineUsed: String = ""
     
     let gpt3Tokenizer = GPT3Tokenizer()
     
@@ -43,7 +52,13 @@ class SandGPT {
                                  stream: Bool = false,
                                  event: E) {
         print("[SandGPT] prompt token count: \(prompt.components(separatedBy: " ").count)")
-        guard prompt.isNotEmpty, let client = self.client else { return }
+        guard prompt.isNotEmpty else { return }
+        
+        if lastEngineUsed != config.engine {
+            useCustomEngine(config.engine)
+        }
+                
+        guard let client = self.client else { return }
         
         currentTask?.cancel()
         currentTask = .init()
@@ -140,11 +155,23 @@ extension SandGPT {
         guard let customAPIKey = ConfigService.decode(customAPIKeyData) else { return }
         
 //        print("[SandGPT] decoded key: \(customAPIKey)")
-        self.client = ChatGPT(apiKey: customAPIKey, defaultModel: .custom(modelId: "gpt-3.5-turbo"))
+        self.client = ChatGPT(apiKey: customAPIKey, defaultModel: .custom(modelId: SandGPT.DEFAULT_ENGINE))
+        self.lastEngineUsed = SandGPT.DEFAULT_ENGINE
+    }
+    
+    func useCustomEngine(_ engine: String) {
+        print("[SandGPT] Using custom API w/ Custom Engine \(CUSTOM_API_KEY == nil)")
+        guard let customAPIKeyData = self.CUSTOM_API_KEY else { return }
+        guard let customAPIKey = ConfigService.decode(customAPIKeyData) else { return }
+        
+//        print("[SandGPT] decoded key: \(customAPIKey)")
+        self.client = ChatGPT(apiKey: customAPIKey, defaultModel: .custom(modelId: engine))
+        self.lastEngineUsed = engine
     }
     
     func useMainAPI() {
         print("[SandGPT] Using main API \(CUSTOM_API_KEY == nil)")
-        self.client = ChatGPT(apiKey: SandGPT.API_KEY, defaultModel: .custom(modelId: "gpt-3.5-turbo"))
+        self.client = ChatGPT(apiKey: SandGPT.API_KEY, defaultModel: .custom(modelId: SandGPT.DEFAULT_ENGINE))
+        self.lastEngineUsed = SandGPT.DEFAULT_ENGINE
     }
 }

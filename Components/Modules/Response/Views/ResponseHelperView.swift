@@ -20,11 +20,14 @@ extension BasicHelper {
 struct HelperInfo: BasicHelper, GraniteModel {
     enum Kind: GraniteModel {
         case color(String)
+        case link(String)
         
         var description: String {
             switch self {
             case .color(let hex):
                 return "color:\(hex)"
+            case .link(let url):
+                return "link:\(url)"
             }
         }
     }
@@ -36,6 +39,18 @@ struct HelperInfo: BasicHelper, GraniteModel {
         for match in response.match("#(([0-9a-fA-F]{2}){3,4}|([0-9a-fA-F]){3,4})") {
             if match.value.contains("#") {
                 info.append(.init(kind: .color(match.value)))
+            }
+        }
+        for match in response.match("[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?") {
+            var value = match.value
+            if match.value.hasSuffix(".") {
+                value = String(match.value.prefix(match.value.count - 1))
+            }
+            if value.hasSuffix("/") {
+                value = String(value.prefix(value.count - 1))
+            }
+            if value.count > 3 {
+                info.append(.init(kind: .link(value)))
             }
         }
         
@@ -77,13 +92,10 @@ struct ResponseHelperView: View {
                             ForEach(helperInfo) { info in
                                 switch info.kind {
                                 case .color(let hex):
-                                    VStack(spacing: 8) {
-                                        Circle()
-                                            .foregroundColor(Color(hex: hex))
-                                            .frame(width: 120, height: 120)
-                                        Text(hex)
-                                            .foregroundColor(.foreground)
-                                            .font(Fonts.live(.footnote, .bold))
+                                    ColorView(hex: hex)
+                                case .link(let link):
+                                    if URL(string: link) != nil {
+                                        LinkView(link: link)
                                     }
                                 }
                             }
@@ -98,6 +110,58 @@ struct ResponseHelperView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .animation(Animation.easeIn(duration: 0.3), value: open)
+        }
+    }
+}
+
+fileprivate struct ColorView: View {
+    let hex: String
+    var body: some View {
+        VStack(spacing: 8) {
+            Circle()
+                .foregroundColor(Color(hex: hex))
+                .frame(width: 120, height: 120)
+            Text(hex)
+                .foregroundColor(.foreground)
+                .font(Fonts.live(.footnote, .bold))
+        }
+    }
+}
+
+fileprivate struct LinkView: View {
+    @Environment(\.openURL) var openURL
+    
+    let link: String
+    
+    @State private var action = WebViewAction.idle
+    @State private var state = WebViewState.empty
+    @State private var address = ""
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            
+            Text(link)
+                .foregroundColor(.accentColor)
+                .font(Fonts.live(.footnote, .bold))
+                .onTapGesture {
+                    if let url = URL(string: link) {
+                        openURL(url)
+                    }
+                }
+            
+            GraniteWebView(action: $action,
+                    state: $state,
+                    restrictedPages: [],
+                    htmlInState: true)
+                .frame(width: 160, height: 360)
+                .cornerRadius(6)
+                .allowsHitTesting(false)
+        }
+        .onAppear {
+            print("[Loading link] \(link)")
+            if let url = URL(string: link) {
+                action = .load(URLRequest(url: url))
+            }
         }
     }
 }

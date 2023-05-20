@@ -51,6 +51,8 @@ extension Response: View {
 struct LoadingView: View {
     var bgColor: Color
     
+    @Relay var config: ConfigService
+    
     @State var timer: Timer?
     
     @State var percent: CGFloat = 0.0
@@ -58,23 +60,56 @@ struct LoadingView: View {
     var body: some View {
         GeometryReader { proxy in
             
-            bgColor
-                .opacity(0.25)
-                .frame(width: proxy.width * percent)
-                .frame(maxHeight: .infinity)
-                .animation(.default, value: percent)
-                .onAppear {
-                    timer = Timer
-                        .scheduledTimer(withTimeInterval: 3.randomBetween(4),
-                                        repeats: true) { timer in
-                            
-                            percent += 0.05.randomBetween(percent >= 0.5 ? 0.07 : 0.25)
-                            
-                            if percent >= 1.0 {
-                                timer.invalidate()
+            ZStack(alignment: .leading) {
+                bgColor
+                    .opacity(0.25)
+                    .frame(width: proxy.width * percent)
+                    .frame(maxHeight: .infinity)
+                    .animation(.default, value: percent)
+                    .onAppear {
+                        timer = Timer
+                            .scheduledTimer(withTimeInterval: 3.randomBetween(4),
+                                            repeats: true) { timer in
+                                
+                                percent += 0.05.randomBetween(percent >= 0.5 ? 0.07 : 0.25)
+                                
+                                if percent >= 1.0 {
+                                    timer.invalidate()
+                                }
                             }
+                    }
+                
+                if percent >= 0.75 {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            VStack(alignment: .leading) {
+                                
+                                Text("Taking too long?")
+                                    .font(Fonts.live(.footnote, .bold))
+                                
+                                Text("• Depending on the complexity, responses can take 30+ seconds to generate.")
+                                    .font(Fonts.live(.caption2, .bold))
+                                
+                                if config.state.streamResponse == false {
+                                    Text("• Try streaming the response, enabling it in settings.")
+                                        .font(Fonts.live(.caption2, .bold))
+                                }
+                                
+                                if config.state.isCustomAPIKeySet {
+                                    Text("• Check if your engine settings has a valid engine id and if the engine id is available to your API key.")
+                                        .font(Fonts.live(.caption2, .bold))
+                                }
+                            }
+                            Spacer()
                         }
+                    }
+                    .foregroundColor(.foreground)
+                    .preferredColorScheme(.dark)
+                    .padding(8)
+                    .opacity(0.75)
                 }
+            }
         }
     }
 }

@@ -30,14 +30,27 @@ extension Query: View {
                             sand.center.ask.send()
                         },
                         onTabComplete: { value in
-                            print("[MacEditorTextView] onTab")
-                            sand
-                                .center
-                                .setCommand
-                                .send(
-                                    SandService
-                                        .SetCommand
-                                        .Meta(value: value, reset: false))
+                            //Check for environment commands
+                            if value.hasPrefix("/"),
+                               let first = value.lowercased().newlinesSanitized.suggestions(sand.state.commandAutoComplete).first,
+                               let envCommand = prompts.environmentCommand(first.lowercased().replacingOccurrences(of: "/", with: "")) {
+                                switch envCommand {
+                                case .reset:
+                                    sand.center.reset.send()
+                                    environment.center.reset.send()
+                                }
+                                
+                            //Normal command set flow
+                            } else {
+                                sand
+                                    .center
+                                    .setCommand
+                                    .send(
+                                        SandService
+                                            .SetCommand
+                                            .Meta(value: value, reset: false))
+                            }
+                            
                         },
                         lineCountUpdated: { lineCount in
                             environment

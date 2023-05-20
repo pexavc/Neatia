@@ -226,35 +226,37 @@ struct TuningView: View {
                 }
             }
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Engine")
-                    .font(Fonts.live(.subheadline, .bold))
-                    .foregroundColor(.foreground)
-                
-                HStack(spacing: 8) {
-                    AppBlurView(size: .init(100, 36),
-                                tintColor: Brand.Colors.black.opacity(0.3)) {
-                        TextField(.init(""), text: $promptEngine)
-                            .textFieldStyle(PlainTextFieldStyle())
-                            .multilineTextAlignment(.center)
-                            .font(Fonts.live(.subheadline, .bold))
-                            .foregroundColor(.foreground)
-                            .padding(.bottom, 2)
+            if config.state.isCustomAPIKeySet {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Engine")
+                        .font(Fonts.live(.subheadline, .bold))
+                        .foregroundColor(.foreground)
+                    
+                    HStack(spacing: 8) {
+                        AppBlurView(size: .init(100, 36),
+                                    tintColor: Brand.Colors.black.opacity(0.3)) {
+                            TextField(.init(""), text: $promptEngine)
+                                .textFieldStyle(PlainTextFieldStyle())
+                                .multilineTextAlignment(.center)
+                                .font(Fonts.live(.subheadline, .bold))
+                                .foregroundColor(.foreground)
+                                .padding(.bottom, 2)
+                        }
+                                    .frame(width: 104, height: 36)
+                                    .padding(.horizontal, 16)
                     }
-                    .frame(width: 104, height: 36)
-                    .padding(.horizontal, 16)
+                    .onChange(of: promptEngine) { newValue in
+                        let sanitized = newValue.newlinesSanitized
+                        if newValue.utf8.count != sanitized.utf8.count {
+                            promptEngine = sanitized
+                        }
+                    }
                 }
                 .onChange(of: promptEngine) { newValue in
                     let sanitized = newValue.newlinesSanitized
                     if newValue.utf8.count != sanitized.utf8.count {
                         promptEngine = sanitized
                     }
-                }
-            }
-            .onChange(of: promptEngine) { newValue in
-                let sanitized = newValue.newlinesSanitized
-                if newValue.utf8.count != sanitized.utf8.count {
-                    promptEngine = sanitized
                 }
             }
         }

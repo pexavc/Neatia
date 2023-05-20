@@ -81,13 +81,13 @@ extension PaneKit {
         func toggle() {
             if windowVisibility.isVisible(id: self.id) {
                 main?.close()
+                windowVisibility.close(id: self.id)
             } else {
                 main?.level = .floating
                 main?.makeKeyAndOrderFront(nil)
                 main?.level = .normal
+                windowVisibility.open(id: self.id)
             }
-            
-            windowVisibility.toggle(id: self.id)
         }
         
         func observe() {

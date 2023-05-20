@@ -55,22 +55,79 @@ extension SandService {
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             
-            environment
-                .center
-                .commandToolbarActivated
-                .send(
-                    EnvironmentService
-                        .CommandToolbarActivated
-                        .Meta(isActive: meta.reset == false))
+            var commandComponents: [String] = []
+            if meta.reset {
+                state.commandSet = nil
+            } else {
+                let components = meta.value.lowercased().components(separatedBy: " ").map { $0.newlinesSanitized }
+                
+                //Setup main command
+                if let first = components.first,
+                   first.hasPrefix("/"),
+                   let firstCommand = first.lowercased().suggestions(state.commandAutoComplete).first {
+                    
+                    //Setup Command toolbar
+                    environment
+                        .center
+                        .commandToolbarActivated
+                        .send(
+                            EnvironmentService
+                                .CommandToolbarActivated
+                                .Meta(isActive: meta.reset == false))
+                    
+                    state.commandSet = firstCommand.lowercased().replacingOccurrences(of: "/", with: "")
+                    
+                    commandComponents = components
+                }
+            }
             
-            state.commandSet = meta.reset ? nil : meta.value.lowercased().replacingOccurrences(of: "/", with: "")
-            
+            //When command menu is shown tokenizer is paused so we unpause it
             SandGPTTokenizerManager.shared.pause = false
             
-            if let command = state.commandSet {
+            //Setup subcommands
+            state.subCommandSet = [:]
+            state.subCommandFileSet = [:]
+            
+            var subCommandSet: Bool = false
+            
+            if commandComponents.count > 1,
+               commandComponents[1].newlinesSanitized.lowercased().isNotEmpty == true {
+                if let basic = prompts.prompt(state.commandSet) {
+                    let second = commandComponents[1].newlinesSanitized.lowercased()
+                   
+                    let scVs = basic.subCommands.compactMap({ scV in
+                        
+                        var dict: [String : Any] = [:]
+                        dict["subcommand"] = scV
+                        dict["subcommandValue"] = scV.values.first(where: {
+                            let range = $0.id.lowercased().range(of: second.lowercased())
+                            
+                            if let rangeCheck = range {
+                                return rangeCheck.lowerBound == $0.id.startIndex
+                            } else {
+                                return false
+                            }
+                            
+                        })
+                        
+                        return dict
+                    })
+                    
+                    if let scV = scVs.first {
+                        if let sc = scV["subcommand"] as? (any AnySubcommand),
+                           let value = scV["subcommandValue"] as? SubcommandValue {
+                            print("{TEST} set \(sc)")
+                            state.subCommandSet?[sc.id] = Prompts.subCommand(sc, scValue: value)
+                            state.subCommandFileSet?[sc.id] = [:]
+                            subCommandSet = true
+                        }
+                    }
+                }
+            }
+            
+            if subCommandSet == false,
+               let command = state.commandSet {
                 if let basic = prompts.prompt(command) {
-                    state.subCommandSet = [:]
-                    state.subCommandFileSet = [:]
                     
                     for subcommand in basic.subCommands {
                         if let value = subcommand.values.first {
@@ -79,9 +136,9 @@ extension SandService {
                         }
                     }
                 }
-                
-                query.center.$state.binding.value.wrappedValue = ""
             }
+            
+            query.center.$state.binding.value.wrappedValue = ""
         }
     }
 }

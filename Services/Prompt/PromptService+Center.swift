@@ -12,7 +12,7 @@ extension PromptService {
         @Event var modify: Modify.Reducer
         @Event var delete: Delete.Reducer
         
-        @Store(persist: "neatia.persistence.prompts.0004", autoSave: true) public var state: State
+        @Store(persist: "neatia.persistence.prompts.0005", autoSave: true) public var state: State
     }
     
     static var normalPromptMaxTokenCount: Int {
@@ -36,7 +36,7 @@ extension PromptService {
     }
     
     var commands: [String] {
-        customCommands.map { $0.lowercased() } + systemPromptsRaw
+        customCommands.map { $0.lowercased() } + systemPromptsRaw + environmentCommandsRaw
     }
     
     var customCommands: [String] {
@@ -45,6 +45,10 @@ extension PromptService {
     
     var systemPrompts: [Prompts] {
         Prompts.allCases
+    }
+    
+    var environmentCommandsRaw: [String] {
+        EnvironmentCommand.allCases.map { $0.command.value.lowercased() }
     }
     
     var systemPromptsRaw: [String] {
@@ -61,5 +65,9 @@ extension PromptService {
         } else {
             return nil
         }
+    }
+    
+    func environmentCommand(_ command: String) -> EnvironmentCommand? {
+        EnvironmentCommand(rawValue: command)
     }
 }
