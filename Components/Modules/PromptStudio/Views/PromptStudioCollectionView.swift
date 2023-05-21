@@ -37,7 +37,7 @@ struct PromptStudioCollectionView: View {
                     
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 126))],
                               alignment: .leading,
-                              spacing: 4) {
+                              spacing: 16) {
                         
                         if preview == false {
                             addView

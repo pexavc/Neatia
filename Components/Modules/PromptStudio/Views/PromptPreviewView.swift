@@ -62,7 +62,7 @@ struct PromptPreviewView: View {
                         .aspectRatio(1, contentMode: .fit)
                         .frame(width: iconSize, height: iconSize)
                         
-                        Text("/\(prompt.command.value)")
+                        Text("/\(prompt.command.value.capitalized)")
                             .font(Fonts.live(styleSize == .large ? .subheadline : .caption2, .bold))
                         
                         Spacer()

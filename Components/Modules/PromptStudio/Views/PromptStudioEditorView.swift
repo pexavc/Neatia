@@ -94,9 +94,12 @@ struct PromptStudioEditorView: View {
         promptDescription = prompt.description
         promptColor = prompt.baseColorHex
         promptIcon = prompt.iconName
-        promptRole = prompt.role
         promptCreativity = prompt.creativity ?? promptCreativity
-        promptCustomConfig = prompt.customConfig
+        
+        if session.isSubscribed {
+            promptRole = prompt.role
+            promptCustomConfig = prompt.customConfig
+        }
     }
     
     var promptTokenCount: Int {

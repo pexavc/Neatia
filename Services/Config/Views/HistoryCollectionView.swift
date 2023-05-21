@@ -22,7 +22,7 @@ struct HistoryCollectionView: View {
                 
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 126))],
                           alignment: .leading,
-                          spacing: 4) {
+                          spacing: 16) {
                     if history.isEmpty {
                         HStack {
                             Text("There's nothing in your history yet.")
@@ -68,9 +68,9 @@ struct HistoryCollectionView: View {
         let command: String
         
         if let value = queryHistory.command {
-            command = "/\(value)"
+            command = "/\(value.capitalized)"
         } else {
-            command = "general"
+            command = "General"
         }
         
         return AppBlurView(size: .init(0, 126),
