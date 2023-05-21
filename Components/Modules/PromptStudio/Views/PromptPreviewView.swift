@@ -109,6 +109,7 @@ struct PromptPreviewView: View {
                     }
                 }
                 .padding(8)
+                .environment(\.colorScheme, .dark)
             }.frame(width: size.width, height: size.height)
         }
         .frame(width: size.width, height: size.height)

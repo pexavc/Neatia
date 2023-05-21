@@ -137,6 +137,7 @@ struct HistoryCollectionView: View {
             }.frame(width: 126, height: 126)
         }
         .frame(width: 126, height: 126)
+        .environment(\.colorScheme, .dark)
         .onHover { isHovered in
             DispatchQueue.main.async { //<-- Here
                 if isHovered {

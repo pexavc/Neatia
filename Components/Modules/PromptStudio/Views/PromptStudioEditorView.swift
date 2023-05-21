@@ -174,9 +174,10 @@ struct PromptStudioEditorView: View {
                             Text("Back")
                                 .font(Fonts.live(.headline, .bold))
                                 .foregroundColor(.foreground)
-                        }.buttonStyle(PlainButtonStyle())
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .environment(\.colorScheme, .dark)
                     }
-                    .environment(\.colorScheme, .dark)
                     .padding(.top, 4)
                 }
                 .padding(.bottom, 8)

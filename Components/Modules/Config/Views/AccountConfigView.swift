@@ -95,6 +95,7 @@ struct AccountConfigView: View {
                                     .font(Fonts.live(.headline, .bold))
                                     .foregroundColor(.foreground)
                             }.buttonStyle(PlainButtonStyle())
+                            .environment(\.colorScheme, .dark)
                         }
                     }
                 }
@@ -328,7 +329,6 @@ extension AccountConfigView {
                     .font(Fonts.live(.subheadline, .regular))
                     .foregroundColor(.foreground)
             }
-            .environment(\.colorScheme, .dark)
         }
     }
 }

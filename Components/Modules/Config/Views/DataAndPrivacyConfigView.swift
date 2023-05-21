@@ -34,7 +34,6 @@ struct DataAndPrivacyConfigView: View {
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
-                .environment(\.colorScheme, .dark)
                 .padding(.bottom, 8)
                 
                 VStack(alignment: .leading, spacing: 8) {
@@ -52,7 +51,6 @@ struct DataAndPrivacyConfigView: View {
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
-                .environment(\.colorScheme, .dark)
                 .padding(.bottom, 8)
                 
                 
@@ -67,7 +65,6 @@ struct DataAndPrivacyConfigView: View {
                         .foregroundColor(.foreground) + Text(" Read this statement by OpenAI themselves. And yes, Neatia DOES NOT and WILL NOT opt in to share data.")
                         .foregroundColor(.accentColor)
                 }
-                .environment(\.colorScheme, .dark)
                 .onTapGesture {
                     if let url = URL(string: "https://openai.com/policies/api-data-usage-policies") {
                         openURL(url)
@@ -88,7 +85,6 @@ struct DataAndPrivacyConfigView: View {
                         
                         Text("Soon enough, Neatia will have a collection of offline models for you to use without internet connection (besides downloading the model itself).\n\n")
                     }
-                    .environment(\.colorScheme, .dark)
 //                    .onTapGesture {
 //                        if let url = URL(string: "https://www.congress.gov/bill/118th-congress/house-bill/2701/text/ih?overview=closed&format=txt") {
 //                            openURL(url)
@@ -105,7 +101,6 @@ struct DataAndPrivacyConfigView: View {
                             Spacer()
                         }
                     }
-                    .environment(\.colorScheme, .dark)
                     .onTapGesture {
                         if let url = URL(string: "https://help.openai.com/en/articles/7039943-data-usage-for-consumer-services-faq") {
                             openURL(url)
@@ -132,7 +127,6 @@ struct DataAndPrivacyConfigView: View {
                         }.buttonStyle(PlainButtonStyle())
                     }
                 }
-                .environment(\.colorScheme, .dark)
                 Spacer()
             }
         }

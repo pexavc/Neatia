@@ -11,7 +11,8 @@ import SwiftUI
 
 extension PromptStudioEditorView {
     var exportButtonView: some View {
-        AppBlurView(padding: .init(16)) {
+        AppBlurView(padding: .init(16),
+                    tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
                 
                 //1. Encode into json
@@ -77,7 +78,8 @@ extension PromptStudioEditorView {
     }
     
     var importButtonView: some View {
-        AppBlurView(padding: .init(16)) {
+        AppBlurView(padding: .init(16),
+                    tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
                 let panel = NSOpenPanel()
                 panel.allowsMultipleSelection = false

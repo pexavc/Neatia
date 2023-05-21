@@ -13,7 +13,7 @@ extension ShortcutBar: View {
             
             HStack {
                 IconView(systemName: "arrow.clockwise",
-                         bgColor: Color.background,
+                         bgColor: Brand.Colors.black.opacity(0.3),
                          withBlur: true)
                 .frame(width: 40, height: 32)
                 .onTapGesture {
@@ -40,7 +40,8 @@ extension ShortcutBar: View {
 extension ShortcutBar {
     var copyToClipboardView: some View {
         
-        AppBlurView(padding: .init(16)) {
+        AppBlurView(padding: .init(16),
+                    tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
                 guard sand.state.response.isNotEmpty else { return }
                 
@@ -70,7 +71,8 @@ extension ShortcutBar {
     }
     
     var downloadButtonView: some View {
-        AppBlurView(padding: .init(16)) {
+        AppBlurView(padding: .init(16),
+                    tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
                 guard sand.state.response.isNotEmpty else { return }
                 let markdown: String = sand.state.response
