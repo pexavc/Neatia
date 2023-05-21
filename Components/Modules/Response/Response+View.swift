@@ -92,7 +92,7 @@ struct LoadingView: View {
                                     .font(Fonts.live(.caption2, .bold))
                                 
                                 if config.state.streamResponse == false {
-                                    Text("• Try streaming the response, enabling it in settings.")
+                                    Text("• Try streaming the response, enable it in settings.")
                                         .font(Fonts.live(.caption2, .bold))
                                 }
                                 
