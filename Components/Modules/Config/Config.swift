@@ -6,6 +6,7 @@ struct Config: GraniteComponent {
     
     @Relay var account: AccountService
     @Relay var config: ConfigService
+    @Relay var sand: SandService
     
     @SharedObject(WindowVisibilityManager.id) var windowVisibility: WindowVisibilityManager
     @SharedObject(SessionManager.id) var session: SessionManager

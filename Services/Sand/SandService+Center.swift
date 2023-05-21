@@ -35,6 +35,7 @@ extension SandService {
         @Event public var setSubCommandFile: SetSubCommandFile.Reducer
         @Event public var setSubCommandFileContents: SetSubCommandFileContents.Reducer
         
+        @Event public var restore: Restore.Reducer
         @Event public var reset: Reset.Reducer
         
         @Store public var state: State

@@ -35,7 +35,8 @@ extension ConfigService {
             }
             
             //History
-            var storeHistory: Bool = false
+            var storeHistory: Bool = true
+            var history: [QueryHistory] = []
             
             //Remote
             var isSettingsActive: Bool = false {
@@ -67,8 +68,9 @@ extension ConfigService {
         @Event var updateHotkey: Hotkey.Reducer
         @Event var setAPIKey: SetCustomAPIKey.Reducer
         @Event var removeAPIKey: RemoveCustomAPIKey.Reducer
+        @Event var updateHistory: UpdateHistory.Reducer
         
-        @Store(persist: "neatia.persistence.config.0014", autoSave: true, preload: true) public var state: State
+        @Store(persist: "neatia.persistence.config.0016", autoSave: true, preload: true) public var state: State
     }
     
     static func decode(_ bytes: [UInt32]) -> String? {

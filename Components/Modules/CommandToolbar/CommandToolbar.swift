@@ -8,7 +8,7 @@ struct CommandToolbar: GraniteComponent {
     @Relay var sand: SandService
     @Relay var prompts: PromptService
     
-    var prompt: BasicPrompt {
+    var prompt: any BasicPrompt {
         prompts.prompt(sand.state.commandSet) ?? Prompts.Empty()
     }
     

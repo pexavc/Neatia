@@ -59,12 +59,15 @@ extension SandService {
             if meta.reset {
                 state.commandSet = nil
             } else {
+                state.commandAutoComplete = prompts.commands
+                
                 let components = meta.value.lowercased().components(separatedBy: " ").map { $0.newlinesSanitized }
                 
                 //Setup main command
                 if let first = components.first,
                    let firstCommand = first.lowercased().suggestions(state.commandAutoComplete).first {
                     
+                    print("[SandService] setting command: \(firstCommand)")
                     //Setup Command toolbar
                     environment
                         .center

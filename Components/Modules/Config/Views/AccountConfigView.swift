@@ -14,8 +14,10 @@ import VaultKit
 struct AccountConfigView: View {
     @GraniteAction<Void> var subscribe
     @GraniteAction<Void> var logout
+    @GraniteAction<QueryHistory> var queryHistorySelected
     
     @Relay var account: AccountService
+    @Relay var config: ConfigService
     
     @State var selectedOption: VaultProduct? = VaultManager.shared.productFor(VaultProducts.Renewable.monthly)
     
@@ -36,7 +38,7 @@ struct AccountConfigView: View {
     }
     
     var standardView: some View {
-        Group {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Account")
                     .font(Fonts.live(.title2, .bold))
@@ -55,6 +57,13 @@ struct AccountConfigView: View {
                         }.buttonStyle(PlainButtonStyle())
                     }
                     .environment(\.colorScheme, .dark)
+                } else {
+                    AppBlurView(tintColor: VaultManager.isSubscribed ? Brand.Colors.purple.opacity(0.45) : Brand.Colors.black.opacity(0.3)) {
+                        Text(VaultManager.isSubscribed ? "Subscribed" : "Free")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    }
+                    .environment(\.colorScheme, .dark)
                 }
             }
             .padding(.bottom, 8)
@@ -62,9 +71,56 @@ struct AccountConfigView: View {
             if let purchase = VaultManager.currentPurchase {
                 subscriptionStats(purchase)
                     .frame(maxWidth: .infinity)
+                    .padding(.bottom, 8)
+            }
+            
+            HStack {
+                Text("History")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                
+                Spacer()
+                
+                Toggle("Store", isOn: config.center.$state.binding.storeHistory)
+                
+                if config.state.history.isNotEmpty {
+                    AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
+                        
+                        HStack(spacing: 8) {
+                            Button {
+                                config.center.$state.binding.history.wrappedValue = []
+                            } label: {
+                                
+                                Text("Clear")
+                                    .font(Fonts.live(.headline, .bold))
+                                    .foregroundColor(.foreground)
+                            }.buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                }
+            }
+            
+            if config.state.storeHistory {
+                HistoryCollectionView(history: config.state.history.reversed())
+                    .attach(queryHistorySelected, at: \.queryHistorySelected)
             }
             
             Spacer()
+            
+            
+//            AppBlurView(tintColor: Brand.Colors.red.opacity(0.45)) {
+//                
+//                HStack(spacing: 8) {
+//                    Button {
+//                        account.center.logout.send()
+//                    } label: {
+//                        
+//                        Text("Logout")
+//                            .font(Fonts.live(.headline, .bold))
+//                            .foregroundColor(.foreground)
+//                    }.buttonStyle(PlainButtonStyle())
+//                }
+//            }
         }
     }
     
@@ -271,22 +327,6 @@ extension AccountConfigView {
                     .foregroundColor(.foreground) + Text("\(currentPurchase.isRenewable ? "Yes" : "No")")
                     .font(Fonts.live(.subheadline, .regular))
                     .foregroundColor(.foreground)
-                
-                Spacer()
-                
-                AppBlurView(tintColor: Brand.Colors.red.opacity(0.45)) {
-                    
-                    HStack(spacing: 8) {
-                        Button {
-                            account.center.logout.send()
-                        } label: {
-                            
-                            Text("Logout")
-                                .font(Fonts.live(.headline, .bold))
-                                .foregroundColor(.foreground)
-                        }.buttonStyle(PlainButtonStyle())
-                    }
-                }
             }
             .environment(\.colorScheme, .dark)
         }

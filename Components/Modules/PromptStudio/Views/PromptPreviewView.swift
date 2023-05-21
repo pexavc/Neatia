@@ -15,7 +15,7 @@ struct PromptPreviewView: View {
         case normal
         case large
     }
-    var prompt: BasicPrompt
+    var prompt: any BasicPrompt
     var size: CGSize = .init(126, 126)
     var styleSize: Size = .normal
     var showCustomLabel: Bool = false
@@ -48,7 +48,7 @@ struct PromptPreviewView: View {
                         .foregroundColor(.accentColor.opacity(0.9))
                 }
                 
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 0) {
                     HStack {
                         AppBlurView(size: .init(iconSize, iconSize),
                                     padding: .init(.zero),
@@ -67,10 +67,13 @@ struct PromptPreviewView: View {
                         
                         Spacer()
                     }
+                    .padding(.bottom, 8)
                     
                     Text("\(prompt.description)")
-                        .lineLimit(nil)
+                        .lineLimit(styleSize == .large ? 5 : 3)
                         .font(Fonts.live(styleSize == .large ? .footnote : .caption, .regular))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.bottom, 8)
                     
                     Spacer()
                     
@@ -80,6 +83,7 @@ struct PromptPreviewView: View {
                         
                         Spacer()
                     }
+                    .padding(.bottom, 2)
                     
                     if let date = prompt.dateCreated {
                         HStack {

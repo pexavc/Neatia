@@ -9,7 +9,7 @@ struct Response: GraniteComponent {
     @Relay var config: ConfigService
     @Relay var prompts: PromptService
     
-    var prompt: BasicPrompt? {
+    var prompt: (any BasicPrompt)? {
         prompts.prompt(sand.state.commandSet)
     }
 }

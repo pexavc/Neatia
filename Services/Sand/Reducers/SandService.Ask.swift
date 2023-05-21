@@ -24,7 +24,7 @@ extension SandService {
             
             let userPrompt: String
             
-            let engineeredPrompt: BasicPrompt? = prompts.prompt(state.commandSet)
+            let engineeredPrompt: (any BasicPrompt)? = prompts.prompt(state.commandSet)
             
             let systemPrompt: String? = engineeredPrompt?.config.systemPrompt
             
@@ -99,6 +99,9 @@ extension SandService {
         typealias Center = SandService.Center
         
         @Relay var environment: EnvironmentService
+        @Relay var prompts: PromptService
+        @Relay var query: QueryService
+        @Relay var config: ConfigService
         
         @Payload var response: SandGPT.Response?
         
@@ -134,6 +137,20 @@ extension SandService {
                 }
                 
                 state.isResponding = false
+                
+                guard response?.isRestoring == false,
+                      config.state.storeHistory else { return }
+                
+                config
+                    .center
+                    .updateHistory
+                    .send(ConfigService
+                        .UpdateHistory
+                        .Meta(query: query.state.value,
+                              response: state.response,
+                              prompt: prompts.prompt(state.commandSet),
+                              subCommandSet: state.subCommandSet,
+                              subCommandFileSet: state.subCommandFileSet))
                 
                 return
             }

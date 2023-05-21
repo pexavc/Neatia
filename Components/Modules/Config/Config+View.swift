@@ -66,7 +66,11 @@ extension Config: View {
                     Text("General")
                     NavigationLink(destination:
                                     AccountConfigView()
-                        .attach(account.center.subscribe, at: \.subscribe), isActive: config.center.$state.binding.isAccountTabActive) {
+                        .attach( { queryHistorySelected in
+                            sand.center.restore.send(SandService.Restore.Meta(history: queryHistorySelected))
+                        }, at: \.queryHistorySelected)
+                        .attach(account.center.subscribe, at: \.subscribe),
+                                   isActive: config.center.$state.binding.isAccountTabActive) {
                         Label("Account", systemImage: "person")
                     }
                     

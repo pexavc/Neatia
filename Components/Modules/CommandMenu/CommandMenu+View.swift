@@ -73,7 +73,7 @@ extension CommandMenu: View {
         }
     }
     
-    var basicPrompts: [BasicPrompt] {
+    var basicPrompts: [any BasicPrompt] {
         var cases: [String] = prompts.commands
         var sortedCases: [String] = []
         if query.state.value.hasPrefix("/") {

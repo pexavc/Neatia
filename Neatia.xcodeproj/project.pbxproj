@@ -97,6 +97,16 @@
 		7145EF0E28D43F1D00BFD19A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF0C28D43F1D00BFD19A /* Date.swift */; };
 		7145EF1928D44DEE00BFD19A /* UIApplication+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF1828D44DEE00BFD19A /* UIApplication+SafeArea.swift */; };
 		7145EF1A28D44DEE00BFD19A /* UIApplication+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145EF1828D44DEE00BFD19A /* UIApplication+SafeArea.swift */; };
+		714B72462A19AACE0072AC70 /* QueryHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72452A19AACE0072AC70 /* QueryHistory.swift */; };
+		714B72472A19AB0C0072AC70 /* QueryHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72452A19AACE0072AC70 /* QueryHistory.swift */; };
+		714B72492A19AD910072AC70 /* ConfigService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72482A19AD910072AC70 /* ConfigService.History.swift */; };
+		714B724A2A19AD960072AC70 /* ConfigService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72482A19AD910072AC70 /* ConfigService.History.swift */; };
+		714B724D2A19AFEB0072AC70 /* HistoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B724C2A19AFEB0072AC70 /* HistoryCollectionView.swift */; };
+		714B724E2A19AFEB0072AC70 /* HistoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B724C2A19AFEB0072AC70 /* HistoryCollectionView.swift */; };
+		714B72502A19B5B20072AC70 /* SandService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B724F2A19B5B20072AC70 /* SandService.History.swift */; };
+		714B72512A19B5B20072AC70 /* SandService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B724F2A19B5B20072AC70 /* SandService.History.swift */; };
+		714B72532A19BAA30072AC70 /* QueryService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72522A19BAA30072AC70 /* QueryService.History.swift */; };
+		714B72542A19BAA30072AC70 /* QueryService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72522A19BAA30072AC70 /* QueryService.History.swift */; };
 		71508F662A0E382E008D0988 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 71508F652A0E382E008D0988 /* LaunchAtLogin */; };
 		7161D2FB29540AD00070FE59 /* View+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161D2FA29540AD00070FE59 /* View+Overlay.swift */; };
 		7161D2FC29540AD00070FE59 /* View+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161D2FA29540AD00070FE59 /* View+Overlay.swift */; };
@@ -634,6 +644,11 @@
 		7142382B2A135A0B00E3A55A /* CommantToolbar.FileSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantToolbar.FileSelection.swift; sourceTree = "<group>"; };
 		7145EF0C28D43F1D00BFD19A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7145EF1828D44DEE00BFD19A /* UIApplication+SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+SafeArea.swift"; sourceTree = "<group>"; };
+		714B72452A19AACE0072AC70 /* QueryHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryHistory.swift; sourceTree = "<group>"; };
+		714B72482A19AD910072AC70 /* ConfigService.History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.History.swift; sourceTree = "<group>"; };
+		714B724C2A19AFEB0072AC70 /* HistoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionView.swift; sourceTree = "<group>"; };
+		714B724F2A19B5B20072AC70 /* SandService.History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService.History.swift; sourceTree = "<group>"; };
+		714B72522A19BAA30072AC70 /* QueryService.History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.History.swift; sourceTree = "<group>"; };
 		71508F632A0E3776008D0988 /* LaunchAtLogin */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LaunchAtLogin; path = ../LaunchAtLogin; sourceTree = "<group>"; };
 		7161D2FA29540AD00070FE59 /* View+Overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Overlay.swift"; sourceTree = "<group>"; };
 		716214FE2A031E32009D19B6 /* NSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextView.swift; sourceTree = "<group>"; };
@@ -1127,6 +1142,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		714B72442A19AAB90072AC70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				714B72452A19AACE0072AC70 /* QueryHistory.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		714B724B2A19AFD80072AC70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				714B724C2A19AFEB0072AC70 /* HistoryCollectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		716351762A172BF100C06533 /* Query */ = {
 			isa = PBXGroup;
 			children = (
@@ -1140,6 +1171,7 @@
 		716351792A172BF100C06533 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
+				714B72522A19BAA30072AC70 /* QueryService.History.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -1155,6 +1187,8 @@
 		7192B18F2A0B5C8900C579A4 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				714B724B2A19AFD80072AC70 /* Views */,
+				714B72442A19AAB90072AC70 /* Models */,
 				714238252A12D8B700E3A55A /* pieta.png */,
 				7192B1902A0B5C8900C579A4 /* ConfigService.swift */,
 				7192B1912A0B5C8900C579A4 /* ConfigService+Center.swift */,
@@ -1167,6 +1201,7 @@
 			isa = PBXGroup;
 			children = (
 				713FFDD12A0DFB9400E6F9AF /* ConfigService._.swift */,
+				714B72482A19AD910072AC70 /* ConfigService.History.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -1747,6 +1782,7 @@
 			children = (
 				713D866B2A118C2C00AE32CE /* SandService._.swift */,
 				71CEBE372A077E7800DE6CDE /* SandService.Ask.swift */,
+				714B724F2A19B5B20072AC70 /* SandService.History.swift */,
 				71EDCFB12A0864F100857066 /* SandService.Commands.swift */,
 				713D86682A118C2400AE32CE /* SandService.SubCommands.swift */,
 			);
@@ -2188,6 +2224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A28E8D295239D100EAE8EE /* Double+Angle.swift in Sources */,
+				714B72462A19AACE0072AC70 /* QueryHistory.swift in Sources */,
 				71A28DDF295232E300EAE8EE /* MovingNumbersView.swift in Sources */,
 				71A28E02295233A300EAE8EE /* Brand.swift in Sources */,
 				713D866F2A118D2300AE32CE /* FileTextEditorView.swift in Sources */,
@@ -2232,6 +2269,7 @@
 				71EDCFED2A09675900857066 /* PaneKit.PaneView.swift in Sources */,
 				71A28E21295237AE00EAE8EE /* Passthrough.swift in Sources */,
 				71CEBDEC2A0718F900DE6CDE /* Query+View.swift in Sources */,
+				714B724D2A19AFEB0072AC70 /* HistoryCollectionView.swift in Sources */,
 				7197FB1D2964B4C0005EBBA4 /* GraniteSheetPresenterView.swift in Sources */,
 				71EA5BB92A10222E00B0F82D /* PromptService+Center.swift in Sources */,
 				71A28E73295239D100EAE8EE /* Angle+Convenience.swift in Sources */,
@@ -2291,6 +2329,7 @@
 				71A28E7F295239D100EAE8EE /* Color+Convenience.swift in Sources */,
 				71BE324F2A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */,
 				712861912A0F431E00046DCE /* LogoView.swift in Sources */,
+				714B72492A19AD910072AC70 /* ConfigService.History.swift in Sources */,
 				713D86742A118E3F00AE32CE /* FileProcessor.swift in Sources */,
 				71DF109B28CC698800559DBC /* RequestMethod.swift in Sources */,
 				7197FB172964B4C0005EBBA4 /* GraniteSheetPresentationStyle.swift in Sources */,
@@ -2301,6 +2340,7 @@
 				71A28E6B295239D100EAE8EE /* CGFloat+Convenience.swift in Sources */,
 				71CEBE332A077CEE00DE6CDE /* SandService+Center.swift in Sources */,
 				71A28E93295239D100EAE8EE /* Float+Angle.swift in Sources */,
+				714B72532A19BAA30072AC70 /* QueryService.History.swift in Sources */,
 				7128619A2A0F4D8900046DCE /* FeatureImageSliderView.swift in Sources */,
 				71CEBE422A07A75A00DE6CDE /* CommandMenu+Center.swift in Sources */,
 				71DF107B28CC697600559DBC /* Double+Rounding.swift in Sources */,
@@ -2399,6 +2439,7 @@
 				71CEBDFD2A0719FC00DE6CDE /* Mount.swift in Sources */,
 				712861AA2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */,
 				7163516E2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */,
+				714B72502A19B5B20072AC70 /* SandService.History.swift in Sources */,
 				71CEBE2A2A075BCF00DE6CDE /* Response.swift in Sources */,
 				71A28DF5295232E300EAE8EE /* GraphPage.swift in Sources */,
 				71A28E79295239D100EAE8EE /* GeometryProxy+Convenience.swift in Sources */,
@@ -2451,6 +2492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A28E8E295239D100EAE8EE /* Double+Angle.swift in Sources */,
+				714B72472A19AB0C0072AC70 /* QueryHistory.swift in Sources */,
 				7197FB202964B4C0005EBBA4 /* GraniteSheet+View.swift in Sources */,
 				71A28DE0295232E300EAE8EE /* MovingNumbersView.swift in Sources */,
 				713D86702A118D2300AE32CE /* FileTextEditorView.swift in Sources */,
@@ -2495,6 +2537,7 @@
 				71EDCFEE2A09675900857066 /* PaneKit.PaneView.swift in Sources */,
 				71A28DE4295232E300EAE8EE /* Misc.Visual.swift in Sources */,
 				71CEBDED2A0718F900DE6CDE /* Query+View.swift in Sources */,
+				714B724E2A19AFEB0072AC70 /* HistoryCollectionView.swift in Sources */,
 				71A28E22295237AE00EAE8EE /* Passthrough.swift in Sources */,
 				71EA5BBA2A10222E00B0F82D /* PromptService+Center.swift in Sources */,
 				71A28E74295239D100EAE8EE /* Angle+Convenience.swift in Sources */,
@@ -2554,6 +2597,7 @@
 				71A28E84295239D100EAE8EE /* RepresentableAsInt.swift in Sources */,
 				71BE32502A05FB5D00B76A69 /* AccountService.Subscribe.swift in Sources */,
 				712861922A0F431E00046DCE /* LogoView.swift in Sources */,
+				714B724A2A19AD960072AC70 /* ConfigService.History.swift in Sources */,
 				713D86752A118E3F00AE32CE /* FileProcessor.swift in Sources */,
 				71A28E80295239D100EAE8EE /* Color+Convenience.swift in Sources */,
 				7197FB182964B4C0005EBBA4 /* GraniteSheetPresentationStyle.swift in Sources */,
@@ -2564,6 +2608,7 @@
 				71A28E6A295239D100EAE8EE /* CGVector+Convenience.swift in Sources */,
 				71CEBE342A077CEE00DE6CDE /* SandService+Center.swift in Sources */,
 				71A28E6C295239D100EAE8EE /* CGFloat+Convenience.swift in Sources */,
+				714B72542A19BAA30072AC70 /* QueryService.History.swift in Sources */,
 				7128619B2A0F4D8900046DCE /* FeatureImageSliderView.swift in Sources */,
 				71CEBE432A07A75A00DE6CDE /* CommandMenu+Center.swift in Sources */,
 				7197FADA2964A4E8005EBBA4 /* GraniteEmptyView.swift in Sources */,
@@ -2662,6 +2707,7 @@
 				71CEBDFE2A0719FC00DE6CDE /* Mount.swift in Sources */,
 				712861AB2A0F4EB600046DCE /* AppLifeCycleModifier.swift in Sources */,
 				7163516F2A16E6C600C06533 /* PromptStudioEditorView.ExportImport.swift in Sources */,
+				714B72512A19B5B20072AC70 /* SandService.History.swift in Sources */,
 				71CEBE2B2A075BCF00DE6CDE /* Response.swift in Sources */,
 				7197FAD72964A36A005EBBA4 /* GraniteDisclaimerView.swift in Sources */,
 				71BEA9C828E3D95B00B58933 /* String.swift in Sources */,

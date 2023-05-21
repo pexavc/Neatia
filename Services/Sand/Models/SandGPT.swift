@@ -145,6 +145,7 @@ class SandGPT {
         var data: String?
         var isComplete: Bool
         var isStream: Bool
+        var isRestoring: Bool = false
     }
 }
 

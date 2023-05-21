@@ -27,6 +27,11 @@ extension PromptService {
         1200
     }
     
+    //Entire max for engines (Should probably be in SandGPT.shared?)
+    static var maxTokenCount: Int {
+        4096
+    }
+    
     func maxTokenCount(_ command: String?) -> Int {
         if let prompt = prompt(command) {
             return prompt.maxTokens
@@ -55,7 +60,7 @@ extension PromptService {
         systemPrompts.map { $0.rawValue.lowercased() }
     }
     
-    func prompt(_ command: String?) -> BasicPrompt? {
+    func prompt(_ command: String?) -> (any BasicPrompt)? {
         guard let value = command else { return nil }
         if customCommands.contains(value.lowercased()) {
             let command: CustomCommand = .init(value.lowercased())

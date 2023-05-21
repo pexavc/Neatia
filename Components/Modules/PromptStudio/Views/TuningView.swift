@@ -22,8 +22,8 @@ struct TuningView: View {
     @State var promptTemperature: Double = 0.5
     @State var promptTopP: Double = 0.5
     @State var promptNumberOfAnswers: Int = 1
-    @State var promptMaxTokens: Int = 4096
-    @State var promptMaxTokensDisplay: String = "4096"
+    @State var promptMaxTokens: Int = PromptService.maxTokenCount
+    @State var promptMaxTokensDisplay: String = "\(PromptService.maxTokenCount)"
     @State var promptEngine: String = "gpt-3.5-turbo"
     @State var useTopP: Bool = false
     
@@ -209,14 +209,14 @@ struct TuningView: View {
                         .onChange(of: promptMaxTokensDisplay) { newValue in
                             if let intValue = Int(newValue) {
                                 if intValue != promptMaxTokens {
-                                    promptMaxTokens = max(2048, min(4096, intValue))
+                                    promptMaxTokens = max(2048, min(PromptService.maxTokenCount, intValue))
                                 }
                             } else {
                                 promptMaxTokensDisplay = "\(promptMaxTokens)"
                             }
                         }
                         
-                        Stepper(value: $promptMaxTokens, in: 2048...4096) {
+                        Stepper(value: $promptMaxTokens, in: 2048...PromptService.maxTokenCount) {
                             EmptyView()
                         }
                         .onChange(of: promptMaxTokens) { newValue in

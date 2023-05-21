@@ -11,6 +11,8 @@ extension QueryService {
             }
         }
         
+        @Event public var restore: Restore.Reducer
+        
         @Store public var state: State
     }
 }

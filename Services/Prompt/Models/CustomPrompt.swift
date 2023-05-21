@@ -53,7 +53,14 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
     }
     
     var maxTokens: Int {
-        PromptService.customPromptMaxTokenCount - promptTokenCount
+        if let configTokenCount = customConfig?.maximumTokens {
+            let tokensLeft = configTokenCount - (promptTokenCount + 240) //240 reserved for the system
+            return tokensLeft
+        } else {
+            let tokensLeft = PromptService.maxTokenCount - (promptTokenCount + 240) //240 reserved for the system
+            return tokensLeft
+        }
+        //PromptService.customPromptMaxTokenCount - promptTokenCount
     }
     
     init(_ command: CustomCommand,
