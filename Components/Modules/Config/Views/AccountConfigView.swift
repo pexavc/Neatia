@@ -81,7 +81,7 @@ struct AccountConfigView: View {
                 
                 Spacer()
                 
-                Toggle("Store", isOn: config.center.$state.binding.storeHistory)
+                Toggle("Store (Local)", isOn: config.center.$state.binding.storeHistory)
                 
                 if config.state.history.isNotEmpty {
                     AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
