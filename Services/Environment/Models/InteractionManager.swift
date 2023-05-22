@@ -11,8 +11,7 @@ import SwiftUI
 import Carbon
 
 enum Interaction: GraniteModel {
-    case enable
-    case disable
+    case bringToFront(InteractionManager.Kind)
 }
 
 class InteractionManager {
@@ -27,7 +26,7 @@ class InteractionManager {
     var promptStudioHotkeyRef: EventHotKeyRef?
     var hotKeysRegistered: [UInt32: Kind] = [:]
     
-    enum Kind: String, CaseIterable {
+    enum Kind: String, CaseIterable, GraniteModel {
         case mount
         case promptStudio
     }

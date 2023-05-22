@@ -21,12 +21,13 @@ extension EnvironmentService {
         
         func reduce(state: inout Center.State) {
             switch meta?.interaction {
-            case .enable:
-                //state.windowManager.enable()
-                break
-            case .disable:
-                //state.windowManager.disable()
-                break
+            case .bringToFront(let kind):
+                switch kind {
+                case .mount:
+                    state.pane?.bringToFront()
+                case .promptStudio:
+                    state.promptStudioPane?.bringToFront()
+                }
             default:
                 break
             }

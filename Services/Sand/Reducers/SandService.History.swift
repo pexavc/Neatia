@@ -15,25 +15,82 @@ extension SandService {
         @Payload var meta: Meta?
         
         @Relay var query: QueryService
-        
-        @Event var setAskResponse: AskResponse.Reducer
-        @Event var setCommand: SetCommand.Reducer
+        @Relay var prompts: PromptService
+        @Relay var environment: EnvironmentService
         
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             
-            query.center.restore.send(QueryService.Restore.Meta(value: meta.history.query))
+            //TODO: multiple reducers in a single block are not persisting states
+            //Race conditions, related to Issue #1 in Granite repo
             
-            setAskResponse.send(SandGPT.Response(data: meta.history.response,
-                                                 isComplete: true,
-                                                 isStream: false,
-                                                 isRestoring: true))
+            SandGPT.shared.reset()
             
             if let command = meta.history.command {
-                setCommand.send(SetCommand.Meta(value: command, reset: false))
-//                state.subCommandSet = meta.history.subCommandSet
-//                state.subCommandFileSet = meta.history.subCommandFileSet
+                //Restore command
+                state.commandAutoComplete = prompts.commands
+                
+                print("[SandService] restoring command: \(command)")
+                
+                //Setup Command toolbar
+                environment
+                    .center
+                    .commandToolbarActivated
+                    .send(
+                        EnvironmentService
+                            .CommandToolbarActivated
+                            .Meta(isActive: true))
+                
+                state.commandSet = command.lowercased().replacingOccurrences(of: "/", with: "")
+                
+                //Restore subcommands
+                if let prompt = prompts.prompt(command),
+                   let scvKeys = meta.history.subCommandSet?.keys {
+                    var scvS: [String: Prompts.Subcommand] = [:]
+                    
+                    let used = prompt.subCommands.filter( { Array(scvKeys).contains($0.id) == true })
+                    for scv in used {
+                        if let scValueId = meta.history.subCommandSet?[scv.id],
+                           let scValue = scv.values.first(where: { $0.id == scValueId }) {
+                            scvS[scv.id] = .init(id: scv.id, value: scValue)
+                        }
+                    }
+                    state.subCommandSet = scvS//meta.history.subCommandSet
+                    state.subCommandFileSet = meta.history.subCommandFileSet
+                }
             }
+            
+            //Restore Response
+            state.response = meta.history.response
+            if meta.history.response.isNotEmpty {
+                
+                state.responseHelpers = HelperInfo.generate(from: state.response)
+                
+                //processDocument.send(payload)
+                let doc = Document(parsing: state.response, source: nil)
+                let lineCount = Int(doc.range?.upperBound.line ?? 0)
+                
+                environment
+                    .center
+                    .responseWindowSize
+                    .send(
+                        EnvironmentService
+                            .ResponseWindowSizeUpdated
+                            .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0),
+                                  responseHelpersActive: state.responseHelpers.isNotEmpty))
+                
+            }
+            
+            //Restore query
+            query.center.$state.binding.value.wrappedValue = meta.history.query
+            
+            //Environment
+            environment
+                .center
+                .interact
+                .send(EnvironmentService
+                    .Interact
+                    .Meta(interaction: .bringToFront(.mount)))
         }
     }
 }

@@ -105,7 +105,6 @@ struct LoadingView: View {
                         }
                     }
                     .foregroundColor(.foreground)
-                    .environment(\.colorScheme, .dark)
                     .padding(8)
                     .opacity(0.75)
                 }

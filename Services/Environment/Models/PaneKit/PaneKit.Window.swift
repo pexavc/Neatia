@@ -90,6 +90,13 @@ extension PaneKit {
             }
         }
         
+        func bringToFront() {
+            main?.level = .floating
+            main?.makeKeyAndOrderFront(nil)
+            main?.level = .normal
+            windowVisibility.open(id: self.id)
+        }
+        
         func observe() {
             pubClickedOutside.sink { [weak self] _ in
                 guard self?.windowVisibility.isVisible(id: self?.id ?? "") == true else { return }

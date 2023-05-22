@@ -67,6 +67,10 @@ class PaneKit<Content: View>: Equatable, Codable {
         window.toggle()
     }
     
+    func bringToFront() {
+        window.bringToFront()
+    }
+    
     func showPopover<ContentPopover: View>(size: CGSize,
                                            bounds: CGRect,
                                            preferredEdge: NSRectEdge,

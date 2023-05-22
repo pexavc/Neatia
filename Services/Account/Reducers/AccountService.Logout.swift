@@ -13,17 +13,7 @@ extension AccountService {
     struct Logout: GraniteReducer {
         typealias Center = AccountService.Center
         
-        @Relay var environment: EnvironmentService
-        
         func reduce(state: inout Center.State) {
-            environment
-                .center
-                .interact
-                .send(
-                    EnvironmentService
-                        .Interact
-                        .Meta(interaction: .disable))
-            
             try? Auth.auth().signOut()
             
             AccountManager.logout()

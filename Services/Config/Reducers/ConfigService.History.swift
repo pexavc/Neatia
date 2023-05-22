@@ -27,12 +27,22 @@ extension ConfigService {
         func reduce(state: inout Center.State) {
             guard let meta = self.meta else { return }
             var history = state.history
-            //TODO: subcommandSet should be via id not the whole object
-            //too keep prompts private
+            
+            var scvS: [String : String] = [:]
+            
+            if let keys = meta.subCommandSet?.keys {
+                for key in keys {
+                    if let value = meta.subCommandSet?[key] {
+                        scvS[key] = value.value.id
+                    }
+                }
+            }
+            
+            
             history.append(.init(query: meta.query,
                                  response: meta.response,
                                  command: meta.prompt?.command.value,
-                                 subCommandSet: nil,//meta.subCommandSet,
+                                 subCommandSet: scvS,
                                  subCommandFileSet: meta.subCommandFileSet,
                                  iconName: meta.prompt?.iconName,
                                  baseColor: meta.prompt?.baseColor.hexaRGB,

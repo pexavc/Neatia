@@ -18,6 +18,7 @@ struct PromptStudioEditorView: View {
     @SharedObject(SessionManager.id) var session: SessionManager
     
     @Relay var service: PromptService
+    @Relay var config: ConfigService
     
     var isEditing: Bool = false
     
@@ -47,7 +48,7 @@ struct PromptStudioEditorView: View {
     @State var promptRole: String
     @State var promptColor: String = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
     @State var promptIcon: String
-    @State var promptCreativity: Double = 0.7
+    @State var promptCreativity: Double
     @State var promptCustomConfig: PromptConfig? = nil
     
     @State var showError: Bool = false
@@ -72,19 +73,20 @@ struct PromptStudioEditorView: View {
         promptDescription = ""
         promptColor = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
         promptIcon = "questionmark"
+        promptCreativity = 0.7
         promptRole = "Assistant"
     }
     
     init(_ prompt: CustomPrompt) {
         self.isEditing = true
-        
+        print("[PromptStudioEditorView] init \(prompt.creativity)")
         promptCommand = prompt.command.value
         promptBody = prompt.prompt
         promptDescription = prompt.description
         promptColor = prompt.baseColorHex
         promptIcon = prompt.iconName
         promptRole = prompt.role
-        promptCreativity = prompt.creativity ?? promptCreativity
+        promptCreativity = prompt.creativity ?? 0.7
         promptCustomConfig = prompt.customConfig
     }
     
@@ -380,7 +382,7 @@ extension PromptStudioEditorView {
     var tuneView: some View {
         Group {
             if let customConfig = promptCustomConfig,
-               session.isSubscribed {
+               session.isSubscribed || config.state.isCustomAPIKeySet {
                 HStack(spacing: 8) {
                     PopupableView(.promptStudio,
                                   size: .init(460, 360),
@@ -430,27 +432,29 @@ extension PromptStudioEditorView {
                                          color: Brand.Colors.purple.opacity(0.45))
                         .frame(height: 30)
                         
-                        PopupableView(.promptStudio,
-                                      size: .init(460, 360),
-                                      edge: .maxY, {
-                            
-                            Text("Advanced")
-                                .font(Fonts.live(.footnote, .bold))
-                                .foregroundColor(.foreground)
-                                .padding(.vertical, 4)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 6)
-                                        .strokeBorder(Color.gray, lineWidth: 2)
-                                        .padding(.horizontal, -6)
-                                )
-                                .padding(.horizontal, 6)
-                            
-                        }) {
-                            TuningView(isPopup: true)
-                                .attach({ config in
-                                    self.promptCustomConfig = config
-                                    InteractionManager.shared.closePopup(.init(kind: .promptStudio))
-                                }, at: \.setConfig)
+                        if session.isSubscribed || config.state.isCustomAPIKeySet {
+                            PopupableView(.promptStudio,
+                                          size: .init(460, 360),
+                                          edge: .maxY, {
+                                
+                                Text("Advanced")
+                                    .font(Fonts.live(.footnote, .bold))
+                                    .foregroundColor(.foreground)
+                                    .padding(.vertical, 4)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .strokeBorder(Color.gray, lineWidth: 2)
+                                            .padding(.horizontal, -6)
+                                    )
+                                    .padding(.horizontal, 6)
+                                
+                            }) {
+                                TuningView(isPopup: true)
+                                    .attach({ config in
+                                        self.promptCustomConfig = config
+                                        InteractionManager.shared.closePopup(.init(kind: .promptStudio))
+                                    }, at: \.setConfig)
+                            }
                         }
                     }
                 }

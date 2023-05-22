@@ -109,6 +109,7 @@ struct ResponseHelperView: View {
                         Image(systemName: "arrow.\(open ? "right" : "left").square.fill")
                             .font(Fonts.live(.headline, .bold))
                             .foregroundColor(.foreground)
+                            .environment(\.colorScheme, .dark)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }

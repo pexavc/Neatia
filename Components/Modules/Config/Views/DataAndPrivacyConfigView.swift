@@ -23,7 +23,7 @@ struct DataAndPrivacyConfigView: View {
             }
             .padding(.bottom, 8)
             
-            ScrollView([.vertical]) {
+            ScrollView([.vertical]) { 
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Backend-less")

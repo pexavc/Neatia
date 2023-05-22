@@ -7,7 +7,7 @@ extension EnvironmentService {
             var pane: PaneKit<PaneView>? = nil
             var promptStudioPane: PaneKit<PromptStudioPaneView>? = nil
             
-            var lastInteraction: Interaction = .disable {
+            var lastInteraction: Interaction? = nil {
                 didSet {
                     print("[EnvironmentService] Last interaction: \(String(describing: lastInteraction))")
                 }
