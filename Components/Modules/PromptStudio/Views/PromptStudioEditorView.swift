@@ -64,6 +64,7 @@ struct PromptStudioEditorView: View {
               creativity: promptCreativity,
               role: promptRole,
               tokenCount: promptTokenCount,
+              dateUpdated: isEditing ? .init() : nil,
               customConfig: promptCustomConfig)
     }
     

@@ -30,6 +30,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
     var baseColorHex: String
     var description: String
     var dateCreated: Date?
+    var dateUpdated: Date?
     var creativity: Double?
     var role: String
     var tokenCount: Int
@@ -63,6 +64,10 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
         //PromptService.customPromptMaxTokenCount - promptTokenCount
     }
     
+    var version: String {
+        "1.0"
+    }
+    
     init(_ command: CustomCommand,
          prompt: String,
          iconName: String,
@@ -71,6 +76,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
          creativity: Double?,
          role: String,
          tokenCount: Int,
+         dateUpdated: Date? = nil,
          customConfig: PromptConfig?) {
         
         self.customCommand = command
@@ -79,6 +85,7 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
         self.baseColorHex = baseColorHex
         self.description = description
         self.dateCreated = .init()
+        self.dateUpdated = dateUpdated
         self.creativity = creativity
         self.role = role
         self.tokenCount = tokenCount
