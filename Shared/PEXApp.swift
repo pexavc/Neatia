@@ -42,6 +42,13 @@ struct PEXApp: App {
             .sink { newValue in
                 AccountManager.isSubscribed(newValue)
         }.store(in: &cancellables)
+        
+        VaultManager.shared.$hasPurchases
+            .removeDuplicates()
+            .sink { newValue in
+                let isLifetime = VaultManager.shared.purchased(VaultProducts.Lifetime.basic)
+                AccountManager.isLifetimeAPI(isLifetime)
+        }.store(in: &cancellables)
     }
     
     var body: some Scene {

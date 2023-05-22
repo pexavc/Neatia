@@ -12,6 +12,7 @@ extension AccountService {
         @Event var login: Login.Reducer
         @Event var logout: Logout.Reducer
         @Event var subscribe: Subscribe.Reducer
+        @Event var purchase: Purchase.Reducer
         
         @Store public var state: State
     }

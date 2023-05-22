@@ -192,6 +192,8 @@
 		7197FB222964B4C0005EBBA4 /* GraniteModalWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197FB022964B4BF005EBBA4 /* GraniteModalWindow.swift */; };
 		71991A7D2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */; };
 		71991A7E2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */; };
+		719AB1022A1C0E2400994062 /* AccountService.Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AB1012A1C0E2300994062 /* AccountService.Purchase.swift */; };
+		719AB1032A1C0E2400994062 /* AccountService.Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AB1012A1C0E2300994062 /* AccountService.Purchase.swift */; };
 		719E23F129532FE800CEB2FE /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E23F029532FE800CEB2FE /* BasicButton.swift */; };
 		719E23F229532FE800CEB2FE /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E23F029532FE800CEB2FE /* BasicButton.swift */; };
 		719E23F42953300900CEB2FE /* GraniteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E23F32953300900CEB2FE /* GraniteButton.swift */; };
@@ -693,6 +695,7 @@
 		7197FB012964B4BF005EBBA4 /* GraniteSheet+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GraniteSheet+View.swift"; sourceTree = "<group>"; };
 		7197FB022964B4BF005EBBA4 /* GraniteModalWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraniteModalWindow.swift; sourceTree = "<group>"; };
 		71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAndPrivacyConfigView.swift; sourceTree = "<group>"; };
+		719AB1012A1C0E2300994062 /* AccountService.Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.Purchase.swift; sourceTree = "<group>"; };
 		719E23F029532FE800CEB2FE /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		719E23F32953300900CEB2FE /* GraniteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraniteButton.swift; sourceTree = "<group>"; };
 		719E23F7295330DB00CEB2FE /* GraniteToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraniteToggle.swift; sourceTree = "<group>"; };
@@ -1655,6 +1658,7 @@
 				71BE32432A05C79900B76A69 /* AccountService.Login.swift */,
 				71BE32462A05CEDA00B76A69 /* AccountService.Logout.swift */,
 				71BE324E2A05FB5D00B76A69 /* AccountService.Subscribe.swift */,
+				719AB1012A1C0E2300994062 /* AccountService.Purchase.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -2424,6 +2428,7 @@
 				712861972A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCC2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71BE320C2A05AB3D00B76A69 /* Config+View.swift in Sources */,
+				719AB1022A1C0E2400994062 /* AccountService.Purchase.swift in Sources */,
 				713D86772A11A92900AE32CE /* CustomSliderView.swift in Sources */,
 				713D866C2A118C2C00AE32CE /* SandService._.swift in Sources */,
 				7197FB152964B4C0005EBBA4 /* GraniteModalContainerView.swift in Sources */,
@@ -2692,6 +2697,7 @@
 				712861982A0F441800046DCE /* View+OnValueChanged.swift in Sources */,
 				713FFDCD2A0DD27E00E6F9AF /* IconView.swift in Sources */,
 				71A28E9A295239D100EAE8EE /* Int+Angle.swift in Sources */,
+				719AB1032A1C0E2400994062 /* AccountService.Purchase.swift in Sources */,
 				713D86782A11A92900AE32CE /* CustomSliderView.swift in Sources */,
 				713D866D2A118C2C00AE32CE /* SandService._.swift in Sources */,
 				71266D2129512DAF003CAB29 /* Overlay.swift in Sources */,
@@ -2973,7 +2979,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = CV8LAA8JAP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -3005,7 +3011,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = CV8LAA8JAP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

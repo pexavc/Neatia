@@ -24,7 +24,7 @@ class SandGPT {
     }
     
     static var API_KEY: String {
-        "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"
+        "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"
     }
     
     static var GOOGLE_API_KEY: String {

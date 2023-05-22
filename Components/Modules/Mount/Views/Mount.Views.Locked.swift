@@ -14,23 +14,7 @@ extension Mount {
     var lockedView: some View {
         HStack {
             Spacer()
-            AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
-                
-                Button {
-                    config.center.$state.binding.isAccountTabActive.wrappedValue = true
-                    MenuBarManager.shared.showPopOver()
-                } label : {
-                    Text(session.isLoggedIn ? "Subscribe" : "Log In")
-                        .font(Fonts.live(.headline, .bold))
-                        .foregroundColor(.foreground)
-                }
-                .buttonStyle(PlainButtonStyle())
-            }
-            .environment(\.colorScheme, .dark)
-            
-            if session.isLoggedIn && session.isSubscribed == false {
-                Text("or")
-                
+            if session.isLifetimeAPI && session.isLocked {
                 AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
                     Button {
                         config.center.$state.binding.isSettingsActive.wrappedValue = true
@@ -43,6 +27,37 @@ extension Mount {
                     .buttonStyle(PlainButtonStyle())
                 }
                 .environment(\.colorScheme, .dark)
+            } else if session.isLocked {
+                AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
+                    
+                    Button {
+                        config.center.$state.binding.isAccountTabActive.wrappedValue = true
+                        MenuBarManager.shared.showPopOver()
+                    } label : {
+                        Text(session.isLoggedIn ? "Subscribe" : "Log In")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                .environment(\.colorScheme, .dark)
+                
+                if session.isLoggedIn && session.isSubscribed == false {
+                    Text("or")
+                    
+                    AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
+                        Button {
+                            config.center.$state.binding.isSettingsActive.wrappedValue = true
+                            MenuBarManager.shared.showPopOver()
+                        } label : {
+                            Text("Purchase Lifetime API Access")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                    .environment(\.colorScheme, .dark)
+                }
             }
             
             Spacer()

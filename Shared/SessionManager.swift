@@ -13,6 +13,7 @@ import VaultKit
 class SessionManagerKit {
     @Published var isLoggedIn: Bool = false
     @Published var isSubscribed: Bool = false
+    @Published var isLifetimeAPI: Bool = false
     @Published var isCustomAPI: Bool = false
     
     public func isLoggedIn(_ state: Bool) {
@@ -21,6 +22,10 @@ class SessionManagerKit {
     
     public func isSubscribed(_ state: Bool) {
         isSubscribed = state
+    }
+    
+    public func isLifetimeAPI(_ state: Bool) {
+        isLifetimeAPI = state
     }
     
     public func isCustomAPI(_ state: Bool) {
@@ -44,12 +49,12 @@ final class SessionManager: Equatable, SharableObject {
     internal var cancellables = Set<AnyCancellable>()
     
     var isLocked: Bool {
-        return ((
-            kit.isSubscribed == false || kit.isLoggedIn == false
-        ) &&
-        (
-            kit.isCustomAPI == false || kit.isLoggedIn == false
-        ))
+//        print("[SessionManager] isLocked: \(kit.isLifetimeAPI), \(kit.isCustomAPI), \(kit.isSubscribed)")
+        if kit.isLifetimeAPI {
+            return kit.isCustomAPI == false
+        } else {
+            return kit.isSubscribed == false || kit.isLoggedIn == false
+        }
     }
     
     var isLoggedIn: Bool {
@@ -58,6 +63,10 @@ final class SessionManager: Equatable, SharableObject {
     
     var isSubscribed: Bool {
         kit.isSubscribed
+    }
+    
+    var isLifetimeAPI: Bool {
+        kit.isLifetimeAPI
     }
     
     let kit: SessionManagerKit
@@ -81,6 +90,13 @@ final class SessionManager: Equatable, SharableObject {
             .sink { [weak self] _ in
             self?.objectWillChange.send()
         }.store(in: &cancellables)
+        
+        kit.$isLifetimeAPI
+            .receive(on: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
     }
     
     public func isLoggedIn(_ state: Bool) {
@@ -91,11 +107,19 @@ final class SessionManager: Equatable, SharableObject {
         kit.isSubscribed = state
     }
     
+    public func isLifetimeAPI(_ state: Bool) {
+        kit.isLifetimeAPI = state
+    }
+    
     public func isCustomAPI(_ state: Bool) {
         kit.isCustomAPI = state
     }
     
     public func checkSubscription() {
         kit.isSubscribed = VaultManager.isSubscribed
+    }
+    
+    public func checkLifetimeAPI() {
+        kit.isLifetimeAPI = VaultManager.purchased(VaultProducts.Lifetime.basic)
     }
 }

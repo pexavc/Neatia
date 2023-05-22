@@ -44,7 +44,8 @@ extension EnvironmentService {
             VaultManager
                 .load(
                     VaultProducts.Renewable.vaultProducts +
-                    VaultProducts.RenewableReduced.vaultProducts
+                    VaultProducts.RenewableReduced.vaultProducts +
+                    VaultProducts.Lifetime.vaultProducts
                 )
             
             //Config

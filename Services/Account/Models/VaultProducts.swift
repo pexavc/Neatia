@@ -27,4 +27,12 @@ struct VaultProducts {
             .renewable
         }
     }
+    
+    enum Lifetime: String, VaultProductIterable {
+        case basic = "nyc.stoic.neatia.basic.lifetime.api.access"
+        
+        var kind: VaultProductKind {
+            .nonRenewable
+        }
+    }
 }

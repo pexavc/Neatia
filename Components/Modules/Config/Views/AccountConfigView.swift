@@ -35,6 +35,9 @@ struct AccountConfigView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
+        .onAppear {
+            reducedPricing = VaultManager.purchased(VaultProducts.Lifetime.basic)
+        }
     }
     
     var standardView: some View {
@@ -129,7 +132,7 @@ struct AccountConfigView: View {
         Group {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("Free & Premium features")
+                    Text("Base features")
                         .font(Fonts.live(.title2, .bold))
                         .foregroundColor(.foreground)
                     
@@ -151,9 +154,12 @@ struct AccountConfigView: View {
                             tintColor: Brand.Colors.black.opacity(0.3)) {
                     VStack(alignment: .leading, spacing: 8) {
                         
-                        Text("• Custom API Keys. Tune additional parameters before making queries.")
+                        Text("• Custom API Keys. Tune additional parameters before making queries. (Lifetime API Access required).")
                             .font(Fonts.live(.subheadline, .regular))
-                            .foregroundColor(.foreground)
+                            .foregroundColor(.accentColor)
+                            .onTapGesture {
+                                config.center.$state.binding.isSettingsActive.wrappedValue = true
+                            }
                         
                         Text("• Custom prompts to repeat queries at speed with a command you set.")
                             .font(Fonts.live(.subheadline, .regular))
@@ -165,7 +171,7 @@ struct AccountConfigView: View {
                 .padding(.bottom, 8)
                 
                 HStack {
-                    Text("Premium features")
+                    Text("Subscription features")
                         .font(Fonts.live(.headline, .bold))
                         .foregroundColor(.foreground)
                     

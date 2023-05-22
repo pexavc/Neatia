@@ -4,12 +4,26 @@
 
   ],
   "products" : [
-
+    {
+      "displayPrice" : "6.99",
+      "familyShareable" : false,
+      "internalID" : "6449440674",
+      "localizations" : [
+        {
+          "description" : "One-time purchase to use your own API Key.",
+          "displayName" : "Lifetime API Access",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "nyc.stoic.neatia.basic.lifetime.api.access",
+      "referenceName" : "Lifetime API Access",
+      "type" : "NonConsumable"
+    }
   ],
   "settings" : {
     "_applicationInternalID" : "6449069312",
     "_developerTeamID" : "CV8LAA8JAP",
-    "_lastSynchronizedDate" : 705824727.87686706
+    "_lastSynchronizedDate" : 706483292.05445898
   },
   "subscriptionGroups" : [
     {
@@ -22,7 +36,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "5CBD92DA",
+              "internalID" : "F7A6A4B0",
               "numberOfPeriods" : 1,
               "offerID" : "nyc.stoic.neatia.basic.subscription.monthly.promo",
               "paymentMode" : "free",
@@ -79,7 +93,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "076E08F1",
+              "internalID" : "2F9B6C44",
               "numberOfPeriods" : 1,
               "offerID" : "nyc.stoic.neatia.basic.subscription.yearly.promo",
               "paymentMode" : "free",
