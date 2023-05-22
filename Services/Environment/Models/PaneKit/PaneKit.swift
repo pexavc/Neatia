@@ -11,7 +11,9 @@ import SwiftUI
 
 class PaneKit<Content: View>: Equatable, Codable {
     static func == (lhs: PaneKit, rhs: PaneKit) -> Bool {
-        lhs.id == rhs.id
+        lhs.id == rhs.id &&
+        lhs.componentStorage == rhs.componentStorage &&
+        lhs.window.lastUpdate == rhs.window.lastUpdate
     }
     
     private(set) var isPrepared: Bool = false
@@ -110,20 +112,24 @@ class PaneKit<Content: View>: Equatable, Codable {
         case id
         case isPrepared
         case defaultSize
+        case componentStorage
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try? container.encode(id, forKey: .id)
         try? container.encode(isPrepared, forKey: .isPrepared)
+        try? container.encode(componentStorage, forKey: .componentStorage)
     }
     
     public required convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let id = try? container.decode(String.self, forKey: .id)
         let defaultSize = try? container.decode(CGSize.self, forKey: .defaultSize)
-        
+        let storage = try? container.decode([WindowComponent : CGSize].self, forKey: .componentStorage)
         self.init(id: id ?? UUID().uuidString, defaultSize: defaultSize ?? .zero) { EmptyView() as! Content }
+        
+        self.componentStorage = storage ?? self.componentStorage
     }
 }
 

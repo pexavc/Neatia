@@ -53,6 +53,7 @@ extension Query: View {
                             
                         },
                         lineCountUpdated: { lineCount in
+                            print("[Comp] [QueryWindowSizeUpdated] \(lineCount)")
                             environment
                                 .center
                                 .queryWindowSize

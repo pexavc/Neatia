@@ -226,7 +226,6 @@ extension EnvironmentService {
             guard let meta = self.meta else { return }
             
             let defaultSize = WindowComponent.Kind.query.defaultSize
-            //TODO: need to make fonts easily accessible for this percise growth logic
             
             let baseHeight: CGFloat = defaultSize.height
             
@@ -244,6 +243,8 @@ extension EnvironmentService {
             
             let isToolbarActive: Bool = state.isCommandToolbarActive
             let addResponse: Bool = state.isResponseActive
+            
+            print("[QueryWindowSizeUpdated] \(state.pane?.componentStorage[WindowComponent(WindowComponent.Kind.query)]?.height ?? 0) \(newHeight) \(isToolbarActive)")
             
             state.pane?.display {
                 if isToolbarActive {

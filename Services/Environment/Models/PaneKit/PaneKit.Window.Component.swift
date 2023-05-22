@@ -9,7 +9,7 @@ import Foundation
 
 //MARK: TableRow ResultBuilder
 
-public struct WindowComponent : Identifiable, Hashable, Equatable {
+public struct WindowComponent : Identifiable, Hashable, Equatable, Codable {
     public var id: String
     public var size: CGSize? = nil
     public var defaultSize: CGSize

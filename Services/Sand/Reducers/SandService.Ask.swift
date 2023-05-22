@@ -27,7 +27,7 @@ extension SandService {
             let engineeredPrompt: (any BasicPrompt)? = prompts.prompt(state.commandSet)
             
             //custom prompts may not require queries
-            guard query.state.value.isNotEmpty || engineeredPrompt?.isSystemPrompt == false else { return }
+            guard query.state.value.newlinesSanitized.isNotEmpty || engineeredPrompt?.isSystemPrompt == false else { return }
             
             let systemPrompt: String? = engineeredPrompt?.config.systemPrompt
             

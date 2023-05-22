@@ -75,6 +75,7 @@ extension PaneKit {
             let sizeAdjusted: CGSize = .init(min(maxSize.width, size.width), min(maxSize.height, size.height + (titleBarHeight + WindowComponent.Style.defaultTitleBarHeight)))
             DispatchQueue.main.async { [weak self] in
                 self?.main?.setSize(sizeAdjusted, defaultSize: self?.size ?? .zero)
+                self?.lastUpdate = .init()
             }
         }
         
