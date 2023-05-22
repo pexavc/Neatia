@@ -21,6 +21,8 @@ extension EnvironmentService {
             var isCommandToolbarActive: Bool = false
             
             var isDisabled: Bool = false
+            
+            var lastUpdate: Date = .init()
         }
         
         @Event var boot: Boot.Reducer

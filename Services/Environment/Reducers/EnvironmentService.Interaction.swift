@@ -244,8 +244,6 @@ extension EnvironmentService {
             let isToolbarActive: Bool = state.isCommandToolbarActive
             let addResponse: Bool = state.isResponseActive
             
-            print("[QueryWindowSizeUpdated] \(state.pane?.componentStorage[WindowComponent(WindowComponent.Kind.query)]?.height ?? 0) \(newHeight) \(isToolbarActive)")
-            
             state.pane?.display {
                 if isToolbarActive {
                     WindowComponent(WindowComponent.Kind.toolbar,
@@ -268,10 +266,9 @@ extension EnvironmentService {
                     WindowComponent(WindowComponent.Kind.shortcutbar)
                 }
             }
-        }
-        
-        var thread: DispatchQueue? {
-            .global(qos: .utility)
+            
+            //TODO: hack to have query window size react
+            state.lastUpdate = .init()
         }
     }
     

@@ -42,7 +42,6 @@ extension Mount: View {
             }
         }
         .padding(WindowComponent.Style.defaultContainerOuterPadding)
-        .overlay(Text("\(environment.state.pane?.componentStorage[WindowComponent(WindowComponent.Kind.query)]?.height ?? 0)"))
     }
     
     var mainView: some View {
