@@ -165,6 +165,9 @@ extension EnvironmentService {
                     }
                 }
             }
+            
+            //TODO: hack to have state react
+            state.lastUpdate = .init()
         }
     }
     
@@ -209,6 +212,9 @@ extension EnvironmentService {
             }
             
             state.isCommandActive = meta.isActive
+            
+            //TODO: hack to have state react
+            state.lastUpdate = .init()
         }
     }
     

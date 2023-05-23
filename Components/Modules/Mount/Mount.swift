@@ -11,4 +11,5 @@ struct Mount: GraniteComponent {
     @Relay var config: ConfigService
     
     @SharedObject(SessionManager.id) var session: SessionManager
+    
 }

@@ -6,6 +6,7 @@ extension Query {
         struct State: GraniteState {
             var query: String = ""
             var isEditing: Bool = false
+            var isCommandMenuActive: Bool = false
             //var response: String = ""
         }
         

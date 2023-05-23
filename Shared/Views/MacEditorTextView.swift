@@ -15,6 +15,7 @@ struct MacEditorTextView: NSViewRepresentable {
     var autoCompleteText: Binding<[String]> = .constant([])
     
     var isEditable: Bool = true
+    var isCommandMenuActive: Binding<Bool> = .constant(false)
     var font: NSFont?    = Fonts.nsFont(.defaultSize, .bold)
     var textColor: NSColor = Color.foreground.asNSColor
     
@@ -66,6 +67,8 @@ struct MacEditorTextView: NSViewRepresentable {
         //Auto completion logic
         //TODO: cleanup make more reusable
         DispatchQueue.main.async {
+            context.coordinator.isCommandMenuActive = (isCommandMenuActive.wrappedValue || context.coordinator.isCommandMenuActive) && text.hasPrefix("/")
+            
             // Basic startup
             // or completing text but command was set (SandService, won't remove suggestions)
             if isCompletingText && text.hasPrefix("/") {

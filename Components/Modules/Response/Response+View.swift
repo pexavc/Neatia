@@ -95,7 +95,7 @@ struct LoadingView: View {
                                     Text("• Check if your engine settings has a valid engine id and if the engine id is available to your API key.")
                                         .font(Fonts.live(.caption2, .bold))
                                 } else if config.state.streamResponse == false {
-                                    Text("• Try streaming the response, enable it in settings.")
+                                    Text("• Try streaming the response, enable it in settings. Although, sometimes service can be unreliable, trying again helps too.")
                                         .font(Fonts.live(.caption2, .bold))
                                 }
                             }

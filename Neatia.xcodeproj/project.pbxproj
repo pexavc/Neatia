@@ -366,6 +366,8 @@
 		71A28ED4295244A700EAE8EE /* Special._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ED2295244A700EAE8EE /* Special._.swift */; };
 		71A375052A01F5B800985D8D /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375042A01F5B800985D8D /* Granite */; };
 		71A375072A01F5B800985D8D /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375062A01F5B800985D8D /* GraniteUI */; };
+		71A547532A1C757E0083A8DF /* TokenCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A547522A1C757E0083A8DF /* TokenCountView.swift */; };
+		71A547542A1C757E0083A8DF /* TokenCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A547522A1C757E0083A8DF /* TokenCountView.swift */; };
 		71AC3CF42A15BD0F00C68047 /* ResponseHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */; };
 		71AC3CF52A15BE0E00C68047 /* ResponseHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */; };
 		71BE31BF2A05929F00B76A69 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE31BE2A05929F00B76A69 /* MarkdownView.swift */; };
@@ -781,6 +783,7 @@
 		71A28ECB2952440E00EAE8EE /* Special+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Special+View.swift"; sourceTree = "<group>"; };
 		71A28ECE2952441B00EAE8EE /* Special+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Special+Center.swift"; sourceTree = "<group>"; };
 		71A28ED2295244A700EAE8EE /* Special._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Special._.swift; sourceTree = "<group>"; };
+		71A547522A1C757E0083A8DF /* TokenCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCountView.swift; sourceTree = "<group>"; };
 		71A92A7C2A0E341900DD7366 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHelperView.swift; sourceTree = "<group>"; };
 		71BE31BE2A05929F00B76A69 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
@@ -1740,6 +1743,7 @@
 			children = (
 				71CEBDF62A0719FC00DE6CDE /* Mount.Views.Symbols.swift */,
 				718148C22A0F960C0054E71A /* Mount.Views.Locked.swift */,
+				71A547522A1C757E0083A8DF /* TokenCountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2310,6 +2314,7 @@
 				71EDCFB22A0864F100857066 /* SandService.Commands.swift in Sources */,
 				718148B72A0F65000054E71A /* AccountManager.swift in Sources */,
 				71A28D9A295231E600EAE8EE /* Array.swift in Sources */,
+				71A547532A1C757E0083A8DF /* TokenCountView.swift in Sources */,
 				71DF107728CC697600559DBC /* NumberFormatter.swift in Sources */,
 				71A28E87295239D100EAE8EE /* RepresentableAsDouble.swift in Sources */,
 				7197FAD62964A36A005EBBA4 /* GraniteDisclaimerView.swift in Sources */,
@@ -2579,6 +2584,7 @@
 				71EDCFB32A0864F100857066 /* SandService.Commands.swift in Sources */,
 				718148B82A0F65000054E71A /* AccountManager.swift in Sources */,
 				71A28D9B295231E600EAE8EE /* Array.swift in Sources */,
+				71A547542A1C757E0083A8DF /* TokenCountView.swift in Sources */,
 				71DF107828CC697600559DBC /* NumberFormatter.swift in Sources */,
 				71A28E88295239D100EAE8EE /* RepresentableAsDouble.swift in Sources */,
 				71FBA7F8296D16110090B630 /* GraniteScrollView+Reader.swift in Sources */,
@@ -2979,7 +2985,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = CV8LAA8JAP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -3011,7 +3017,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = CV8LAA8JAP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

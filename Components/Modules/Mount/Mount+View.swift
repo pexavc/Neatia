@@ -41,6 +41,7 @@ extension Mount: View {
                 }
             }
         }
+        .overlay(TokenCountView())
         .padding(WindowComponent.Style.defaultContainerOuterPadding)
     }
     

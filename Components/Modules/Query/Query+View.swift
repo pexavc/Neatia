@@ -18,6 +18,7 @@ extension Query: View {
                     MacEditorTextView(
                         text: query.center.$state.binding.value,
                         autoCompleteText: sand.center.$state.binding.commandAutoComplete,
+                        isCommandMenuActive: center.$state.binding.isCommandMenuActive,
                         font: Fonts.nsFont(.defaultSize, .bold),
                         onEditingChanged: {
                             center.$state.binding.wrappedValue.isEditing = true
@@ -41,7 +42,7 @@ extension Query: View {
                                 }
                                 
                             //Normal command set flow
-                            } else {
+                            } else if value.newlinesSanitized.isNotEmpty {
                                 sand
                                     .center
                                     .setCommand
@@ -53,6 +54,10 @@ extension Query: View {
                             
                         },
                         lineCountUpdated: { lineCount in
+                            guard state.isCommandMenuActive == false else {
+                                return
+                            }
+                            
                             environment
                                 .center
                                 .queryWindowSize
@@ -62,6 +67,8 @@ extension Query: View {
                                         .Meta(lineCount: lineCount))
                         },
                         commandMenuActive: { isActive in
+                            center.$state.binding.isCommandMenuActive.wrappedValue = isActive
+                            
                             sand
                                 .center
                                 .activateCommands
@@ -88,27 +95,83 @@ extension Query: View {
                     .allowsHitTesting(false)
                 }
                 
-                if SandGPTTokenizerManager.tokenCount > 0 &&
-                    SandGPTTokenizerManager.shared.pause == false {
-                    
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-                            
-                            Text("\(SandGPTTokenizerManager.shared.tokenCount)/\(maxTokenCount)")
-                                .font(Fonts.live(.caption, .bold))
-                                .foregroundColor((SandGPTTokenizerManager.tokenCount <= maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
-                            
+//                if SandGPTTokenizerManager.tokenCount > 0 &&
+//                    SandGPTTokenizerManager.shared.pause == false {
+//                    
+//                    VStack {
+//                        Spacer()
+//                        
+//                        HStack {
+//                            
+//                            Text("\(SandGPTTokenizerManager.shared.tokenCount)/\(maxTokenCount)")
+//                                .font(Fonts.live(.caption, .bold))
+//                                .foregroundColor((SandGPTTokenizerManager.tokenCount <= maxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
+//                            
+//                            Spacer()
+//                        }
+//                        
+//                        Spacer()
+//                            .frame(height: WindowComponent.Style.defaultContainerOuterPadding)
+//                    }
+//                    .allowsHitTesting(false)
+//                }
+                
+            }
+        }.overlay(helperView)
+    }
+}
+
+extension Query {
+    var helperView: some View {
+        VStack(alignment: .trailing) {
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                if query.state.value.isEmpty &&
+                   sand.state.isCommandSet == false {
+                    AppBlurView(size: .init(24, WindowComponent.Style.defaultElementSize.height),
+                                padding: .init(8, 0),
+                                tintColor: Brand.Colors.black.opacity(0.3)) {
+                        Button {
+                            center.$state.binding.isCommandMenuActive.wrappedValue = true
+                            sand
+                                .center
+                                .activateCommands
+                                .send(
+                                    SandService
+                                        .ActivateCommands
+                                        .Meta(isActive: true))
+                        } label : {
+                            Image(systemName: "command.square.fill")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                                .environment(\.colorScheme, .dark)
                         }
-                        
-                        Spacer()
-                            .frame(height: WindowComponent.Style.defaultContainerOuterPadding)
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    .allowsHitTesting(false)
+                    .frame(width: 24, height: WindowComponent.Style.defaultElementSize.height)
+                } else if query.state.value.isNotEmpty &&
+                            environment.state.isCommandActive == false {
+                    AppBlurView(size: .init(24, WindowComponent.Style.defaultElementSize.height),
+                                padding: .init(8, 0),
+                                tintColor: Brand.Colors.black.opacity(0.3)) {
+                        Button {
+                            sand.center.ask.send()
+                        } label : {
+                            Image(systemName: "arrow.right.square.fill")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                                .environment(\.colorScheme, .dark)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                    .frame(width: 24, height: WindowComponent.Style.defaultElementSize.height)
                 }
             }
+            
+            Spacer()
         }
     }
 }
