@@ -132,9 +132,9 @@ struct ResponseHelperView: View {
                         }.padding(.vertical, 16)
                     }
                     .frame(width: open ? width : 0, height: geo.size.height - WindowComponent.Style.defaultComponentOuterPaddingContainerAware * 2)
-                    .padding(.leading, 4)
+                    //.padding(.leading, 4)
                 }
-                .offset(x: -4)
+                .offset(x: -8)
                 .frame(width: open ? width : 0, height: geo.size.height - WindowComponent.Style.defaultComponentOuterPaddingContainerAware * 2)
                 .opacity(open ? 1.0 : 0.0)
             }

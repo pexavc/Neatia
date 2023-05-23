@@ -152,8 +152,10 @@ extension Query {
                         .buttonStyle(PlainButtonStyle())
                     }
                     .frame(width: 24, height: WindowComponent.Style.defaultElementSize.height)
+                    .padding(.trailing, 8)
                 } else if query.state.value.isNotEmpty &&
-                            environment.state.isCommandActive == false {
+                            environment.state.isCommandActive == false  &&
+                            sand.state.isResponding == false {
                     AppBlurView(size: .init(24, WindowComponent.Style.defaultElementSize.height),
                                 padding: .init(8, 0),
                                 tintColor: Brand.Colors.black.opacity(0.3)) {
@@ -168,6 +170,16 @@ extension Query {
                         .buttonStyle(PlainButtonStyle())
                     }
                     .frame(width: 24, height: WindowComponent.Style.defaultElementSize.height)
+                    .padding(.trailing, 8)
+                } else {
+                    EmptyView()
+                        .allowsHitTesting(false)
+                }
+            }
+            //TODO: hacky, all related to the fact that sand service used to monitor queries
+            .onChange(of: sand.center.$state.binding.commandSet.wrappedValue) { newValue in
+                if newValue == nil && state.isCommandMenuActive {
+                    center.$state.binding.isCommandMenuActive.wrappedValue = false
                 }
             }
             
