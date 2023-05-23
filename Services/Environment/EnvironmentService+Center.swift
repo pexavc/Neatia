@@ -22,6 +22,7 @@ extension EnvironmentService {
             
             var isDisabled: Bool = false
             
+            //This required, since PaneKit changes are actually not observed in Granite States. Most likely because they are of class/NSObject types
             var lastUpdate: Date = .init()
         }
         

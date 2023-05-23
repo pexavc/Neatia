@@ -50,10 +50,16 @@ final class SessionManager: Equatable, SharableObject {
     
     var isLocked: Bool {
 //        print("[SessionManager] isLocked: \(kit.isLifetimeAPI), \(kit.isCustomAPI), \(kit.isSubscribed)")
+        guard kit.isLoggedIn else {
+            return true
+        }
+        
         if kit.isLifetimeAPI {
             return kit.isCustomAPI == false
+        } else if kit.isSubscribed {
+            return isFullAccess == false
         } else {
-            return kit.isSubscribed == false || kit.isLoggedIn == false
+            return true
         }
     }
     
@@ -63,6 +69,10 @@ final class SessionManager: Equatable, SharableObject {
     
     var isSubscribed: Bool {
         kit.isSubscribed
+    }
+    
+    var isFullAccess: Bool {
+        VaultProducts.Renewable.allCases.filter { VaultManager.isPurchased($0) }.isEmpty == false
     }
     
     var isLifetimeAPI: Bool {

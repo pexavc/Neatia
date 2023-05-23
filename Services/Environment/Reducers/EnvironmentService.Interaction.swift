@@ -243,6 +243,7 @@ extension EnvironmentService {
             
             let isToolbarActive: Bool = state.isCommandToolbarActive
             let addResponse: Bool = state.isResponseActive
+            var oldPane = state.pane
             
             state.pane?.display {
                 if isToolbarActive {
@@ -252,7 +253,7 @@ extension EnvironmentService {
                     WindowComponent(WindowComponent.Kind.spacer)
                 }
                 
-                WindowComponent(WindowComponent.Kind.query, size: isToolbarActive && newHeight <= 160 ? nil : queryWindowSize)
+                WindowComponent(WindowComponent.Kind.query, size: isToolbarActive && newHeight <= 160 ? .init(0, 160) : queryWindowSize)
                 
                 if addResponse {
                     WindowComponent(WindowComponent.Kind.divider)

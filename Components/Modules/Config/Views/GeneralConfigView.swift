@@ -17,10 +17,12 @@ struct GeneralConfigView: View {
     @Relay var config: ConfigService
     @Relay var account: AccountService
     
+    @SharedObject(SessionManager.id) var session: SessionManager
+    
     @State var apiKey: String = ""
     
     var isLifetimeAPIPurchased: Bool {
-        VaultManager.purchased(VaultProducts.Lifetime.basic) || VaultManager.isSubscribed
+        session.isLifetimeAPI || session.isFullAccess
     }
     
     var product: VaultProduct? {

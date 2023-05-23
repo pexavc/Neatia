@@ -37,5 +37,7 @@ extension PaneKit {
         print("[PaneKit] ------------------------------")
         
         window.setSize(.init(width, height))
+        
+        self.lastUpdate = .init()
     }
 }

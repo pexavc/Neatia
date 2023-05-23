@@ -9,11 +9,11 @@ import Foundation
 import Combine
 import SwiftUI
 
-class PaneKit<Content: View>: Equatable, Codable {
+class PaneKit<Content: View>: Equatable, Codable, ObservableObject {
     static func == (lhs: PaneKit, rhs: PaneKit) -> Bool {
         lhs.id == rhs.id &&
         lhs.componentStorage == rhs.componentStorage &&
-        lhs.window.lastUpdate == rhs.window.lastUpdate
+        lhs.lastUpdate == rhs.lastUpdate
     }
     
     private(set) var isPrepared: Bool = false
@@ -26,11 +26,13 @@ class PaneKit<Content: View>: Equatable, Codable {
     let window: PaneKit.Window
     let defaultSize: CGSize
     let content: () -> Content
+    internal var lastUpdate: Date
     private var activePopover: NSPopover? = nil
     
     init(id: String,
          defaultSize: CGSize,
          useMain: Bool = false,
+         lastUpdate: Date = .init(),
          @ViewBuilder content : (@escaping () -> Content)) {
         self.id = id
         window = .init(id: id,
@@ -39,6 +41,7 @@ class PaneKit<Content: View>: Equatable, Codable {
                        maxSize: WindowComponent.Style.maxWindowSize)
         self.defaultSize = defaultSize
         self.content = content
+        self.lastUpdate = lastUpdate
     }
     
     func build(title: String? = nil, center: Bool = false) {
@@ -113,6 +116,7 @@ class PaneKit<Content: View>: Equatable, Codable {
         case isPrepared
         case defaultSize
         case componentStorage
+        case lastUpdate
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -120,6 +124,7 @@ class PaneKit<Content: View>: Equatable, Codable {
         try? container.encode(id, forKey: .id)
         try? container.encode(isPrepared, forKey: .isPrepared)
         try? container.encode(componentStorage, forKey: .componentStorage)
+        try? container.encode(lastUpdate, forKey: .lastUpdate)
     }
     
     public required convenience init(from decoder: Decoder) throws {
@@ -127,7 +132,8 @@ class PaneKit<Content: View>: Equatable, Codable {
         let id = try? container.decode(String.self, forKey: .id)
         let defaultSize = try? container.decode(CGSize.self, forKey: .defaultSize)
         let storage = try? container.decode([WindowComponent : CGSize].self, forKey: .componentStorage)
-        self.init(id: id ?? UUID().uuidString, defaultSize: defaultSize ?? .zero) { EmptyView() as! Content }
+        let date = try? container.decode(Date.self, forKey: .lastUpdate)
+        self.init(id: id ?? UUID().uuidString, defaultSize: defaultSize ?? .zero, lastUpdate: date ?? .init()) { EmptyView() as! Content }
         
         self.componentStorage = storage ?? self.componentStorage
     }

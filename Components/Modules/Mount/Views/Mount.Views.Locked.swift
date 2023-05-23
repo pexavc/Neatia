@@ -28,22 +28,26 @@ extension Mount {
                 }
                 .environment(\.colorScheme, .dark)
             } else if session.isLocked {
-                AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
-                    
-                    Button {
-                        config.center.$state.binding.isAccountTabActive.wrappedValue = true
-                        MenuBarManager.shared.showPopOver()
-                    } label : {
-                        Text(session.isLoggedIn ? "Subscribe" : "Log In")
-                            .font(Fonts.live(.headline, .bold))
-                            .foregroundColor(.foreground)
+                if session.isSubscribed == false || session.isLoggedIn == false {
+                    AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
+                        
+                        Button {
+                            config.center.$state.binding.isAccountTabActive.wrappedValue = true
+                            MenuBarManager.shared.showPopOver()
+                        } label : {
+                            Text(session.isLoggedIn ? "Subscribe" : "Log In")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    .buttonStyle(PlainButtonStyle())
+                    .environment(\.colorScheme, .dark)
                 }
-                .environment(\.colorScheme, .dark)
                 
-                if session.isLoggedIn && session.isSubscribed == false {
-                    Text("or")
+                if session.isLoggedIn {
+                    if session.isSubscribed == false {
+                        Text("or")
+                    }
                     
                     AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
                         Button {
