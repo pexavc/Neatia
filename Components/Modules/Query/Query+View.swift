@@ -135,16 +135,16 @@ extension Query {
                                 padding: .init(8, 0),
                                 tintColor: Brand.Colors.black.opacity(0.3)) {
                         Button {
-                            center.$state.binding.isCommandMenuActive.wrappedValue = true
+                            center.$state.binding.isCommandMenuActive.wrappedValue = state.isCommandMenuActive ? false : true
                             sand
                                 .center
                                 .activateCommands
                                 .send(
                                     SandService
                                         .ActivateCommands
-                                        .Meta(isActive: true))
+                                        .Meta(isActive: state.isCommandMenuActive))
                         } label : {
-                            Image(systemName: "command.square.fill")
+                            Image(systemName: "command.square\(state.isCommandMenuActive ? ".fill" : "")")
                                 .font(Fonts.live(.headline, .bold))
                                 .foregroundColor(.foreground)
                                 .environment(\.colorScheme, .dark)
