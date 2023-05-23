@@ -16,6 +16,8 @@ struct AccountConfigView: View {
     @GraniteAction<Void> var logout
     @GraniteAction<QueryHistory> var queryHistorySelected
     
+    @SharedObject(SessionManager.id) var session: SessionManager
+    
     @Relay var account: AccountService
     @Relay var config: ConfigService
     
@@ -72,9 +74,19 @@ struct AccountConfigView: View {
             .padding(.bottom, 8)
             
             if let purchase = VaultManager.currentPurchase {
-                subscriptionStats(purchase)
+                purchaseStats(purchase)
                     .frame(maxWidth: .infinity)
                     .padding(.bottom, 8)
+            }
+            
+            if let subscription = VaultManager.currentSubscription {
+                subscriptionStats(subscription)
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, 8)
+            }
+            
+            if VaultManager.currentSubscription != nil || VaultManager.currentPurchase != nil {
+                Divider()
             }
             
             HStack {
@@ -84,7 +96,8 @@ struct AccountConfigView: View {
                 
                 Spacer()
                 
-                Toggle("Store (Local)", isOn: config.center.$state.binding.storeHistory)
+                Toggle("Store (Local)",
+                       isOn: config.center.$state.binding.storeHistory)
                 
                 if config.state.history.isNotEmpty {
                     AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
@@ -161,7 +174,7 @@ struct AccountConfigView: View {
                                 config.center.$state.binding.isSettingsActive.wrappedValue = true
                             }
                         
-                        Text("• Custom prompts to repeat queries at speed with a command you set.")
+                        Text("• Custom prompt command creation, editing, and sharing in Prompt Studio.")
                             .font(Fonts.live(.subheadline, .regular))
                             .foregroundColor(.foreground)
                     }
@@ -220,35 +233,50 @@ struct AccountConfigView: View {
                         .padding(.bottom, 8)
                     }
                     
-                    AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.45)) {
-                        
-                        HStack(spacing: 8) {
+                    if session.isPurchasing {
+                        HStack {
+                            ProgressView()
+                                .padding(.trailing, 8)
                             
-                            Button(action: {
-                                account
-                                    .center
-                                    .subscribe
-                                    .send(AccountService.Subscribe.Meta(product: selectedOption))
-                            }) {
-                                Text("Subscribe")
-                                    .font(Fonts.live(.headline, .bold))
-                                    .foregroundColor(.foreground)
-                                
-                                Divider()
-                                
-                                Text(selectedOption?.metadata.displayPrice ?? "")
-                                    .font(Fonts.live(.subheadline, .bold))
-                                    .foregroundColor(.foreground) + //Text(selectedOption?.metadata.isRenewable == true ? "/mo" : "")
-                                Text(selectedOption?.metadata.displaySubscriptionPeriod ?? "")
-                                    .font(Fonts.live(.footnote, .regular))
-                                    .foregroundColor(.foreground) +
-                                Text(selectedOption?.metadata.displayPromo.isEmpty == true ? "" : " " + (selectedOption?.metadata.displayPromo ?? ""))
-                                    .font(Fonts.live(.footnote, .regular))
-                                    .foregroundColor(.foreground)
-                            }.buttonStyle(PlainButtonStyle())
+                            Text("Purchasing")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                                .environment(\.colorScheme, .dark)
+                            
+                            Spacer()
                         }
+                    } else {
+                        AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.45)) {
+                            
+                            HStack(spacing: 8) {
+                                
+                                Button(action: {
+                                    account
+                                        .center
+                                        .subscribe
+                                        .send(AccountService.Subscribe.Meta(product: selectedOption))
+                                }) {
+                                    Text("Subscribe")
+                                        .font(Fonts.live(.headline, .bold))
+                                        .foregroundColor(.foreground)
+                                    
+                                    Divider()
+                                    
+                                    Text(selectedOption?.metadata.displayPrice ?? "")
+                                        .font(Fonts.live(.subheadline, .bold))
+                                        .foregroundColor(.foreground) + //Text(selectedOption?.metadata.isRenewable == true ? "/mo" : "")
+                                    Text(selectedOption?.metadata.displaySubscriptionPeriod ?? "")
+                                        .font(Fonts.live(.footnote, .regular))
+                                        .foregroundColor(.foreground) +
+                                    Text(selectedOption?.metadata.displayPromo.isEmpty == true ? "" : " " + (selectedOption?.metadata.displayPromo ?? ""))
+                                        .font(Fonts.live(.footnote, .regular))
+                                        .foregroundColor(.foreground)
+                                }.buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .environment(\.colorScheme, .dark)
                     }
-                    .environment(\.colorScheme, .dark)
+                    
                 }
                 
                 Group {
@@ -303,6 +331,25 @@ struct AccountConfigView: View {
 }
 
 extension AccountConfigView {
+    func purchaseStats(_ currentPurchase: VaultActiveProduct) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("Lifetime API Access")
+                    .font(Fonts.live(.headline, .bold))
+                    .padding(.vertical, 4)
+                    .foregroundColor(Color.orange)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .strokeBorder(Color.orange, lineWidth: 2)
+                            .padding(.horizontal, -6)
+                    )
+                    .padding(.horizontal, 6)
+                
+                Spacer()
+            }
+        }
+    }
+    
     func subscriptionStats(_ currentPurchase: VaultActiveProduct) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {

@@ -52,7 +52,7 @@ extension EnvironmentService {
             config.center.$state.binding.isAccountTabActive.wrappedValue = true
             
             //SandGPT
-            print("[Granite] \(config.state.isCustomAPIKeySet)")
+            print("[Environment] [SandGPT] is customAPI set \(config.state.isCustomAPIKeySet)")
             if config.state.isCustomAPIKeySet {
                 SandGPT.shared.CUSTOM_API_KEY = config.state.customAPIKey
                 SandGPT.shared.useCustomAPI()

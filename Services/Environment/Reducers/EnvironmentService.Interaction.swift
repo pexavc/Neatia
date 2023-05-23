@@ -243,7 +243,6 @@ extension EnvironmentService {
             
             let isToolbarActive: Bool = state.isCommandToolbarActive
             let addResponse: Bool = state.isResponseActive
-            var oldPane = state.pane
             
             state.pane?.display {
                 if isToolbarActive {

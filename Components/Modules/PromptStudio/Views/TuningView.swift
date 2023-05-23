@@ -71,7 +71,7 @@ struct TuningView: View {
             .padding(.bottom, isPopup ? 8 : 0)
             
             if isPopup == false {
-                Text("For general queries, custom prompts override these settings.")
+                Text("For general queries only, otherwise custom and system prompt commands override these settings.")
                 
                 HStack {
                     Toggle("Enable custom settings", isOn: $useCustomSettings)

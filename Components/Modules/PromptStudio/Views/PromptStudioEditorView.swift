@@ -75,7 +75,7 @@ struct PromptStudioEditorView: View {
         promptColor = ColorPicker.toHex(h: 0.5, s: 0.5, b: 0.5)
         promptIcon = "questionmark"
         promptCreativity = 0.7
-        promptRole = "Assistant"
+        promptRole = "Act like a Assistant"
     }
     
     init(_ prompt: CustomPrompt) {
@@ -98,9 +98,9 @@ struct PromptStudioEditorView: View {
         promptColor = prompt.baseColorHex
         promptIcon = prompt.iconName
         promptCreativity = prompt.creativity ?? promptCreativity
+        promptRole = prompt.role
         
         if session.isSubscribed {
-            promptRole = prompt.role
             promptCustomConfig = prompt.customConfig
         }
     }
@@ -408,9 +408,14 @@ extension PromptStudioEditorView {
                     
                     AppBlurView(size: .init(0, 60),
                                 tintColor: Brand.Colors.red.opacity(0.45)) {
-                        Text("Reset")
-                            .font(Fonts.live(.headline, .bold))
-                            .foregroundColor(.foreground)
+                        
+                        Button {
+                            self.promptCustomConfig = nil
+                        } label : {
+                            Text("Reset")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                     .frame(height: 60)
                     .environment(\.colorScheme, .dark)
@@ -435,7 +440,7 @@ extension PromptStudioEditorView {
                         
                         if session.isSubscribed || config.state.isCustomAPIKeySet {
                             PopupableView(.promptStudio,
-                                          size: .init(460, 360),
+                                          size: .init(460, config.state.isCustomAPIKeySet ? 360 : 284),
                                           edge: .maxY, {
                                 
                                 Text("Advanced")
@@ -481,19 +486,17 @@ extension PromptStudioEditorView {
     
     var roleView: some View {
         VStack(alignment: .leading, spacing: 8) {
-            if session.isSubscribed {
-                Text("Role")
-                    .font(Fonts.live(.headline, .bold))
-                    .foregroundColor(.foreground)
-                
-                AppBlurView(size: .init(0, 60)) {
-                    MacEditorTextView(
-                        text: $promptRole,
-                        isEditable: true,
-                        font: Fonts.nsFont(.defaultSize, .bold))
-                }
-                .frame(height: 60)
+            Text("Role")
+                .font(Fonts.live(.headline, .bold))
+                .foregroundColor(.foreground)
+            
+            AppBlurView(size: .init(0, 60)) {
+                MacEditorTextView(
+                    text: $promptRole,
+                    isEditable: true,
+                    font: Fonts.nsFont(.defaultSize, .bold))
             }
+            .frame(height: 60)
         }
     }
     

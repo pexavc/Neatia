@@ -14,7 +14,17 @@ extension Mount {
     var lockedView: some View {
         HStack {
             Spacer()
-            if session.isLifetimeAPI && session.isLocked {
+            
+            if session.isPurchasing {
+                ProgressView()
+                    .padding(.trailing, 8)
+                
+                Text("Purchasing")
+                    .font(Fonts.live(.headline, .bold))
+                    .foregroundColor(.foreground)
+                    .environment(\.colorScheme, .dark)
+                
+            } else if session.isLifetimeAPI && session.isLocked {
                 AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
                     Button {
                         config.center.$state.binding.isSettingsActive.wrappedValue = true

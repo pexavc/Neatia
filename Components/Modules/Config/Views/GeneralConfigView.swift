@@ -51,7 +51,7 @@ struct GeneralConfigView: View {
             }
             
             HStack {
-                Toggle("Stream Response", isOn: config.center.$state.binding.streamResponse)
+                Toggle("Stream response", isOn: config.center.$state.binding.streamResponse)
                 
                 Spacer()
             }

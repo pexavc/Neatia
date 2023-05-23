@@ -49,6 +49,12 @@ struct PEXApp: App {
                 let isLifetime = VaultManager.shared.purchased(VaultProducts.Lifetime.basic)
                 AccountManager.isLifetimeAPI(isLifetime)
         }.store(in: &cancellables)
+        
+        VaultManager.shared.$isPurchasing
+            .removeDuplicates()
+            .sink { newValue in
+                AccountManager.isPurchasing(newValue)
+        }.store(in: &cancellables)
     }
     
     var body: some Scene {

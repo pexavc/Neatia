@@ -52,7 +52,7 @@ struct HistoryCollectionView: View {
                     Spacer()
                 }
             }
-        }.frame(minHeight: 260)
+        }.frame(minHeight: 240)
     }
     
     func historyView(_ queryHistory: QueryHistory) -> some View {

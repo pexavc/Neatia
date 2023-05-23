@@ -38,7 +38,13 @@ struct CustomPrompt: GraniteModel, BasicPrompt, Identifiable {
     var author: PromptAuthor?
     
     var config: PromptConfig {
-        .init(temperature: creativity)
+        if let customCGF = customConfig,
+           role.isNotEmpty {
+            return .init(customCGF, systemPrompt: role)
+        } else {
+            return customConfig ?? .init(temperature: creativity,
+                                         systemPrompt: role.isEmpty ? nil : role)
+        }
     }
     
     var command: any BasicCommand {

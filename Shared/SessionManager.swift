@@ -13,6 +13,7 @@ import VaultKit
 class SessionManagerKit {
     @Published var isLoggedIn: Bool = false
     @Published var isSubscribed: Bool = false
+    @Published var isPurchasing: Bool = false
     @Published var isLifetimeAPI: Bool = false
     @Published var isCustomAPI: Bool = false
     
@@ -22,6 +23,10 @@ class SessionManagerKit {
     
     public func isSubscribed(_ state: Bool) {
         isSubscribed = state
+    }
+    
+    public func isPurchasing(_ state: Bool) {
+        isPurchasing = state
     }
     
     public func isLifetimeAPI(_ state: Bool) {
@@ -79,6 +84,10 @@ final class SessionManager: Equatable, SharableObject {
         kit.isLifetimeAPI
     }
     
+    var isPurchasing: Bool {
+        kit.isPurchasing
+    }
+    
     let kit: SessionManagerKit
     
     init() {
@@ -107,6 +116,13 @@ final class SessionManager: Equatable, SharableObject {
             .sink { [weak self] _ in
             self?.objectWillChange.send()
         }.store(in: &cancellables)
+        
+        kit.$isPurchasing
+            .receive(on: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
     }
     
     public func isLoggedIn(_ state: Bool) {
@@ -123,6 +139,10 @@ final class SessionManager: Equatable, SharableObject {
     
     public func isCustomAPI(_ state: Bool) {
         kit.isCustomAPI = state
+    }
+    
+    public func isPurchasing(_ state: Bool) {
+        kit.isPurchasing = state
     }
     
     public func checkSubscription() {

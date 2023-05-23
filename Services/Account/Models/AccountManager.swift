@@ -107,4 +107,8 @@ public class AccountManager: ObservableObject {
     public static func isLifetimeAPI(_ state: Bool) {
         AccountManager.shared.kit.isLifetimeAPI(state)
     }
+    
+    public static func isPurchasing(_ state: Bool) {
+        AccountManager.shared.session.isPurchasing(state)
+    }
 }

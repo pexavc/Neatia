@@ -91,13 +91,11 @@ struct LoadingView: View {
                                 Text("• Depending on the complexity, responses can take 30+ seconds to generate.")
                                     .font(Fonts.live(.caption2, .bold))
                                 
-                                if config.state.streamResponse == false {
-                                    Text("• Try streaming the response, enable it in settings.")
-                                        .font(Fonts.live(.caption2, .bold))
-                                }
-                                
                                 if config.state.isCustomAPIKeySet {
                                     Text("• Check if your engine settings has a valid engine id and if the engine id is available to your API key.")
+                                        .font(Fonts.live(.caption2, .bold))
+                                } else if config.state.streamResponse == false {
+                                    Text("• Try streaming the response, enable it in settings.")
                                         .font(Fonts.live(.caption2, .bold))
                                 }
                             }
