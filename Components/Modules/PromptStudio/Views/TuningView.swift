@@ -119,14 +119,21 @@ struct TuningView: View {
                         .font(Fonts.live(.subheadline, .bold))
                         .foregroundColor(.foreground)
                     HStack(spacing: 8) {
-                        AppBlurView(size: .init(30, 30)) {
+                        if isPopup {
+                            AppBlurView(size: .init(30, 30)) {
+                                Text(String(format: "%.2f", promptTemperature))
+                                    .font(Fonts.live(.footnote, .bold))
+                                    .foregroundColor(.foreground)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .frame(width: 30, height: 30)
+                            .padding(.horizontal, 16)
+                        } else {
                             Text(String(format: "%.2f", promptTemperature))
                                 .font(Fonts.live(.footnote, .bold))
                                 .foregroundColor(.foreground)
                                 .multilineTextAlignment(.center)
                         }
-                        .frame(width: 30, height: 30)
-                        .padding(.horizontal, isPopup ? 16 : 0)
                         
                         CustomSliderView(value: $promptTemperature,
                                          color: Brand.Colors.purple.opacity(0.45))
@@ -141,14 +148,22 @@ struct TuningView: View {
                         .font(Fonts.live(.subheadline, .bold))
                         .foregroundColor(.foreground)
                     HStack(spacing: 8) {
-                        AppBlurView(size: .init(30, 30)) {
+                        
+                        if isPopup {
+                            AppBlurView(size: .init(30, 30)) {
+                                Text(String(format: "%.2f", promptTopP))
+                                    .font(Fonts.live(.footnote, .bold))
+                                    .foregroundColor(.foreground)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .frame(width: 30, height: 30)
+                            .padding(.horizontal, 16)
+                        } else {
                             Text(String(format: "%.2f", promptTopP))
                                 .font(Fonts.live(.footnote, .bold))
                                 .foregroundColor(.foreground)
                                 .multilineTextAlignment(.center)
                         }
-                        .frame(width: 30, height: 30)
-                        .padding(.horizontal, isPopup ? 16 : 0)
                         
                         CustomSliderView(value: $promptTopP,
                                          color: Brand.Colors.purple.opacity(0.45))

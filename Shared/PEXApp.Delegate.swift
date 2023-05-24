@@ -15,7 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApplication.shared.delegate = self
         
-        FirebaseApp.configure()
+        if SessionManager.DISABLE_LOGIN == false {
+            FirebaseApp.configure()
+        }
         
         //Window close
         if let window = NSApplication.shared.windows.first {

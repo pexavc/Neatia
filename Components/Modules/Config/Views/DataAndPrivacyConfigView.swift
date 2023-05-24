@@ -30,7 +30,7 @@ struct DataAndPrivacyConfigView: View {
                         .font(Fonts.live(.headline, .bold))
                         .foregroundColor(.foreground)
                     
-                    Text("Neatia stores nothing (ONLY LOCALLY (Delete the app to remove anything you think might be statefully stored (like custom prompts))).\n\nIt only uses a service known as, Firebase, to manage authentication. For instance with Apple Sign-in (The only sign in method at the moment). An option where the user can choose to hide their email. But, Firebase gives Neatia the capability to still have a user-id and personalize some experiences for you.")
+                    Text("Neatia stores nothing (ONLY LOCALLY (Delete the app to remove anything you think might be statefully stored (like custom prompts))).\n\nIt only use a service known as, Firebase in the future, to manage authentication. For instance with Apple Sign-in (The only sign in method at the moment). An option where the user can choose to hide their email. But, Firebase gives Neatia the capability to still have a user-id and personalize some experiences for you.")
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
