@@ -50,7 +50,7 @@ extension WindowComponent {
                     return .init(WindowComponent.Style.defaultWindowSize.width,
                                  (/*WindowComponent.Style.commandMenuElementHeight * WindowComponent.Style.commandMenuDefaultElements*/450) + (WindowComponent.Style.defaultComponentOuterPadding))
                 case .config:
-                    return .init(600, 530)
+                    return .init(610, 530)
                 case .promptStudio:
                     return .init(600, 600)
                 case .shortcutbar:

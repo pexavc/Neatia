@@ -34,7 +34,7 @@ extension Config: View {
                 Group {
                     
                     if SessionManager.IS_API_ACCESS_ENABLED {
-                        Text("\(config.state.isCustomAPIKeySet ? "Personal API" : "Neatia API")")
+                        Text("\(config.state.isCustomAPIKeySet ? "Personal API" : "Set API Key")")
                             .font(Fonts.live(.footnote, .bold))
                             .padding(.vertical, 4)
                             .foregroundColor(config.state.isCustomAPIKeySet ? Color.orange : Color.purple)
