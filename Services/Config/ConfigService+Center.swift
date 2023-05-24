@@ -31,7 +31,7 @@ extension ConfigService {
             var customAPIKey: [UInt32]? = nil
             
             var isCustomAPIKeySet: Bool {
-                customAPIKey != nil
+                customAPIKey != nil && SessionManager.IS_API_ACCESS_ENABLED
             }
             
             //History

@@ -55,6 +55,7 @@ extension Mount {
                 }
                 
                 Text("or")
+                    .environment(\.colorScheme, .dark)
 
                 AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
                     Button {

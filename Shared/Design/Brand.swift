@@ -15,7 +15,7 @@ public struct Brand {
         public static var grey: Color = .init(hex: "#808080")
         public static var greyV2: Color = .init(hex: "#D8D8D8")
         public static var white: Color = .init(hex: "#FFFFFF")
-        public static var green: Color = .init(hex: "#39FF14")
+        public static var green: Color = .init(hex: "#00B700")
         public static var red: Color = .init(hex: "#D90000")
         public static var redBurn: Color = .init(hex: "#D02F0E")
         public static var blue: Color = .init(hex: "#1FC2C4")

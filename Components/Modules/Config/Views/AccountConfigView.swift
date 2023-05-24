@@ -252,7 +252,6 @@ struct AccountConfigView: View {
                             Text("Purchasing")
                                 .font(Fonts.live(.headline, .bold))
                                 .foregroundColor(.foreground)
-                                .environment(\.colorScheme, .dark)
                             
                             Spacer()
                         }

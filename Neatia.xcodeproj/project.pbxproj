@@ -348,22 +348,6 @@
 		71A28EA8295239D100EAE8EE /* InnerShadowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28E5E295239D100EAE8EE /* InnerShadowModel.swift */; };
 		71A28EAB29523CC200EAE8EE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EAA29523CC200EAE8EE /* GradientView.swift */; };
 		71A28EAC29523CC200EAE8EE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EAA29523CC200EAE8EE /* GradientView.swift */; };
-		71A28EBC295243E000EAE8EE /* SceneKitWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EB0295243E000EAE8EE /* SceneKitWrapped.swift */; };
-		71A28EBD295243E000EAE8EE /* SceneKitWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EB0295243E000EAE8EE /* SceneKitWrapped.swift */; };
-		71A28EC2295243E000EAE8EE /* Special.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EB5295243E000EAE8EE /* Special.swift */; };
-		71A28EC3295243E000EAE8EE /* Special.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EB5295243E000EAE8EE /* Special.swift */; };
-		71A28EC4295243E000EAE8EE /* alexander.obj in Resources */ = {isa = PBXBuildFile; fileRef = 71A28EB7295243E000EAE8EE /* alexander.obj */; };
-		71A28EC5295243E000EAE8EE /* alexander.obj in Resources */ = {isa = PBXBuildFile; fileRef = 71A28EB7295243E000EAE8EE /* alexander.obj */; };
-		71A28EC6295243E000EAE8EE /* alexander.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71A28EB8295243E000EAE8EE /* alexander.jpg */; };
-		71A28EC7295243E000EAE8EE /* alexander.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71A28EB8295243E000EAE8EE /* alexander.jpg */; };
-		71A28EC8295243E000EAE8EE /* alexander.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 71A28EB9295243E000EAE8EE /* alexander.mtl */; };
-		71A28EC9295243E000EAE8EE /* alexander.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 71A28EB9295243E000EAE8EE /* alexander.mtl */; };
-		71A28ECC2952440E00EAE8EE /* Special+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ECB2952440E00EAE8EE /* Special+View.swift */; };
-		71A28ECD2952440E00EAE8EE /* Special+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ECB2952440E00EAE8EE /* Special+View.swift */; };
-		71A28ECF2952441B00EAE8EE /* Special+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ECE2952441B00EAE8EE /* Special+Center.swift */; };
-		71A28ED02952441B00EAE8EE /* Special+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ECE2952441B00EAE8EE /* Special+Center.swift */; };
-		71A28ED3295244A700EAE8EE /* Special._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ED2295244A700EAE8EE /* Special._.swift */; };
-		71A28ED4295244A700EAE8EE /* Special._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28ED2295244A700EAE8EE /* Special._.swift */; };
 		71A375052A01F5B800985D8D /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375042A01F5B800985D8D /* Granite */; };
 		71A375072A01F5B800985D8D /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375062A01F5B800985D8D /* GraniteUI */; };
 		71A547532A1C757E0083A8DF /* TokenCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A547522A1C757E0083A8DF /* TokenCountView.swift */; };
@@ -775,14 +759,6 @@
 		71A28E5D295239D100EAE8EE /* InnerShadowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerShadowExtensions.swift; sourceTree = "<group>"; };
 		71A28E5E295239D100EAE8EE /* InnerShadowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerShadowModel.swift; sourceTree = "<group>"; };
 		71A28EAA29523CC200EAE8EE /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		71A28EB0295243E000EAE8EE /* SceneKitWrapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitWrapped.swift; sourceTree = "<group>"; };
-		71A28EB5295243E000EAE8EE /* Special.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Special.swift; sourceTree = "<group>"; };
-		71A28EB7295243E000EAE8EE /* alexander.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alexander.obj; sourceTree = "<group>"; };
-		71A28EB8295243E000EAE8EE /* alexander.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = alexander.jpg; sourceTree = "<group>"; };
-		71A28EB9295243E000EAE8EE /* alexander.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alexander.mtl; sourceTree = "<group>"; };
-		71A28ECB2952440E00EAE8EE /* Special+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Special+View.swift"; sourceTree = "<group>"; };
-		71A28ECE2952441B00EAE8EE /* Special+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Special+Center.swift"; sourceTree = "<group>"; };
-		71A28ED2295244A700EAE8EE /* Special._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Special._.swift; sourceTree = "<group>"; };
 		71A547522A1C757E0083A8DF /* TokenCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCountView.swift; sourceTree = "<group>"; };
 		71A92A7C2A0E341900DD7366 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHelperView.swift; sourceTree = "<group>"; };
@@ -1539,29 +1515,6 @@
 			path = GradientView;
 			sourceTree = "<group>";
 		};
-		71A28EAE295243E000EAE8EE /* Special */ = {
-			isa = PBXGroup;
-			children = (
-				71A28ED62952450C00EAE8EE /* Views */,
-				71A28ED52952450400EAE8EE /* Models */,
-				71A28ED12952449300EAE8EE /* Reducers */,
-				71A28EB5295243E000EAE8EE /* Special.swift */,
-				71A28ECE2952441B00EAE8EE /* Special+Center.swift */,
-				71A28ECB2952440E00EAE8EE /* Special+View.swift */,
-			);
-			path = Special;
-			sourceTree = "<group>";
-		};
-		71A28EB6295243E000EAE8EE /* 3DObj */ = {
-			isa = PBXGroup;
-			children = (
-				71A28EB7295243E000EAE8EE /* alexander.obj */,
-				71A28EB8295243E000EAE8EE /* alexander.jpg */,
-				71A28EB9295243E000EAE8EE /* alexander.mtl */,
-			);
-			path = 3DObj;
-			sourceTree = "<group>";
-		};
 		71A28ECA295243E400EAE8EE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1574,33 +1527,8 @@
 				71CEBDE32A0718F900DE6CDE /* Query */,
 				71BE32032A05AB3D00B76A69 /* Config */,
 				719E240D295348B900CEB2FE /* Debug */,
-				71A28EAE295243E000EAE8EE /* Special */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		71A28ED12952449300EAE8EE /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				71A28ED2295244A700EAE8EE /* Special._.swift */,
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
-		71A28ED52952450400EAE8EE /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				71A28EB6295243E000EAE8EE /* 3DObj */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		71A28ED62952450C00EAE8EE /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				71A28EB0295243E000EAE8EE /* SceneKitWrapped.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		71AC3CF22A15BCFF00C68047 /* Views */ = {
@@ -2166,11 +2094,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71A28EC8295243E000EAE8EE /* alexander.mtl in Resources */,
-				71A28EC4295243E000EAE8EE /* alexander.obj in Resources */,
 				711B3F9E2885D43B00F3080D /* Assets.xcassets in Resources */,
 				714238262A12D8B700E3A55A /* pieta.png in Resources */,
-				71A28EC6295243E000EAE8EE /* alexander.jpg in Resources */,
 				712861852A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
 				7128618E2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
 			);
@@ -2180,11 +2105,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71A28EC9295243E000EAE8EE /* alexander.mtl in Resources */,
-				71A28EC5295243E000EAE8EE /* alexander.obj in Resources */,
 				711B3F9F2885D43B00F3080D /* Assets.xcassets in Resources */,
 				714238272A12D8B700E3A55A /* pieta.png in Resources */,
-				71A28EC7295243E000EAE8EE /* alexander.jpg in Resources */,
 				712861862A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
 				7128618F2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
 			);
@@ -2246,7 +2168,6 @@
 				71A28EA1295239D100EAE8EE /* MathOperators.swift in Sources */,
 				71A28E67295239D100EAE8EE /* CGSize+Convenience.swift in Sources */,
 				71DF106F28CC697600559DBC /* DictionaryEncoder.swift in Sources */,
-				71A28EC2295243E000EAE8EE /* Special.swift in Sources */,
 				71EA5BB72A10222E00B0F82D /* PromptService.swift in Sources */,
 				71CEBE1C2A07451D00DE6CDE /* EnvironmentService.Interaction.swift in Sources */,
 				71A28E6D295239D100EAE8EE /* CGAffineTransform+Convenience.swift in Sources */,
@@ -2262,7 +2183,6 @@
 				71A28E71295239D100EAE8EE /* RenderedIf.swift in Sources */,
 				71DF107D28CC697600559DBC /* Array+Unique.swift in Sources */,
 				7197FB0D2964B4C0005EBBA4 /* GraniteAlertView.swift in Sources */,
-				71A28ECF2952441B00EAE8EE /* Special+Center.swift in Sources */,
 				719E2412295348B900CEB2FE /* Debug+View.swift in Sources */,
 				712BEB6329074FEC00D257B7 /* UIScreen.swift in Sources */,
 				716215152A0342CB009D19B6 /* MacEditorTextView.swift in Sources */,
@@ -2363,7 +2283,6 @@
 				712861942A0F43EE00046DCE /* MarqueeTextView.swift in Sources */,
 				71A28E89295239D100EAE8EE /* Comparible+Convenience.swift in Sources */,
 				71A28D96295231E600EAE8EE /* Double.swift in Sources */,
-				71A28EBC295243E000EAE8EE /* SceneKitWrapped.swift in Sources */,
 				71DF107128CC697600559DBC /* DictionaryCodingKey.swift in Sources */,
 				71A28E8F295239D100EAE8EE /* Float+Convenience.swift in Sources */,
 				71A28E1F295237AE00EAE8EE /* RoundedEdge.swift in Sources */,
@@ -2380,7 +2299,6 @@
 				71A28E5F295239D100EAE8EE /* GeometryFunctions.swift in Sources */,
 				71EDCFDE2A094FB300857066 /* PaneKit.swift in Sources */,
 				7197FB1B2964B4C0005EBBA4 /* GraniteSheetManager.swift in Sources */,
-				71A28ECC2952440E00EAE8EE /* Special+View.swift in Sources */,
 				71DF10A128CC698800559DBC /* MockedRequest.swift in Sources */,
 				71CEBDDB2A07175700DE6CDE /* EnvironmentService+Center.swift in Sources */,
 				71A28DE1295232E300EAE8EE /* GraphLinePlot+Segmented.swift in Sources */,
@@ -2469,7 +2387,6 @@
 				7192B18A2A0B146600C579A4 /* SandGPT.swift in Sources */,
 				71DF106D28CC697600559DBC /* DictionaryDecoder.swift in Sources */,
 				712861A42A0F4EB600046DCE /* ACarousel.swift in Sources */,
-				71A28ED3295244A700EAE8EE /* Special._.swift in Sources */,
 				7197FB132964B4C0005EBBA4 /* GraniteToastViewEvent.swift in Sources */,
 				712BEB6029074CFB00D257B7 /* CameraContentView.swift in Sources */,
 				71BE32272A05B90500B76A69 /* AccountService.swift in Sources */,
@@ -2519,7 +2436,6 @@
 				71DF107028CC697600559DBC /* DictionaryEncoder.swift in Sources */,
 				71EA5BB82A10222E00B0F82D /* PromptService.swift in Sources */,
 				71CEBE1D2A07451D00DE6CDE /* EnvironmentService.Interaction.swift in Sources */,
-				71A28EC3295243E000EAE8EE /* Special.swift in Sources */,
 				71A28E6E295239D100EAE8EE /* CGAffineTransform+Convenience.swift in Sources */,
 				71A28E24295237AE00EAE8EE /* TapAndLongPressModifier.swift in Sources */,
 				71BE32642A06109D00B76A69 /* Regex.swift in Sources */,
@@ -2532,7 +2448,6 @@
 				71A28E72295239D100EAE8EE /* RenderedIf.swift in Sources */,
 				7197FB0C2964B4C0005EBBA4 /* GraniteAlertViewStyle.swift in Sources */,
 				71DF107E28CC697600559DBC /* Array+Unique.swift in Sources */,
-				71A28ED02952441B00EAE8EE /* Special+Center.swift in Sources */,
 				716215162A0342CB009D19B6 /* MacEditorTextView.swift in Sources */,
 				71FBA7FE296D16110090B630 /* GraniteScrollView.swift in Sources */,
 				719E2413295348B900CEB2FE /* Debug+View.swift in Sources */,
@@ -2634,7 +2549,6 @@
 				71A28DF0295232E300EAE8EE /* GraphLinePlot.swift in Sources */,
 				71A28E8A295239D100EAE8EE /* Comparible+Convenience.swift in Sources */,
 				71A28D97295231E600EAE8EE /* Double.swift in Sources */,
-				71A28EBD295243E000EAE8EE /* SceneKitWrapped.swift in Sources */,
 				71DF107228CC697600559DBC /* DictionaryCodingKey.swift in Sources */,
 				7197FB042964B4C0005EBBA4 /* GraniteModalManager.swift in Sources */,
 				716215032A031E7B009D19B6 /* Binding.swift in Sources */,
@@ -2650,7 +2564,6 @@
 				717C12A0293BEF730060A446 /* AppBlurBackground.swift in Sources */,
 				71EDCFDF2A094FB300857066 /* PaneKit.swift in Sources */,
 				71A28E60295239D100EAE8EE /* GeometryFunctions.swift in Sources */,
-				71A28ECD2952440E00EAE8EE /* Special+View.swift in Sources */,
 				71DF10A228CC698800559DBC /* MockedRequest.swift in Sources */,
 				71CEBDDC2A07175700DE6CDE /* EnvironmentService+Center.swift in Sources */,
 				71BE32092A05AB3D00B76A69 /* Config.swift in Sources */,
@@ -2743,7 +2656,6 @@
 				71DF106E28CC697600559DBC /* DictionaryDecoder.swift in Sources */,
 				71BE31C02A05929F00B76A69 /* MarkdownView.swift in Sources */,
 				71BE32282A05B90500B76A69 /* AccountService.swift in Sources */,
-				71A28ED4295244A700EAE8EE /* Special._.swift in Sources */,
 				712BEB6129074CFB00D257B7 /* CameraContentView.swift in Sources */,
 				71FBA7FA296D16110090B630 /* GranitePagingView.swift in Sources */,
 				71DF107428CC697600559DBC /* DictionaryErrors.swift in Sources */,
