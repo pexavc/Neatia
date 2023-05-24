@@ -21,14 +21,6 @@ struct GeneralConfigView: View {
     
     @State var apiKey: String = ""
     
-    var isLifetimeAPIPurchased: Bool {
-        session.isLifetimeAPI || session.isFullAccess
-    }
-    
-    var product: VaultProduct? {
-        VaultManager.shared.productFor(VaultProducts.Lifetime.basic)
-    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -68,31 +60,24 @@ struct GeneralConfigView: View {
 //            }
 //            .padding(.bottom, 8)
             
-            if config.state.isCustomAPIKeySet {
+            if config.state.isCustomAPIKeySet || session.isSubscribed {
                 
                 TuningView(updateCustomConfigDirectly: true)
                 
-            } else {
+            } else if SessionManager.IS_API_ACCESS_ENABLED {
                 Text("Custom API Key for OpenAI's ChatGPT")
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
                 AppBlurView(size: .init(0, 60),
                             tintColor: Brand.Colors.black.opacity(0.3)) {
-                    if isLifetimeAPIPurchased {
-                        MacEditorTextView(
-                            text: $apiKey,
-                            isEditable: true,
-                            font: Fonts.nsFont(.defaultSize, .bold))
-                    } else {
-                        MacEditorTextView(
-                            text: $apiKey,
-                            isEditable: false,
-                            font: Fonts.nsFont(.defaultSize, .bold))
-                    }
+                    MacEditorTextView(
+                        text: $apiKey,
+                        isEditable: true,
+                        font: Fonts.nsFont(.defaultSize, .bold))
                 }
                 .frame(height: 60)
                 
-                if isLifetimeAPIPurchased {
+                if SessionManager.IS_API_ACCESS_ENABLED {
                     
                     AppBlurView(tintColor: Brand.Colors.black.opacity(0.3)) {
                         Button(action: {
@@ -108,45 +93,39 @@ struct GeneralConfigView: View {
                     }
                     .environment(\.colorScheme, .dark)
                     .padding(.bottom, 8)
-                } else {
-                    
-                    AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.3)) {
-                        
-                        HStack(spacing: 8) {
-                            Button(action: {
-                                account
-                                    .center
-                                    .purchase
-                                    .send(AccountService.Purchase.Meta(product: product))
-                            }) {
-                                Text("Purchase Lifetime API Access")
-                                    .font(Fonts.live(.headline, .bold))
-                                    .foregroundColor(.foreground)
-                                
-                                if let vaultProduct = product {
-                                    Divider()
-                                    
-                                    Text(vaultProduct.metadata.displayPrice)
-                                        .font(Fonts.live(.subheadline, .bold))
-                                        .foregroundColor(.foreground)
-                                }
-                            }.buttonStyle(PlainButtonStyle())
-                        }
-                    }
-                    .environment(\.colorScheme, .dark)
-                    .padding(.bottom, 8)
                 }
                 
-                Text("More options appear after a key is set, helping you customize your experience.")
-                
-                Text("Get your own OpenAI API Key here.")
-                    .foregroundColor(.accentColor)
-                    .onTapGesture {
-                        if let url = URL(string: "https://platform.openai.com/account/api-keys") {
-                            openURL(url)
+                if SessionManager.IS_API_ACCESS_ENABLED {
+                    Text("More options appear after a key is set, helping you customize your experience.")
+                        .foregroundColor(.foreground)
+                    
+                    Text("Get your own OpenAI API Key here.")
+                        .foregroundColor(.accentColor)
+                        .onTapGesture {
+                            if let url = URL(string: "https://platform.openai.com/account/api-keys") {
+                                openURL(url)
+                            }
                         }
-                    }
+                }
                 
+            } else {
+                Text("More options appear after subscribing, helping you customize your general experience.")
+                    .foregroundColor(.foreground)
+                
+                AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.3)) {
+                    
+                    HStack(spacing: 8) {
+                        Button(action: {
+                            config.center.$state.binding.isAccountTabActive.wrappedValue = true
+                        }) {
+                            Text("Subscribe")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                        }.buttonStyle(PlainButtonStyle())
+                    }
+                }
+                .environment(\.colorScheme, .dark)
+                .padding(.bottom, 8)
             }
             
             

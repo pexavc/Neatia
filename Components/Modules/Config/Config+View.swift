@@ -32,19 +32,22 @@ extension Config: View {
         NavigationView {
             List {
                 Group {
-                    Text("\(config.state.isCustomAPIKeySet ? "Personal API" : "Neatia API")")
-                        .font(Fonts.live(.footnote, .bold))
-                        .padding(.vertical, 4)
-                        .foregroundColor(config.state.isCustomAPIKeySet ? Color.orange : Color.purple)
-                        .background(
-                            RoundedRectangle(cornerRadius: 6)
-                                .strokeBorder(config.state.isCustomAPIKeySet ? Color.orange : Color.purple, lineWidth: 2)
-                                .padding(.horizontal, -6)
-                        )
-                        .padding(.horizontal, 6)
-                        .onTapGesture {
-                            config.center.$state.binding.isSettingsActive.wrappedValue = true
-                        }
+                    
+                    if SessionManager.IS_API_ACCESS_ENABLED {
+                        Text("\(config.state.isCustomAPIKeySet ? "Personal API" : "Neatia API")")
+                            .font(Fonts.live(.footnote, .bold))
+                            .padding(.vertical, 4)
+                            .foregroundColor(config.state.isCustomAPIKeySet ? Color.orange : Color.purple)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .strokeBorder(config.state.isCustomAPIKeySet ? Color.orange : Color.purple, lineWidth: 2)
+                                    .padding(.horizontal, -6)
+                            )
+                            .padding(.horizontal, 6)
+                            .onTapGesture {
+                                config.center.$state.binding.isSettingsActive.wrappedValue = true
+                            }
+                    }
                     
                     HStack(spacing: 4) {
                         Label(windowVisibility.isVisible(id: InteractionManager.Kind.mount.rawValue) ? "Hide" : "Show",
@@ -84,7 +87,14 @@ extension Config: View {
                 Group {
                     Text("Customize")
                     NavigationLink(destination: PromptConfigView()) {
-                        Label("Prompts", systemImage: "note.text")
+                        HStack(spacing: 4) {
+                            Label("Prompts", systemImage: "note.text")
+                            
+                            Text("(⌥ + \(config.state.promptStudioHotkey.rawValue.capitalized))")
+                                .font(Fonts.live(.caption2, .bold))
+                            Spacer()
+                        }
+                        .frame(width: 160)
                     }
                     
                     NavigationLink(destination: ShortcutConfigView()) {
@@ -116,7 +126,7 @@ extension Config: View {
             }
             .listStyle(SidebarListStyle())
             //Set Sidebar Width (and height)
-            .frame(minWidth: 150, idealWidth: 250, maxWidth: 300)
+            .frame(minWidth: 160, idealWidth: 250, maxWidth: 300)
         }
     }
     

@@ -14,7 +14,6 @@ class SessionManagerKit {
     @Published var isLoggedIn: Bool = false
     @Published var isSubscribed: Bool = false
     @Published var isPurchasing: Bool = false
-    @Published var isLifetimeAPI: Bool = false
     @Published var isCustomAPI: Bool = false
     
     public func isLoggedIn(_ state: Bool) {
@@ -27,10 +26,6 @@ class SessionManagerKit {
     
     public func isPurchasing(_ state: Bool) {
         isPurchasing = state
-    }
-    
-    public func isLifetimeAPI(_ state: Bool) {
-        isLifetimeAPI = state
     }
     
     public func isCustomAPI(_ state: Bool) {
@@ -59,13 +54,19 @@ final class SessionManager: Equatable, SharableObject {
             return true
         }
         
-        if kit.isLifetimeAPI {
+        guard SessionManager.IS_API_ACCESS_ENABLED == false else {
             return kit.isCustomAPI == false
-        } else if kit.isSubscribed {
-            return isFullAccess == false
-        } else {
-            return true
         }
+        
+        return kit.isSubscribed == false
+        
+//        if SessionManager.IS_API_ACCESS_ENABLED {
+//            return kit.isCustomAPI == false
+//        } else if kit.isSubscribed {
+//            return isFullAccess == false
+//        } else {
+//            return true
+//        }
     }
     
     var isLoggedIn: Bool {
@@ -80,12 +81,12 @@ final class SessionManager: Equatable, SharableObject {
         VaultProducts.Renewable.allCases.filter { VaultManager.isPurchased($0) }.isEmpty == false
     }
     
-    var isLifetimeAPI: Bool {
-        kit.isLifetimeAPI
-    }
-    
     var isPurchasing: Bool {
         kit.isPurchasing
+    }
+    
+    static var IS_API_ACCESS_ENABLED: Bool {
+        false
     }
     
     let kit: SessionManagerKit
@@ -110,13 +111,6 @@ final class SessionManager: Equatable, SharableObject {
             self?.objectWillChange.send()
         }.store(in: &cancellables)
         
-        kit.$isLifetimeAPI
-            .receive(on: RunLoop.main)
-            .removeDuplicates()
-            .sink { [weak self] _ in
-            self?.objectWillChange.send()
-        }.store(in: &cancellables)
-        
         kit.$isPurchasing
             .receive(on: RunLoop.main)
             .removeDuplicates()
@@ -133,10 +127,6 @@ final class SessionManager: Equatable, SharableObject {
         kit.isSubscribed = state
     }
     
-    public func isLifetimeAPI(_ state: Bool) {
-        kit.isLifetimeAPI = state
-    }
-    
     public func isCustomAPI(_ state: Bool) {
         kit.isCustomAPI = state
     }
@@ -147,9 +137,5 @@ final class SessionManager: Equatable, SharableObject {
     
     public func checkSubscription() {
         kit.isSubscribed = VaultManager.isSubscribed
-    }
-    
-    public func checkLifetimeAPI() {
-        kit.isLifetimeAPI = VaultManager.purchased(VaultProducts.Lifetime.basic)
     }
 }

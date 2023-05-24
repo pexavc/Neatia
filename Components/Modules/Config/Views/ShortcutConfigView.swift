@@ -78,7 +78,7 @@ struct ShortcutConfigView: View {
                             config
                                 .center
                                 .updateHotkey
-                                .send(ConfigService.Hotkey.Meta(key: item, kind: .mount))
+                                .send(ConfigService.Hotkey.Meta(key: item, kind: .promptStudio))
                         } label: {
                             VStack {
                                 Spacer()

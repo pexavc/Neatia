@@ -242,8 +242,8 @@ struct TuningView: View {
                                 .foregroundColor(.foreground)
                                 .padding(.bottom, 2)
                         }
-                                    .frame(width: 104, height: 36)
-                                    .padding(.horizontal, 16)
+                        .frame(width: 104, height: 36)
+                        .padding(.horizontal, 16)
                     }
                     .onChange(of: promptEngine) { newValue in
                         let sanitized = newValue.newlinesSanitized

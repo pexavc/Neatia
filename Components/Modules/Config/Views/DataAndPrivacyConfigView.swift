@@ -127,7 +127,6 @@ struct DataAndPrivacyConfigView: View {
                         }.buttonStyle(PlainButtonStyle())
                     }
                 }
-                Spacer()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

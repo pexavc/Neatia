@@ -29,7 +29,7 @@ struct AccountConfigView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if VaultManager.isSubscribed || viewSubscription == false {
+            if (VaultManager.isSubscribed || viewSubscription == false || SessionManager.IS_API_ACCESS_ENABLED) {
                 standardView
             } else {
                 paywallView
@@ -37,9 +37,9 @@ struct AccountConfigView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
-        .onAppear {
-            reducedPricing = VaultManager.purchased(VaultProducts.Lifetime.basic)
-        }
+//        .onAppear {
+//            reducedPricing = VaultManager.purchased(VaultProducts.Lifetime.basic)
+//        }
     }
     
     var standardView: some View {
@@ -51,7 +51,7 @@ struct AccountConfigView: View {
                 
                 Spacer()
                 
-                if VaultManager.isSubscribed == false {
+                if VaultManager.isSubscribed == false && SessionManager.IS_API_ACCESS_ENABLED == false {
                     AppBlurView(tintColor: Brand.Colors.yellow.opacity(0.45)) {
                         Button(action: {
                             viewSubscription = true
@@ -62,7 +62,7 @@ struct AccountConfigView: View {
                         }.buttonStyle(PlainButtonStyle())
                     }
                     .environment(\.colorScheme, .dark)
-                } else {
+                } else if SessionManager.IS_API_ACCESS_ENABLED == false {
                     AppBlurView(tintColor: VaultManager.isSubscribed ? Brand.Colors.purple.opacity(0.45) : Brand.Colors.black.opacity(0.3)) {
                         Text(VaultManager.isSubscribed ? "Subscribed" : "Free")
                             .font(Fonts.live(.headline, .bold))
@@ -145,7 +145,7 @@ struct AccountConfigView: View {
         Group {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("Base features")
+                    Text("Subscribe")
                         .font(Fonts.live(.title2, .bold))
                         .foregroundColor(.foreground)
                     
@@ -163,23 +163,31 @@ struct AccountConfigView: View {
                     .environment(\.colorScheme, .dark)
                 }
                 
-                AppBlurView(size: .init(0, 100),
+                HStack {
+                    Text("Base features")
+                        .font(Fonts.live(.headline, .bold))
+                        .foregroundColor(.foreground)
+                    
+                    Spacer()
+                }
+                
+                AppBlurView(size: .init(0, 60),
                             tintColor: Brand.Colors.black.opacity(0.3)) {
                     VStack(alignment: .leading, spacing: 8) {
                         
-                        Text("• Custom API Keys. Tune additional parameters before making queries. (Lifetime API Access required).")
-                            .font(Fonts.live(.subheadline, .regular))
-                            .foregroundColor(.accentColor)
-                            .onTapGesture {
-                                config.center.$state.binding.isSettingsActive.wrappedValue = true
-                            }
+//                        Text("• Custom API Keys. Tune additional parameters before making queries. (Lifetime API Access required).")
+//                            .font(Fonts.live(.subheadline, .regular))
+//                            .foregroundColor(.accentColor)
+//                            .onTapGesture {
+//                                config.center.$state.binding.isSettingsActive.wrappedValue = true
+//                            }
                         
                         Text("• Custom prompt command creation, editing, and sharing in Prompt Studio.")
                             .font(Fonts.live(.subheadline, .regular))
                             .foregroundColor(.foreground)
                     }
                 }
-                .frame(height: 100)
+                .frame(height: 60)
                 .environment(\.colorScheme, .dark)
                 .padding(.bottom, 8)
                 
@@ -191,9 +199,12 @@ struct AccountConfigView: View {
                     Spacer()
                 }
                 
-                AppBlurView(size: .init(0, 100),
+                AppBlurView(size: .init(0, 120),
                             tintColor: Brand.Colors.black.opacity(0.3)) {
                     VStack(alignment: .leading, spacing: 8) {
+                        Text("• ChatGPT Client general & prompt command usage.")
+                            .font(Fonts.live(.subheadline, .regular))
+                            .foregroundColor(.foreground)
                         
                         Text("• Neatia engineered prompts and tuning. They update or new ones get added weekly.")
                             .font(Fonts.live(.subheadline, .regular))
@@ -204,7 +215,7 @@ struct AccountConfigView: View {
                             .foregroundColor(.foreground)
                     }
                 }
-                .frame(height: 100)
+                .frame(height: 120)
                 .environment(\.colorScheme, .dark)
                 .padding(.bottom, 8)
                 
@@ -279,24 +290,24 @@ struct AccountConfigView: View {
                     
                 }
                 
-                Group {
-                    Spacer()
-                    
-                    HStack {
-                        Toggle("Have an OpenAI API Key? See cheaper options.", isOn: $reducedPricing)
-                        
-                        Spacer()
-                    }
-                    .onChange(of: reducedPricing) { newValue in
-                        if newValue {
-                            selectedOption = VaultManager.shared.productFor(VaultProducts.RenewableReduced.monthly)
-                        } else {
-                            selectedOption = VaultManager.shared.productFor(VaultProducts.Renewable.monthly)
-                        }
-                    }
-                    
-                    Spacer()
-                }
+//                Group {
+//                    Spacer()
+//
+//                    HStack {
+//                        Toggle("Have an OpenAI API Key? See cheaper options.", isOn: $reducedPricing)
+//
+//                        Spacer()
+//                    }
+//                    .onChange(of: reducedPricing) { newValue in
+//                        if newValue {
+//                            selectedOption = VaultManager.shared.productFor(VaultProducts.RenewableReduced.monthly)
+//                        } else {
+//                            selectedOption = VaultManager.shared.productFor(VaultProducts.Renewable.monthly)
+//                        }
+//                    }
+//
+//                    Spacer()
+//                }
             }
         }
     }

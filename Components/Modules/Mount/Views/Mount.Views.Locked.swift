@@ -24,7 +24,7 @@ extension Mount {
                     .foregroundColor(.foreground)
                     .environment(\.colorScheme, .dark)
                 
-            } else if session.isLifetimeAPI && session.isLocked {
+            } else if SessionManager.IS_API_ACCESS_ENABLED && session.isLocked {
                 AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
                     Button {
                         config.center.$state.binding.isSettingsActive.wrappedValue = true
@@ -54,24 +54,19 @@ extension Mount {
                     .environment(\.colorScheme, .dark)
                 }
                 
-                if session.isLoggedIn {
-                    if session.isSubscribed == false {
-                        Text("or")
+                Text("or")
+
+                AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
+                    Button {
+                        InteractionManager.shared.observeHotkey(kind: .promptStudio)
+                    } label : {
+                        Text("Open Prompt Studio")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
                     }
-                    
-                    AppBlurView(tintColor: Brand.Colors.purple.opacity(0.3)) {
-                        Button {
-                            config.center.$state.binding.isSettingsActive.wrappedValue = true
-                            MenuBarManager.shared.showPopOver()
-                        } label : {
-                            Text("Purchase Lifetime API Access")
-                                .font(Fonts.live(.headline, .bold))
-                                .foregroundColor(.foreground)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                    .environment(\.colorScheme, .dark)
+                    .buttonStyle(PlainButtonStyle())
                 }
+                .environment(\.colorScheme, .dark)
             }
             
             Spacer()
