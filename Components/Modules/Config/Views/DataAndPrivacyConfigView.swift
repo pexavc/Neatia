@@ -26,11 +26,15 @@ struct DataAndPrivacyConfigView: View {
             ScrollView([.vertical]) { 
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Backend-less")
-                        .font(Fonts.live(.headline, .bold))
-                        .foregroundColor(.foreground)
+                    HStack {
+                        Text("Backend-less")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
                     
-                    Text("Neatia stores nothing (ONLY LOCALLY (Delete the app to remove anything you think might be statefully stored (like custom prompts))).\n\nIt only use a service known as, Firebase in the future, to manage authentication. For instance with Apple Sign-in (The only sign in method at the moment). An option where the user can choose to hide their email. But, Firebase gives Neatia the capability to still have a user-id and personalize some experiences for you.")
+                    Text("Neatia stores nothing (ONLY LOCALLY (Delete the app to remove anything you think might be statefully stored (like custom prompts))).")
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
@@ -55,10 +59,13 @@ struct DataAndPrivacyConfigView: View {
                 
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    
-                    Text("They still use user inputs for training, right?")
-                        .font(Fonts.live(.headline, .bold))
-                        .foregroundColor(.foreground)
+                    HStack {
+                        Text("They still use user inputs for training, right?")
+                            .font(Fonts.live(.headline, .bold))
+                            .foregroundColor(.foreground)
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
                     
                     Text("NOT from API usage. (As of 05/18/2023)")
                         .font(Fonts.live(.subheadline, .regular))
@@ -74,9 +81,13 @@ struct DataAndPrivacyConfigView: View {
                 
                 Group {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("It still says they retain for 30 days for \"abuse\"?")
-                            .font(Fonts.live(.headline, .bold))
-                            .foregroundColor(.foreground)
+                        HStack {
+                            Text("It still says they retain for 30 days for \"abuse\"?")
+                                .font(Fonts.live(.headline, .bold))
+                                .foregroundColor(.foreground)
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
                         
                         Text("Yes it's the only risk unfortunately. Doubtful it will be used, sensitively they must notify you if so ")
                             .font(Fonts.live(.subheadline, .regular))
@@ -100,6 +111,7 @@ struct DataAndPrivacyConfigView: View {
                             
                             Spacer()
                         }
+                        .frame(maxWidth: .infinity)
                     }
                     .onTapGesture {
                         if let url = URL(string: "https://help.openai.com/en/articles/7039943-data-usage-for-consumer-services-faq") {

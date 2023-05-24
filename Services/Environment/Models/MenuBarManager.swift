@@ -80,7 +80,7 @@ class MenuBarManager: NSObject, NSMenuDelegate {
         
         
         let iconView = NSHostingView(rootView: iconSwiftUI)
-        iconView.frame = NSRect(x: 0, y: 0, width: 22, height: 22)
+        iconView.frame = NSRect(x: 0, y: 0, width: 40, height: 22)
         
         // Adding the status bar icon
         //
