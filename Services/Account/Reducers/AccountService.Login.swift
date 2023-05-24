@@ -9,6 +9,10 @@ extension AccountService {
         @Event var subscriptionCheck: CheckSubscriptionStatus.Reducer
         
         func reduce(state: inout Center.State) {
+            guard SessionManager.DISABLE_LOGIN == false else {
+                AccountManager.disableLogin()
+                return
+            }
             
             if let user = Auth.auth().currentUser {
                 AccountManager.load(user)

@@ -85,6 +85,10 @@ public class AccountManager: ObservableObject {
         AccountManager.shared.kit.isLoggedIn
     }
     
+    public static func disableLogin() {
+        AccountManager.shared.kit.isLoggedIn = SessionManager.DISABLE_LOGIN
+    }
+    
     public static func isSubscribed(_ state: Bool) {
         AccountManager.shared.kit.isSubscribed(state)
     }

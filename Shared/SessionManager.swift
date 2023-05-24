@@ -86,7 +86,11 @@ final class SessionManager: Equatable, SharableObject {
     }
     
     static var IS_API_ACCESS_ENABLED: Bool {
-        true
+        false
+    }
+    
+    static var DISABLE_LOGIN: Bool {
+        true || SessionManager.IS_API_ACCESS_ENABLED
     }
     
     let kit: SessionManagerKit

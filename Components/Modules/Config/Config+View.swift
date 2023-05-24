@@ -117,8 +117,10 @@ extension Config: View {
                 //Divider also looks great!
                 Divider()
                 Group {
-                    Label("Logout", systemImage: "togglepower")
-                        .onTapGesture(account.center.logout)
+                    if SessionManager.DISABLE_LOGIN == false {
+                        Label("Logout", systemImage: "togglepower")
+                            .onTapGesture(account.center.logout)
+                    }
                     
                     Label("Quit", systemImage: "power")
                         .onTapGesture { NSApp.terminate(self) }
