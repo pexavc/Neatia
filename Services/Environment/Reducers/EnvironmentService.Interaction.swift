@@ -284,6 +284,7 @@ extension EnvironmentService {
         struct Meta: GranitePayload {
             let lineCount: Int
             var responseHelpersActive: Bool = false
+            var basedOnString: String? = nil
         }
         
         @Payload var meta: Meta?
@@ -301,6 +302,12 @@ extension EnvironmentService {
             
             if meta.lineCount > 1 {
                 newHeight += fontDetails.actualHeight
+            }
+            
+            if let stringReference = meta.basedOnString {
+                let height = stringReference.height(withConstrainedWidth: defaultSize.width - (WindowComponent.Style.defaultComponentOuterPadding + WindowComponent.Style.defaultComponentOuterPaddingContainerAware), font: Fonts.nsFont(.body, .bold)) + (16 * 2)// + top/bottom padding
+
+                newHeight = height > newHeight ? height : newHeight
             }
             
             
@@ -321,7 +328,8 @@ extension EnvironmentService {
                 
                 WindowComponent(WindowComponent.Kind.divider)
                 
-                WindowComponent(WindowComponent.Kind.response, size: (isToolbarActive || meta.responseHelpersActive) && newHeight <= 208 ? .init(0, 208) : responseWindowSize)
+                WindowComponent(WindowComponent.Kind.response,
+                                size: /*(isToolbarActive || meta.responseHelpersActive) &&*/ newHeight <= 208 ? .init(0, 208) : responseWindowSize)
                 
                 WindowComponent(WindowComponent.Kind.spacer)
 //

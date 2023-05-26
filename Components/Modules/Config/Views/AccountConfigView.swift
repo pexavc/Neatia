@@ -292,7 +292,7 @@ struct AccountConfigView: View {
                         Text("Privacy Policy")
                             .foregroundColor(.accentColor)
                             .onTapGesture {
-                                if let url = URL(string: "https://www.iubenda.com/privacy-policy/30492892/legal") {
+                                if let url = URL(string: "https://stoic.nyc/neatia/privacy") {
                                     openURL(url)
                                 }
                             }
@@ -304,7 +304,7 @@ struct AccountConfigView: View {
                         Text("Terms of Use")
                             .foregroundColor(.accentColor)
                             .onTapGesture {
-                                if let url = URL(string: "https://www.iubenda.com/terms-and-conditions/30492892") {
+                                if let url = URL(string: "https://stoic.nyc/neatia/terms") {
                                     openURL(url)
                                 }
                             }

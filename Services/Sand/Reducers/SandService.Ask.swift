@@ -1,7 +1,6 @@
 import Granite
 import SandKit
 import Foundation
-import Markdown
 import SwiftUI
 
 extension SandService {
@@ -108,8 +107,6 @@ extension SandService {
         
         @Payload var response: SandGPT.Response?
         
-        //@Event var processDocument: AskDocumentResponse.Reducer
-        
         func reduce(state: inout Center.State) {
             guard response?.isComplete == false else {
                 print("[SandService] AskIsComplete")
@@ -125,9 +122,9 @@ extension SandService {
                     state.responseHelpers = HelperInfo.generate(from: state.response)
                     
                     //processDocument.send(payload)
-                    let doc = Document(parsing: state.response, source: nil)
-                    let lineCount = Int(doc.range?.upperBound.line ?? 0)
-                    
+//                    let doc = Document(parsing: state.response, source: nil)
+                    let lineCount = 1//Int(doc.range?.upperBound.line ?? 0)
+//
                     environment
                         .center
                         .responseWindowSize
@@ -135,7 +132,8 @@ extension SandService {
                             EnvironmentService
                                 .ResponseWindowSizeUpdated
                                 .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0),
-                                      responseHelpersActive: state.responseHelpers.isNotEmpty))
+                                      responseHelpersActive: state.responseHelpers.isNotEmpty,
+                                      basedOnString: state.response))
                     
                 }
                 
@@ -160,36 +158,6 @@ extension SandService {
             
             state.response = response?.data ?? ""
             //print("[SandService] Sending: \(state.response)")
-        }
-    }
-    
-    //Weird race condition in continued reducers? check issue#1 in granite
-    struct AskDocumentResponse: GraniteReducer {
-        typealias Center = SandService.Center
-        
-        @Relay var environment: EnvironmentService
-        
-        @Payload var response: SandGPT.Response?
-        
-        func reduce(state: inout Center.State) {
-            guard let response = response?.data else { return }
-            let doc = Document(parsing: response, source: nil)
-            let lineCount = Int(doc.range?.upperBound.line ?? 0)
-            
-            environment
-                .center
-                .responseWindowSize
-                .send(
-                    EnvironmentService
-                        .ResponseWindowSizeUpdated
-                        .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0)))
-            
-            state.response = response
-            state.isResponding = false
-        }
-        
-        var thread: DispatchQueue? {
-            .main
         }
     }
 }

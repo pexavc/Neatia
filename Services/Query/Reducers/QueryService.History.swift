@@ -1,7 +1,6 @@
 import Granite
 import SandKit
 import Foundation
-import Markdown
 import SwiftUI
 
 extension QueryService {

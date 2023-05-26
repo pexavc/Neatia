@@ -1,7 +1,6 @@
 import Granite
 import SandKit
 import Foundation
-import Markdown
 import SwiftUI
 
 extension SandService {
@@ -67,8 +66,8 @@ extension SandService {
                 state.responseHelpers = HelperInfo.generate(from: state.response)
                 
                 //processDocument.send(payload)
-                let doc = Document(parsing: state.response, source: nil)
-                let lineCount = Int(doc.range?.upperBound.line ?? 0)
+                //let doc = Document(parsing: state.response, source: nil)
+                let lineCount = 1//Int(doc.range?.upperBound.line ?? 0)
                 
                 environment
                     .center
@@ -77,7 +76,8 @@ extension SandService {
                         EnvironmentService
                             .ResponseWindowSizeUpdated
                             .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0),
-                                  responseHelpersActive: state.responseHelpers.isNotEmpty))
+                                  responseHelpersActive: state.responseHelpers.isNotEmpty,
+                                  basedOnString: state.response))
                 
             }
             

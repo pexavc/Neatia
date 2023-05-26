@@ -91,6 +91,13 @@ extension Mount: View {
                                     .border(.red, width: 2)
                                     .allowsHitTesting(false)
                             }
+                            .overlayIf(sand.state.isResponding && sand.state.response.isEmpty) {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundColor(Brand.Colors.black.opacity(0.45))
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .padding(.horizontal, WindowComponent.Style.defaultContainerOuterPadding)
+                                ProgressView()
+                            }
                     }
                     
                     if environment.state.isCommandActive {

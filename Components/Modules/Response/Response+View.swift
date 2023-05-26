@@ -49,10 +49,6 @@ extension Response: View {
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                if sand.state.isResponding && sand.state.response.isEmpty {
-                    ProgressView()
-                }
-                
                 if sand.state.responseHelpers.isNotEmpty {
                     ResponseHelperView(helperInfo: sand.state.responseHelpers)
                 }

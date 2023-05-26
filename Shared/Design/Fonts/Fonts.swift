@@ -16,6 +16,15 @@ extension NSFont {
     }
 }
 
+extension String {
+    func height(withConstrainedWidth width: CGFloat, font: NSFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+    
+        return ceil(boundingBox.height)
+    }
+}
+
 public struct Fonts {
     public static func live(_ size: FontSize, _ weight: FontWeight) -> Font {
         .system(size: size.value, weight: weight.textWeight)
@@ -25,6 +34,7 @@ public struct Fonts {
 //            size: size.value,
 //            relativeTo: size.textStyle)
     }
+    
     
     public static func nsFont(_ size: FontSize, _ weight: FontWeight) -> NSFont {
         NSFont.systemFont(ofSize: size.value, weight: weight.textWeightNS)
