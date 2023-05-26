@@ -74,15 +74,6 @@
         }
       },
       {
-        "package": "Highlightr",
-        "repositoryURL": "https://github.com/raspu/Highlightr.git",
-        "state": {
-          "branch": null,
-          "revision": "93199b9e434f04bda956a613af8f571933f9f037",
-          "version": "2.1.2"
-        }
-      },
-      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
@@ -134,24 +125,6 @@
           "branch": null,
           "revision": "0af9125c4eae12a4973fb66574c53a54962a9e1e",
           "version": "1.21.0"
-        }
-      },
-      {
-        "package": "SwiftBackports",
-        "repositoryURL": "https://github.com/shaps80/SwiftBackports",
-        "state": {
-          "branch": null,
-          "revision": "fafbeabf78b7e364abbbb7565cdfeee42af16211",
-          "version": "1.0.2"
-        }
-      },
-      {
-        "package": "SwiftUIBackports",
-        "repositoryURL": "https://github.com/shaps80/SwiftUIBackports",
-        "state": {
-          "branch": null,
-          "revision": "b092912f2468359ebf9b77e8f310b5f73dc2fe70",
-          "version": "2.1.0"
         }
       },
       {

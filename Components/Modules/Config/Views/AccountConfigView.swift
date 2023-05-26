@@ -15,6 +15,7 @@ struct AccountConfigView: View {
     @GraniteAction<Void> var subscribe
     @GraniteAction<Void> var logout
     @GraniteAction<QueryHistory> var queryHistorySelected
+    @Environment(\.openURL) var openURL
     
     @SharedObject(SessionManager.id) var session: SessionManager
     
@@ -286,6 +287,31 @@ struct AccountConfigView: View {
                         }
                         .environment(\.colorScheme, .dark)
                     }
+                    
+                    HStack(spacing: 4) {
+                        Text("Privacy Policy")
+                            .foregroundColor(.accentColor)
+                            .onTapGesture {
+                                if let url = URL(string: "https://www.iubenda.com/privacy-policy/30492892/legal") {
+                                    openURL(url)
+                                }
+                            }
+                        
+                        Text("and")
+                            .foregroundColor(.foreground)
+                        
+                        
+                        Text("Terms of Use")
+                            .foregroundColor(.accentColor)
+                            .onTapGesture {
+                                if let url = URL(string: "https://www.iubenda.com/terms-and-conditions/30492892") {
+                                    openURL(url)
+                                }
+                            }
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
                     
                 }
                 

@@ -69,6 +69,31 @@ struct AboutConfigView: View {
                 }
             }
             
+            HStack(spacing: 4) {
+                Text("Privacy Policy")
+                    .foregroundColor(.accentColor)
+                    .onTapGesture {
+                        if let url = URL(string: "https://www.iubenda.com/privacy-policy/30492892/legal") {
+                            openURL(url)
+                        }
+                    }
+                
+                Text("and")
+                    .foregroundColor(.foreground)
+                
+                
+                Text("Terms of Use")
+                    .foregroundColor(.accentColor)
+                    .onTapGesture {
+                        if let url = URL(string: "https://www.iubenda.com/terms-and-conditions/30492892") {
+                            openURL(url)
+                        }
+                    }
+                
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
+            
             Text("Copyright Stoic Collective, LLC. \u{00A9} \(Calendar.current.component(.year, from: Date.now).asString.replacingOccurrences(of: ",", with: ""))")
                 .font(Fonts.live(.caption2, .regular))
             

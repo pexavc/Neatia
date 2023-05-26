@@ -122,7 +122,7 @@ extension Config: View {
                             .onTapGesture(account.center.logout)
                     }
                     
-                    Label("Quit", systemImage: "power")
+                    Text("Quit")
                         .onTapGesture { NSApp.terminate(self) }
                 }
             }

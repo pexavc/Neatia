@@ -17,7 +17,7 @@ extension ConfigService {
             }
             
             //GPT
-            var streamResponse: Bool = false
+            var streamResponse: Bool = true
             
             //Hotkeys
             var mountHotkey: InteractionManager.HotkeyOptions = .n
@@ -70,7 +70,7 @@ extension ConfigService {
         @Event var removeAPIKey: RemoveCustomAPIKey.Reducer
         @Event var updateHistory: UpdateHistory.Reducer
         
-        @Store(persist: "neatia.persistence.config.0016", autoSave: true, preload: true) public var state: State
+        @Store(persist: "neatia.persistence.config.0017", autoSave: true, preload: true) public var state: State
     }
     
     static func decode(_ bytes: [UInt32]) -> String? {

@@ -49,7 +49,7 @@ extension CommandToolbar {
     var subcommandSelectionView: some View {
         VStack(spacing: 0) {
             Spacer().frame(height: 14)
-            ScrollView([.vertical]) {
+            ScrollView([.vertical], showsIndicators: false) {
                 TableView {
                     subcommandSelectionRows
                 }.tableViewStyle(.init(rowHeight: WindowComponent.Style.defaultElementSize.height,
@@ -104,7 +104,7 @@ extension CommandToolbar {
     }
     
     var subcommandsView: some View {
-        ScrollView([.horizontal]) {
+        ScrollView([.horizontal], showsIndicators: false) {
             HStack(spacing: 8) {
                 Spacer()
                 
