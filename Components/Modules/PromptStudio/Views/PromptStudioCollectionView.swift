@@ -45,7 +45,7 @@ struct PromptStudioCollectionView: View {
                         
                         if service.state.customPrompts.isEmpty && preview {
                             HStack {
-                                Text("Open the studio to create custom commands/prompts. Helping you customize your experience and repeat repetitive tasks effeciently.")
+                                Text("Open the studio to create custom commands/prompts. Helping you customize your experience and repeat tasks effeciently.")
                                     .font(Fonts.live(.defaultSize, .bold))
                                 
                                 Spacer()

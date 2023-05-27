@@ -521,9 +521,6 @@ extension PromptStudioEditorView {
                         .foregroundColor((promptTokenCount <= PromptService.customPromptMaxTokenCount ? Brand.Colors.green : Brand.Colors.red).opacity(0.55))
                     
                 }
-                
-                Spacer()
-                    .frame(height: WindowComponent.Style.defaultContainerOuterPadding)
             }
             .padding(8)
             .allowsHitTesting(false)

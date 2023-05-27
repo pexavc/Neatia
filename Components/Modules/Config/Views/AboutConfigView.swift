@@ -97,9 +97,6 @@ struct AboutConfigView: View {
             Text("Copyright Stoic Collective, LLC. \u{00A9} \(Calendar.current.component(.year, from: Date.now).asString.replacingOccurrences(of: ",", with: ""))")
                 .font(Fonts.live(.caption2, .regular))
             
-            
-            Spacer()
-            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
