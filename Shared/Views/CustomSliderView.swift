@@ -11,13 +11,48 @@ import SwiftUI
 struct CustomSliderView: View {
     @Binding var value: Double
     
+    var showValue: Bool = false
+    var blurBG: Bool = false
+    var fastUpdate: Bool = false
+    
     @State var UIValue: Double?
     
     var color: Color
     
+    @State var currentValue: Double = 0.0
     @State var lastCoordinateValue: CGFloat = 0.0
     
     var body: some View {
+        if showValue {
+            
+            HStack(spacing: 8) {
+                if blurBG {
+                    AppBlurView(size: .init(30, 30)) {
+                        Text(String(format: "%.2f", currentValue))
+                            .font(Fonts.live(.footnote, .bold))
+                            .foregroundColor(.foreground)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(width: 30, height: 30)
+                    .padding(.horizontal, 16)
+                } else {
+                    Text(String(format: "%.2f", currentValue))
+                        .font(Fonts.live(.footnote, .bold))
+                        .foregroundColor(.foreground)
+                        .multilineTextAlignment(.center)
+                }
+                
+                slider
+                
+                Spacer()
+            }
+            
+        } else {
+            slider
+        }
+    }
+    
+    var slider: some View {
         GeometryReader { gr in
             let size = gr.frame(in: .local).size
             let cursorSize = size.height * 0.8
@@ -27,7 +62,7 @@ struct CustomSliderView: View {
             
             let width = maxValue - minValue
             
-            ZStack {
+            return ZStack {
                 RoundedRectangle(cornerRadius: radius)
                     .foregroundColor(color)
                 
@@ -35,12 +70,12 @@ struct CustomSliderView: View {
                     Circle()
                         .foregroundColor(.white)
                         .frame(width: cursorSize, height: cursorSize)
-                        .offset(x: self.UIValue ?? (self.value * width))
+                        .offset(x: self.UIValue ?? (self.currentValue * width))
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onChanged { v in
                                     if (abs(v.translation.width) < 0.1) {
-                                        self.lastCoordinateValue = self.UIValue ?? (self.value * width)
+                                        self.lastCoordinateValue = self.UIValue ?? (self.currentValue * width)
                                     }
                                     
                                     if v.translation.width > 0 {
@@ -49,14 +84,26 @@ struct CustomSliderView: View {
                                         self.UIValue = (max(minValue, self.lastCoordinateValue + v.translation.width))
                                     }
                                     
-                                    if let uival = self.UIValue {
-                                        self.value = uival / maxValue
+                                    DispatchQueue.main.async {
+                                        if let uival = self.UIValue {
+                                            self.currentValue = uival / maxValue
+                                        }
+                                        
+                                        if fastUpdate {
+                                            self.value = self.currentValue
+                                        }
                                     }
+                                }
+                                .onEnded { _ in
+                                    self.value = self.currentValue
                                 }
                         )
                     
                     Spacer()
                 }
+            }
+            .onAppear {
+                self.currentValue = value
             }
         }
     }

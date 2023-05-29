@@ -436,6 +436,7 @@ extension PromptStudioEditorView {
                     
                     VStack(alignment: .center) {
                         CustomSliderView(value: $promptCreativity,
+                                         fastUpdate: true,
                                          color: Brand.Colors.purple.opacity(0.45))
                         .frame(height: 30)
                         

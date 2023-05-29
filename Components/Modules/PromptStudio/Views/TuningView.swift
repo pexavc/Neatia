@@ -59,7 +59,7 @@ struct TuningView: View {
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
             } icon: {
-                Image (systemName: "rotate.3d")
+                Image(systemName: "rotate.3d")
             }
             .padding(.bottom, isPopup ? 8 : 0)
             
@@ -111,59 +111,24 @@ struct TuningView: View {
                     Text("Temperature")
                         .font(Fonts.live(.subheadline, .bold))
                         .foregroundColor(.foreground)
-                    HStack(spacing: 8) {
-                        if isPopup {
-                            AppBlurView(size: .init(30, 30)) {
-                                Text(String(format: "%.2f", promptTemperature))
-                                    .font(Fonts.live(.footnote, .bold))
-                                    .foregroundColor(.foreground)
-                                    .multilineTextAlignment(.center)
-                            }
-                            .frame(width: 30, height: 30)
-                            .padding(.horizontal, 16)
-                        } else {
-                            Text(String(format: "%.2f", promptTemperature))
-                                .font(Fonts.live(.footnote, .bold))
-                                .foregroundColor(.foreground)
-                                .multilineTextAlignment(.center)
-                        }
-                        
-                        CustomSliderView(value: $promptTemperature,
-                                         color: Brand.Colors.purple.opacity(0.45))
-                        .frame(width: 120, height: 20)
-                        
-                        Spacer()
-                    }
+                    
+                    CustomSliderView(value: $promptTemperature,
+                                     showValue: true,
+                                     blurBG: isPopup,
+                                     color: Brand.Colors.purple.opacity(0.45))
+                        .frame(width: 200, height: 20)
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Top P")
                         .font(Fonts.live(.subheadline, .bold))
                         .foregroundColor(.foreground)
-                    HStack(spacing: 8) {
-                        
-                        if isPopup {
-                            AppBlurView(size: .init(30, 30)) {
-                                Text(String(format: "%.2f", promptTopP))
-                                    .font(Fonts.live(.footnote, .bold))
-                                    .foregroundColor(.foreground)
-                                    .multilineTextAlignment(.center)
-                            }
-                            .frame(width: 30, height: 30)
-                            .padding(.horizontal, 16)
-                        } else {
-                            Text(String(format: "%.2f", promptTopP))
-                                .font(Fonts.live(.footnote, .bold))
-                                .foregroundColor(.foreground)
-                                .multilineTextAlignment(.center)
-                        }
-                        
-                        CustomSliderView(value: $promptTopP,
-                                         color: Brand.Colors.purple.opacity(0.45))
-                        .frame(width: 120, height: 20)
-                        
-                        Spacer()
-                    }
+                    
+                    CustomSliderView(value: $promptTopP,
+                                     showValue: true,
+                                     blurBG: isPopup,
+                                     color: Brand.Colors.purple.opacity(0.45))
+                        .frame(width: 200, height: 20)
                 }
             }
             HStack {

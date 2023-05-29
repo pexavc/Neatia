@@ -61,8 +61,8 @@ struct GeneralConfigView: View {
 //            .padding(.bottom, 8)
             
             if config.state.isCustomAPIKeySet || session.isSubscribed {
-                
-                TuningView(updateCustomConfigDirectly: true)
+                TuningView(updateCustomConfigDirectly: true,
+                           config: config.state.customPromptConfig)
                 
             } else if SessionManager.IS_API_ACCESS_ENABLED {
                 Text("Custom API Key for OpenAI's ChatGPT")
