@@ -19,13 +19,13 @@ struct TuningView: View {
     var updateCustomConfigDirectly: Bool = false
     
     @State var useCustomSettings: Bool = true
-    @State var promptTemperature: Double = 0.5
-    @State var promptTopP: Double = 0.5
-    @State var promptNumberOfAnswers: Int = 1
-    @State var promptMaxTokens: Int = PromptService.maxTokenCount
+    @State var promptTemperature: Double
+    @State var promptTopP: Double
+    @State var promptNumberOfAnswers: Int
+    @State var promptMaxTokens: Int
     @State var promptMaxTokensDisplay: String = "\(PromptService.maxTokenCount)"
-    @State var promptEngine: String = "gpt-3.5-turbo"
-    @State var useTopP: Bool = false
+    @State var promptEngine: String
+    @State var useTopP: Bool
     
     var promptConfig: PromptConfig {
         .init(temperature: promptTemperature,
@@ -37,22 +37,15 @@ struct TuningView: View {
     
     init(isPopup: Bool = false,
          updateCustomConfigDirectly: Bool = false,
-         config: PromptConfig) {
+         config: PromptConfig? = nil) {
         self.isPopup = isPopup
         self.updateCustomConfigDirectly = updateCustomConfigDirectly
-        
-        self.promptTemperature = config.temperature ?? self.promptTemperature
-        self.promptTopP = config.topP ?? self.promptTopP
-        self.useTopP = config.topP != nil
-        self.promptNumberOfAnswers = Int(config.numberOfAnswers ?? Double(self.promptNumberOfAnswers))
-        self.promptMaxTokens = config.maximumTokens ?? self.promptMaxTokens
-        self.promptEngine = config.engine
-    }
-    
-    init(isPopup: Bool = false,
-         updateCustomConfigDirectly: Bool = false) {
-        self.isPopup = isPopup
-        self.updateCustomConfigDirectly = updateCustomConfigDirectly
+        self.promptTemperature = config?.temperature ?? 0.5
+        self.promptTopP = config?.topP ?? 0.5
+        self.useTopP = config?.topP != nil
+        self.promptNumberOfAnswers = Int(config?.numberOfAnswers ?? Double(1))
+        self.promptMaxTokens = config?.maximumTokens ?? PromptService.maxTokenCount
+        self.promptEngine = config?.engine ?? "gpt-3.5-turbo"
     }
     
     var body: some View {

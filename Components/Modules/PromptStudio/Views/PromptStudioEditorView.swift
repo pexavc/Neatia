@@ -402,6 +402,7 @@ extension PromptStudioEditorView {
                         TuningView(isPopup: true, config: customConfig)
                             .attach({ config in
                                 self.promptCustomConfig = config
+                                InteractionManager.shared.closePopup(.init(kind: .promptStudio))
                             }, at: \.setConfig)
                     }
                     .frame(width: 60, height: 60)
@@ -455,7 +456,8 @@ extension PromptStudioEditorView {
                                     .padding(.horizontal, 6)
                                 
                             }) {
-                                TuningView(isPopup: true)
+                                TuningView(isPopup: true,
+                                           config: self.promptCustomConfig)
                                     .attach({ config in
                                         self.promptCustomConfig = config
                                         InteractionManager.shared.closePopup(.init(kind: .promptStudio))

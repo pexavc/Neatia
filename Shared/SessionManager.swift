@@ -86,7 +86,7 @@ final class SessionManager: Equatable, SharableObject {
     }
     
     static var IS_API_ACCESS_ENABLED: Bool {
-        false
+        true
     }
     
     static var DISABLE_LOGIN: Bool {
