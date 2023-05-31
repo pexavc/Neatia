@@ -23,10 +23,10 @@ extension ShortcutBar: View {
                 
                 Spacer()
                 
-                if (sand.state.isResponding && sand.state.response.isNotEmpty) {
+                if (sand.state.isResponding && sand.state.response.isEmpty == false) {
                     ProgressView()
-                        .scaleEffect(.init(0.75, 0.75))
-                } else if sand.state.response.isNotEmpty {
+                        .scaleEffect(.init(width: 0.75, height: 0.75))
+                } else if sand.state.response.isEmpty == false {
                     copyToClipboardView
                     downloadButtonView
                 }
@@ -40,10 +40,13 @@ extension ShortcutBar: View {
 extension ShortcutBar {
     var copyToClipboardView: some View {
         
-        AppBlurView(padding: .init(16),
+        AppBlurView(padding: .init(top: 16,
+                                   leading: 16,
+                                   bottom: 16,
+                                   trailing: 16),
                     tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
-                guard sand.state.response.isNotEmpty else { return }
+                guard sand.state.response.isEmpty == false else { return }
                 
                 center.$state.binding.lastCopiedText.wrappedValue = sand.state.response
                 let pasteboard = NSPasteboard.general
@@ -74,7 +77,7 @@ extension ShortcutBar {
         AppBlurView(padding: .init(16),
                     tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
-                guard sand.state.response.isNotEmpty else { return }
+                guard sand.state.response.isEmpty == false else { return }
                 let markdown: String = sand.state.response
                 let parser = MarkdownParser()
                 let result = parser.parse(markdown)

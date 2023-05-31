@@ -49,7 +49,7 @@ extension Response: View {
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                if sand.state.responseHelpers.isNotEmpty {
+                if sand.state.responseHelpers.isEmpty == false {
                     ResponseHelperView(helperInfo: sand.state.responseHelpers)
                 }
             }
@@ -73,7 +73,7 @@ struct LoadingView: View {
             ZStack(alignment: .leading) {
                 bgColor
                     .opacity(0.25)
-                    .frame(width: proxy.width * percent)
+                    .frame(width: proxy.size.width * percent)
                     .frame(maxHeight: .infinity)
                     .animation(.default, value: percent)
                     .onAppear {

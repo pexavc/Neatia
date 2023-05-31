@@ -91,7 +91,7 @@ extension SandService {
             state.subCommandFileSet = [:]
             
             if commandComponents.count > 1,
-               commandComponents[1].newlinesSanitized.lowercased().isNotEmpty == true {
+               commandComponents[1].newlinesSanitized.lowercased().isEmpty == false {
                 if let basic = prompts.prompt(state.commandSet) {
                     let second = commandComponents[1].newlinesSanitized.lowercased()
                    

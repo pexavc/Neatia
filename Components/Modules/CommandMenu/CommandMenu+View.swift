@@ -43,7 +43,7 @@ extension CommandMenu: View {
                                           reset: false))
                     } label: {
                         PromptPreviewView(prompt: prompt,
-                                          size: .init(170, 170),
+                                          size: .init(width: 170, height: 170),
                                           styleSize: .large,
                                           showCustomLabel: true)
                     }

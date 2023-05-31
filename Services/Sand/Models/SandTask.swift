@@ -20,14 +20,6 @@ class SandTask: GraniteModel {
     var task: Task<(), Error>? = nil {
         didSet {
             isStarting = true
-//            timerCancellable = Timer.publish(every: 1.0, on: .main, in: .default)
-//                .autoconnect()
-//                .sink { [weak self] _ in
-//                self?.lastUpdate = .init()
-//                self?.isStarting = false
-//                self?.timerCancellable?.cancel()
-//                self?.notifier?()
-//            }
             lastUpdate = .init()
         }
     }

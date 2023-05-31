@@ -43,9 +43,7 @@ extension EnvironmentService {
             //IAP - Subscriptions
             VaultManager
                 .load(
-                    VaultProducts.Renewable.vaultProducts +
-                    VaultProducts.RenewableReduced.vaultProducts/* +
-                    VaultProducts.Lifetime.vaultProducts*/
+                    VaultProducts.Renewable.vaultProducts
                 )
             
             //Config

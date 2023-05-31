@@ -148,7 +148,6 @@ extension MacEditorTextView {
             }
             
             self.parent.text = textView.string
-            //self.parent.onCommit()
         }
         
         func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
@@ -174,21 +173,6 @@ extension MacEditorTextView {
                 return false
             }
         }
-        
-        //        func textView(_ textView: NSTextView,
-        //                      completions words: [String],
-        //                      forPartialWordRange charRange: NSRange,
-        //                      indexOfSelectedItem index: UnsafeMutablePointer<Int>?) -> [String] {
-        //
-        //            guard textView.string.count > 1 else { return [] }
-        //
-        //            let textAfterCommand: String = textView.string.substring(from: textView.string.index(after: textView.string.startIndex)).lowercased()
-        //
-        //            let suggestions: [String] = autoCompleteText.filter { $0.lowercased().contains(textAfterCommand) }.map { "/"+$0 }
-        //
-        //            print("[MacEditorTextView] ac for: \(textAfterCommand) -> \(suggestions)")
-        //            return suggestions
-        //        }
     }
 }
 
@@ -268,7 +252,7 @@ final class CustomTextView: NSView {
         let defaultWindowHeight = WindowComponent.Style.defaultWindowSize.height
         let midPointY = defaultWindowHeight / 2
         
-        textView.textContainerInset = .init(0, midPointY - ((self.font?.pointSize ?? 0) / 4))
+        textView.textContainerInset = .init(width: 0, height: midPointY - ((self.font?.pointSize ?? 0) / 4))
         
         return textView
     }()
@@ -310,7 +294,7 @@ final class CustomTextView: NSView {
         let defaultWindowHeight = WindowComponent.Style.defaultWindowSize.height
         let midPointY = defaultWindowHeight / 2
         
-        textView.textContainerInset = .init(0, midPointY - ((self.font?.pointSize ?? 0) / 4))
+        textView.textContainerInset = .init(width: 0, height: midPointY - ((self.font?.pointSize ?? 0) / 4))
         
         return textView
     }()
@@ -380,13 +364,12 @@ extension NSTextView {
             let firstVisibleGlyphCharacterIndex = layoutManager.characterIndexForGlyph(at: visibleGlyphRange.location)
             
             let newLineRegex = try? NSRegularExpression(pattern: "\n", options: [])
-            // The line number for the first visible line
+        
             var lineNumber = newLineRegex?.numberOfMatches(in: textView.string, options: [], range: NSMakeRange(0, firstVisibleGlyphCharacterIndex)) ?? 0
             
             //                print("[MacEditorTextView] start: \(lineNumber)")
             //
             //                print("[MacEditorTextView] glyph: \(glyphIndexForStringLine), visible: \(NSMaxRange(visibleGlyphRange))")
-            // Go through each line in the string.
             
             var actualLineNumbers = 0
             while glyphIndexForStringLine < NSMaxRange(visibleGlyphRange) {
@@ -402,13 +385,9 @@ extension NSTextView {
                 
                 while ( glyphIndexForGlyphLine < NSMaxRange(glyphRangeForStringLine) ) {
                     
-                    // See if the current line in the string spread across
-                    // several lines of glyphs
                     var effectiveRange = NSMakeRange(0, 0)
                     let lineRect = layoutManager.lineFragmentRect(forGlyphAt: glyphIndexForGlyphLine, effectiveRange: &effectiveRange, withoutAdditionalLayout: true)
                     
-                    
-                    // Move to next glyph line
                     glyphLineCount += 1
                     glyphIndexForGlyphLine = NSMaxRange(effectiveRange)
                 }

@@ -124,21 +124,6 @@ struct AccountConfigView: View {
             }
             
             Spacer()
-            
-            
-//            AppBlurView(tintColor: Brand.Colors.red.opacity(0.45)) {
-//                
-//                HStack(spacing: 8) {
-//                    Button {
-//                        account.center.logout.send()
-//                    } label: {
-//                        
-//                        Text("Logout")
-//                            .font(Fonts.live(.headline, .bold))
-//                            .foregroundColor(.foreground)
-//                    }.buttonStyle(PlainButtonStyle())
-//                }
-//            }
         }
     }
     
@@ -175,13 +160,6 @@ struct AccountConfigView: View {
                 AppBlurView(size: .init(0, 60),
                             tintColor: Brand.Colors.black.opacity(0.3)) {
                     VStack(alignment: .leading, spacing: 8) {
-                        
-//                        Text("• Custom API Keys. Tune additional parameters before making queries. (Lifetime API Access required).")
-//                            .font(Fonts.live(.subheadline, .regular))
-//                            .foregroundColor(.accentColor)
-//                            .onTapGesture {
-//                                config.center.$state.binding.isSettingsActive.wrappedValue = true
-//                            }
                         
                         Text("• Custom prompt command creation, editing, and sharing in Prompt Studio.")
                             .font(Fonts.live(.subheadline, .regular))
@@ -227,23 +205,13 @@ struct AccountConfigView: View {
                         .foregroundColor(.foreground)
                         .padding(.bottom, 8)
                     
-                    if reducedPricing {
-                        HStack(spacing: 8) {
-                            ForEach(VaultManager.productsFor(VaultProducts.RenewableReduced.allCases).ordered) { product in
-                                
-                                optionView(product)
-                            }
+                    HStack(spacing: 8) {
+                        ForEach(VaultManager.productsFor(VaultProducts.Renewable.allCases).ordered) { product in
+                            
+                            optionView(product)
                         }
-                        .padding(.bottom, 8)
-                    } else {
-                        HStack(spacing: 8) {
-                            ForEach(VaultManager.productsFor(VaultProducts.Renewable.allCases).ordered) { product in
-                                
-                                optionView(product)
-                            }
-                        }
-                        .padding(.bottom, 8)
                     }
+                    .padding(.bottom, 8)
                     
                     if session.isPurchasing {
                         HStack {
@@ -314,25 +282,6 @@ struct AccountConfigView: View {
                     .frame(maxWidth: .infinity)
                     
                 }
-                
-//                Group {
-//                    Spacer()
-//
-//                    HStack {
-//                        Toggle("Have an OpenAI API Key? See cheaper options.", isOn: $reducedPricing)
-//
-//                        Spacer()
-//                    }
-//                    .onChange(of: reducedPricing) { newValue in
-//                        if newValue {
-//                            selectedOption = VaultManager.shared.productFor(VaultProducts.RenewableReduced.monthly)
-//                        } else {
-//                            selectedOption = VaultManager.shared.productFor(VaultProducts.Renewable.monthly)
-//                        }
-//                    }
-//
-//                    Spacer()
-//                }
             }
         }
     }
@@ -343,10 +292,6 @@ struct AccountConfigView: View {
                 Text(sanitizeDisplayName(product.metadata.displayName))
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
-                
-//                Text(metadata.displayPrice)
-//                    .font(Fonts.live(.footnote, .regular))
-//                    .foregroundColor(.foreground)
                 
                 if selectedOption == product {
                     Image(systemName: "checkmark")

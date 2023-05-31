@@ -15,7 +15,6 @@ extension PromptStudioEditorView {
                     tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
                 
-                //1. Encode into json
                 if let dict = try? JSONEncoder().encode(asCustomPrompt),
                    let stringV = String(data: dict, encoding: .utf8) {
                     

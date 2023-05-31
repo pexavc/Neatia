@@ -8,7 +8,6 @@
 import Foundation
 import Granite
 import SwiftUI
-import SandKit
 
 struct QueryHistory: GraniteModel, Identifiable {
     static func == (lhs: QueryHistory, rhs: QueryHistory) -> Bool {

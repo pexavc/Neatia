@@ -111,9 +111,9 @@ struct PromptStudioEditorView: View {
     }
     
     var isValid: Bool {
-        promptCommand.isNotEmpty &&
-        promptBody.isNotEmpty &&
-        promptDescription.isNotEmpty &&
+        promptCommand.isEmpty == false &&
+        promptBody.isEmpty == false &&
+        promptDescription.isEmpty == false &&
         promptTokenCount <= PromptService.customPromptMaxTokenCount &&
         (
             (service.commands.contains(promptCommand.lowercased()) == false) || isEditing

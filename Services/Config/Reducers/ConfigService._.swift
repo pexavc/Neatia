@@ -40,7 +40,7 @@ extension ConfigService {
         
         func reduce(state: inout Center.State) {
             guard let meta = self.meta,
-                  meta.key.newlinesSanitized.isNotEmpty else { return }
+                  meta.key.newlinesSanitized.isEmpty == false else { return }
             
             guard let image = NSImage(named: "logo_small") else {
                 return

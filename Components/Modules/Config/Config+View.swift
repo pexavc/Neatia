@@ -139,7 +139,7 @@ extension Config: View {
                     LogoView()
                         .frame(width: 120, height: 120)
                     
-                    AppBlurView(size: .init(0, 80),
+                    AppBlurView(size: .init(width: 0, height: 80),
                                 tintColor: Brand.Colors.black.opacity(0.3)) {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Neatia")
@@ -171,10 +171,6 @@ extension Config: View {
 //                    }
 //                }
 //                .environment(\.colorScheme, .dark)
-                
-                
-                
-                FeatureImageSliderView()
                 
                 Text("Sign in")
                     .font(Fonts.live(.headline, .bold))

@@ -49,7 +49,6 @@ final class SessionManager: Equatable, SharableObject {
     internal var cancellables = Set<AnyCancellable>()
     
     var isLocked: Bool {
-//        print("[SessionManager] isLocked: \(kit.isLifetimeAPI), \(kit.isCustomAPI), \(kit.isSubscribed)")
         guard kit.isLoggedIn else {
             return true
         }
@@ -59,14 +58,6 @@ final class SessionManager: Equatable, SharableObject {
         }
         
         return kit.isSubscribed == false
-        
-//        if SessionManager.IS_API_ACCESS_ENABLED {
-//            return kit.isCustomAPI == false
-//        } else if kit.isSubscribed {
-//            return isFullAccess == false
-//        } else {
-//            return true
-//        }
     }
     
     var isLoggedIn: Bool {

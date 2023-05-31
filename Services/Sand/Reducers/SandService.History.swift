@@ -61,7 +61,7 @@ extension SandService {
             
             //Restore Response
             state.response = meta.history.response
-            if meta.history.response.isNotEmpty {
+            if meta.history.response.isEmpty == false {
                 
                 state.responseHelpers = HelperInfo.generate(from: state.response)
                 

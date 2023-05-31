@@ -68,7 +68,7 @@ struct GeneralConfigView: View {
                 Text("Custom API Key for OpenAI's ChatGPT")
                     .font(Fonts.live(.headline, .bold))
                     .foregroundColor(.foreground)
-                AppBlurView(size: .init(0, 60),
+                AppBlurView(size: .init(width: 0, height: 60),
                             tintColor: Brand.Colors.black.opacity(0.3)) {
                     MacEditorTextView(
                         text: $apiKey,

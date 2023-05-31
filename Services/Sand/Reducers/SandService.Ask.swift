@@ -132,7 +132,7 @@ extension SandService {
                             EnvironmentService
                                 .ResponseWindowSizeUpdated
                                 .Meta(lineCount: lineCount + (lineCount > 1 ? 2 : 0),
-                                      responseHelpersActive: state.responseHelpers.isNotEmpty,
+                                      responseHelpersActive: state.responseHelpers.isEmpty == false,
                                       basedOnString: state.response))
                     
                 }
