@@ -42,17 +42,7 @@ extension ConfigService {
             guard let meta = self.meta,
                   meta.key.newlinesSanitized.isNotEmpty else { return }
             
-            guard let image = NSImage(named: "logo_small") else {
-                return
-            }
-            
-            guard let data = image.png else { return }
-            
-            let nsData = NSData(data: data)
-            
-            let bytes = getArrayOfBytesFromImage(imageData: nsData)
-            
-            let imageData = MarqueKit().encodeBytes(meta.key, withObject: bytes).data
+            let imageData = SandGPT.global_key_encoder(meta.key)
             
             print("[ConfigService] encoded \(imageData.count)")
             
@@ -60,25 +50,6 @@ extension ConfigService {
             
             SandGPT.shared.CUSTOM_API_KEY = state.customAPIKey
             SandGPT.shared.useCustomAPI()
-        }
-        
-        func getArrayOfBytesFromImage(imageData:NSData) -> Array<UInt32> {
-            // the number of elements:
-            let count = imageData.length / MemoryLayout<UInt32>.size
-            
-            // create array of appropriate length:
-            var bytes = [UInt32](repeating: 0, count: count)
-            
-            // copy bytes into array
-            imageData.getBytes(&bytes, length:count * MemoryLayout<UInt32>.size)
-            
-            var byteArray:Array = Array<UInt32>()
-            
-            for i in 0 ..< count {
-                byteArray.append(bytes[i])
-            }
-            
-            return byteArray
         }
     }
     

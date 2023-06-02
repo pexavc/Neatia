@@ -1286,16 +1286,8 @@
 				719E240E295348B900CEB2FE /* Debug+View.swift */,
 				719E240F295348B900CEB2FE /* Debug+Center.swift */,
 				719E2410295348B900CEB2FE /* Debug.swift */,
-				719E2411295348B900CEB2FE /* Reducers */,
 			);
 			path = Debug;
-			sourceTree = "<group>";
-		};
-		719E2411295348B900CEB2FE /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reducers;
 			sourceTree = "<group>";
 		};
 		71A28DC1295232E300EAE8EE /* Graph */ = {

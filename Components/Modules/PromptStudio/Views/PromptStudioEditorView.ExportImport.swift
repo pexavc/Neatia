@@ -28,7 +28,7 @@ extension PromptStudioEditorView {
                     
                     let nsData = NSData(data: data)
                     
-                    let bytes = getArrayOfBytesFromImage(imageData: nsData)
+                    let bytes = nsData.getArrayOfBytesFromImage
                     
                     //2. Encrypt json data (UInt32 array)
                     let imageData = MarqueKit().encodeBytes(stringV, withObject: bytes).data
@@ -144,23 +144,26 @@ extension PromptStudioEditorView {
     }
 }
 
-fileprivate func getArrayOfBytesFromImage(imageData:NSData) -> Array<UInt32>
-{
-    
-    // the number of elements:
-    let count = imageData.length / MemoryLayout<UInt32>.size
-    
-    // create array of appropriate length:
-    var bytes = [UInt32](repeating: 0, count: count)
-    
-    // copy bytes into array
-    imageData.getBytes(&bytes, length:count * MemoryLayout<UInt32>.size)
-    
-    var byteArray:Array = Array<UInt32>()
-    
-    for i in 0 ..< count {
-        byteArray.append(bytes[i])
+extension NSData {
+    var getArrayOfBytesFromImage: Array<UInt32>
+    {
+        var imageData: NSData = self
+        
+        // the number of elements:
+        let count = imageData.length / MemoryLayout<UInt32>.size
+        
+        // create array of appropriate length:
+        var bytes = [UInt32](repeating: 0, count: count)
+        
+        // copy bytes into array
+        imageData.getBytes(&bytes, length:count * MemoryLayout<UInt32>.size)
+        
+        var byteArray:Array = Array<UInt32>()
+        
+        for i in 0 ..< count {
+            byteArray.append(bytes[i])
+        }
+        
+        return byteArray
     }
-    
-    return byteArray
 }
