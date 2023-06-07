@@ -1,8 +1,8 @@
 //
 //  WindowManager.VisualEffectView.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/7/23.
+//  Created by PEXAVC on 5/7/23.
 //
 
 import Foundation

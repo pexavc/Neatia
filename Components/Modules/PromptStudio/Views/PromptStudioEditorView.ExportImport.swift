@@ -1,12 +1,11 @@
 //
 //  PromptStudioEditorView.ExportImport.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/18/23.
+//  Created by PEXAVC on 5/18/23.
 //
 
 import Foundation
-import MarqueKit
 import SwiftUI
 
 extension PromptStudioEditorView {
@@ -15,41 +14,26 @@ extension PromptStudioEditorView {
                     tintColor: Brand.Colors.black.opacity(0.3)) {
             Button {
                 
-                if let dict = try? JSONEncoder().encode(asCustomPrompt),
-                   let stringV = String(data: dict, encoding: .utf8) {
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+                
+                if let data = try? encoder.encode(asCustomPrompt) {
                     
-                    guard let pietaURL = Bundle.main.url(forResource: "pieta", withExtension: ".png") else { return }
-                    guard let pieta = NSImage(contentsOf: pietaURL) else {
-                        return
-                    }
+                    //Encryption occurs here in the Live version
                     
-                    guard let data = pieta.png else { return }
-                    
-                    let nsData = NSData(data: data)
-                    
-                    let bytes = getArrayOfBytesFromImage(imageData: nsData)
-                    
-                    //2. Encrypt json data (UInt32 array)
-                    let imageData = MarqueKit().encodeBytes(stringV, withObject: bytes).data
-                    
-                    //3. Serialize into data object again
-                    guard let writableData = try? JSONSerialization.data(withJSONObject: imageData, options: []) else {
-                        return
-                    }
-                    
-                    print("[PromptStudioEditorView] encoded: \(imageData.count)")
+                    print("[PromptStudioEditorView] encoded: \(data.count)")
                     
                     //4. Save
                     let panel = NSSavePanel()
                     panel.nameFieldLabel = "Save prompt as:"
                     panel.nameFieldStringValue = "\(self.promptCommand).neatia"
                     panel.canCreateDirectories = true
-                    panel.allowedContentTypes = [.init(exportedAs: "nyc.stoic.Neatia-neatia-custom-prompt-v1.0")]
+                    panel.allowedContentTypes = [.init(exportedAs: "nyc.stoic.Nea-neatia-custom-prompt-v1.0")]
                     panel.begin { response in
                         if response == NSApplication.ModalResponse.OK,
                            let fileURL = panel.url {
                             
-                            try? writableData.write(to: fileURL)
+                            try? data.write(to: fileURL)
                         }
                     }
                 }
@@ -84,37 +68,21 @@ extension PromptStudioEditorView {
                 panel.allowsMultipleSelection = false
                 panel.canChooseDirectories = false
                 panel.canCreateDirectories = false
-                panel.allowedContentTypes = [.init(exportedAs: "nyc.stoic.Neatia-neatia-custom-prompt-v1.0"), .init(importedAs: "nyc.stoic.Neatia-neatia-custom-prompt-v1.0")]
+                panel.allowedContentTypes = [.init(exportedAs: "nyc.stoic.Nea-neatia-custom-prompt-v1.0"), .init(importedAs: "nyc.stoic.Nea-neatia-custom-prompt-v1.0")]
                 if panel.runModal() == .OK {
                     if let url = panel.url {
                         
-                        //1. Retrieve as data
                         if let data = try? Data(contentsOf: url) {
-                            //2. Convert into encrypted data
-                            guard let array = try? JSONSerialization.jsonObject(with: data, options: []) as? [UInt32] else {
-                                return
-                            }
                             
-                            //3. Decrypt data
-                            if let decoded = ConfigService.decode(array) {
-                                if let data = decoded.data(using: .utf8) {
-                                    
-                                    do {
-                                        //4. Deserialize into json dictionary representation
-                                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
-                                        
-                                        //5. Convert to target object
-                                        if let decodedData = json,
-                                           let prompt = try? BasicDictionaryDecoder().decode(CustomPrompt.self, from: decodedData) {
-                                            
-                                            
-                                            update(prompt)
-                                            print("[PS] 4 \(service.commands.contains(prompt.command.value.lowercased()))")
-                                        }
-                                    } catch let error {
-                                        print("{TEST} \(error.localizedDescription)")
-                                    }
-                                }
+                            //Decryption occurs here in the Live version
+                            
+                            let decoder = JSONDecoder()
+                            if let customPrompt = try? decoder.decode(CustomPrompt.self,
+                                                                      from: data) {
+                                
+                                update(customPrompt)
+                                
+                                print("[PromptStudioEditor] Decoded and updated custom prompt")
                             }
                         }
                     }
@@ -141,25 +109,4 @@ extension PromptStudioEditorView {
             .buttonStyle(PlainButtonStyle())
         }
     }
-}
-
-fileprivate func getArrayOfBytesFromImage(imageData:NSData) -> Array<UInt32>
-{
-    
-    // the number of elements:
-    let count = imageData.length / MemoryLayout<UInt32>.size
-    
-    // create array of appropriate length:
-    var bytes = [UInt32](repeating: 0, count: count)
-    
-    // copy bytes into array
-    imageData.getBytes(&bytes, length:count * MemoryLayout<UInt32>.size)
-    
-    var byteArray:Array = Array<UInt32>()
-    
-    for i in 0 ..< count {
-        byteArray.append(bytes[i])
-    }
-    
-    return byteArray
 }

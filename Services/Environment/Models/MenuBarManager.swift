@@ -1,8 +1,8 @@
 //
 //  MenuBarManager.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/5/23.
+//  Created by PEXAVC on 5/5/23.
 //
 
 import Foundation
@@ -23,7 +23,7 @@ class MenuBarManager: NSObject, NSMenuDelegate {
         statusItem = iconView
 
 //        NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-//        statusItem?.button?.title = "Neatia"
+//        statusItem?.button?.title = "Nea"
         
         statusItem?.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
         
@@ -35,7 +35,7 @@ class MenuBarManager: NSObject, NSMenuDelegate {
             [weak self] event in
             
             let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("nyc.stoic.Neatia.PaneKitClickedOutside"), object: nil)
+            nc.post(name: Notification.Name("nyc.stoic.Nea.PaneKitClickedOutside"), object: nil)
             
             guard MenuBarManager.shared.maintainPopover == false else { return }
             self?.popover.performClose(event)

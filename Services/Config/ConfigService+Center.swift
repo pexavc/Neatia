@@ -1,7 +1,6 @@
 import Granite
 import SwiftUI
 import LaunchAtLogin
-import MarqueKit
 import SandKit
 
 extension ConfigService {
@@ -28,7 +27,7 @@ extension ConfigService {
             var customPromptConfig: PromptConfig = .init()
             
             //API Key
-            var customAPIKey: [UInt32]? = nil
+            var customAPIKey: String? = nil
             
             var isCustomAPIKeySet: Bool {
                 customAPIKey != nil && SessionManager.IS_API_ACCESS_ENABLED
@@ -70,21 +69,23 @@ extension ConfigService {
         @Event var removeAPIKey: RemoveCustomAPIKey.Reducer
         @Event var updateHistory: UpdateHistory.Reducer
         
-        @Store(persist: "neatia.persistence.config.0017", autoSave: true, preload: true) public var state: State
+        @Store(persist: "nea.persistence.config.0001", autoSave: true, preload: true) public var state: State
     }
     
     static func decode(_ bytes: [UInt32]) -> String? {
-        let result = MarqueKit().searchBytes(bytes)
-        guard let payload = result.payload.components(separatedBy: "<m12>").filter({ $0.isNotEmpty }).first?.components(separatedBy: "</m12>").first else {
-            return nil
-        }
-        
-        if let decodedData = Data(base64Encoded: payload),
-           let decodedString = String(data: decodedData, encoding: .utf8) {
-            return decodedString
-        } else {
-            return nil
-        }
+        //[CAN REMOVE]
+//        let result = MarqueKit().searchBytes(bytes)
+//        guard let payload = result.payload.components(...).first else {
+//            return nil
+//        }
+//
+//        if let decodedData = Data(base64Encoded: payload),
+//           let decodedString = String(data: decodedData, encoding: .utf8) {
+//            return decodedString
+//        } else {
+//            return nil
+//        }
+        return nil
     }
 }
 

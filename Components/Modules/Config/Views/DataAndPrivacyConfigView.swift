@@ -1,8 +1,8 @@
 //
 //  DataAndPrivacyConfigView.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/14/23.
+//  Created by PEXAVC on 5/14/23.
 //
 
 import Foundation
@@ -34,7 +34,7 @@ struct DataAndPrivacyConfigView: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    Text("Neatia stores nothing (ONLY LOCALLY (Delete the app to remove anything you think might be statefully stored (like custom prompts))).")
+                    Text("Nea stores nothing (ONLY LOCALLY (Delete the app to remove anything you think might be statefully stored (like custom prompts))).")
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
@@ -51,7 +51,7 @@ struct DataAndPrivacyConfigView: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    Text("The only API Neatia accesses is ChatGPT.")
+                    Text("The only API Nea accesses is ChatGPT.")
                         .font(Fonts.live(.subheadline, .regular))
                         .foregroundColor(.foreground)
                 }
@@ -69,7 +69,7 @@ struct DataAndPrivacyConfigView: View {
                     
                     Text("NOT from API usage. (As of 05/18/2023)")
                         .font(Fonts.live(.subheadline, .regular))
-                        .foregroundColor(.foreground) + Text(" Read this statement by OpenAI themselves. And yes, Neatia DOES NOT and WILL NOT opt in to share data.")
+                        .foregroundColor(.foreground) + Text(" Read this statement by OpenAI themselves. And yes, Nea DOES NOT and WILL NOT opt in to share data.")
                         .foregroundColor(.accentColor)
                 }
                 .onTapGesture {
@@ -94,7 +94,7 @@ struct DataAndPrivacyConfigView: View {
                             .foregroundColor(.foreground)/* + Text(" Read (H.R.2701), (Search for the mention of \"30 days\"")
                             .foregroundColor(.accentColor)*/
                         
-                        Text("Soon enough, Neatia will have a collection of offline models for you to use without internet connection (besides downloading the model itself).\n\n")
+                        Text("Soon enough, Nea will have a collection of offline models for you to use without internet connection (besides downloading the model itself).\n\n")
                     }
 //                    .onTapGesture {
 //                        if let url = URL(string: "https://www.congress.gov/bill/118th-congress/house-bill/2701/text/ih?overview=closed&format=txt") {

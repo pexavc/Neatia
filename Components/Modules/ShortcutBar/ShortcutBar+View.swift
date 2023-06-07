@@ -84,7 +84,7 @@ extension ShortcutBar {
                 
                 let panel = NSSavePanel()
                 panel.nameFieldLabel = "Save generation as:"
-                panel.nameFieldStringValue = "neatia-\(Date().asStringWithTime).pdf"
+                panel.nameFieldStringValue = "nea-\(Date().asStringWithTime).pdf"
                 panel.canCreateDirectories = true
                 panel.begin { response in
                     if response == NSApplication.ModalResponse.OK,

@@ -1,8 +1,8 @@
 //
 //  SessionManager.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/13/23.
+//  Created by PEXAVC on 5/13/23.
 //
 
 import Foundation
@@ -44,7 +44,7 @@ final class SessionManager: Equatable, SharableObject {
         .init()
     }
     
-    public static var id : String = "nyc.stoic.Neatia.SessionManager"
+    public static var id : String = "nyc.stoic.Nea.SessionManager"
     
     internal var cancellables = Set<AnyCancellable>()
     
@@ -77,7 +77,7 @@ final class SessionManager: Equatable, SharableObject {
     }
     
     static var IS_API_ACCESS_ENABLED: Bool {
-        false
+        true
     }
     
     static var DISABLE_LOGIN: Bool {

@@ -1,8 +1,8 @@
 //
 //  PaneKit.Display.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/8/23.
+//  Created by PEXAVC on 5/8/23.
 //
 
 import Foundation

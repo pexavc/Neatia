@@ -1,8 +1,8 @@
 //
 //  PromptsConfigView.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/11/23.
+//  Created by PEXAVC on 5/11/23.
 //
 
 import Foundation
@@ -34,7 +34,7 @@ struct PromptConfigView: View {
                     
                     Button(action: {
                         let nc = NotificationCenter.default
-                        nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHidePromptStudio"), object: nil)
+                        nc.post(name: Notification.Name("nyc.stoic.Nea.ShowHidePromptStudio"), object: nil)
                     }) {
                         
                         Text("\(windowVisibility.isVisible(id: InteractionManager.Kind.promptStudio.rawValue) ? "Hide" : "Open") Studio")

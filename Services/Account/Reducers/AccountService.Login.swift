@@ -1,6 +1,6 @@
 import Granite
 import AuthenticationServices
-import FirebaseAuth
+//import FirebaseAuth
 
 extension AccountService {
     struct CheckLoginStatus: GraniteReducer {
@@ -14,13 +14,15 @@ extension AccountService {
                 return
             }
             
-            if let user = Auth.auth().currentUser {
-                AccountManager.load(user)
-            } else {
+            //[CAN REMOVE]
+            //Where Login "Could" occur
+//            if let user = Auth.auth().currentUser {
+//                AccountManager.load(user)
+//            } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     MenuBarManager.shared.showPopOver()
                 }
-            }
+//            }
         }
     }
     
@@ -52,18 +54,19 @@ extension AccountService {
                     return
                 }
                 
-                let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                          idToken: idTokenString,
-                                                          rawNonce: state.nonce)
-                
-                
-                Auth.auth().signIn(with: credential) { (authResult, error) in
-                    if (error != nil) {
-                        print(error?.localizedDescription as Any)
-                    } else {
-                        complete.send(LoginComplete.Meta(authDataResult: authResult))
-                    }
-                }
+                //[CAN REMOVE] Firebase Credential Example
+//                let credential = OAuthProvider.credential(withProviderID: "apple.com",
+//                                                          idToken: idTokenString,
+//                                                          rawNonce: state.nonce)
+//
+//
+//                Auth.auth().signIn(with: credential) { (authResult, error) in
+//                    if (error != nil) {
+//                        print(error?.localizedDescription as Any)
+//                    } else {
+//                        complete.send(LoginComplete.Meta(authDataResult: authResult))
+//                    }
+//                }
             }
         }
     }
@@ -72,7 +75,7 @@ extension AccountService {
         typealias Center = AccountService.Center
         
         struct Meta: GranitePayload {
-            var authDataResult: AuthDataResult? = nil
+            //var authDataResult: AuthDataResult? = nil
         }
         
         @Event var subscriptionCheck: CheckSubscriptionStatus.Reducer
@@ -80,9 +83,10 @@ extension AccountService {
         @Payload var meta: Meta?
         
         func reduce(state: inout Center.State) {
-            guard let result = self.meta?.authDataResult else { return }
+            //[CAN REMOVE] possible authData result from firebase
+            //guard let result = self.meta?.authDataResult else { return }
             
-            AccountManager.load(result.user)
+            //AccountManager.load(result.user)
             
             subscriptionCheck.send()
         }

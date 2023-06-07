@@ -1,8 +1,8 @@
 //
 //  SandService.SubCommands.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/14/23.
+//  Created by PEXAVC on 5/14/23.
 //
 import Granite
 import SandKit

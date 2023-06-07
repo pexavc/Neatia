@@ -1,16 +1,21 @@
 //
 //  AccountManager.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/12/23.
+//  Created by PEXAVC on 5/12/23.
 //
 
 import Foundation
-import FirebaseAuth
 import Combine
 import Granite
 
-class AccountKit {
+public class AccountKit {
+    
+    //[CAN REMOVE] example user object, possibly from Firebase
+    public struct User {
+        let uid: UUID = .init()
+    }
+    
     private(set) var id: String? = nil {
         didSet {
             isLoggedIn = id != nil
@@ -25,7 +30,7 @@ class AccountKit {
     }
     
     func load(_ user: User) {
-        self.id = user.uid
+        self.id = user.uid.uuidString
     }
     
     func isSubscribed(_ state: Bool) {
@@ -73,7 +78,7 @@ public class AccountManager: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    public static func load(_ user: User) {
+    public static func load(_ user: AccountKit.User) {
         AccountManager.shared.kit.load(user)
     }
     

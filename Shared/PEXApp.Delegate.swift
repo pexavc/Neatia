@@ -1,13 +1,12 @@
 //
 //  PEXApp.Delegate.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/6/23.
+//  Created by PEXAVC on 5/6/23.
 //
 
 import Foundation
 import SwiftUI
-import Firebase
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var menuBarManager: MenuBarManager?
@@ -15,9 +14,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApplication.shared.delegate = self
         
-        if SessionManager.DISABLE_LOGIN == false {
-            FirebaseApp.configure()
-        }
+//        if SessionManager.DISABLE_LOGIN == false {
+//            FirebaseApp.configure()
+//        }
         
         //Window close
         if let window = NSApplication.shared.windows.first {
@@ -30,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menuBarManager?.statusItem?.button?.action = #selector(self.statusBarButtonClicked(sender:))
         
         let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("nyc.stoic.Neatia.DidFinishLaunching"), object: nil)
+        nc.post(name: Notification.Name("nyc.stoic.Nea.DidFinishLaunching"), object: nil)
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication,
@@ -64,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     @objc func ShowHideMount() {
         let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHideMount"), object: nil)
+        nc.post(name: Notification.Name("nyc.stoic.Nea.ShowHideMount"), object: nil)
         MenuBarManager.shared.mountIsClosed.toggle()
     }
     

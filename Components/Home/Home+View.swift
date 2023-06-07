@@ -8,7 +8,7 @@ extension Home: View {
     
     public var view: some View {
         ZStack {
-            Text("Neatia")
+            Text("Nea")
                 .font(Fonts.live(.title3, .bold))
         }
     }

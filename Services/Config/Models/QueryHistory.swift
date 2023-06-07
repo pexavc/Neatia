@@ -1,8 +1,8 @@
 //
 //  QueryHistory.swift
-//  Neatia (iOS)
+//  Nea (iOS)
 //
-//  Created by Ritesh Pakala on 5/20/23.
+//  Created by PEXAVC on 5/20/23.
 //
 
 import Foundation

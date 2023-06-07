@@ -7,9 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7105F8972A30F69B003DA26F /* SandKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8962A30F69B003DA26F /* SandKit */; };
+		7105F89D2A30FB5F003DA26F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F89C2A30FB5F003DA26F /* Ink */; };
+		7105F8A02A30FB6C003DA26F /* VaultKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F89F2A30FB6C003DA26F /* VaultKit */; };
+		7105F8A22A30FC7E003DA26F /* SandKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8A12A30FC7E003DA26F /* SandKit */; };
+		7105F8A52A30FF00003DA26F /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8A42A30FF00003DA26F /* Granite */; };
+		7105F8A72A30FF00003DA26F /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8A62A30FF00003DA26F /* GraniteUI */; };
+		7105F8A92A30FF15003DA26F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8A82A30FF15003DA26F /* Ink */; };
+		7105F8AB2A30FF1A003DA26F /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8AA2A30FF1A003DA26F /* Granite */; };
+		7105F8AD2A30FF20003DA26F /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8AC2A30FF20003DA26F /* GraniteUI */; };
+		7105F8AF2A30FF42003DA26F /* VaultKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8AE2A30FF42003DA26F /* VaultKit */; };
+		7105F8B82A310233003DA26F /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8B72A310233003DA26F /* LaunchAtLogin */; };
+		7105F8BA2A310257003DA26F /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8B92A310257003DA26F /* LaunchAtLogin */; };
+		7105F8BD2A310482003DA26F /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8BC2A310482003DA26F /* GPT3 Tokenizer */; };
+		7105F8BF2A3104EC003DA26F /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 7105F8BE2A3104EC003DA26F /* GPT3 Tokenizer */; };
 		7110C88C2A02599A00824D58 /* TranslucentWindowBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110C88B2A02599A00824D58 /* TranslucentWindowBackground.swift */; };
 		7110C88D2A025A1400824D58 /* TranslucentWindowBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110C88B2A02599A00824D58 /* TranslucentWindowBackground.swift */; };
-		711513BF2A0E427200ED4E1E /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 711513BE2A0E427200ED4E1E /* Ink */; };
 		711B3F8B2885D43B00F3080D /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711B3F8A2885D43B00F3080D /* Tests_iOS.swift */; };
 		711B3F8D2885D43B00F3080D /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711B3F8C2885D43B00F3080D /* Tests_iOSLaunchTests.swift */; };
 		711B3F972885D43B00F3080D /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711B3F962885D43B00F3080D /* Tests_macOS.swift */; };
@@ -24,13 +37,8 @@
 		711B3FDE2885D4F000F3080D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711B3FD82885D4F000F3080D /* Home.swift */; };
 		71266D2029512DAF003CAB29 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71266D1F29512DAF003CAB29 /* Overlay.swift */; };
 		71266D2129512DAF003CAB29 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71266D1F29512DAF003CAB29 /* Overlay.swift */; };
-		712861832A0EFDBF00046DCE /* VaultKit in Frameworks */ = {isa = PBXBuildFile; productRef = 712861822A0EFDBF00046DCE /* VaultKit */; };
-		712861852A0EFE6500046DCE /* Subscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 712861842A0EFE6500046DCE /* Subscriptions.storekit */; };
-		712861862A0EFE6500046DCE /* Subscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 712861842A0EFE6500046DCE /* Subscriptions.storekit */; };
 		7128618B2A0F08CB00046DCE /* VaultProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128618A2A0F08CB00046DCE /* VaultProducts.swift */; };
 		7128618C2A0F08CB00046DCE /* VaultProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128618A2A0F08CB00046DCE /* VaultProducts.swift */; };
-		7128618E2A0F11C600046DCE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7128618D2A0F11C600046DCE /* GoogleService-Info.plist */; };
-		7128618F2A0F11C600046DCE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7128618D2A0F11C600046DCE /* GoogleService-Info.plist */; };
 		712861912A0F431E00046DCE /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861902A0F431E00046DCE /* LogoView.swift */; };
 		712861922A0F431E00046DCE /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861902A0F431E00046DCE /* LogoView.swift */; };
 		712861972A0F441800046DCE /* View+OnValueChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712861962A0F441800046DCE /* View+OnValueChanged.swift */; };
@@ -41,7 +49,6 @@
 		712BEB672907502600D257B7 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB652907502600D257B7 /* CornerRadius.swift */; };
 		712BEB6C2907649600D257B7 /* AnimationCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB6B2907649600D257B7 /* AnimationCompletion.swift */; };
 		712BEB6D2907649600D257B7 /* AnimationCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BEB6B2907649600D257B7 /* AnimationCompletion.swift */; };
-		713D16AF2A0EF20B00F46AC3 /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */; };
 		713D86692A118C2400AE32CE /* SandService.SubCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86682A118C2400AE32CE /* SandService.SubCommands.swift */; };
 		713D866A2A118C2400AE32CE /* SandService.SubCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D86682A118C2400AE32CE /* SandService.SubCommands.swift */; };
 		713D866C2A118C2C00AE32CE /* SandService._.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D866B2A118C2C00AE32CE /* SandService._.swift */; };
@@ -66,7 +73,6 @@
 		713FFDD62A0DFC9400E6F9AF /* PromptConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDD42A0DFC9400E6F9AF /* PromptConfigView.swift */; };
 		713FFDD82A0E2CA000E6F9AF /* AboutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */; };
 		713FFDD92A0E2CA000E6F9AF /* AboutConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */; };
-		714238232A12D1BF00E3A55A /* MarqueKit in Frameworks */ = {isa = PBXBuildFile; productRef = 714238222A12D1BF00E3A55A /* MarqueKit */; };
 		714238262A12D8B700E3A55A /* pieta.png in Resources */ = {isa = PBXBuildFile; fileRef = 714238252A12D8B700E3A55A /* pieta.png */; };
 		714238272A12D8B700E3A55A /* pieta.png in Resources */ = {isa = PBXBuildFile; fileRef = 714238252A12D8B700E3A55A /* pieta.png */; };
 		714238292A1313F800E3A55A /* TuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714238282A1313F800E3A55A /* TuningView.swift */; };
@@ -85,7 +91,6 @@
 		714B72512A19B5B20072AC70 /* SandService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B724F2A19B5B20072AC70 /* SandService.History.swift */; };
 		714B72532A19BAA30072AC70 /* QueryService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72522A19BAA30072AC70 /* QueryService.History.swift */; };
 		714B72542A19BAA30072AC70 /* QueryService.History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B72522A19BAA30072AC70 /* QueryService.History.swift */; };
-		71508F662A0E382E008D0988 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 71508F652A0E382E008D0988 /* LaunchAtLogin */; };
 		7161D2FB29540AD00070FE59 /* View+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161D2FA29540AD00070FE59 /* View+Overlay.swift */; };
 		7161D2FC29540AD00070FE59 /* View+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161D2FA29540AD00070FE59 /* View+Overlay.swift */; };
 		716214FF2A031E32009D19B6 /* NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716214FE2A031E32009D19B6 /* NSTextView.swift */; };
@@ -164,8 +169,6 @@
 		71A28E2E295237AE00EAE8EE /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28E1E295237AE00EAE8EE /* Run.swift */; };
 		71A28EAB29523CC200EAE8EE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EAA29523CC200EAE8EE /* GradientView.swift */; };
 		71A28EAC29523CC200EAE8EE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A28EAA29523CC200EAE8EE /* GradientView.swift */; };
-		71A375052A01F5B800985D8D /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375042A01F5B800985D8D /* Granite */; };
-		71A375072A01F5B800985D8D /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 71A375062A01F5B800985D8D /* GraniteUI */; };
 		71A547532A1C757E0083A8DF /* TokenCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A547522A1C757E0083A8DF /* TokenCountView.swift */; };
 		71A547542A1C757E0083A8DF /* TokenCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A547522A1C757E0083A8DF /* TokenCountView.swift */; };
 		71AC3CF42A15BD0F00C68047 /* ResponseHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC3CF32A15BD0F00C68047 /* ResponseHelperView.swift */; };
@@ -186,16 +189,6 @@
 		71BE32262A05B90500B76A69 /* AccountService+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32222A05B90500B76A69 /* AccountService+Center.swift */; };
 		71BE32272A05B90500B76A69 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32232A05B90500B76A69 /* AccountService.swift */; };
 		71BE32282A05B90500B76A69 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32232A05B90500B76A69 /* AccountService.swift */; };
-		71BE322B2A05BBFB00B76A69 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE322A2A05BBFB00B76A69 /* FirebaseAnalytics */; };
-		71BE322F2A05BBFB00B76A69 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE322E2A05BBFB00B76A69 /* FirebaseAnalyticsSwift */; };
-		71BE32312A05BBFB00B76A69 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE32302A05BBFB00B76A69 /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		71BE32332A05BBFB00B76A69 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE32322A05BBFB00B76A69 /* FirebaseAuth */; };
-		71BE32352A05BBFB00B76A69 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE32342A05BBFB00B76A69 /* FirebaseAuthCombine-Community */; };
-		71BE32372A05BBFB00B76A69 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE32362A05BBFB00B76A69 /* FirebaseCrashlytics */; };
-		71BE32392A05BBFB00B76A69 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE32382A05BBFB00B76A69 /* FirebaseDatabase */; };
-		71BE323B2A05BBFC00B76A69 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE323A2A05BBFC00B76A69 /* FirebaseDatabaseSwift */; };
-		71BE323D2A05BBFC00B76A69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE323C2A05BBFC00B76A69 /* FirebaseStorage */; };
-		71BE323F2A05BBFC00B76A69 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 71BE323E2A05BBFC00B76A69 /* FirebaseStorageCombine-Community */; };
 		71BE32442A05C79900B76A69 /* AccountService.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32432A05C79900B76A69 /* AccountService.Login.swift */; };
 		71BE32452A05C79900B76A69 /* AccountService.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32432A05C79900B76A69 /* AccountService.Login.swift */; };
 		71BE32472A05CEDA00B76A69 /* AccountService.Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32462A05CEDA00B76A69 /* AccountService.Logout.swift */; };
@@ -213,7 +206,6 @@
 		71BE32662A06109D00B76A69 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE32602A06109D00B76A69 /* StringExtension.swift */; };
 		71BEA9C728E3D95B00B58933 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEA9C628E3D95B00B58933 /* String.swift */; };
 		71BEA9C828E3D95B00B58933 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEA9C628E3D95B00B58933 /* String.swift */; };
-		71CEBDD32A0716D700DE6CDE /* SandKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71CEBDD22A0716D700DE6CDE /* SandKit */; };
 		71CEBDDB2A07175700DE6CDE /* EnvironmentService+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDD82A07175700DE6CDE /* EnvironmentService+Center.swift */; };
 		71CEBDDC2A07175700DE6CDE /* EnvironmentService+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDD82A07175700DE6CDE /* EnvironmentService+Center.swift */; };
 		71CEBDDD2A07175700DE6CDE /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEBDD92A07175700DE6CDE /* EnvironmentService.swift */; };
@@ -282,8 +274,6 @@
 		71DF107E28CC697600559DBC /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF106B28CC697600559DBC /* Array+Unique.swift */; };
 		71DF107F28CC697600559DBC /* ProgressContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF106C28CC697600559DBC /* ProgressContent.swift */; };
 		71DF108028CC697600559DBC /* ProgressContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF106C28CC697600559DBC /* ProgressContent.swift */; };
-		71E35C932954484A0094DB31 /* Granite in Frameworks */ = {isa = PBXBuildFile; productRef = 71E35C922954484A0094DB31 /* Granite */; };
-		71E35C952954484D0094DB31 /* GraniteUI in Frameworks */ = {isa = PBXBuildFile; productRef = 71E35C942954484D0094DB31 /* GraniteUI */; };
 		71EA5BB72A10222E00B0F82D /* PromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BB42A10222E00B0F82D /* PromptService.swift */; };
 		71EA5BB82A10222E00B0F82D /* PromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BB42A10222E00B0F82D /* PromptService.swift */; };
 		71EA5BB92A10222E00B0F82D /* PromptService+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA5BB52A10222E00B0F82D /* PromptService+Center.swift */; };
@@ -320,7 +310,6 @@
 		71EDCFC12A08832100857066 /* CommandToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFBA2A08832100857066 /* CommandToolbar.swift */; };
 		71EDCFCE2A08D99A00857066 /* SandTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFCD2A08D99A00857066 /* SandTask.swift */; };
 		71EDCFCF2A08D99A00857066 /* SandTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFCD2A08D99A00857066 /* SandTask.swift */; };
-		71EDCFD52A0917AC00857066 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71EDCFD42A0917AC00857066 /* SwiftyStoreKit */; };
 		71EDCFDE2A094FB300857066 /* PaneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFDD2A094FB300857066 /* PaneKit.swift */; };
 		71EDCFDF2A094FB300857066 /* PaneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFDD2A094FB300857066 /* PaneKit.swift */; };
 		71EDCFE12A094FF900857066 /* PaneKit.Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDCFE02A094FF900857066 /* PaneKit.Window.swift */; };
@@ -433,13 +422,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7105F8952A30F5E0003DA26F /* SandKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SandKit; path = Packages/SandKit; sourceTree = "<group>"; };
 		7110C88B2A02599A00824D58 /* TranslucentWindowBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslucentWindowBackground.swift; sourceTree = "<group>"; };
-		7110C8BB2A026DEF00824D58 /* Neatia--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Neatia--macOS--Info.plist"; sourceTree = "<group>"; };
-		711513BD2A0E422E00ED4E1E /* Ink */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Ink; path = ../Ink; sourceTree = "<group>"; };
+		7110C8BB2A026DEF00824D58 /* Nea--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Nea--macOS--Info.plist"; sourceTree = "<group>"; };
 		711B3F722885D43700F3080D /* PEXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEXApp.swift; sourceTree = "<group>"; };
 		711B3F742885D43B00F3080D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		711B3F792885D43B00F3080D /* Neatia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neatia.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		711B3F7F2885D43B00F3080D /* Neatia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neatia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		711B3F792885D43B00F3080D /* Nea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nea.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		711B3F7F2885D43B00F3080D /* Nea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		711B3F812885D43B00F3080D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		711B3F862885D43B00F3080D /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		711B3F8A2885D43B00F3080D /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
@@ -450,16 +439,12 @@
 		711B3FD62885D4F000F3080D /* Home+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Home+Center.swift"; sourceTree = "<group>"; };
 		711B3FD82885D4F000F3080D /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		71266D1F29512DAF003CAB29 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
-		712861812A0EFD6D00046DCE /* VaultKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = VaultKit; path = ../VaultKit; sourceTree = "<group>"; };
-		712861842A0EFE6500046DCE /* Subscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Subscriptions.storekit; sourceTree = "<group>"; };
 		7128618A2A0F08CB00046DCE /* VaultProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultProducts.swift; sourceTree = "<group>"; };
-		7128618D2A0F11C600046DCE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		712861902A0F431E00046DCE /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		712861962A0F441800046DCE /* View+OnValueChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+OnValueChanged.swift"; sourceTree = "<group>"; };
 		712BEB6229074FEC00D257B7 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		712BEB652907502600D257B7 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		712BEB6B2907649600D257B7 /* AnimationCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCompletion.swift; sourceTree = "<group>"; };
-		713D16AD2A0EF1CC00F46AC3 /* GPT3-Tokenizer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "GPT3-Tokenizer"; path = "../GPT3-Tokenizer"; sourceTree = "<group>"; };
 		713D86682A118C2400AE32CE /* SandService.SubCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService.SubCommands.swift; sourceTree = "<group>"; };
 		713D866B2A118C2C00AE32CE /* SandService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService._.swift; sourceTree = "<group>"; };
 		713D866E2A118D2300AE32CE /* FileTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTextEditorView.swift; sourceTree = "<group>"; };
@@ -472,7 +457,6 @@
 		713FFDD12A0DFB9400E6F9AF /* ConfigService._.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService._.swift; sourceTree = "<group>"; };
 		713FFDD42A0DFC9400E6F9AF /* PromptConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptConfigView.swift; sourceTree = "<group>"; };
 		713FFDD72A0E2CA000E6F9AF /* AboutConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutConfigView.swift; sourceTree = "<group>"; };
-		714238212A12CCE000E3A55A /* MarqueKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MarqueKit; path = ../MarqueKit; sourceTree = "<group>"; };
 		714238252A12D8B700E3A55A /* pieta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieta.png; sourceTree = "<group>"; };
 		714238282A1313F800E3A55A /* TuningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuningView.swift; sourceTree = "<group>"; };
 		7142382B2A135A0B00E3A55A /* CommandToolbar.FileSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandToolbar.FileSelection.swift; sourceTree = "<group>"; };
@@ -482,7 +466,6 @@
 		714B724C2A19AFEB0072AC70 /* HistoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionView.swift; sourceTree = "<group>"; };
 		714B724F2A19B5B20072AC70 /* SandService.History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandService.History.swift; sourceTree = "<group>"; };
 		714B72522A19BAA30072AC70 /* QueryService.History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.History.swift; sourceTree = "<group>"; };
-		71508F632A0E3776008D0988 /* LaunchAtLogin */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LaunchAtLogin; path = ../LaunchAtLogin; sourceTree = "<group>"; };
 		7161D2FA29540AD00070FE59 /* View+Overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Overlay.swift"; sourceTree = "<group>"; };
 		716214FE2A031E32009D19B6 /* NSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextView.swift; sourceTree = "<group>"; };
 		716215012A031E7B009D19B6 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
@@ -504,7 +487,7 @@
 		7192B1902A0B5C8900C579A4 /* ConfigService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 		7192B1912A0B5C8900C579A4 /* ConfigService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigService+Center.swift"; sourceTree = "<group>"; };
 		7192B1972A0B5D0200C579A4 /* View+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Background.swift"; sourceTree = "<group>"; };
-		719725FD28CC864400A64334 /* Neatia--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Neatia--iOS--Info.plist"; sourceTree = "<group>"; };
+		719725FD28CC864400A64334 /* Nea--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Nea--iOS--Info.plist"; sourceTree = "<group>"; };
 		71991A7C2A120EB0004FB5A9 /* DataAndPrivacyConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAndPrivacyConfigView.swift; sourceTree = "<group>"; };
 		719AB1012A1C0E2300994062 /* AccountService.Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.Purchase.swift; sourceTree = "<group>"; };
 		71A28D92295231E600EAE8EE /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -577,7 +560,6 @@
 		71DF106A28CC697600559DBC /* Double+Rounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		71DF106B28CC697600559DBC /* Array+Unique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Unique.swift"; sourceTree = "<group>"; };
 		71DF106C28CC697600559DBC /* ProgressContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressContent.swift; sourceTree = "<group>"; };
-		71E35C91295447D60094DB31 /* Granite */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Granite; path = ../../repositories/Granite; sourceTree = "<group>"; };
 		71EA5BB42A10222E00B0F82D /* PromptService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptService.swift; sourceTree = "<group>"; };
 		71EA5BB52A10222E00B0F82D /* PromptService+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PromptService+Center.swift"; sourceTree = "<group>"; };
 		71EA5BBC2A1025E300B0F82D /* CustomPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrompt.swift; sourceTree = "<group>"; };
@@ -642,7 +624,6 @@
 		71F0576D2A27205C00DBB956 /* InnerShadowViewModifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerShadowViewModifiers.swift; sourceTree = "<group>"; };
 		71F0576E2A27205C00DBB956 /* InnerShadowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerShadowExtensions.swift; sourceTree = "<group>"; };
 		71F0576F2A27205C00DBB956 /* InnerShadowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerShadowModel.swift; sourceTree = "<group>"; };
-		71FDA4512A0E539E006C289A /* SandKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SandKit; path = ../SandKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -650,10 +631,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71E35C932954484A0094DB31 /* Granite in Frameworks */,
-				71EDCFD52A0917AC00857066 /* SwiftyStoreKit in Frameworks */,
-				71BE32332A05BBFB00B76A69 /* FirebaseAuth in Frameworks */,
-				71E35C952954484D0094DB31 /* GraniteUI in Frameworks */,
+				7105F8BD2A310482003DA26F /* GPT3 Tokenizer in Frameworks */,
+				7105F8B82A310233003DA26F /* LaunchAtLogin in Frameworks */,
+				7105F8A22A30FC7E003DA26F /* SandKit in Frameworks */,
+				7105F8A52A30FF00003DA26F /* Granite in Frameworks */,
+				7105F8A72A30FF00003DA26F /* GraniteUI in Frameworks */,
+				7105F8A02A30FB6C003DA26F /* VaultKit in Frameworks */,
+				7105F89D2A30FB5F003DA26F /* Ink in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,24 +645,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71BE32392A05BBFB00B76A69 /* FirebaseDatabase in Frameworks */,
-				713D16AF2A0EF20B00F46AC3 /* GPT3 Tokenizer in Frameworks */,
-				71BE322F2A05BBFB00B76A69 /* FirebaseAnalyticsSwift in Frameworks */,
-				71BE323F2A05BBFC00B76A69 /* FirebaseStorageCombine-Community in Frameworks */,
-				71508F662A0E382E008D0988 /* LaunchAtLogin in Frameworks */,
-				71CEBDD32A0716D700DE6CDE /* SandKit in Frameworks */,
-				71A375052A01F5B800985D8D /* Granite in Frameworks */,
-				71BE323D2A05BBFC00B76A69 /* FirebaseStorage in Frameworks */,
-				71BE32312A05BBFB00B76A69 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				71BE322B2A05BBFB00B76A69 /* FirebaseAnalytics in Frameworks */,
-				71BE32372A05BBFB00B76A69 /* FirebaseCrashlytics in Frameworks */,
-				71BE323B2A05BBFC00B76A69 /* FirebaseDatabaseSwift in Frameworks */,
-				71A375072A01F5B800985D8D /* GraniteUI in Frameworks */,
-				712861832A0EFDBF00046DCE /* VaultKit in Frameworks */,
-				711513BF2A0E427200ED4E1E /* Ink in Frameworks */,
+				7105F8A92A30FF15003DA26F /* Ink in Frameworks */,
+				7105F8AB2A30FF1A003DA26F /* Granite in Frameworks */,
+				7105F8BA2A310257003DA26F /* LaunchAtLogin in Frameworks */,
+				7105F8AF2A30FF42003DA26F /* VaultKit in Frameworks */,
+				7105F8AD2A30FF20003DA26F /* GraniteUI in Frameworks */,
+				7105F8972A30F69B003DA26F /* SandKit in Frameworks */,
 				71BE324D2A05E89700B76A69 /* StoreKit.framework in Frameworks */,
-				714238232A12D1BF00E3A55A /* MarqueKit in Frameworks */,
-				71BE32352A05BBFB00B76A69 /* FirebaseAuthCombine-Community in Frameworks */,
+				7105F8BF2A3104EC003DA26F /* GPT3 Tokenizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,15 +685,9 @@
 		711B3F6C2885D43700F3080D = {
 			isa = PBXGroup;
 			children = (
-				714238212A12CCE000E3A55A /* MarqueKit */,
-				712861812A0EFD6D00046DCE /* VaultKit */,
-				713D16AD2A0EF1CC00F46AC3 /* GPT3-Tokenizer */,
-				71E35C91295447D60094DB31 /* Granite */,
-				71FDA4512A0E539E006C289A /* SandKit */,
-				711513BD2A0E422E00ED4E1E /* Ink */,
-				71508F632A0E3776008D0988 /* LaunchAtLogin */,
-				7110C8BB2A026DEF00824D58 /* Neatia--macOS--Info.plist */,
-				719725FD28CC864400A64334 /* Neatia--iOS--Info.plist */,
+				7105F8952A30F5E0003DA26F /* SandKit */,
+				7110C8BB2A026DEF00824D58 /* Nea--macOS--Info.plist */,
+				719725FD28CC864400A64334 /* Nea--iOS--Info.plist */,
 				711B3F712885D43700F3080D /* Shared */,
 				711B3FB62885D48000F3080D /* Services */,
 				711B3FB52885D47C00F3080D /* Components */,
@@ -742,8 +710,6 @@
 				711B3F722885D43700F3080D /* PEXApp.swift */,
 				71CEBE0F2A0729E500DE6CDE /* PEXApp.Delegate.swift */,
 				718148BF2A0F90E80054E71A /* SessionManager.swift */,
-				712861842A0EFE6500046DCE /* Subscriptions.storekit */,
-				7128618D2A0F11C600046DCE /* GoogleService-Info.plist */,
 				711B3F742885D43B00F3080D /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -752,8 +718,8 @@
 		711B3F7A2885D43B00F3080D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				711B3F792885D43B00F3080D /* Neatia.app */,
-				711B3F7F2885D43B00F3080D /* Neatia.app */,
+				711B3F792885D43B00F3080D /* Nea.app */,
+				711B3F7F2885D43B00F3080D /* Nea.app */,
 				711B3F862885D43B00F3080D /* Tests iOS.xctest */,
 				711B3F922885D43B00F3080D /* Tests macOS.xctest */,
 			);
@@ -1494,9 +1460,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		711B3F782885D43B00F3080D /* Neatia (iOS) */ = {
+		711B3F782885D43B00F3080D /* Nea (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 711B3FA22885D43B00F3080D /* Build configuration list for PBXNativeTarget "Neatia (iOS)" */;
+			buildConfigurationList = 711B3FA22885D43B00F3080D /* Build configuration list for PBXNativeTarget "Nea (iOS)" */;
 			buildPhases = (
 				711B3F752885D43B00F3080D /* Sources */,
 				711B3F762885D43B00F3080D /* Frameworks */,
@@ -1506,20 +1472,23 @@
 			);
 			dependencies = (
 			);
-			name = "Neatia (iOS)";
+			name = "Nea (iOS)";
 			packageProductDependencies = (
-				71E35C922954484A0094DB31 /* Granite */,
-				71E35C942954484D0094DB31 /* GraniteUI */,
-				71BE32322A05BBFB00B76A69 /* FirebaseAuth */,
-				71EDCFD42A0917AC00857066 /* SwiftyStoreKit */,
+				7105F89C2A30FB5F003DA26F /* Ink */,
+				7105F89F2A30FB6C003DA26F /* VaultKit */,
+				7105F8A12A30FC7E003DA26F /* SandKit */,
+				7105F8A42A30FF00003DA26F /* Granite */,
+				7105F8A62A30FF00003DA26F /* GraniteUI */,
+				7105F8B72A310233003DA26F /* LaunchAtLogin */,
+				7105F8BC2A310482003DA26F /* GPT3 Tokenizer */,
 			);
 			productName = "PEX (iOS)";
-			productReference = 711B3F792885D43B00F3080D /* Neatia.app */;
+			productReference = 711B3F792885D43B00F3080D /* Nea.app */;
 			productType = "com.apple.product-type.application";
 		};
-		711B3F7E2885D43B00F3080D /* Neatia (macOS) */ = {
+		711B3F7E2885D43B00F3080D /* Nea (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 711B3FA52885D43B00F3080D /* Build configuration list for PBXNativeTarget "Neatia (macOS)" */;
+			buildConfigurationList = 711B3FA52885D43B00F3080D /* Build configuration list for PBXNativeTarget "Nea (macOS)" */;
 			buildPhases = (
 				711B3F7B2885D43B00F3080D /* Sources */,
 				711B3F7C2885D43B00F3080D /* Frameworks */,
@@ -1530,28 +1499,18 @@
 			);
 			dependencies = (
 			);
-			name = "Neatia (macOS)";
+			name = "Nea (macOS)";
 			packageProductDependencies = (
-				71A375042A01F5B800985D8D /* Granite */,
-				71A375062A01F5B800985D8D /* GraniteUI */,
-				71BE322A2A05BBFB00B76A69 /* FirebaseAnalytics */,
-				71BE322E2A05BBFB00B76A69 /* FirebaseAnalyticsSwift */,
-				71BE32302A05BBFB00B76A69 /* FirebaseAnalyticsWithoutAdIdSupport */,
-				71BE32342A05BBFB00B76A69 /* FirebaseAuthCombine-Community */,
-				71BE32362A05BBFB00B76A69 /* FirebaseCrashlytics */,
-				71BE32382A05BBFB00B76A69 /* FirebaseDatabase */,
-				71BE323A2A05BBFC00B76A69 /* FirebaseDatabaseSwift */,
-				71BE323C2A05BBFC00B76A69 /* FirebaseStorage */,
-				71BE323E2A05BBFC00B76A69 /* FirebaseStorageCombine-Community */,
-				71CEBDD22A0716D700DE6CDE /* SandKit */,
-				71508F652A0E382E008D0988 /* LaunchAtLogin */,
-				711513BE2A0E427200ED4E1E /* Ink */,
-				713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */,
-				712861822A0EFDBF00046DCE /* VaultKit */,
-				714238222A12D1BF00E3A55A /* MarqueKit */,
+				7105F8962A30F69B003DA26F /* SandKit */,
+				7105F8A82A30FF15003DA26F /* Ink */,
+				7105F8AA2A30FF1A003DA26F /* Granite */,
+				7105F8AC2A30FF20003DA26F /* GraniteUI */,
+				7105F8AE2A30FF42003DA26F /* VaultKit */,
+				7105F8B92A310257003DA26F /* LaunchAtLogin */,
+				7105F8BE2A3104EC003DA26F /* GPT3 Tokenizer */,
 			);
 			productName = "PEX (macOS)";
-			productReference = 711B3F7F2885D43B00F3080D /* Neatia.app */;
+			productReference = 711B3F7F2885D43B00F3080D /* Nea.app */;
 			productType = "com.apple.product-type.application";
 		};
 		711B3F852885D43B00F3080D /* Tests iOS */ = {
@@ -1616,7 +1575,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 711B3F702885D43700F3080D /* Build configuration list for PBXProject "Neatia" */;
+			buildConfigurationList = 711B3F702885D43700F3080D /* Build configuration list for PBXProject "Nea" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1626,15 +1585,18 @@
 			);
 			mainGroup = 711B3F6C2885D43700F3080D;
 			packageReferences = (
-				71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				71EDCFD32A0917AC00857066 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				7105F89B2A30FB5F003DA26F /* XCRemoteSwiftPackageReference "Ink" */,
+				7105F89E2A30FB6C003DA26F /* XCRemoteSwiftPackageReference "VaultKit" */,
+				7105F8A32A30FF00003DA26F /* XCRemoteSwiftPackageReference "Granite" */,
+				7105F8B62A310233003DA26F /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				7105F8BB2A310482003DA26F /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 			);
 			productRefGroup = 711B3F7A2885D43B00F3080D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				711B3F782885D43B00F3080D /* Neatia (iOS) */,
-				711B3F7E2885D43B00F3080D /* Neatia (macOS) */,
+				711B3F782885D43B00F3080D /* Nea (iOS) */,
+				711B3F7E2885D43B00F3080D /* Nea (macOS) */,
 				711B3F852885D43B00F3080D /* Tests iOS */,
 				711B3F912885D43B00F3080D /* Tests macOS */,
 			);
@@ -1648,8 +1610,6 @@
 			files = (
 				711B3F9E2885D43B00F3080D /* Assets.xcassets in Resources */,
 				714238262A12D8B700E3A55A /* pieta.png in Resources */,
-				712861852A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
-				7128618E2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1659,8 +1619,6 @@
 			files = (
 				711B3F9F2885D43B00F3080D /* Assets.xcassets in Resources */,
 				714238272A12D8B700E3A55A /* pieta.png in Resources */,
-				712861862A0EFE6500046DCE /* Subscriptions.storekit in Resources */,
-				7128618F2A0F11C600046DCE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2111,12 +2069,12 @@
 /* Begin PBXTargetDependency section */
 		711B3F882885D43B00F3080D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 711B3F782885D43B00F3080D /* Neatia (iOS) */;
+			target = 711B3F782885D43B00F3080D /* Nea (iOS) */;
 			targetProxy = 711B3F872885D43B00F3080D /* PBXContainerItemProxy */;
 		};
 		711B3F942885D43B00F3080D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 711B3F7E2885D43B00F3080D /* Neatia (macOS) */;
+			target = 711B3F7E2885D43B00F3080D /* Nea (macOS) */;
 			targetProxy = 711B3F932885D43B00F3080D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2242,7 +2200,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neatia--iOS--Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Neatia;
+				INFOPLIST_KEY_CFBundleDisplayName = Nea;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take pictures for encoding";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2255,8 +2213,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Neatia;
-				PRODUCT_NAME = Neatia;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Nea;
+				PRODUCT_NAME = Nea;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2275,7 +2233,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neatia--iOS--Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Neatia;
+				INFOPLIST_KEY_CFBundleDisplayName = Nea;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Take pictures for encoding";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2288,8 +2246,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Neatia;
-				PRODUCT_NAME = Neatia;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Nea;
+				PRODUCT_NAME = Nea;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2307,13 +2265,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2023053000;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CV8LAA8JAP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neatia--macOS--Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Neatia;
+				INFOPLIST_KEY_CFBundleDisplayName = Nea;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Stoic Collective, LLC.";
@@ -2322,9 +2280,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Neatia;
-				PRODUCT_NAME = Neatia;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Nea;
+				PRODUCT_NAME = Nea;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2341,13 +2299,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2023053000;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CV8LAA8JAP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Neatia--macOS--Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Neatia;
+				INFOPLIST_KEY_CFBundleDisplayName = Nea;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Stoic Collective, LLC.";
@@ -2356,9 +2314,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Neatia;
-				PRODUCT_NAME = Neatia;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.stoic.Nea;
+				PRODUCT_NAME = Nea;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2448,7 +2406,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		711B3F702885D43700F3080D /* Build configuration list for PBXProject "Neatia" */ = {
+		711B3F702885D43700F3080D /* Build configuration list for PBXProject "Nea" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				711B3FA02885D43B00F3080D /* Debug */,
@@ -2457,7 +2415,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		711B3FA22885D43B00F3080D /* Build configuration list for PBXNativeTarget "Neatia (iOS)" */ = {
+		711B3FA22885D43B00F3080D /* Build configuration list for PBXNativeTarget "Nea (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				711B3FA32885D43B00F3080D /* Debug */,
@@ -2466,7 +2424,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		711B3FA52885D43B00F3080D /* Build configuration list for PBXNativeTarget "Neatia (macOS)" */ = {
+		711B3FA52885D43B00F3080D /* Build configuration list for PBXNativeTarget "Nea (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				711B3FA62885D43B00F3080D /* Debug */,
@@ -2496,119 +2454,116 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		7105F89B2A30FB5F003DA26F /* XCRemoteSwiftPackageReference "Ink" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			repositoryURL = "https://github.com/JohnSundell/Ink";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 0.6.0;
 			};
 		};
-		71EDCFD32A0917AC00857066 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+		7105F89E2A30FB6C003DA26F /* XCRemoteSwiftPackageReference "VaultKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit";
+			repositoryURL = "https://github.com/pexavc/VaultKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		7105F8A32A30FF00003DA26F /* XCRemoteSwiftPackageReference "Granite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pexavc/Granite.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		7105F8B62A310233003DA26F /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		7105F8BB2A310482003DA26F /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aespinilla/GPT3-Tokenizer";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.3;
+				minimumVersion = 0.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		711513BE2A0E427200ED4E1E /* Ink */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Ink;
-		};
-		712861822A0EFDBF00046DCE /* VaultKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = VaultKit;
-		};
-		713D16AE2A0EF20B00F46AC3 /* GPT3 Tokenizer */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "GPT3 Tokenizer";
-		};
-		714238222A12D1BF00E3A55A /* MarqueKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MarqueKit;
-		};
-		71508F652A0E382E008D0988 /* LaunchAtLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LaunchAtLogin;
-		};
-		71A375042A01F5B800985D8D /* Granite */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Granite;
-		};
-		71A375062A01F5B800985D8D /* GraniteUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GraniteUI;
-		};
-		71BE322A2A05BBFB00B76A69 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		71BE322E2A05BBFB00B76A69 /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
-		};
-		71BE32302A05BBFB00B76A69 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
-		};
-		71BE32322A05BBFB00B76A69 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		71BE32342A05BBFB00B76A69 /* FirebaseAuthCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAuthCombine-Community";
-		};
-		71BE32362A05BBFB00B76A69 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		71BE32382A05BBFB00B76A69 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		71BE323A2A05BBFC00B76A69 /* FirebaseDatabaseSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabaseSwift;
-		};
-		71BE323C2A05BBFC00B76A69 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
-		71BE323E2A05BBFC00B76A69 /* FirebaseStorageCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71BE32292A05BBFB00B76A69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseStorageCombine-Community";
-		};
-		71CEBDD22A0716D700DE6CDE /* SandKit */ = {
+		7105F8962A30F69B003DA26F /* SandKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SandKit;
 		};
-		71E35C922954484A0094DB31 /* Granite */ = {
+		7105F89C2A30FB5F003DA26F /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 7105F89B2A30FB5F003DA26F /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
+		};
+		7105F89F2A30FB6C003DA26F /* VaultKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F89E2A30FB6C003DA26F /* XCRemoteSwiftPackageReference "VaultKit" */;
+			productName = VaultKit;
+		};
+		7105F8A12A30FC7E003DA26F /* SandKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SandKit;
+		};
+		7105F8A42A30FF00003DA26F /* Granite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F8A32A30FF00003DA26F /* XCRemoteSwiftPackageReference "Granite" */;
 			productName = Granite;
 		};
-		71E35C942954484D0094DB31 /* GraniteUI */ = {
+		7105F8A62A30FF00003DA26F /* GraniteUI */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 7105F8A32A30FF00003DA26F /* XCRemoteSwiftPackageReference "Granite" */;
 			productName = GraniteUI;
 		};
-		71EDCFD42A0917AC00857066 /* SwiftyStoreKit */ = {
+		7105F8A82A30FF15003DA26F /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71EDCFD32A0917AC00857066 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
-			productName = SwiftyStoreKit;
+			package = 7105F89B2A30FB5F003DA26F /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
+		};
+		7105F8AA2A30FF1A003DA26F /* Granite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F8A32A30FF00003DA26F /* XCRemoteSwiftPackageReference "Granite" */;
+			productName = Granite;
+		};
+		7105F8AC2A30FF20003DA26F /* GraniteUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F8A32A30FF00003DA26F /* XCRemoteSwiftPackageReference "Granite" */;
+			productName = GraniteUI;
+		};
+		7105F8AE2A30FF42003DA26F /* VaultKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F89E2A30FB6C003DA26F /* XCRemoteSwiftPackageReference "VaultKit" */;
+			productName = VaultKit;
+		};
+		7105F8B72A310233003DA26F /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F8B62A310233003DA26F /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+		7105F8B92A310257003DA26F /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F8B62A310233003DA26F /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+		7105F8BC2A310482003DA26F /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F8BB2A310482003DA26F /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
+		};
+		7105F8BE2A3104EC003DA26F /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7105F8BB2A310482003DA26F /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

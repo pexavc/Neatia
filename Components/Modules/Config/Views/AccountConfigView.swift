@@ -1,8 +1,8 @@
 //
 //  AccountConfigView.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/5/23.
+//  Created by PEXAVC on 5/5/23.
 //
 
 import Foundation
@@ -38,9 +38,6 @@ struct AccountConfigView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
-//        .onAppear {
-//            reducedPricing = VaultManager.purchased(VaultProducts.Lifetime.basic)
-//        }
     }
     
     var standardView: some View {
@@ -185,7 +182,7 @@ struct AccountConfigView: View {
                             .font(Fonts.live(.subheadline, .regular))
                             .foregroundColor(.foreground)
                         
-                        Text("• Neatia engineered prompts and tuning. They update or new ones get added weekly.")
+                        Text("• Nea engineered prompts and tuning. They update or new ones get added weekly.")
                             .font(Fonts.live(.subheadline, .regular))
                             .foregroundColor(.foreground)
                         
@@ -260,7 +257,7 @@ struct AccountConfigView: View {
                         Text("Privacy Policy")
                             .foregroundColor(.accentColor)
                             .onTapGesture {
-                                if let url = URL(string: "https://stoic.nyc/neatia/privacy") {
+                                if let url = URL(string: "") {
                                     openURL(url)
                                 }
                             }
@@ -272,7 +269,7 @@ struct AccountConfigView: View {
                         Text("Terms of Use")
                             .foregroundColor(.accentColor)
                             .onTapGesture {
-                                if let url = URL(string: "https://stoic.nyc/neatia/terms") {
+                                if let url = URL(string: "") {
                                     openURL(url)
                                 }
                             }

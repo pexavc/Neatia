@@ -1,8 +1,8 @@
 //
 //  PaneKit.Window.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/8/23.
+//  Created by PEXAVC on 5/8/23.
 //
 
 import Foundation
@@ -27,7 +27,7 @@ extension PaneKit {
         private(set) var titleBarHeight: CGFloat = 0
         
         let pubClickedOutside = NotificationCenter.default
-            .publisher(for: NSNotification.Name("nyc.stoic.Neatia.PaneKitClickedOutside"))
+            .publisher(for: NSNotification.Name("nyc.stoic.Nea.PaneKitClickedOutside"))
         internal var cancellables = Set<AnyCancellable>()
         
         let id: String

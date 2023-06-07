@@ -1,8 +1,8 @@
 //
 //  AboutConfigView.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/5/23.
+//  Created by PEXAVC on 5/5/23.
 //
 
 import Foundation
@@ -73,7 +73,7 @@ struct AboutConfigView: View {
                 Text("Privacy Policy")
                     .foregroundColor(.accentColor)
                     .onTapGesture {
-                        if let url = URL(string: "https://stoic.nyc/neatia/privacy") {
+                        if let url = URL(string: "") {
                             openURL(url)
                         }
                     }
@@ -85,7 +85,7 @@ struct AboutConfigView: View {
                 Text("Terms of Use")
                     .foregroundColor(.accentColor)
                     .onTapGesture {
-                        if let url = URL(string: "https://stoic.nyc/neatia/terms") {
+                        if let url = URL(string: "") {
                             openURL(url)
                         }
                     }

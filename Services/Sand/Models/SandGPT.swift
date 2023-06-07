@@ -1,15 +1,14 @@
 //
 //  SandGPT.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/9/23.
+//  Created by PEXAVC on 5/9/23.
 //
 
 import Foundation
 import SandKit
 import Combine
 import Granite
-import MarqueKit
 import GPT3_Tokenizer
 
 class SandGPT {
@@ -17,7 +16,7 @@ class SandGPT {
     
     @SharedObject(SessionManager.id) var session: SessionManager
     
-    var CUSTOM_API_KEY: [UInt32]? = nil {
+    var CUSTOM_API_KEY: String? = nil {
         didSet {
             session.isCustomAPI(CUSTOM_API_KEY != nil)
         }
@@ -152,8 +151,7 @@ class SandGPT {
 extension SandGPT {
     func useCustomAPI() {
         print("[SandGPT] Using custom API \(CUSTOM_API_KEY != nil)")
-        guard let customAPIKeyData = self.CUSTOM_API_KEY else { return }
-        guard let customAPIKey = ConfigService.decode(customAPIKeyData) else { return }
+        guard let customAPIKey = self.CUSTOM_API_KEY else { return }
         
         self.client = ChatGPT(apiKey: customAPIKey,
                               defaultModel: .custom(modelId: SandGPT.DEFAULT_ENGINE))
@@ -162,8 +160,7 @@ extension SandGPT {
     
     func useCustomEngine(_ engine: String) {
         print("[SandGPT] Using custom API w/ Custom Engine \(CUSTOM_API_KEY != nil)")
-        guard let customAPIKeyData = self.CUSTOM_API_KEY else { return }
-        guard let customAPIKey = ConfigService.decode(customAPIKeyData) else { return }
+        guard let customAPIKey = self.CUSTOM_API_KEY else { return }
         
         self.client = ChatGPT(apiKey: customAPIKey, defaultModel: .custom(modelId: engine))
         self.lastEngineUsed = engine
@@ -171,15 +168,8 @@ extension SandGPT {
     
     func useMainAPI() {
         print("[SandGPT] Using main API \(CUSTOM_API_KEY == nil)")
-        guard let apiKey = ConfigService.decode(SandGPT.API_KEY_ENCODED) else { return }
         
-        self.client = ChatGPT(apiKey: apiKey, defaultModel: .custom(modelId: SandGPT.DEFAULT_ENGINE))
+        self.client = ChatGPT(apiKey: SandGPT.API_KEY, defaultModel: .custom(modelId: SandGPT.DEFAULT_ENGINE))
         self.lastEngineUsed = SandGPT.DEFAULT_ENGINE
-    }
-}
-
-extension SandGPT {
-    static var API_KEY_ENCODED: [UInt32] {
-        []
     }
 }

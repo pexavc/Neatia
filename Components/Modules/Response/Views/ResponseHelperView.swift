@@ -1,8 +1,8 @@
 //
 //  ResponseHelperView.swift
-//  Neatia (iOS)
+//  Nea (iOS)
 //
-//  Created by Ritesh Pakala on 5/17/23.
+//  Created by PEXAVC on 5/17/23.
 //
 
 import Foundation

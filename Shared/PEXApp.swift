@@ -18,13 +18,13 @@ struct PEXApp: App {
     @Relay var account: AccountService
     
     let pubShowHideMount = NotificationCenter.default
-        .publisher(for: NSNotification.Name("nyc.stoic.Neatia.ShowHideMount"))
+        .publisher(for: NSNotification.Name("nyc.stoic.Nea.ShowHideMount"))
     
     let pubShowHidePromptStudio = NotificationCenter.default
-        .publisher(for: NSNotification.Name("nyc.stoic.Neatia.ShowHidePromptStudio"))
+        .publisher(for: NSNotification.Name("nyc.stoic.Nea.ShowHidePromptStudio"))
     
     let pubDidFinishLaunching = NotificationCenter.default
-        .publisher(for: NSNotification.Name("nyc.stoic.Neatia.DidFinishLaunching"))
+        .publisher(for: NSNotification.Name("nyc.stoic.Nea.DidFinishLaunching"))
 
     internal var cancellables = Set<AnyCancellable>()
     

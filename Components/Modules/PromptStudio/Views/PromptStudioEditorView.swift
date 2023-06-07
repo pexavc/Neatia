@@ -1,8 +1,8 @@
 //
 //  PromptStudioEditorView.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/13/23.
+//  Created by PEXAVC on 5/13/23.
 //
 
 import Foundation
@@ -10,7 +10,6 @@ import Granite
 import SwiftUI
 import GPT3_Tokenizer
 import SandKit
-import MarqueKit
 
 struct PromptStudioEditorView: View {
     @GraniteAction<Void> var closeCreatePrompt

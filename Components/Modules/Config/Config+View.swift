@@ -59,7 +59,7 @@ extension Config: View {
                     .frame(width: 160)
                     .onTapGesture {
                         let nc = NotificationCenter.default
-                        nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHideMount"), object: nil)
+                        nc.post(name: Notification.Name("nyc.stoic.Nea.ShowHideMount"), object: nil)
                     }
                 }
                 
@@ -142,7 +142,7 @@ extension Config: View {
                     AppBlurView(size: .init(width: 0, height: 80),
                                 tintColor: Brand.Colors.black.opacity(0.3)) {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Neatia")
+                            Text("Nea")
                                 .font(Fonts.live(.title2, .bold))
                                 .foregroundColor(.foreground)
                             
@@ -161,7 +161,7 @@ extension Config: View {
 //                AppBlurView(size: .init(0, 200),
 //                            tintColor: Brand.Colors.black.opacity(0.3)) {
 //                    VStack(alignment: .leading, spacing: 8) {
-//                        Text("Neatia turns the world of AI chat bots into an easy to access shortcut on your Mac.\n\n(⌥ + N) and get an answer that could jump start a workflow, remove writer's block, or help with that job hunt.\n")
+//                        Text("Nea turns the world of AI chat bots into an easy to access shortcut on your Mac.\n\n(⌥ + N) and get an answer that could jump start a workflow, remove writer's block, or help with that job hunt.\n")
 //                            .font(Fonts.live(.headline, .regular))
 //                            .foregroundColor(.foreground)
 //

@@ -1,8 +1,8 @@
 //
 //  PaneKit.Visibility.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/13/23.
+//  Created by PEXAVC on 5/13/23.
 //
 
 import Foundation
@@ -41,7 +41,7 @@ final class WindowVisibilityManager: Equatable, SharableObject {
         .init()
     }
     
-    public static var id : String = "nyc.stoic.Neatia.WindowVisibilityManager"
+    public static var id : String = "nyc.stoic.Nea.WindowVisibilityManager"
     
     internal var cancellables = Set<AnyCancellable>()
     internal var windowNumbers = Set<Int>()

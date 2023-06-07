@@ -1,8 +1,8 @@
 //
 //  TranslucentWindowBackground.swift
-//  Neatia (iOS)
+//  Nea (iOS)
 //
-//  Created by Ritesh Pakala on 5/3/23.
+//  Created by PEXAVC on 5/3/23.
 //
 
 import Foundation

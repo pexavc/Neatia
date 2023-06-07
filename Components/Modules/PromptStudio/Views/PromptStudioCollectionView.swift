@@ -1,8 +1,8 @@
 //
 //  PromptStudioCollectionView.swift
-//  Neatia
+//  Nea
 //
-//  Created by Ritesh Pakala on 5/13/23.
+//  Created by PEXAVC on 5/13/23.
 //
 
 import Foundation
@@ -61,7 +61,7 @@ struct PromptStudioCollectionView: View {
                                         guard windowVisibility.isVisible(id: InteractionManager.Kind.promptStudio.rawValue) == false else { return }
                                         
                                         let nc = NotificationCenter.default
-                                        nc.post(name: Notification.Name("nyc.stoic.Neatia.ShowHidePromptStudio"), object: nil)
+                                        nc.post(name: Notification.Name("nyc.stoic.Nea.ShowHidePromptStudio"), object: nil)
                                     } else {
                                         editPrompt.perform(prompt)
                                     }
