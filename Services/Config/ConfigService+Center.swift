@@ -17,7 +17,17 @@ extension ConfigService {
             }
             
             //GPT
-            var streamResponse: Bool = true
+            var streamResponse: Bool = false
+            var isCompletion: Bool = false
+            var isAzure: Bool = true {
+                didSet {
+                    if isAzure {
+                        SandGPT.shared.updateEngineClass(.azure)
+                    } else {
+                        SandGPT.shared.updateEngineClass(.openai)
+                    }
+                }
+            }
             
             //Hotkeys
             var mountHotkey: InteractionManager.HotkeyOptions = .n
@@ -70,7 +80,7 @@ extension ConfigService {
         @Event var removeAPIKey: RemoveCustomAPIKey.Reducer
         @Event var updateHistory: UpdateHistory.Reducer
         
-        @Store(persist: "neatia.persistence.config.0017", autoSave: true, preload: true) public var state: State
+        @Store(persist: "neatia.persistence.config.0020", autoSave: true, preload: true) public var state: State
     }
     
     static func decode(_ bytes: [UInt32]) -> String? {

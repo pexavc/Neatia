@@ -89,11 +89,20 @@ extension SandService {
             print("[SandService] Sub Command for prompt: \(state.subCommandSet?.values.compactMap { "\($0.id):\($0.value.id)" })")
             print("[SandService] Use custom config: \(config.state.customPromptConfigEnabled)")
             print("[SandService] Use System prompt: \(systemPrompt)")
-            SandGPT.shared.ask(userPrompt,
-                               withSystemPrompt: systemPrompt,
-                               withConfig: engineeredPrompt?.config ?? .init(),
-                               stream: config.state.streamResponse,
-                               event: received)
+            if config.state.isCompletion == true {
+                print("[SandService] using completions")
+                SandGPT.shared.complete(userPrompt,
+                                        withConfig: engineeredPrompt?.config ?? .init(),
+                                        event: received)
+            } else {
+                
+                SandGPT.shared.ask(userPrompt,
+                                   withSystemPrompt: systemPrompt,
+                                   withConfig: engineeredPrompt?.config ?? .init(),
+                                   stream: config.state.streamResponse,
+                                   logMessages: state.isCommandSet == false,
+                                   event: received)
+            }
         }
     }
     

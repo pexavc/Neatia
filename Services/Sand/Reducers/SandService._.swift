@@ -27,7 +27,7 @@ extension SandService {
             state.subCommandFileSet = nil
             state.commandSet = nil
             SandGPTTokenizerManager.shared.pause = false
-            SandGPT.shared.reset()
+            SandGPT.shared.reset(messages: true)
         }
     }
 }

@@ -53,7 +53,11 @@ extension EnvironmentService {
             
             //SandGPT
             print("[Environment] [SandGPT] is customAPI set \(config.state.isCustomAPIKeySet)")
-            SandGPT.shared.updateEngineClass(.azure)
+            
+            if config.state.isAzure {
+                SandGPT.shared.updateEngineClass(.azure)
+            }
+            
             if config.state.isCustomAPIKeySet {
                 SandGPT.shared.CUSTOM_API_KEY = config.state.customAPIKey
                 SandGPT.shared.useCustomAPI()

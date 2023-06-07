@@ -42,8 +42,21 @@ struct GeneralConfigView: View {
                 Spacer()
             }
             
+            if config.state.isAzure != true {
+                HStack {
+                    Toggle("Stream response", isOn: config.center.$state.binding.streamResponse)
+                    
+                    Spacer()
+                }
+                .padding(.bottom, 8)
+            }
+            
+            Text("Engine Class")
+                .font(Fonts.live(.headline, .bold))
+                .foregroundColor(.foreground)
+            
             HStack {
-                Toggle("Stream response", isOn: config.center.$state.binding.streamResponse)
+                Toggle("Azure OpenAI", isOn: config.center.$state.binding.isAzure)
                 
                 Spacer()
             }
