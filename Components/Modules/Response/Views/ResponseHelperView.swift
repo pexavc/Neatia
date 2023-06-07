@@ -38,7 +38,11 @@ struct HelperInfo: BasicHelper, GraniteModel {
         var info: [HelperInfo] = []
         for match in response.match("#(([0-9a-fA-F]{2}){3,4}|([0-9a-fA-F]){3,4})") {
             if match.value.contains("#") {
-                info.append(.init(kind: .color(match.value)))
+                let newColor: HelperInfo = .init(kind: .color(match.value))
+                
+                if info.filter({ $0.id == newColor.id }).isEmpty {
+                    info.append(.init(kind: .color(match.value)))
+                }
             }
         }
         var links: [String] = []
