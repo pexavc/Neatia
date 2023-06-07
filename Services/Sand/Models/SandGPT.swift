@@ -77,6 +77,10 @@ class SandGPT {
         isResponding = true
         
         if logMessages {
+            if messages.count > 48 {
+                messages.removeFirst(2)
+            }
+            
             self.messages.append(.init(role: .user, content: prompt))
             print(self.messages)
         }
