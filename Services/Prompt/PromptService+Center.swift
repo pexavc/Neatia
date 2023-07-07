@@ -12,7 +12,7 @@ extension PromptService {
         @Event var modify: Modify.Reducer
         @Event var delete: Delete.Reducer
         
-        @Store(persist: "neatia.persistence.prompts.0006", autoSave: true) public var state: State
+        @Store(persist: "neatia.persistence.prompts.0007", autoSave: true) public var state: State
     }
     
     static var normalPromptMaxTokenCount: Int {

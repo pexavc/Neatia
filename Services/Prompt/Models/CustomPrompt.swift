@@ -15,7 +15,7 @@ struct CustomCommand: BasicCommand, GraniteModel, Hashable {
     
     init(_ command: String) {
         
-        self.value = command
+        self.value = command.lowercased()
     }
 }
 
